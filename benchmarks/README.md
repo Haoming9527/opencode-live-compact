@@ -60,7 +60,8 @@ The default sandbox is `Benchmark-sandbox` and the default remote checkout is `~
 Watch live grades from the sandbox terminal.
 
 ```sh
-tail -F ~/benchmark-progress/latest/progress.jsonl
+tail -n +1 -F ~/benchmark-progress/latest/progress.jsonl |
+  node ~/benchmark-progress/cloud/repo/benchmarks/run.ts --format-progress
 ```
 
 `~/benchmark-progress/latest/benchmark.log` prints the run directory. When the arms finish, open `comparison.json` and `comparison-1.md` there.

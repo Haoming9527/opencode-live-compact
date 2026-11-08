@@ -7,6 +7,7 @@ import type { ModelRef } from "@opencode/client";
 import { runArm } from "./runner/arm.ts";
 import type { Arm, ArmResult, Suite } from "./runner/arm.ts";
 import { launchDaytona } from "./runner/daytona.ts";
+import { formatProgress } from "./runner/progress.ts";
 import { grade, prepareBaseline, prepareReference, stages } from "./suites/workloads.ts";
 import type { Suite as ExistingSuite } from "./suites/workloads.ts";
 import { gradeAider, prepareAider } from "./suites/aider.ts";
@@ -20,6 +21,7 @@ const cli = parseArgs({ options: {
   "daytona-sandbox": { type: "string", default: "Benchmark-sandbox" },
   "daytona-project-dir": { type: "string", default: "~/benchmark-progress/cloud/repo" },
   help: { type: "boolean" },
+  "format-progress": { type: "boolean" },
   model: { type: "string" },
   variant: { type: "string" },
   "key-env": { type: "string" },
@@ -46,7 +48,7 @@ function positive(raw: string | undefined, name: string) {
 }
 
 function usage() {
-  process.stdout.write(`Usage\n  npm run benchmark -- --preflight [--suite all|short|semver|aider]\n  npm run benchmark -- --live --model provider/model --key-env VARIABLE --budget-usd N --reserve-usd N [--parallel] [--trials 3] [--target local|daytona]\n\nThe reserve is required for each stage. OpenCode records charges after requests, so this is a stage-admission check.\n`);
+  process.stdout.write(`Usage\n  npm run benchmark -- --preflight [--suite all|short|semver|aider]\n  npm run benchmark -- --live --model provider/model --key-env VARIABLE --budget-usd N --reserve-usd N [--parallel] [--trials 3] [--target local|daytona]\n\n  cat progress.jsonl | node benchmarks/run.ts --format-progress\n\nThe reserve is required for each stage. OpenCode records charges after requests, so this is a stage-admission check.\n`);
 }
 
 function englishTable(control: ArmResult, plugin: ArmResult) {
@@ -104,6 +106,7 @@ function compare(control: ArmResult, treatment: ArmResult) {
 }
 
 async function main() {
+  if (cli["format-progress"]) { await formatProgress(); return; }
   if (cli.help || (!cli.preflight && !cli.live)) { usage(); return; }
   if (cli.preflight && cli.live) throw new Error("Choose one mode");
   if (cli.target === "daytona") {

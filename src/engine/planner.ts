@@ -17,7 +17,7 @@ export interface PlannerOptions {
 export function planCuts(candidates: readonly Candidate[], options: PlannerOptions): Cut[] {
   const cuts: Cut[] = [];
   let bestSize = 0;
-  let bestScore = -Infinity;
+  let bestScore = 0;
   let savingsAfter = 0;
   const rebuildWeight = options.cacheRebuildWeight ?? 0.25;
   for (let index = candidates.length - 1; index >= 0 && cuts.length < options.maxCutsPerCycle; index--) {

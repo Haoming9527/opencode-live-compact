@@ -13,6 +13,7 @@ import { gradeAider } from "../suites/aider.ts";
 import type { Aider } from "../suites/aider.ts";
 
 import { grade } from "../suites/workloads.ts";
+import { logGrades } from "./progress.ts";
 
 const eventTypes = [
   "session.inbox.delivered", "session.execution.succeeded", "session.execution.failed", "session.execution.interrupted",
@@ -21,22 +22,6 @@ const eventTypes = [
 ] as const;
 export type Arm = "control" | "plugin";
 export type Suite = ExistingSuite | "aider";
-
-type ExerciseGrade = { id: string; passed: boolean };
-
-async function logGrades(file: string, arm: string, grades: readonly ExerciseGrade[],
-  previous: readonly ExerciseGrade[], trial: number) {
-  let total = previous.length;
-  let passed = previous.filter(grade => grade.passed).length;
-  const lines = grades.map(grade => {
-    total++;
-    passed += Number(grade.passed);
-    return JSON.stringify({ event: "exercise-graded", arm, trial, stage: grade.id, outcome: grade.passed ? "pass" : "fail",
-      source: "final", graded: total, passed, failed: total - passed, passRate: passed / total, failRate: (total - passed) / total,
-      time: new Date().toISOString() });
-  });
-  if (lines.length) await appendFile(file, lines.join("\n") + "\n", { mode: 0o600 });
-}
 
 async function retainedText(client: OpenCodeClient, sessionID: string, signal: AbortSignal) {
   const context = await client.session.context({ sessionID }, { signal });
@@ -170,8 +155,10 @@ export async function runArm(options: ArmOptions) {
     for (const stage of options.prompts) {
       signal.throwIfAborted();
       options.beforeStage(current.cost);
-      await appendFile(options.progressFile, JSON.stringify({ event: "stage-started", arm, trial: options.trial, stage: stage.id, completed: completed.length,
-        expected: options.prompts.length, estimatedUsd: current.cost, time: new Date().toISOString() }) + "\n");
+      if (suite !== "aider") {
+        await appendFile(options.progressFile, JSON.stringify({ event: "stage-started", arm, trial: options.trial, stage: stage.id, completed: completed.length,
+          expected: options.prompts.length, estimatedUsd: current.cost, time: new Date().toISOString() }) + "\n");
+      }
       process.stdout.write(`${suite}/${arm} stage ${completed.length + 1}: ${stage.id} ($${current.cost.toFixed(4)} estimated so far)\n`);
       const stageSignal = AbortSignal.any([signal, AbortSignal.timeout(options.timeoutMs)]);
       const firstEvent = log.length;
@@ -186,11 +173,12 @@ export async function runArm(options: ArmOptions) {
       current = await client.session.get({ sessionID }, { signal: stageSignal });
       if ((current.time.idle ?? -1) < stageOutcome.endedAt) throw new Error(`Stage ${stage.id} has no matching persisted idle marker`);
       completed.push(stageOutcome.receipt);
+      const estimatedUsd = current.cost;
       const aider = options.aider;
       const exercise = aider?.exercises[completed.length - 1];
       if (aider && exercise) grading = grading.then(async () => {
         const result = await gradeAider([exercise], join(directory, "graded"), workspace, aider.tools);
-        await logGrades(options.progressFile, arm, result.outcomes, exerciseGrades, options.trial);
+        await logGrades(options.progressFile, arm, result.outcomes, exerciseGrades, options.trial, estimatedUsd, options.prompts.length);
         exerciseGrades.push(...result.outcomes);
         exerciseLogs.push(result.log);
       }).catch(() => { gradingError = "Independent exercise grading failed"; });

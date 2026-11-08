@@ -25,6 +25,8 @@ export function readConfig(options: Readonly<Record<string, unknown>>) {
     archiveMaxBytes: integer("archiveMaxBytes", 64 * 1024 * 1024, 1024, 1024 * 1024 * 1024),
     archiveMaxRecords: integer("archiveMaxRecords", 4096, 1, 65_536),
     archiveRetentionMs: integer("archiveRetentionMs", 7 * 24 * 60 * 60 * 1000, 0, 365 * 24 * 60 * 60 * 1000),
+    compactSpans: options.compactSpans !== false,
+    cacheRebuildWeight: options.strictCacheBudget === true ? 1 : 0.25,
     dryRun: options.dryRun === true,
     diagnostics: options.diagnostics === true,
     metricsFile: absolute("metricsFile"),

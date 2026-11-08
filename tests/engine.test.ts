@@ -111,6 +111,16 @@ test("bounds batch size and charges the rebuilt suffix once from the earliest cu
   assert.deepEqual(planCuts([newest], { ...options, minimumSavingsTokens: 100_000 }), []);
 });
 
+test("skips a cut when its retained suffix costs at least as many tokens as it saves", () => {
+  const strict = { ...options, cacheRebuildWeight: 1 };
+  const [candidate] = planCuts([read("candidate")], strict);
+  assert.ok(candidate);
+  const breakEven = candidate.estimatedSavingsTokens - candidate.cacheSuffixTokens;
+  assert.ok(breakEven > 0);
+  assert.equal(planCuts([read("candidate", breakEven - 1)], strict).length, 1);
+  assert.deepEqual(planCuts([read("candidate", breakEven)], strict), []);
+});
+
 test("retains stock glob result notices and verifies the path count", () => {
   const paths = Array.from({ length: 120 }, (_, i) => `C:\\source\\components\\${"nested\\".repeat(7)}example-${i}.tsx`);
   const notice = "(Results are truncated: showing first 120 results. Consider using a more specific path or pattern.)";

@@ -5,6 +5,7 @@ import type { Config } from "../config.ts"
 import { eligibleResult } from "../engine/eligibility.ts"
 import { planCuts } from "../engine/planner.ts"
 import type { Candidate } from "../engine/planner.ts"
+import { applySpan, planSpan, spanMarker } from "../engine/span.ts"
 import type { Collector } from "../metrics/collector.ts"
 import { hashText } from "../recovery/integrity.ts"
 import type { RecoveryStore } from "../recovery/store.ts"
@@ -97,7 +98,11 @@ export function replacementHooks(ctx: Context, config: Config, store: RecoverySt
       const rounds = [...carry, ...completedRounds(history, sessionID)]
       const prose = [...recoverRounds([prior?.liveCompactProse], sessionID, visible).flat(),
         ...completedProse(history, sessionID, turn.id)]
-      const floor = Math.max(-1, ...Array.from(visible.values(), (item) => item.text.includes("[Live Compact omitted ") ? item.index : -1))
+      const floor = Math.max(
+        request.messages.findLastIndex(message => message.role === "assistant" &&
+          message.content.some(part => part.type === "text" && part.text.startsWith(spanMarker))),
+        ...Array.from(visible.values(), item => item.text.includes("[Live Compact omitted ") ? item.index : -1),
+      )
       const available = [...rounds.slice(0, Math.max(0, rounds.length - config.protectedToolRounds)).flat(), ...prose].flatMap((candidate) => {
         const { messageID, callID } = candidate.identity
         const match = visible.get(pairKey(messageID, callID))
@@ -105,12 +110,14 @@ export function replacementHooks(ctx: Context, config: Config, store: RecoverySt
         if (!match || match.index <= floor || source?.sourceText !== match.text) return []
         return [{ ...candidate, index: match.index, suffixTokens: suffix[match.index + 1] ?? 0 }]
       }).sort((a, b) => a.index - b.index)
-      const cuts = planCuts(available, { ...config, estimateTokens })
-      if (!cuts.length) return
+      const options = { ...config, estimateTokens }
+      const span = config.compactSpans ? planSpan(sessionID, request.messages, available, suffix, options) : undefined
+      const cuts = span ? [] : planCuts(available, options)
+      if (!span && !cuts.length) return
       if (config.dryRun) {
-        metrics.report(sessionID, { event: "cut", count: cuts.length, durationMs: performance.now() - started,
-          estimatedSavedTokens: cuts.reduce((total, cut) => total + cut.estimatedSavingsTokens, 0),
-          estimatedCacheSuffixTokens: Math.max(...cuts.map((cut) => cut.cacheSuffixTokens)), dryRun: true })
+        metrics.report(sessionID, { event: "cut", count: span ? 1 : cuts.length, durationMs: performance.now() - started,
+          estimatedSavedTokens: span?.saved ?? cuts.reduce((total, cut) => total + cut.estimatedSavingsTokens, 0),
+          estimatedCacheSuffixTokens: span?.suffix ?? Math.max(...cuts.map((cut) => cut.cacheSuffixTokens)), dryRun: true })
         return
       }
       // The summary route can use an explicitly configured auxiliary model.
@@ -118,6 +125,12 @@ export function replacementHooks(ctx: Context, config: Config, store: RecoverySt
       if (agent?.data?.model && !sameModel(agent.data.model, request.model)) return
       const references: string[] = []
       let saved = 0
+      if (span) {
+        const { identity, reference, sourceHash, checkpoint, original } = span
+        if (!await store.preserve({ identity, reference, sourceHash, checkpoint, original })) return
+        references.push(reference)
+        saved = span.saved
+      }
       for (const cut of cuts) {
         if (!await store.preserve({ identity: cut.identity, reference: cut.reference, sourceHash: cut.sourceHash,
           checkpoint: cut.replacement, original: cut.sourceText })) continue
@@ -125,7 +138,7 @@ export function replacementHooks(ctx: Context, config: Config, store: RecoverySt
         saved += cut.estimatedSavingsTokens
       }
       if (!references.length) return
-      const positions = cuts.filter((cut) => references.includes(cut.reference))
+      const positions = span ? [span.start, span.end - 1] : cuts.filter((cut) => references.includes(cut.reference))
         .map((cut) => visible.get(pairKey(cut.identity.messageID, cut.identity.callID))!.index)
       const lastCut = Math.max(...positions)
       const tail = rounds.slice(-Math.max(1, config.protectedToolRounds)).map((round) => round.flatMap((candidate) => {
@@ -144,7 +157,7 @@ export function replacementHooks(ctx: Context, config: Config, store: RecoverySt
       })
       const plan: Pending = { id: `msg_${randomUUID().replaceAll("-", "")}`, model: request.model, turn: turn.id,
         prefixHash: hashText(JSON.stringify(request.messages.slice(0, Math.min(...positions)))),
-        references, rounds: tail, prose: keptProse, saved, suffix: Math.max(...cuts.map((cut) => cut.cacheSuffixTokens)),
+        references, rounds: tail, prose: keptProse, saved, suffix: span?.suffix ?? Math.max(...cuts.map((cut) => cut.cacheSuffixTokens)),
         planningMs: performance.now() - started }
       await ctx.storage.set(pendingKey(sessionID), JSON.parse(JSON.stringify(plan)))
       pending.set(sessionID, plan)
@@ -174,16 +187,23 @@ export function replacementHooks(ctx: Context, config: Config, store: RecoverySt
       if (turn?.id !== plan.turn || !sameModel(plan.model, event.model) || event.messages.some((message) => message.role === "system")) return
       const visible = visibleTargets(event.messages)
       const replacements = new Map<number, { partIndex: number; checkpoint: string }>()
+      let spanMessages: typeof event.messages | undefined
       for (const reference of plan.references) {
         const record = await store.get(sessionID, reference)
         if (!record?.active) return
+        if (record.identity.tool === "completed_span") {
+          if (plan.references.length !== 1) return
+          spanMessages = applySpan(event.messages, record, plan.prefixHash)
+          if (!spanMessages) return
+          break
+        }
         const match = visible.get(pairKey(record.identity.messageID, record.identity.callID))
         if (!match || match.name !== record.identity.tool || match.text !== record.original ||
             Buffer.byteLength(JSON.stringify(record.checkpoint)) >= Buffer.byteLength(JSON.stringify(match.text))) return
         replacements.set(match.index, { partIndex: match.partIndex, checkpoint: record.checkpoint })
       }
-      if (hashText(JSON.stringify(event.messages.slice(0, Math.min(...replacements.keys())))) !== plan.prefixHash) return
-      const messages = full.map((message: (typeof event.messages)[number], index: number) => {
+      if (!spanMessages && hashText(JSON.stringify(event.messages.slice(0, Math.min(...replacements.keys())))) !== plan.prefixHash) return
+      const messages = spanMessages ?? full.map((message: (typeof event.messages)[number], index: number) => {
         const replacement = replacements.get(index)
         if (!replacement) return message
         const { partIndex, checkpoint } = replacement
@@ -194,7 +214,7 @@ export function replacementHooks(ctx: Context, config: Config, store: RecoverySt
           return part
         }) }
       })
-      event.result = { summary: "Live Compact shortened completed tool results.", native: { messages },
+      event.result = { summary: spanMessages ? "Live Compact shortened a completed span." : "Live Compact shortened completed tool results.", native: { messages },
         metadata: { keepID: null, liveCompact: marker, liveCompactRounds: plan.rounds, liveCompactProse: plan.prose, liveCompactInputID: plan.id } }
       metrics.report(sessionID, { event: "replacement", count: plan.references.length,
         durationMs: plan.planningMs + performance.now() - started, estimatedSavedTokens: plan.saved,

@@ -10,6 +10,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 import type { OpenCodeClient } from "@opencode/client";
 import { startOpenCode, waitForTurn } from "../benchmarks/runner/opencode.ts";
 import { test } from "node:test";
+import { RecoveryStore } from "../src/recovery/store.ts";
 
 interface ChatMessage {
   role: string;
@@ -74,7 +75,7 @@ const readID = (stage: number, index: number) => `call_lc_read_${stage}_${index}
 const recallID = (stage: number) => `call_lc_recall_${stage}`;
 const archiveMarker = /\[Live Compact omitted .* reference (lc1_[0-9a-f]{32}) and offset (\d+) /;
 
-async function scriptedProvider() {
+async function scriptedProvider(span = false) {
   const requests = new Map<number, ChatRequest[]>();
   const compactionRequests: ChatRequest[] = [];
   const errors: unknown[] = [];
@@ -114,7 +115,10 @@ async function scriptedProvider() {
         }
       }
       if (stage === 2 && !result(request, recallID(stage))) {
-        const match = contentText(result(request, readID(1, 1)))?.match(archiveMarker);
+        const match = span
+          ? request.messages.map(contentText).find(text => text?.startsWith("[Live Compact completed span"))
+            ?.match(/ reference (lc1_[0-9a-f]{32}) and offset (\d+) /)
+          : contentText(result(request, readID(1, 1)))?.match(archiveMarker);
         assert.ok(match?.[1] && match[2], "first follow-up should carry the previous turn's checkpoint");
         previousReference = match[1];
         call = { id: recallID(stage), name: "live_compact_recall", input: { reference: previousReference, offset: Number(match[2]), limit: 33 } };
@@ -201,6 +205,28 @@ function assertTransition(previous: ChatRequest, next: ChatRequest, previousStag
   return { full, checkpoint, offset: Number(match[2]) };
 }
 
+async function writePluginFixture(root: string, directory: string, baseURL: string, compactSpans: boolean) {
+  await mkdir(directory);
+  const pluginRoot = process.env.OPENCODE_PLUGIN_DIR ?? fileURLToPath(new URL("../", import.meta.url));
+  await writeFile(join(directory, "opencode.json"), JSON.stringify({
+    model: "local/fixture",
+    providers: {
+      local: {
+        package: "@opencode/ai/providers/openai-compatible",
+        settings: { baseURL: baseURL },
+        models: Object.fromEntries(["fixture", "alternate"].map((id) => [id, {
+          capabilities: { tools: true, input: ["text"], output: ["text"] }, limit: { context: 131_072, output: 4096 },
+        }])),
+      },
+    },
+    plugins: [{ package: pathToFileURL(pluginRoot).href, options: { compactSpans, archiveDirectory: join(root, "archive"), diagnostics: true, metricsFile: join(root, "metrics.jsonl") } }],
+  }));
+  await Promise.all(Array.from({ length: 5 }, (_, index) => {
+    const content = Array.from({ length: 220 }, (_, line) => `export const fixture_${index}_${line} = "original ${index}:${line} 🔍 ${"sample ".repeat(8)}";`).join("\n");
+    return writeFile(join(directory, `fixture-${index + 1}.ts`), content);
+  }));
+}
+
 test("stock OpenCode 2.2.6 applies completed-turn cuts, recalls originals and resumes after native compaction", { timeout: 160_000 }, async (t) => {
   const root = await mkdtemp(join(tmpdir(), "opencode-live-compact-integration-"));
   t.after(() => rm(root, { recursive: true, force: true, maxRetries: 3 }));
@@ -210,25 +236,7 @@ test("stock OpenCode 2.2.6 applies completed-turn cuts, recalls originals and re
   const profile = join(root, "profile");
   let host: Awaited<ReturnType<typeof startOpenCode>> | undefined;
   try {
-    await mkdir(directory);
-    const pluginRoot = process.env.OPENCODE_PLUGIN_DIR ?? fileURLToPath(new URL("../", import.meta.url));
-    await writeFile(join(directory, "opencode.json"), JSON.stringify({
-      model: "local/fixture",
-      providers: {
-        local: {
-          package: "@opencode/ai/providers/openai-compatible",
-          settings: { baseURL: provider.baseURL },
-          models: Object.fromEntries(["fixture", "alternate"].map((id) => [id, {
-            capabilities: { tools: true, input: ["text"], output: ["text"] }, limit: { context: 131_072, output: 4096 },
-          }])),
-        },
-      },
-      plugins: [{ package: pathToFileURL(pluginRoot).href, options: { archiveDirectory: join(root, "archive"), diagnostics: true, metricsFile: join(root, "metrics.jsonl") } }],
-    }));
-    await Promise.all(Array.from({ length: 5 }, (_, index) => {
-      const content = Array.from({ length: 220 }, (_, line) => `export const fixture_${index}_${line} = "original ${index}:${line} 🔍 ${"sample ".repeat(8)}";`).join("\n");
-      return writeFile(join(directory, `fixture-${index + 1}.ts`), content);
-    }));
+    await writePluginFixture(root, directory, provider.baseURL, false);
 
     host = await startOpenCode({ directory, profile, signal, offline: true });
     await waitForModel(host.client, signal);
@@ -355,6 +363,62 @@ test("stock OpenCode 2.2.6 applies completed-turn cuts, recalls originals and re
     if (details.some(Boolean)) t.diagnostic(details.join("\n"));
     throw error;
   } finally {
+    await host?.close();
+    await provider.close();
+  }
+});
+
+test("stock OpenCode replaces an eligible completed span with one recoverable checkpoint", { timeout: 90_000 }, async (t) => {
+  const root = await mkdtemp(join(tmpdir(), "opencode-live-compact-span-"));
+  t.after(() => rm(root, { recursive: true, force: true, maxRetries: 3 }));
+  const provider = await scriptedProvider(true);
+  const signal = AbortSignal.any([t.signal, AbortSignal.timeout(85_000)]);
+  const directory = join(root, "workspace");
+  let host: Awaited<ReturnType<typeof startOpenCode>> | undefined;
+  let store: RecoveryStore | undefined;
+  try {
+    await writePluginFixture(root, directory, provider.baseURL, true);
+    host = await startOpenCode({ directory, profile: join(root, "profile"), signal, offline: true });
+    const { client } = host;
+    await waitForModel(client, signal);
+    const session = await client.session.create({ title: "Completed span", model: { providerID: "local", id: "fixture" } }, { signal });
+    assert.equal((await prompt(client, session.id, 1, signal)).outcome, "succeeded");
+    const original = provider.requests.get(1)?.at(-1);
+    assert.ok(original);
+    assert.equal((await prompt(client, session.id, 2, signal)).outcome, "succeeded");
+    assert.deepEqual(provider.errors, []);
+    const [next, retry, recalled] = provider.requests.get(2) ?? [];
+    assert.ok(next && retry && recalled);
+    assert.deepEqual(next.messages, retry.messages);
+    const start = original.messages.findIndex(message => message.tool_calls?.some(call => call.id === readID(1, 1)));
+    const marker = next.messages.findIndex(message => contentText(message)?.startsWith("[Live Compact completed span"));
+    assert.ok(start >= 0);
+    assert.equal(marker, start);
+    assert.deepEqual(next.messages.slice(0, marker), original.messages.slice(0, start));
+    assert.equal(next.messages.filter(message => contentText(message)?.startsWith("[Live Compact completed span")).length, 1);
+    assert.equal(next.messages[marker]?.role, "assistant");
+    for (const index of [1, 2]) {
+      assert.ok(result(original, readID(1, index)));
+      assert.equal(result(next, readID(1, index)), undefined);
+      assert.ok(!next.messages.some(message => message.tool_calls?.some(call => call.id === readID(1, index))));
+    }
+    for (const index of [3, 4, 5]) {
+      assert.deepEqual(result(next, readID(1, index)), result(original, readID(1, index)));
+    }
+    const payload = JSON.parse(contentText(result(recalled, recallID(2))) ?? "null");
+    assert.equal(payload.status, "ok");
+    store = new RecoveryStore({ directory: join(root, "archive"), maxBytes: 64 * 1024 * 1024 });
+    const archive = await store.get(session.id, payload.reference);
+    assert.ok(archive);
+    const archived = JSON.parse(archive.original);
+    assert.equal(archived.length, 4);
+    assert.equal(archived[1].content[0].result.value, contentText(result(original, readID(1, 1))));
+    assert.equal(archived[3].content[0].result.value, contentText(result(original, readID(1, 2))));
+    assert.equal(payload.text, [...archive.original].slice(0, 33).join(""));
+    assert.equal(payload.nextOffset, 33);
+    assert.equal(provider.compactionRequests.length, 0);
+  } finally {
+    await store?.close();
     await host?.close();
     await provider.close();
   }
