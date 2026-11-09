@@ -21,6 +21,6 @@ Stock OpenCode 2.2.6 and GPT-6 Luna ran concurrently in isolated profiles, one c
 
 Updated source: d1b707c, using the 1,000-source-token floor and 256 MiB recovery cap. The compiled-file hashes in plugin-build.json were verified against Daytona after completion; this is reconstructed provenance, not a launch-time fingerprint. The manifest hashes 11 unchanged raw artifacts.
 
-Host event duration overlaps local application; these timings must not be added. User-visible waiting was not measured. Neither version compacted natively, so reduced native pauses remain unproven. Neither called recall. Costs are usage-based estimates, not invoices. One pair does not isolate the cache fix from model variation. The Aider graphic still shows its earlier build until the current run finishes.
+Host event duration overlaps local application; these timings must not be added. User-visible waiting was not measured. Neither version compacted natively, so reduced native pauses remain unproven. Neither called recall. Costs are usage-based estimates, not invoices. One pair does not isolate the cache fix from model variation. The paired Aider run shown alongside this result also used source revision d1b707c.
 
 Verify without model calls: node benchmarks/results/2026-11-09-webbench-react-20/verify.mjs

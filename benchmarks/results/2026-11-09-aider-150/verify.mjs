@@ -23,7 +23,7 @@ assert.deepEqual(original, json("original-opencode/result.json"));
 assert.deepEqual(compact, json("live-compact/result.json"));
 assert.equal(comparison.comparable, true);
 assert.equal(comparison.bothPassed, true);
-assert.equal(json("plugin-build.json").buildSha256, manifest.testedBuildSha256);
+assert.equal(json("plugin-build.json").sourceCommit, manifest.sourceCommit);
 assert.equal(report.model.id, "gpt-6-luna");
 const progress = lines("progress.jsonl");
 for (const [arm, result] of [["control", original], ["plugin", compact]]) {
@@ -46,8 +46,12 @@ assert.deepEqual(original.grade.outcomes, compact.grade.outcomes);
 const replacements = lines("live-compact/plugin.jsonl").filter(row => row.event === "replacement" && !row.dryRun);
 assert.equal(replacements.length, compact.usage.replacementWindows);
 assert.equal(replacements.reduce((sum, row) => sum + row.count, 0), compact.usage.replacementCuts);
-assert.equal(replacements.filter(row => row.strategy === "spans").reduce((sum, row) => sum + row.count, 0), 21);
-assert.equal(replacements.filter(row => row.strategy === "individual").reduce((sum, row) => sum + row.count, 0), 72);
+assert.ok(replacements.every(row => ["spans", "individual"].includes(row.strategy) && row.sessionID === compact.sessionID));
+const spanCuts = replacements.filter(row => row.strategy === "spans").reduce((sum, row) => sum + row.count, 0);
+const individualCuts = replacements.filter(row => row.strategy === "individual").reduce((sum, row) => sum + row.count, 0);
+assert.equal(spanCuts + individualCuts, compact.usage.replacementCuts);
+assert.equal(compact.usage.replacementWindowEvents.reduce((sum, row) => sum + row.durationMs, 0), compact.usage.replacementHostWaitMs);
+assert.equal(original.usage.nativeCompactionEvents.reduce((sum, row) => sum + row.durationMs, 0), original.usage.nativeCompactionWaitMs);
 
 const savings = (100 * (1 - compact.usage.costEstimateUsd / original.usage.costEstimateUsd)).toFixed(1);
 const values = result => {
@@ -59,13 +63,13 @@ const values = result => {
     `${((u.uncachedInputTokens + u.cacheWriteTokens) / 1e6).toFixed(3)}M`,
     `$${u.costEstimateUsd.toFixed(3)}`,
     `${Math.round(u.peakActiveContextTokens / 1e3)}K`,
-    `${u.replacementCuts ? `${u.replacementCuts} cuts` : `${u.nativeCompactionPauses} pause`} · ${(u.hostCompactionWaitMs / 1000).toFixed(2)} s`,
+    `${u.replacementCuts ? `${u.replacementCuts} cuts` : `${u.nativeCompactionPauses} pause`} · ${(Math.round(u.hostCompactionWaitMs / 10) / 100).toFixed(2)} s`,
     `${Math.round(result.wallSeconds).toLocaleString("en-US")} s`,
   ];
 };
 const a = values(original), b = values(compact);
 b[4] += ` · ${savings}% lower`;
-for (const index of [2, 4, 5, 6, 7]) b[index] = `**${b[index]}**`;
+for (const index of [1, 3, 4, 5, 6, 7]) b[index] = `**${b[index]}**`;
 const labels = ["Passed", "Overall cache hit rate", "Cached input tokens", "Non-cached input tokens",
   "Estimated API cost", "Peak context", "Compaction", "Wall-clock time"];
 const table = ["| Metric | Original OpenCode | Live Compact |", "| --- | ---: | ---: |",
@@ -73,4 +77,4 @@ const table = ["| Metric | Original OpenCode | Live Compact |", "| --- | ---: | 
 for (const document of ["README.md"]) {
   assert.ok(read(document).toString("utf8").replaceAll("\r\n", "\n").includes(table), `${document}: table agrees with source data`);
 }
-console.log(`Verified ${manifest.files.length} source files, both 150/150 results, 93 cuts, and the evidence table.\n\n${table}`);
+console.log(`Verified ${manifest.files.length} source files, both 150/150 results, ${compact.usage.replacementCuts} cuts (${spanCuts} span, ${individualCuts} individual), and the evidence table.\n\n${table}`);

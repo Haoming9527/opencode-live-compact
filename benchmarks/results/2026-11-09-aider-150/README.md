@@ -1,84 +1,54 @@
-# Aider Polyglot 150 — recorded comparison
+# Aider Polyglot 150 — updated plugin comparison
 
-[Project overview](../../../README.md) · [Benchmark commands](../../README.md) · [Raw comparison](comparison.json)
+[Project overview](../../../README.md) · [Benchmark commands](../../README.md) · [Raw comparison](comparison.json) · [Detailed runner table](comparison-runner.md)
 
-Completed **November 9, 2026, 13:19 SGT / 05:19 UTC**. These files are the original completed-run artifacts downloaded from Daytona. Their byte counts, SHA-256 hashes, and source paths are recorded in [manifest.json](manifest.json).
+Completed **November 9, 2026, 18:01 SGT / 10:01 UTC**. The 11 raw completed-run artifacts downloaded from Daytona are unchanged; [manifest.json](manifest.json) records their source paths, byte counts, and SHA-256 hashes.
 
 ## Result
 
 | Metric | Original OpenCode | Live Compact |
 | --- | ---: | ---: |
 | Passed | **150/150** | **150/150** |
-| Overall cache hit rate | 99.49% | 99.34% |
-| Cached input tokens | 296.35M | **266.75M** |
-| Non-cached input tokens | 1.519M | 1.759M |
-| Estimated API cost | $6.048 | **$5.302 · 12.3% lower** |
-| Peak context | 783K | **591K** |
-| Compaction | 1 pause · 16.30 s | **93 cuts · 5.93 s** |
-| Wall-clock time | 5,106 s | **4,633 s** |
+| Overall cache hit rate | 99.11% | **99.55%** |
+| Cached input tokens | 260.58M | 268.55M |
+| Non-cached input tokens | 2.327M | **1.222M** |
+| Estimated API cost | $5.554 | **$5.384 · 3.1% lower** |
+| Peak context | 783K | **695K** |
+| Compaction | 1 pause · 12.27 s | **58 cuts · 3.97 s** |
+| Wall-clock time | 4,785 s | **4,333 s** |
 
-Both versions passed all 150 exercises on their first graded attempt, with zero failed exercises and zero repair attempts. Combined estimated API cost was **$11.3496**. Live Compact's summed host compaction-event duration was **63.6% lower** and its wall-clock time was **9.3% lower** in this pair.
+Both versions passed all 150 exercises on their first graded attempt, with zero failures and zero repair attempts. Combined estimated API cost was **$10.9378**. Live Compact cost **3.1% less**, with **67.7% less summed host compaction-event time** and **9.4% less wall-clock time** in this pair.
 
-## Protocol and tested version
+## Protocol and build provenance
 
-- Stock OpenCode **2.2.6**, model **`openai/gpt-6-luna`**, one continuous session per version.
-- Same 150 exercises in the same order: the first 30 alphabetical exercises in each of Python, Go, JavaScript, Rust, and Java, interleaved by language. This is a selected Polyglot workload, not the entire upstream benchmark or an official leaderboard score.
-- Fixture commit [`7e0611e77b54e2dea774cdc0aa00cf9f7ed6144f`](https://github.com/Aider-AI/polyglot-benchmark/tree/7e0611e77b54e2dea774cdc0aa00cf9f7ed6144f). Exact runner prompts and their fingerprint are in [prompts.json](prompts.json).
-- Both versions ran concurrently in separate workspaces and profiles in the same Daytona sandbox. Stock native compaction and output limits stayed enabled. The plugin was enabled only for Live Compact; no padded logs were added.
-- Up to three graded attempts were allowed per exercise. All exercises passed the first graded attempt; ordinary editing and self-testing within that attempt remain part of the workload.
-- The reference passed all 150 exercises. Final grading used pristine tests and candidate solution files; supplied skipped tests were enabled by the runner.
-- Frozen build fingerprint: `ffa372a43832ae3a01226a13135de645e07d32f014271ed8abae958d14cbac81`. The [build manifest](plugin-build.json) records the tested files and validation metadata.
+- Stock OpenCode **2.2.6**, model **openai/gpt-6-luna**, one continuous session per version, stock compaction and output limits.
+- Same 150 exercises and ordered prompts: the first 30 alphabetical exercises in each of Python, Go, JavaScript, Rust, and Java, interleaved by language. This is a selected Polyglot workload, not the entire upstream benchmark or an official leaderboard score.
+- Fixture commit [7e0611e77b54e2dea774cdc0aa00cf9f7ed6144f](https://github.com/Aider-AI/polyglot-benchmark/tree/7e0611e77b54e2dea774cdc0aa00cf9f7ed6144f). [prompts.json](prompts.json) records the exact prompts and their fingerprint.
+- Both versions ran concurrently in separate workspaces and profiles in Daytona. Only Live Compact enabled the plugin; no padded logs were added.
+- Up to three graded attempts were allowed per exercise; every first graded attempt passed. Ordinary editing and self-tests within an attempt remain part of cost and time.
+- Offline reference passed all 150 exercises. Candidate solutions were graded against pristine tests; the runner enabled supplied skipped tests.
+- Source revision **d1b707c** used the 1,000-source-token floor, 256 MiB recovery cap, and corrected cache-suffix ranking. The [build metadata](plugin-build.json) was copied from the preceding React run's post-run hash verification of the same deployed checkout. It is reconstructed provenance, **not an independently captured Aider launch-time fingerprint**.
 
-**This run predates the current defaults.** It used the mixed-message span implementation, no eight-request profitability gate, a **1,000-net-token savings minimum**, and the earlier **64 MiB inline recovery archive**. The later 1,000-source-token policy and 256 MiB per-session recovery files are not evaluated by these results.
+## Interpret the metrics
 
-## Read the numbers correctly
+Original OpenCode compacted natively once at **javascript-queen-attack (exercise 133)**, taking **12.273 seconds**. Live Compact had no native compaction and made **58 cuts across 53 local replacement events**: **24 span cuts and 34 individual cuts**. Their host event durations summed to **3.965 seconds**.
 
-| Displayed metric | Source / calculation |
-| --- | --- |
-| Passed | `grade.passed / stagesExpected` |
-| Overall cache hit rate | `usage.cachedReadTokens / usage.totalInputTokens` |
-| Cached input tokens | `usage.cachedReadTokens` |
-| Non-cached input tokens | `usage.uncachedInputTokens + usage.cacheWriteTokens` |
-| Estimated API cost | `usage.costEstimateUsd`, from recorded usage and OpenCode model rates |
-| Peak context | `usage.peakActiveContextTokens` |
-| Compaction | Native pause count or incremental cut count, followed by `usage.hostCompactionWaitMs` |
-| Wall-clock time | `wallSeconds` |
+Recorded local planning plus application took **3.952 seconds**. Application overlaps host event duration, while planning can precede it; these values must not be added together. Host event duration is not measured user-visible blocking. Timing telemetry is complete.
 
-`M` means one million tokens; `K` means one thousand. Displayed values are rounded; the JSON retains the full precision. Internal raw labels `control` and `plugin` correspond to **Original OpenCode** and **Live Compact**.
+Cache hit rate is cached reads divided by all input, including cache writes. Non-cached input includes cache writes. Cached reads increased **260.58M → 268.55M**, while non-cached input decreased **2.327M → 1.222M**. Cache writes decreased **2,324,928 → 1,219,274**. Total input increased despite the lower peak context and cost. The versions made **759 → 788 known model requests**.
 
-Original OpenCode had **one automatic native compaction**, at `javascript-rational-numbers` (exercise 138), taking **16.301 seconds**. Live Compact had **zero native compactions** and **93 cuts grouped into 81 replacement events**: 21 span cuts and 72 individual cuts. Those local host events took **5.928 seconds** in total. Timing telemetry is complete for both versions.
+No recall calls occurred. Neither live recall nor resumption after treatment-side native compaction was exercised by this run; these have separate offline integration coverage.
 
-Local planning/application time was **6.304 seconds**. It overlaps host-event timing in part, so it must not be added wholesale to the 5.928 seconds. The compact table reports summed host compaction-event duration for both versions; planning outside host events is excluded. These event intervals do not measure user-visible blocking. The historical `*WaitMs` JSON field names are retained unchanged.
+Costs are OpenCode usage-based estimates, not provider invoices, and exclude sandbox charges. One pair does not isolate the effect of the cache fix from model variation or establish universal savings. Earlier results remain in Git history.
 
-No recall calls occurred in this pair. Exact recovery and operation after native compaction have separate offline integration coverage; this workload does not establish either through live recall or treatment-side native compaction.
+## Evidence and verification
 
-Costs are usage-based estimates, not provider billing receipts, and exclude sandbox charges and other runs. Cache writes increased from **1,516,440** to **1,756,658** despite lower total cost. This is one paired sample: it does not isolate all causes of the wall-clock difference or establish savings across providers and tasks.
+[comparison.json](comparison.json) contains full results and usage; [progress.jsonl](progress.jsonl) contains pass/fail and cumulative cost per exercise. [benchmark.log](benchmark.log), [reference.tap](reference.tap), each version's result and grading log, and [plugin diagnostics](live-compact/plugin.jsonl) provide supporting records. Full model transcripts, credentials, and workspaces are not included.
 
-## Evidence files
-
-| File | Contents |
-| --- | --- |
-| [comparison.json](comparison.json) | Complete paired results, usage, timing, grade outcomes, and per-exercise attempt receipts |
-| [comparison-runner.md](comparison-runner.md) | Original table emitted by the runner |
-| [progress.jsonl](progress.jsonl) | Per-exercise pass/fail counts and cumulative estimated cost on each line |
-| [benchmark.log](benchmark.log) | Runner stage progression and completion summary |
-| [plugin-build.json](plugin-build.json) | Frozen tested-build fingerprint and file hashes |
-| [prompts.json](prompts.json) | Ordered task prompts and their fingerprint |
-| [reference.tap](reference.tap) | Reference acceptance-test output |
-| [original-opencode/result.json](original-opencode/result.json) | Original OpenCode's complete result |
-| [original-opencode/grade.tap](original-opencode/grade.tap) | Original OpenCode's independent grading log |
-| [live-compact/result.json](live-compact/result.json) | Live Compact's complete result |
-| [live-compact/grade.tap](live-compact/grade.tap) | Live Compact's independent grading log |
-| [live-compact/plugin.jsonl](live-compact/plugin.jsonl) | Planning decisions, applied cuts, strategies, timing, and recall metrics |
-
-The downloaded files are unchanged; a credential scan passed before they were added. Historical sandbox paths in logs are provenance, not paths you must recreate. Workspace checkouts, credentials, and full model transcripts are not part of this bundle.
-
-## Verify without model calls
-
-From the repository root:
+Run without model calls:
 
 ```sh
 node benchmarks/results/2026-11-09-aider-150/verify.mjs
 ```
 
-This checks every downloaded file's hash, validates the result/progress/cut totals, and prints the eight-row evidence table above. To run a new paid comparison, use the [benchmark instructions](../../README.md); the current source uses the newer policy described above.
+The verifier checks raw-file hashes, result/progress consistency, cut counts and strategies, event durations, and the table above.

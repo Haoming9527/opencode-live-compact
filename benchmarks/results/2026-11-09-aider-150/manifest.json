@@ -4,84 +4,78 @@
   "fixtureCommit": "7e0611e77b54e2dea774cdc0aa00cf9f7ed6144f",
   "opencodeVersion": "2.2.6",
   "model": "openai/gpt-6-luna",
-  "runID": "live-ytHY9q",
-  "launcherID": "run-iMgjgJ",
-  "testedBuildSha256": "ffa372a43832ae3a01226a13135de645e07d32f014271ed8abae958d14cbac81",
-  "completedAt": "2026-11-09T05:19:47.132Z",
-  "downloadedAt": "2026-11-09T05:29:01.398Z",
+  "runID": "live-EaPQFq",
+  "launcherID": "run-rJJ72Z",
+  "completedAt": "2026-11-09T10:01:25.891Z",
+  "downloadedAt": "2026-11-09T10:03:23.464Z",
   "rawFilesUnmodified": true,
   "files": [
     {
       "path": "comparison.json",
-      "remotePath": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/comparison.json",
-      "bytes": 204722,
-      "sha256": "692bed5c27ec0c1ced3ea040d5d9126d38480467a59ed4d0c5134b79923731ef"
+      "remotePath": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/comparison.json",
+      "bytes": 200115,
+      "sha256": "fce60303efd3b2572741625b61585349fb919fc5a98b7f19622b39721c33a66d"
     },
     {
       "path": "comparison-runner.md",
-      "remotePath": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/comparison-1.md",
-      "bytes": 927,
-      "sha256": "e5e9e9642d46d17a9f4f3c2621d4afc99d2195e5aaa025e540b72be00d22768b"
+      "remotePath": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/comparison-1.md",
+      "bytes": 1028,
+      "sha256": "e1aa3299f2a24165d0b9bb8d241340b5a2586bc9d8ad648edef12f3b900121d9"
     },
     {
       "path": "progress.jsonl",
-      "remotePath": "/home/daytona/benchmark-progress/run-iMgjgJ/progress.jsonl",
-      "bytes": 77404,
-      "sha256": "6e02898eb7d8863fb36c817ccbb01be5a5dcb4dffb63e73c629bb959998b98db"
+      "remotePath": "/home/daytona/benchmark-progress/run-rJJ72Z/progress.jsonl",
+      "bytes": 77214,
+      "sha256": "96a4e34fa0be1800f75d1a89dc0cba63956efc6eaa6e9d48519a3a53991b3df9"
     },
     {
       "path": "benchmark.log",
-      "remotePath": "/home/daytona/benchmark-progress/run-iMgjgJ/benchmark.log",
-      "bytes": 20899,
-      "sha256": "9ce08a0d22b3efba4c76d4e7ebb8a0614a0a5f6a05f16ec03830956b7a13f3f4"
-    },
-    {
-      "path": "plugin-build.json",
-      "remotePath": "/home/daytona/benchmark-progress/run-iMgjgJ/plugin-build.json",
-      "bytes": 13972,
-      "sha256": "56f7416b47846aac6656526dc3ecc08931d11697fe95bff5aa912c052e07cae2"
+      "remotePath": "/home/daytona/benchmark-progress/run-rJJ72Z/benchmark.log",
+      "bytes": 21025,
+      "sha256": "6f202efee8882b6726c0f011e0ed2c3248d632af9e6ec77c058da88291359a48"
     },
     {
       "path": "reference.tap",
-      "remotePath": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/reference.tap",
-      "bytes": 172998,
-      "sha256": "804431ccfb1aee5703b227231ac9109e901427f8ab5a5cea84fa4001e2ad253d"
+      "remotePath": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/reference.tap",
+      "bytes": 172979,
+      "sha256": "084282d98c28b14373d2c4361d8af706199542215841a26509770ab8978f59da"
     },
     {
       "path": "prompts.json",
-      "remotePath": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/prompts.json",
+      "remotePath": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/prompts.json",
       "bytes": 88053,
       "sha256": "fd3a382c6cd2b931f2c6bc7bd5ea6e3eac65c0a92e9d48e15432cef6eae92c6e"
     },
     {
       "path": "original-opencode/result.json",
-      "remotePath": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/result.json",
-      "bytes": 76800,
-      "sha256": "9ad23987a501cb21bc717f4b5e0b67a6c356a6a1d927e512932bdeaeef527f24"
+      "remotePath": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/result.json",
+      "bytes": 77402,
+      "sha256": "2cc31192b8033654b0a4a6ea404bad962f8dc4ec23bfbae26e64527e11216602"
     },
     {
       "path": "original-opencode/grade.tap",
-      "remotePath": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/grade.tap",
-      "bytes": 165499,
-      "sha256": "1c97fbd81304119a3f14604fcc05598581f6df9bf6a1d63456a291a92255cb5e"
+      "remotePath": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/grade.tap",
+      "bytes": 165546,
+      "sha256": "966ff8aa5963aa0e3b346631fff9a2547af8a0fe8684d8343811e34664a6b12d"
     },
     {
       "path": "live-compact/result.json",
-      "remotePath": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/plugin/result.json",
-      "bytes": 90270,
-      "sha256": "65ba623723d3f0b91cf2a0742fbb8a37740005486aa43aeb7faa09db8fe8e170"
+      "remotePath": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/result.json",
+      "bytes": 86065,
+      "sha256": "01e90b1f3f9861eecb295c7ceb82df8b2df6df6aa1561eb2776b64c9ac8dfb05"
     },
     {
       "path": "live-compact/grade.tap",
-      "remotePath": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/plugin/grade.tap",
-      "bytes": 167110,
-      "sha256": "a72939bfbe64bed46aace393dee198f8552d752e8bf78a83267d0ee083f3aec8"
+      "remotePath": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/grade.tap",
+      "bytes": 167059,
+      "sha256": "9bbe8f0c76e621e69d8709dd7accfa5422afa5d82a5a8d30f3a60b16f6bdd5be"
     },
     {
       "path": "live-compact/plugin.jsonl",
-      "remotePath": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/plugin/plugin.jsonl",
-      "bytes": 226701,
-      "sha256": "f65d54c72a5a776a878280275ec8c401feee3c5422d8627e57a98188e2ee72ba"
+      "remotePath": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/plugin.jsonl",
+      "bytes": 199181,
+      "sha256": "1c94a7fc21336515b9ea4e278275c180f892f780d25d770c65c7ae2aba9e6252"
     }
-  ]
+  ],
+  "sourceCommit": "d1b707c"
 }
