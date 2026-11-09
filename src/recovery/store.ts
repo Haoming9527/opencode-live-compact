@@ -174,12 +174,18 @@ export class RecoveryStore {
   }
 
   async get(sessionID: string, reference: string): Promise<RecoveryRecord | undefined> {
-    if (!isRecoveryReference(reference)) return undefined;
+    return (await this.getBatch(sessionID, [reference]))[0];
+  }
+
+  /** Read a bounded replacement batch under one lock; validate every payload afresh. */
+  async getBatch(sessionID: string, references: readonly string[]): Promise<(RecoveryRecord | undefined)[]> {
+    const requested = references.map(reference => isRecoveryReference(reference) ? reference : undefined);
+    if (!requested.some(reference => reference !== undefined)) return requested.map(() => undefined);
     const db = await this.database();
     return transaction(db, () => {
-      const row = db.prepare(`SELECT ${planColumns}, original, external, bytes FROM recovery WHERE session_id = ? AND reference = ?`)
-        .get(sessionID, reference);
-      return decodeRecord(row, this.payloads!);
+      const lookup = db.prepare(`SELECT ${planColumns}, original, external, bytes FROM recovery WHERE session_id = ? AND reference = ?`);
+      return requested.map(reference => reference === undefined ? undefined :
+        decodeRecord(lookup.get(sessionID, reference), this.payloads!));
     });
   }
 

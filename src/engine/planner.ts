@@ -1,4 +1,4 @@
-import type { Candidate } from "./eligibility.ts";
+import type { Candidate, EligibleResult } from "./eligibility.ts";
 import { reduce } from "./reducer.ts";
 import type { Cut, TokenEstimate } from "./reducer.ts";
 
@@ -18,6 +18,8 @@ export interface PlannerOptions {
   readonly maxCutsPerCycle: number;
   readonly estimateTokens: TokenEstimate;
   readonly diagnostics?: PlanningDiagnostics;
+  /** Parsed from this cycle's unchanged snapshot; never retained across awaits or turns. */
+  readonly eligibleResults?: ReadonlyMap<Candidate, EligibleResult>;
 }
 
 export function recordPlanEvaluation(options: PlannerOptions): void {
@@ -40,7 +42,7 @@ export function planCuts(candidates: readonly Candidate[], options: PlannerOptio
   for (let index = candidates.length - 1; index >= 0; index--) {
     const candidate = candidates[index];
     if (!candidate) continue;
-    const cut = reduce(candidate, options.estimateTokens, options.minimumSourceTokens);
+    const cut = reduce(candidate, options.estimateTokens, options.minimumSourceTokens, options.eligibleResults?.get(candidate));
     if (!cut) continue;
     if (options.diagnostics) options.diagnostics.sizeValidCandidates++;
     for (let size = Math.min(limit, later.length); size >= 1; size--) {

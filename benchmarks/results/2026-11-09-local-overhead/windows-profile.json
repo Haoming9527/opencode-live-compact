@@ -1,0 +1,2346 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-11-09T06:38:48.646Z",
+  "node": "v26.12.1",
+  "platform": "win32",
+  "scope": "Offline local plugin hook elapsed time with real RecoveryStore disk IO and collector; NOT host event time or measured user-blocked latency.",
+  "methodology": "Fresh isolated archive per sample; catalog initialized before timer; identical stable session identity and fixture; mocked in-memory SDK history/storage/queue; alternating AB/BA pairs; warmups excluded; collector flush and output validation outside timer; real store methods wrapped only for timing; overlapping get calls reported as both sum and interval union; no latency assertions.",
+  "trialsPerVariant": 16,
+  "warmupPairs": 2,
+  "implementations": {
+    "baseline": {
+      "directory": "E:\\01-Projects\\opencode-live-compact\\.runs\\overhead-baseline",
+      "sourceSha256": "f492f2ab2ec70777202f201c92abd7cf982477961bda1376a6ca4b2e24de57b7",
+      "sources": [
+        {
+          "path": "src/config.ts",
+          "bytes": 1690,
+          "sha256": "99ffbdc908ca6d296e3732143582e38e3d1d9e94bd15d67c98011e375c450138"
+        },
+        {
+          "path": "src/engine/checkpoint.ts",
+          "bytes": 2994,
+          "sha256": "3dcb2050682a18e594ec7e886714c122dbd2afded940633d689a77453b6fc62b"
+        },
+        {
+          "path": "src/engine/eligibility.ts",
+          "bytes": 8024,
+          "sha256": "608168e34518ec27dd6110fa4f0aa88abd8add258289a08d26ca263928e9091e"
+        },
+        {
+          "path": "src/engine/planner.ts",
+          "bytes": 3018,
+          "sha256": "e6656ebf523a77024bcf04ee83985166219aa0629bdd06b2160e5389f06dca78"
+        },
+        {
+          "path": "src/engine/reducer.ts",
+          "bytes": 2998,
+          "sha256": "9c9b305ebef732dd62a45726115b82149864322893aed375a652efd6ac93ba15"
+        },
+        {
+          "path": "src/engine/span.ts",
+          "bytes": 17848,
+          "sha256": "c8b1895302eaff569b1ab5ae7a24dff8470babda446f1e7853945374517a67fc"
+        },
+        {
+          "path": "src/hooks/context.ts",
+          "bytes": 1526,
+          "sha256": "7b3badee2c3fdf97011704147bc65cf8d3721302ba46b6cb94ac60af6613dbee"
+        },
+        {
+          "path": "src/hooks/replacement.ts",
+          "bytes": 16257,
+          "sha256": "dc0b0c96f78b298362f5245d977b3619949fcdfa2a2db87b2331c03d5fa5d1bd"
+        },
+        {
+          "path": "src/hooks/session.ts",
+          "bytes": 2336,
+          "sha256": "9728aed39e1882a610469a922952065779202831defd573647781504b23158fb"
+        },
+        {
+          "path": "src/index.ts",
+          "bytes": 2872,
+          "sha256": "aea70d8b1d18c470c77cbb9e792442dc32ded9a9f63958ceedf33883cbf17df6"
+        },
+        {
+          "path": "src/metrics/collector.ts",
+          "bytes": 1460,
+          "sha256": "66dda2bbc08de7c7d0a48772cdd47fc303b29fff85e323c24b523fcc26c60500"
+        },
+        {
+          "path": "src/recovery/integrity.ts",
+          "bytes": 1038,
+          "sha256": "4dded41c9711d15daef0213a29bbdc9ddd7eeaab1b180ef3819fa5d5a18fde5d"
+        },
+        {
+          "path": "src/recovery/payloads.ts",
+          "bytes": 6103,
+          "sha256": "66d09636259559e282e0fb7142532ef5ba1f124195b79e0026763a121a01e5ec"
+        },
+        {
+          "path": "src/recovery/private-directory.ts",
+          "bytes": 5331,
+          "sha256": "348d32662e37cea05608512e9bb48dc2bc89757c1141a4d8d1c63ab9067a9e41"
+        },
+        {
+          "path": "src/recovery/restore.ts",
+          "bytes": 1404,
+          "sha256": "149322af611567e65d52697b03c2eb10bd45dc221745ae61af1b5a36cd9f233c"
+        },
+        {
+          "path": "src/recovery/store.ts",
+          "bytes": 13867,
+          "sha256": "30f205b1087d7156fb88197879058c2d2b3d96ea080e4e887521027645bf998a"
+        },
+        {
+          "path": "src/state/reconciliation.ts",
+          "bytes": 7650,
+          "sha256": "c9e0c63b74626ce508a214a6c67e94297b5aeab9f2c7059dc573112d4943f62a"
+        }
+      ]
+    },
+    "candidate": {
+      "directory": "E:\\01-Projects\\opencode-live-compact",
+      "sourceSha256": "76cfa1e55f84ae3f02bf95a61ae2b9f77cb578d8cf5b8684dd32f4cd9a7a28ae",
+      "sources": [
+        {
+          "path": "src/config.ts",
+          "bytes": 1690,
+          "sha256": "99ffbdc908ca6d296e3732143582e38e3d1d9e94bd15d67c98011e375c450138"
+        },
+        {
+          "path": "src/engine/checkpoint.ts",
+          "bytes": 2994,
+          "sha256": "3dcb2050682a18e594ec7e886714c122dbd2afded940633d689a77453b6fc62b"
+        },
+        {
+          "path": "src/engine/eligibility.ts",
+          "bytes": 8024,
+          "sha256": "608168e34518ec27dd6110fa4f0aa88abd8add258289a08d26ca263928e9091e"
+        },
+        {
+          "path": "src/engine/planner.ts",
+          "bytes": 3239,
+          "sha256": "daf64bf613eeec201b0b83cabdfb5f68f8cb65e73790c5518569a83355e1dfd3"
+        },
+        {
+          "path": "src/engine/reducer.ts",
+          "bytes": 3035,
+          "sha256": "db7d326b6e3d6c499500624e44b8e5751c4ee96a134555275e6019b79ac640b8"
+        },
+        {
+          "path": "src/engine/span.ts",
+          "bytes": 18734,
+          "sha256": "c858c9c02271d5862d64d96cd869fa96b56275fcda95efaf05041eb2a64e0ffd"
+        },
+        {
+          "path": "src/hooks/context.ts",
+          "bytes": 1526,
+          "sha256": "7b3badee2c3fdf97011704147bc65cf8d3721302ba46b6cb94ac60af6613dbee"
+        },
+        {
+          "path": "src/hooks/replacement.ts",
+          "bytes": 16805,
+          "sha256": "b84c72a75491a7f7d4ff2264718cb96280d76045131b19cb7f8e85fa88324d5e"
+        },
+        {
+          "path": "src/hooks/session.ts",
+          "bytes": 2336,
+          "sha256": "9728aed39e1882a610469a922952065779202831defd573647781504b23158fb"
+        },
+        {
+          "path": "src/index.ts",
+          "bytes": 2872,
+          "sha256": "aea70d8b1d18c470c77cbb9e792442dc32ded9a9f63958ceedf33883cbf17df6"
+        },
+        {
+          "path": "src/metrics/collector.ts",
+          "bytes": 1460,
+          "sha256": "66dda2bbc08de7c7d0a48772cdd47fc303b29fff85e323c24b523fcc26c60500"
+        },
+        {
+          "path": "src/recovery/integrity.ts",
+          "bytes": 1038,
+          "sha256": "4dded41c9711d15daef0213a29bbdc9ddd7eeaab1b180ef3819fa5d5a18fde5d"
+        },
+        {
+          "path": "src/recovery/payloads.ts",
+          "bytes": 6103,
+          "sha256": "66d09636259559e282e0fb7142532ef5ba1f124195b79e0026763a121a01e5ec"
+        },
+        {
+          "path": "src/recovery/private-directory.ts",
+          "bytes": 5331,
+          "sha256": "348d32662e37cea05608512e9bb48dc2bc89757c1141a4d8d1c63ab9067a9e41"
+        },
+        {
+          "path": "src/recovery/restore.ts",
+          "bytes": 1404,
+          "sha256": "149322af611567e65d52697b03c2eb10bd45dc221745ae61af1b5a36cd9f233c"
+        },
+        {
+          "path": "src/recovery/store.ts",
+          "bytes": 13867,
+          "sha256": "30f205b1087d7156fb88197879058c2d2b3d96ea080e4e887521027645bf998a"
+        },
+        {
+          "path": "src/state/reconciliation.ts",
+          "bytes": 7650,
+          "sha256": "c9e0c63b74626ce508a214a6c67e94297b5aeab9f2c7059dc573112d4943f62a"
+        }
+      ]
+    }
+  },
+  "fixture": {
+    "files": [
+      {
+        "path": "benchmarks/suites/webbench.ts",
+        "bytes": 20903,
+        "sha256": "56afc3a580bd18bf60c758b7aa893157e1afe60c03e8d286826688690808656b"
+      },
+      {
+        "path": "benchmarks/suites/aider.ts",
+        "bytes": 10978,
+        "sha256": "4ca11636438f25ba08a408bcb7ccb6b062e76571c1ac1f5f4923eabf3cc29cda"
+      },
+      {
+        "path": "benchmarks/run.ts",
+        "bytes": 21959,
+        "sha256": "ce956082759e3a04365416bf017d5ba0cb4f58a96db46f28806ffe887b3f9557"
+      },
+      {
+        "path": "benchmarks/runner/daytona.ts",
+        "bytes": 2598,
+        "sha256": "641ebe52f6eb2eb64c3338b32435a3831ad61cbb97c97b78a9cebb550c58f345"
+      },
+      {
+        "path": "benchmarks/runner/arm.ts",
+        "bytes": 18474,
+        "sha256": "95918ea57c9286cfc8a1a4c2f6917092eb2e1b38ff0b4f1d83653e90a0da507f"
+      },
+      {
+        "path": "tests/benchmark-attempts.test.ts",
+        "bytes": 7617,
+        "sha256": "d4400377b9449a1b63b48cb45f80c671c5bebe1b555a2498d6eaa9a0ce7cc135"
+      },
+      {
+        "path": "tests/webbench.test.ts",
+        "bytes": 8585,
+        "sha256": "b3ca23d91bc2139ec702bb4039586a51f4f477929f0e56a9054acc063230ca2a"
+      },
+      {
+        "path": "tests/aider-grading.test.ts",
+        "bytes": 5892,
+        "sha256": "b42eeef4bd8cf54bad4a7b9a9a1c1eeb206f3dcd8bcb5ae0a3658667bb944971"
+      },
+      {
+        "path": "benchmarks/runner/metrics.ts",
+        "bytes": 8374,
+        "sha256": "d30fef95cfc21124acda73dcfb166bc87a9bf1c80059dec54c1983b7d085cd58"
+      },
+      {
+        "path": "benchmarks/runner/opencode.ts",
+        "bytes": 4456,
+        "sha256": "5264232f1f78240bd6db470b67c6fe7fb52d8e6de2097ba1109319fa397006c1"
+      },
+      {
+        "path": "benchmarks/runner/attempts.ts",
+        "bytes": 2544,
+        "sha256": "f4120c75169892939cae89ad76005f99de0b9cdfe5d8e1c305ff56f8f9b089fd"
+      },
+      {
+        "path": "benchmarks/runner/progress.ts",
+        "bytes": 2454,
+        "sha256": "c1dac17664c74334676846225bb3e064a519a698ae118d493edc6717ddfebdaf"
+      },
+      {
+        "path": "src/recovery/private-directory.ts",
+        "bytes": 5331,
+        "sha256": "348d32662e37cea05608512e9bb48dc2bc89757c1141a4d8d1c63ab9067a9e41"
+      },
+      {
+        "path": "src/recovery/payloads.ts",
+        "bytes": 6103,
+        "sha256": "66d09636259559e282e0fb7142532ef5ba1f124195b79e0026763a121a01e5ec"
+      },
+      {
+        "path": "src/recovery/integrity.ts",
+        "bytes": 1038,
+        "sha256": "4dded41c9711d15daef0213a29bbdc9ddd7eeaab1b180ef3819fa5d5a18fde5d"
+      },
+      {
+        "path": "src/config.ts",
+        "bytes": 1690,
+        "sha256": "99ffbdc908ca6d296e3732143582e38e3d1d9e94bd15d67c98011e375c450138"
+      },
+      {
+        "path": "src/metrics/collector.ts",
+        "bytes": 1460,
+        "sha256": "66dda2bbc08de7c7d0a48772cdd47fc303b29fff85e323c24b523fcc26c60500"
+      }
+    ],
+    "sha256": "df02e6e91f3af827ba2f9df27d62c44dbdd55d15def15321d5c834948e5c48ba",
+    "contextTokens": 36375,
+    "readResults": 17,
+    "duplicatedOrPaddedSource": false,
+    "protectedRecentRounds": 3
+  },
+  "equivalence": {
+    "exactNativeMessages": true,
+    "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+    "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+    "cuts": 2,
+    "strategy": "spans",
+    "savedTokens": 32848,
+    "backups": 2,
+    "backupOriginalBytes": 147960
+  },
+  "summary": {
+    "baseline": {
+      "durationMs": {
+        "median": 59.65644999999995,
+        "p95": 96.65000000000146,
+        "min": 50.99829999999929,
+        "max": 96.65000000000146
+      },
+      "idleMs": {
+        "median": 24.869650000000092,
+        "p95": 85.83780000000115,
+        "min": 19.924699999999575,
+        "max": 85.83780000000115
+      },
+      "compactionMs": {
+        "median": 33.188200000000506,
+        "p95": 49.85940000000028,
+        "min": 10.812200000000303,
+        "max": 49.85940000000028
+      },
+      "planningMs": {
+        "median": 24.590700000000197,
+        "p95": 85.7648999999983,
+        "min": 19.835299999998824,
+        "max": 85.7648999999983
+      },
+      "applicationMs": {
+        "median": 33.14205000000038,
+        "p95": 49.8090000000002,
+        "min": 10.7670999999973,
+        "max": 49.8090000000002
+      },
+      "cpuMs": {
+        "median": 31,
+        "p95": 63,
+        "min": 15,
+        "max": 63
+      },
+      "preserveBatchMs": {
+        "median": 17.61674999999923,
+        "p95": 75.50020000000222,
+        "min": 14.186100000002625,
+        "max": 75.50020000000222
+      },
+      "recoveryGetUnionMs": {
+        "median": 30.119050000000243,
+        "p95": 43.813500000000204,
+        "min": 7.212999999999738,
+        "max": 43.813500000000204
+      },
+      "recoveryGetSumMs": {
+        "median": 60.22265000000061,
+        "p95": 87.61020000000099,
+        "min": 14.414300000000367,
+        "max": 87.61020000000099
+      },
+      "idleOutsidePreserveMs": {
+        "median": 7.16025000000036,
+        "p95": 10.759100000002945,
+        "min": 5.73859999999695,
+        "max": 10.759100000002945
+      },
+      "compactionOutsideGetMs": {
+        "median": 3.3115500000012617,
+        "p95": 6.045900000000074,
+        "min": 2.565099999999802,
+        "max": 6.045900000000074
+      }
+    },
+    "candidate": {
+      "durationMs": {
+        "median": 59.82429999999931,
+        "p95": 105.02319999999963,
+        "min": 50.20980000000054,
+        "max": 105.02319999999963
+      },
+      "idleMs": {
+        "median": 26.313999999999396,
+        "p95": 77.56339999999909,
+        "min": 20.568899999998393,
+        "max": 77.56339999999909
+      },
+      "compactionMs": {
+        "median": 31.67330000000129,
+        "p95": 42.41989999999987,
+        "min": 24.323499999998603,
+        "max": 42.41989999999987
+      },
+      "planningMs": {
+        "median": 26.207350000000588,
+        "p95": 77.35599999999977,
+        "min": 20.506100000002334,
+        "max": 77.35599999999977
+      },
+      "applicationMs": {
+        "median": 31.632699999999204,
+        "p95": 42.35409999999956,
+        "min": 24.28480000000127,
+        "max": 42.35409999999956
+      },
+      "cpuMs": {
+        "median": 32,
+        "p95": 78,
+        "min": 0,
+        "max": 78
+      },
+      "preserveBatchMs": {
+        "median": 19.32340000000113,
+        "p95": 52.76890000000276,
+        "min": 15.640999999999622,
+        "max": 52.76890000000276
+      },
+      "recoveryGetUnionMs": {
+        "median": 28.200549999998657,
+        "p95": 38.475499999999556,
+        "min": 21.156999999999243,
+        "max": 38.475499999999556
+      },
+      "recoveryGetSumMs": {
+        "median": 56.38534999999865,
+        "p95": 76.91849999999977,
+        "min": 42.29750000000058,
+        "max": 76.91849999999977
+      },
+      "idleOutsidePreserveMs": {
+        "median": 6.626149999997324,
+        "p95": 24.794499999996333,
+        "min": 4.927899999998772,
+        "max": 24.794499999996333
+      },
+      "compactionOutsideGetMs": {
+        "median": 3.171599999999671,
+        "p95": 5.706500000000233,
+        "min": 2.577100000000428,
+        "max": 5.706500000000233
+      }
+    }
+  },
+  "samples": [
+    {
+      "label": "baseline",
+      "iteration": -2,
+      "warmup": true,
+      "durationMs": 78.70550000000003,
+      "idleMs": 39.61770000000001,
+      "compactionMs": 39.087800000000016,
+      "cpuMs": 78,
+      "preserveBatchMs": 15.603399999999965,
+      "recoveryGetUnionMs": 33.86079999999993,
+      "recoveryGetSumMs": 67.63579999999979,
+      "idleOutsidePreserveMs": 24.01430000000005,
+      "compactionOutsideGetMs": 5.227000000000089,
+      "storeOperations": [
+        {
+          "method": "preserveBatch",
+          "phase": "idle",
+          "startMs": 18.095800000000054,
+          "endMs": 33.69920000000002,
+          "durationMs": 15.603399999999965
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 40.37439999999992,
+          "endMs": 74.21859999999992,
+          "durationMs": 33.8442
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 40.44360000000006,
+          "endMs": 74.23519999999985,
+          "durationMs": 33.79159999999979
+        }
+      ],
+      "planningMs": 38.317600000000084,
+      "applicationMs": 38.678100000000086,
+      "reportedLocalMs": 76.9797000000001,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "candidate",
+      "iteration": -2,
+      "warmup": true,
+      "durationMs": 77.98439999999982,
+      "idleMs": 36.43459999999982,
+      "compactionMs": 41.549800000000005,
+      "cpuMs": 63,
+      "preserveBatchMs": 18.54989999999998,
+      "recoveryGetUnionMs": 34.80939999999987,
+      "recoveryGetSumMs": 69.50170000000003,
+      "idleOutsidePreserveMs": 17.88469999999984,
+      "compactionOutsideGetMs": 6.740400000000136,
+      "storeOperations": [
+        {
+          "method": "preserveBatch",
+          "phase": "idle",
+          "startMs": 16.482700000000023,
+          "endMs": 35.0326,
+          "durationMs": 18.54989999999998
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 37.14949999999999,
+          "endMs": 71.93380000000002,
+          "durationMs": 34.78430000000003
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 37.24149999999986,
+          "endMs": 71.95889999999986,
+          "durationMs": 34.7174
+        }
+      ],
+      "planningMs": 35.759900000000016,
+      "applicationMs": 41.17039999999997,
+      "reportedLocalMs": 76.91409999999996,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "candidate",
+      "iteration": -1,
+      "warmup": true,
+      "durationMs": 56.63349999999991,
+      "idleMs": 25.560799999999745,
+      "compactionMs": 31.072700000000168,
+      "cpuMs": 32,
+      "preserveBatchMs": 17.795700000000124,
+      "recoveryGetUnionMs": 27.476799999999912,
+      "recoveryGetSumMs": 54.885299999999916,
+      "idleOutsidePreserveMs": 7.76509999999962,
+      "compactionOutsideGetMs": 3.595900000000256,
+      "storeOperations": [
+        {
+          "method": "preserveBatch",
+          "phase": "idle",
+          "startMs": 7.041199999999662,
+          "endMs": 24.836899999999787,
+          "durationMs": 17.795700000000124
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 25.63189999999986,
+          "endMs": 53.08339999999998,
+          "durationMs": 27.451500000000124
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 25.67489999999998,
+          "endMs": 53.10869999999977,
+          "durationMs": 27.433799999999792
+        }
+      ],
+      "planningMs": 25.460799999999836,
+      "applicationMs": 31.023499999999785,
+      "reportedLocalMs": 56.48169999999982,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "baseline",
+      "iteration": -1,
+      "warmup": true,
+      "durationMs": 62.41269999999986,
+      "idleMs": 26.27480000000014,
+      "compactionMs": 36.13789999999972,
+      "cpuMs": 48,
+      "preserveBatchMs": 17.362099999999828,
+      "recoveryGetUnionMs": 31.701700000000073,
+      "recoveryGetSumMs": 63.38090000000011,
+      "idleOutsidePreserveMs": 8.912700000000314,
+      "compactionOutsideGetMs": 4.436199999999644,
+      "storeOperations": [
+        {
+          "method": "preserveBatch",
+          "phase": "idle",
+          "startMs": 8.121700000000146,
+          "endMs": 25.483799999999974,
+          "durationMs": 17.362099999999828
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 26.671899999999823,
+          "endMs": 58.36850000000004,
+          "durationMs": 31.696600000000217
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 26.689300000000003,
+          "endMs": 58.3735999999999,
+          "durationMs": 31.684299999999894
+        }
+      ],
+      "planningMs": 26.167999999999665,
+      "applicationMs": 35.966399999999794,
+      "reportedLocalMs": 62.130899999999656,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "baseline",
+      "iteration": 0,
+      "warmup": false,
+      "durationMs": 59.8132999999998,
+      "idleMs": 27.70849999999973,
+      "compactionMs": 32.10480000000007,
+      "cpuMs": 46,
+      "preserveBatchMs": 19.509100000000217,
+      "recoveryGetUnionMs": 28.6862000000001,
+      "recoveryGetSumMs": 57.35140000000047,
+      "idleOutsidePreserveMs": 8.199399999999514,
+      "compactionOutsideGetMs": 3.4185999999999694,
+      "storeOperations": [
+        {
+          "method": "preserveBatch",
+          "phase": "idle",
+          "startMs": 7.6612999999997555,
+          "endMs": 27.170399999999972,
+          "durationMs": 19.509100000000217
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 28.008499999999913,
+          "endMs": 56.6868000000004,
+          "durationMs": 28.67830000000049
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 28.021600000000035,
+          "endMs": 56.69470000000001,
+          "durationMs": 28.673099999999977
+        }
+      ],
+      "planningMs": 27.610200000000077,
+      "applicationMs": 32.05130000000008,
+      "reportedLocalMs": 59.65890000000036,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "candidate",
+      "iteration": 0,
+      "warmup": false,
+      "durationMs": 62.21680000000015,
+      "idleMs": 28.311499999999796,
+      "compactionMs": 33.90530000000035,
+      "cpuMs": 32,
+      "preserveBatchMs": 20.252800000000207,
+      "recoveryGetUnionMs": 29.030000000000655,
+      "recoveryGetSumMs": 58.04480000000058,
+      "idleOutsidePreserveMs": 8.05869999999959,
+      "compactionOutsideGetMs": 4.875299999999697,
+      "storeOperations": [
+        {
+          "method": "preserveBatch",
+          "phase": "idle",
+          "startMs": 7.496000000000095,
+          "endMs": 27.7488000000003,
+          "durationMs": 20.252800000000207
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 28.372699999999895,
+          "endMs": 57.39599999999973,
+          "durationMs": 29.023299999999836
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 28.381199999999808,
+          "endMs": 57.40270000000055,
+          "durationMs": 29.021500000000742
+        }
+      ],
+      "planningMs": 28.213999999999942,
+      "applicationMs": 33.83680000000004,
+      "reportedLocalMs": 62.04700000000048,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "candidate",
+      "iteration": 1,
+      "warmup": false,
+      "durationMs": 72.0029999999997,
+      "idleMs": 29.58309999999983,
+      "compactionMs": 42.41989999999987,
+      "cpuMs": 47,
+      "preserveBatchMs": 20.705799999999726,
+      "recoveryGetUnionMs": 38.475499999999556,
+      "recoveryGetSumMs": 76.91849999999977,
+      "idleOutsidePreserveMs": 8.877300000000105,
+      "compactionOutsideGetMs": 3.9444000000003143,
+      "storeOperations": [
+        {
+          "method": "preserveBatch",
+          "phase": "idle",
+          "startMs": 7.929000000000087,
+          "endMs": 28.634799999999814,
+          "durationMs": 20.705799999999726
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 29.646700000000237,
+          "endMs": 68.11700000000019,
+          "durationMs": 38.47029999999995
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 29.673999999999978,
+          "endMs": 68.1221999999998,
+          "durationMs": 38.448199999999815
+        }
+      ],
+      "planningMs": 29.465299999999843,
+      "applicationMs": 42.35409999999956,
+      "reportedLocalMs": 71.8139000000001,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "baseline",
+      "iteration": 1,
+      "warmup": false,
+      "durationMs": 80.06410000000051,
+      "idleMs": 30.20470000000023,
+      "compactionMs": 49.85940000000028,
+      "cpuMs": 31,
+      "preserveBatchMs": 22.342200000000048,
+      "recoveryGetUnionMs": 43.813500000000204,
+      "recoveryGetSumMs": 87.61020000000099,
+      "idleOutsidePreserveMs": 7.862500000000182,
+      "compactionOutsideGetMs": 6.045900000000074,
+      "storeOperations": [
+        {
+          "method": "preserveBatch",
+          "phase": "idle",
+          "startMs": 7.234300000000076,
+          "endMs": 29.576500000000124,
+          "durationMs": 22.342200000000048
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 30.415799999999763,
+          "endMs": 74.22330000000056,
+          "durationMs": 43.8075000000008
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 30.42659999999978,
+          "endMs": 74.22929999999997,
+          "durationMs": 43.802700000000186
+        }
+      ],
+      "planningMs": 30.088400000000547,
+      "applicationMs": 49.8090000000002,
+      "reportedLocalMs": 79.89450000000033,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "baseline",
+      "iteration": 2,
+      "warmup": false,
+      "durationMs": 59.50160000000051,
+      "idleMs": 24.46900000000005,
+      "compactionMs": 35.03260000000046,
+      "cpuMs": 31,
+      "preserveBatchMs": 17.41949999999997,
+      "recoveryGetUnionMs": 31.71259999999984,
+      "recoveryGetSumMs": 63.409199999999146,
+      "idleOutsidePreserveMs": 7.04950000000008,
+      "compactionOutsideGetMs": 3.3200000000006185,
+      "storeOperations": [
+        {
+          "method": "preserveBatch",
+          "phase": "idle",
+          "startMs": 6.35570000000007,
+          "endMs": 23.77520000000004,
+          "durationMs": 17.41949999999997
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 24.6841000000004,
+          "endMs": 56.391200000000026,
+          "durationMs": 31.707099999999627
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 24.69460000000072,
+          "endMs": 56.39670000000024,
+          "durationMs": 31.70209999999952
+        }
+      ],
+      "planningMs": 24.364000000000487,
+      "applicationMs": 34.95219999999972,
+      "reportedLocalMs": 59.295900000000984,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "candidate",
+      "iteration": 2,
+      "warmup": false,
+      "durationMs": 66.64639999999963,
+      "idleMs": 25.736399999999776,
+      "compactionMs": 40.909999999999854,
+      "cpuMs": 16,
+      "preserveBatchMs": 17.668299999999363,
+      "recoveryGetUnionMs": 36.10490000000027,
+      "recoveryGetSumMs": 72.18810000000121,
+      "idleOutsidePreserveMs": 8.068100000000413,
+      "compactionOutsideGetMs": 4.805099999999584,
+      "storeOperations": [
+        {
+          "method": "preserveBatch",
+          "phase": "idle",
+          "startMs": 7.227899999999863,
+          "endMs": 24.896199999999226,
+          "durationMs": 17.668299999999363
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 25.821799999999712,
+          "endMs": 61.91940000000068,
+          "durationMs": 36.097600000000966
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 25.836199999999735,
+          "endMs": 61.92669999999998,
+          "durationMs": 36.09050000000025
+        }
+      ],
+      "planningMs": 25.607299999999668,
+      "applicationMs": 40.83439999999973,
+      "reportedLocalMs": 66.43799999999828,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "candidate",
+      "iteration": 3,
+      "warmup": false,
+      "durationMs": 54.095500000001266,
+      "idleMs": 24.354700000001685,
+      "compactionMs": 29.74079999999958,
+      "cpuMs": 31,
+      "preserveBatchMs": 17.44839999999931,
+      "recoveryGetUnionMs": 27.01170000000093,
+      "recoveryGetSumMs": 54.01010000000133,
+      "idleOutsidePreserveMs": 6.906300000002375,
+      "compactionOutsideGetMs": 2.7290999999986525,
+      "storeOperations": [
+        {
+          "method": "preserveBatch",
+          "phase": "idle",
+          "startMs": 6.119100000001708,
+          "endMs": 23.56750000000102,
+          "durationMs": 17.44839999999931
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 24.40560000000005,
+          "endMs": 51.41240000000107,
+          "durationMs": 27.00680000000102
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 24.41400000000067,
+          "endMs": 51.41730000000098,
+          "durationMs": 27.00330000000031
+        }
+      ],
+      "planningMs": 24.27259999999842,
+      "applicationMs": 29.70340000000033,
+      "reportedLocalMs": 53.973299999997835,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "baseline",
+      "iteration": 3,
+      "warmup": false,
+      "durationMs": 59.81129999999939,
+      "idleMs": 25.270300000000134,
+      "compactionMs": 34.54099999999926,
+      "cpuMs": 31,
+      "preserveBatchMs": 16.67540000000008,
+      "recoveryGetUnionMs": 30.770000000000437,
+      "recoveryGetSumMs": 61.52629999999954,
+      "idleOutsidePreserveMs": 8.594900000000052,
+      "compactionOutsideGetMs": 3.7709999999988213,
+      "storeOperations": [
+        {
+          "method": "preserveBatch",
+          "phase": "idle",
+          "startMs": 7.715399999999136,
+          "endMs": 24.390799999999217,
+          "durationMs": 16.67540000000008
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 25.464399999998932,
+          "endMs": 56.227499999999054,
+          "durationMs": 30.763100000000122
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 25.471199999999953,
+          "endMs": 56.23439999999937,
+          "durationMs": 30.763199999999415
+        }
+      ],
+      "planningMs": 24.817399999999907,
+      "applicationMs": 34.49159999999938,
+      "reportedLocalMs": 59.30630000000019,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "baseline",
+      "iteration": 4,
+      "warmup": false,
+      "durationMs": 57.53009999999995,
+      "idleMs": 24.20639999999912,
+      "compactionMs": 33.32370000000083,
+      "cpuMs": 16,
+      "preserveBatchMs": 17.231399999998757,
+      "recoveryGetUnionMs": 29.871399999999994,
+      "recoveryGetSumMs": 59.72350000000006,
+      "idleOutsidePreserveMs": 6.975000000000364,
+      "compactionOutsideGetMs": 3.4523000000008324,
+      "storeOperations": [
+        {
+          "method": "preserveBatch",
+          "phase": "idle",
+          "startMs": 6.335699999999633,
+          "endMs": 23.56709999999839,
+          "durationMs": 17.231399999998757
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 24.420099999999366,
+          "endMs": 54.28519999999844,
+          "durationMs": 29.865099999999074
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 24.433099999998376,
+          "endMs": 54.29149999999936,
+          "durationMs": 29.858400000000984
+        }
+      ],
+      "planningMs": 24.103100000000268,
+      "applicationMs": 33.276200000000244,
+      "reportedLocalMs": 57.37640000000101,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "candidate",
+      "iteration": 4,
+      "warmup": false,
+      "durationMs": 57.431799999998475,
+      "idleMs": 24.37669999999889,
+      "compactionMs": 33.055099999999584,
+      "cpuMs": 32,
+      "preserveBatchMs": 18.00760000000082,
+      "recoveryGetUnionMs": 29.8783999999996,
+      "recoveryGetSumMs": 59.744299999998475,
+      "idleOutsidePreserveMs": 6.36909999999807,
+      "compactionOutsideGetMs": 3.1766999999999825,
+      "storeOperations": [
+        {
+          "method": "preserveBatch",
+          "phase": "idle",
+          "startMs": 5.939399999999296,
+          "endMs": 23.947000000000116,
+          "durationMs": 18.00760000000082
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 24.430599999999686,
+          "endMs": 54.303399999998874,
+          "durationMs": 29.872799999999188
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 24.4375,
+          "endMs": 54.30899999999929,
+          "durationMs": 29.871499999999287
+        }
+      ],
+      "planningMs": 24.299699999999575,
+      "applicationMs": 33.01440000000002,
+      "reportedLocalMs": 57.31129999999939,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "candidate",
+      "iteration": 5,
+      "warmup": false,
+      "durationMs": 54.778700000000754,
+      "idleMs": 21.930600000001505,
+      "compactionMs": 32.84809999999925,
+      "cpuMs": 78,
+      "preserveBatchMs": 16.4354000000003,
+      "recoveryGetUnionMs": 30.27099999999882,
+      "recoveryGetSumMs": 60.53099999999904,
+      "idleOutsidePreserveMs": 5.495200000001205,
+      "compactionOutsideGetMs": 2.577100000000428,
+      "storeOperations": [
+        {
+          "method": "preserveBatch",
+          "phase": "idle",
+          "startMs": 5.154599999999846,
+          "endMs": 21.590000000000146,
+          "durationMs": 16.4354000000003
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 21.98280000000159,
+          "endMs": 52.2492000000002,
+          "durationMs": 30.26639999999861
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 21.989199999999983,
+          "endMs": 52.25380000000041,
+          "durationMs": 30.264600000000428
+        }
+      ],
+      "planningMs": 21.85030000000006,
+      "applicationMs": 32.81029999999919,
+      "reportedLocalMs": 54.657900000000154,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "baseline",
+      "iteration": 5,
+      "warmup": false,
+      "durationMs": 63.8752999999997,
+      "idleMs": 28.746299999998882,
+      "compactionMs": 35.129000000000815,
+      "cpuMs": 62,
+      "preserveBatchMs": 19.080200000000332,
+      "recoveryGetUnionMs": 31.822799999999916,
+      "recoveryGetSumMs": 63.63119999999981,
+      "idleOutsidePreserveMs": 9.66609999999855,
+      "compactionOutsideGetMs": 3.3062000000008993,
+      "storeOperations": [
+        {
+          "method": "preserveBatch",
+          "phase": "idle",
+          "startMs": 8.98989999999867,
+          "endMs": 28.070099999999,
+          "durationMs": 19.080200000000332
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 28.973299999999654,
+          "endMs": 60.78929999999855,
+          "durationMs": 31.815999999998894
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 28.980899999998655,
+          "endMs": 60.79609999999957,
+          "durationMs": 31.815200000000914
+        }
+      ],
+      "planningMs": 28.660099999999147,
+      "applicationMs": 35.083700000001045,
+      "reportedLocalMs": 63.74079999999958,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "baseline",
+      "iteration": 6,
+      "warmup": false,
+      "durationMs": 58.05359999999928,
+      "idleMs": 23.934799999999086,
+      "compactionMs": 34.11880000000019,
+      "cpuMs": 16,
+      "preserveBatchMs": 16.352899999999863,
+      "recoveryGetUnionMs": 30.801899999998568,
+      "recoveryGetSumMs": 61.592399999997724,
+      "idleOutsidePreserveMs": 7.581899999999223,
+      "compactionOutsideGetMs": 3.316900000001624,
+      "storeOperations": [
+        {
+          "method": "preserveBatch",
+          "phase": "idle",
+          "startMs": 7.077199999999721,
+          "endMs": 23.430099999999584,
+          "durationMs": 16.352899999999863
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 24.043499999999767,
+          "endMs": 54.839899999999034,
+          "durationMs": 30.796399999999267
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 24.049399999999878,
+          "endMs": 54.845399999998335,
+          "durationMs": 30.795999999998457
+        }
+      ],
+      "planningMs": 23.792499999999563,
+      "applicationMs": 34.05340000000069,
+      "reportedLocalMs": 57.842899999999645,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "candidate",
+      "iteration": 6,
+      "warmup": false,
+      "durationMs": 68.31850000000122,
+      "idleMs": 31.524200000001656,
+      "compactionMs": 36.794299999999566,
+      "cpuMs": 31,
+      "preserveBatchMs": 23.71519999999873,
+      "recoveryGetUnionMs": 32.85159999999996,
+      "recoveryGetSumMs": 65.6890999999996,
+      "idleOutsidePreserveMs": 7.809000000002925,
+      "compactionOutsideGetMs": 3.942699999999604,
+      "storeOperations": [
+        {
+          "method": "preserveBatch",
+          "phase": "idle",
+          "startMs": 7.177000000001499,
+          "endMs": 30.89220000000023,
+          "durationMs": 23.71519999999873
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 31.590400000000955,
+          "endMs": 64.4356000000007,
+          "durationMs": 32.84519999999975
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 31.598100000001068,
+          "endMs": 64.44200000000092,
+          "durationMs": 32.84389999999985
+        }
+      ],
+      "planningMs": 31.437199999998484,
+      "applicationMs": 36.71019999999953,
+      "reportedLocalMs": 68.14329999999791,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "candidate",
+      "iteration": 7,
+      "warmup": false,
+      "durationMs": 54.13669999999911,
+      "idleMs": 23.285699999998542,
+      "compactionMs": 30.851000000000568,
+      "cpuMs": 16,
+      "preserveBatchMs": 17.606400000000576,
+      "recoveryGetUnionMs": 27.71939999999995,
+      "recoveryGetSumMs": 55.42369999999937,
+      "idleOutsidePreserveMs": 5.679299999997966,
+      "compactionOutsideGetMs": 3.131600000000617,
+      "storeOperations": [
+        {
+          "method": "preserveBatch",
+          "phase": "idle",
+          "startMs": 5.165099999998347,
+          "endMs": 22.771499999998923,
+          "durationMs": 17.606400000000576
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 23.373599999998987,
+          "endMs": 51.08689999999842,
+          "durationMs": 27.713299999999435
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 23.382599999999,
+          "endMs": 51.09299999999894,
+          "durationMs": 27.710399999999936
+        }
+      ],
+      "planningMs": 23.19999999999891,
+      "applicationMs": 30.801900000000387,
+      "reportedLocalMs": 53.999699999998484,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "baseline",
+      "iteration": 7,
+      "warmup": false,
+      "durationMs": 55.803499999999985,
+      "idleMs": 22.7507999999998,
+      "compactionMs": 33.052700000000186,
+      "cpuMs": 16,
+      "preserveBatchMs": 16.53860000000168,
+      "recoveryGetUnionMs": 30.366700000000492,
+      "recoveryGetSumMs": 60.72180000000117,
+      "idleOutsidePreserveMs": 6.21219999999812,
+      "compactionOutsideGetMs": 2.6859999999996944,
+      "storeOperations": [
+        {
+          "method": "preserveBatch",
+          "phase": "idle",
+          "startMs": 5.8195999999989,
+          "endMs": 22.35820000000058,
+          "durationMs": 16.53860000000168
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 22.907400000000052,
+          "endMs": 53.26929999999993,
+          "durationMs": 30.361899999999878
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 22.914199999999255,
+          "endMs": 53.274100000000544,
+          "durationMs": 30.35990000000129
+        }
+      ],
+      "planningMs": 22.676000000001295,
+      "applicationMs": 33.00790000000052,
+      "reportedLocalMs": 55.68200000000252,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "baseline",
+      "iteration": 8,
+      "warmup": false,
+      "durationMs": 54.74330000000191,
+      "idleMs": 23.921900000001187,
+      "compactionMs": 30.82140000000072,
+      "cpuMs": 63,
+      "preserveBatchMs": 17.813999999998487,
+      "recoveryGetUnionMs": 27.752300000000105,
+      "recoveryGetSumMs": 55.49169999999867,
+      "idleOutsidePreserveMs": 6.107900000002701,
+      "compactionOutsideGetMs": 3.069100000000617,
+      "storeOperations": [
+        {
+          "method": "preserveBatch",
+          "phase": "idle",
+          "startMs": 5.776000000001659,
+          "endMs": 23.590000000000146,
+          "durationMs": 17.813999999998487
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 24.026099999999133,
+          "endMs": 51.77319999999963,
+          "durationMs": 27.7471000000005
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 24.033800000001065,
+          "endMs": 51.77839999999924,
+          "durationMs": 27.744599999998172
+        }
+      ],
+      "planningMs": 23.857499999998254,
+      "applicationMs": 30.782499999997526,
+      "reportedLocalMs": 54.63879999999699,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "candidate",
+      "iteration": 8,
+      "warmup": false,
+      "durationMs": 57.01820000000225,
+      "idleMs": 24.52260000000024,
+      "compactionMs": 32.495600000002014,
+      "cpuMs": 31,
+      "preserveBatchMs": 18.63839999999982,
+      "recoveryGetUnionMs": 29.29109999999855,
+      "recoveryGetSumMs": 58.514100000000326,
+      "idleOutsidePreserveMs": 5.884200000000419,
+      "compactionOutsideGetMs": 3.2045000000034634,
+      "storeOperations": [
+        {
+          "method": "preserveBatch",
+          "phase": "idle",
+          "startMs": 5.536800000001676,
+          "endMs": 24.175200000001496,
+          "durationMs": 18.63839999999982
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 24.59620000000359,
+          "endMs": 53.88310000000274,
+          "durationMs": 29.28689999999915
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 24.660100000000966,
+          "endMs": 53.88730000000214,
+          "durationMs": 29.227200000001176
+        }
+      ],
+      "planningMs": 24.458599999998114,
+      "applicationMs": 32.46349999999802,
+      "reportedLocalMs": 56.92099999999846,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "candidate",
+      "iteration": 9,
+      "warmup": false,
+      "durationMs": 56.393199999998615,
+      "idleMs": 26.891599999999016,
+      "compactionMs": 29.5015999999996,
+      "cpuMs": 16,
+      "preserveBatchMs": 20.00840000000244,
+      "recoveryGetUnionMs": 26.62119999999777,
+      "recoveryGetSumMs": 53.22850000000108,
+      "idleOutsidePreserveMs": 6.883199999996577,
+      "compactionOutsideGetMs": 2.8804000000018277,
+      "storeOperations": [
+        {
+          "method": "preserveBatch",
+          "phase": "idle",
+          "startMs": 6.364999999997963,
+          "endMs": 26.3734000000004,
+          "durationMs": 20.00840000000244
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 26.960500000001048,
+          "endMs": 53.577000000001135,
+          "durationMs": 26.616500000000087
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 26.96969999999783,
+          "endMs": 53.58169999999882,
+          "durationMs": 26.61200000000099
+        }
+      ],
+      "planningMs": 26.807400000001508,
+      "applicationMs": 29.46360000000277,
+      "reportedLocalMs": 56.27010000000155,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "baseline",
+      "iteration": 9,
+      "warmup": false,
+      "durationMs": 54.02760000000126,
+      "idleMs": 23.050900000002002,
+      "compactionMs": 30.976699999999255,
+      "cpuMs": 32,
+      "preserveBatchMs": 16.941000000002532,
+      "recoveryGetUnionMs": 28.40610000000015,
+      "recoveryGetSumMs": 56.79989999999816,
+      "idleOutsidePreserveMs": 6.10989999999947,
+      "compactionOutsideGetMs": 2.5705999999991036,
+      "storeOperations": [
+        {
+          "method": "preserveBatch",
+          "phase": "idle",
+          "startMs": 5.728399999999965,
+          "endMs": 22.669400000002497,
+          "durationMs": 16.941000000002532
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 23.20270000000164,
+          "endMs": 51.60410000000047,
+          "durationMs": 28.40139999999883
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 23.210300000002462,
+          "endMs": 51.60880000000179,
+          "durationMs": 28.39849999999933
+        }
+      ],
+      "planningMs": 22.967099999998027,
+      "applicationMs": 30.942700000003242,
+      "reportedLocalMs": 53.908800000001065,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "baseline",
+      "iteration": 10,
+      "warmup": false,
+      "durationMs": 58.24399999999878,
+      "idleMs": 23.46600000000035,
+      "compactionMs": 34.77799999999843,
+      "cpuMs": 46,
+      "preserveBatchMs": 16.19499999999971,
+      "recoveryGetUnionMs": 31.5170999999973,
+      "recoveryGetSumMs": 63.021999999997206,
+      "idleOutsidePreserveMs": 7.27100000000064,
+      "compactionOutsideGetMs": 3.2609000000011292,
+      "storeOperations": [
+        {
+          "method": "preserveBatch",
+          "phase": "idle",
+          "startMs": 6.918099999998958,
+          "endMs": 23.113099999998667,
+          "durationMs": 16.19499999999971
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 23.552999999999884,
+          "endMs": 55.06489999999758,
+          "durationMs": 31.511899999997695
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 23.55999999999767,
+          "endMs": 55.07009999999718,
+          "durationMs": 31.51009999999951
+        }
+      ],
+      "planningMs": 23.391899999998714,
+      "applicationMs": 34.7432000000008,
+      "reportedLocalMs": 58.13409999999931,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "candidate",
+      "iteration": 10,
+      "warmup": false,
+      "durationMs": 50.66619999999966,
+      "idleMs": 21.80210000000079,
+      "compactionMs": 28.86409999999887,
+      "cpuMs": 32,
+      "preserveBatchMs": 16.252000000000407,
+      "recoveryGetUnionMs": 26.064400000002934,
+      "recoveryGetSumMs": 52.11730000000534,
+      "idleOutsidePreserveMs": 5.550100000000384,
+      "compactionOutsideGetMs": 2.799699999995937,
+      "storeOperations": [
+        {
+          "method": "preserveBatch",
+          "phase": "idle",
+          "startMs": 5.208999999998923,
+          "endMs": 21.46099999999933,
+          "durationMs": 16.252000000000407
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 21.84019999999873,
+          "endMs": 47.89970000000176,
+          "durationMs": 26.059500000003027
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 21.846799999999348,
+          "endMs": 47.904600000001665,
+          "durationMs": 26.057800000002317
+        }
+      ],
+      "planningMs": 21.72899999999936,
+      "applicationMs": 28.830900000000838,
+      "reportedLocalMs": 50.55909999999858,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "candidate",
+      "iteration": 11,
+      "warmup": false,
+      "durationMs": 50.20980000000054,
+      "idleMs": 20.568899999998393,
+      "compactionMs": 29.640900000002148,
+      "cpuMs": 47,
+      "preserveBatchMs": 15.640999999999622,
+      "recoveryGetUnionMs": 27.047699999999168,
+      "recoveryGetSumMs": 54.08339999999589,
+      "idleOutsidePreserveMs": 4.927899999998772,
+      "compactionOutsideGetMs": 2.5932000000029802,
+      "storeOperations": [
+        {
+          "method": "preserveBatch",
+          "phase": "idle",
+          "startMs": 4.638699999999517,
+          "endMs": 20.27969999999914,
+          "durationMs": 15.640999999999622
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 20.59820000000036,
+          "endMs": 47.63959999999861,
+          "durationMs": 27.041399999998248
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 20.603900000001886,
+          "endMs": 47.64589999999953,
+          "durationMs": 27.041999999997643
+        }
+      ],
+      "planningMs": 20.506100000002334,
+      "applicationMs": 29.60740000000078,
+      "reportedLocalMs": 50.11260000000402,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "baseline",
+      "iteration": 11,
+      "warmup": false,
+      "durationMs": 50.99829999999929,
+      "idleMs": 19.924699999999575,
+      "compactionMs": 31.073599999999715,
+      "cpuMs": 16,
+      "preserveBatchMs": 14.186100000002625,
+      "recoveryGetUnionMs": 28.508499999999913,
+      "recoveryGetSumMs": 57.00590000000011,
+      "idleOutsidePreserveMs": 5.73859999999695,
+      "compactionOutsideGetMs": 2.565099999999802,
+      "storeOperations": [
+        {
+          "method": "preserveBatch",
+          "phase": "idle",
+          "startMs": 5.315699999999197,
+          "endMs": 19.501800000001822,
+          "durationMs": 14.186100000002625
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 20.02770000000237,
+          "endMs": 48.53240000000005,
+          "durationMs": 28.504699999997683
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 20.034999999999854,
+          "endMs": 48.53620000000228,
+          "durationMs": 28.501200000002427
+        }
+      ],
+      "planningMs": 19.835299999998824,
+      "applicationMs": 31.03729999999996,
+      "reportedLocalMs": 50.87169999999605,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "baseline",
+      "iteration": 12,
+      "warmup": false,
+      "durationMs": 61.292199999999866,
+      "idleMs": 38.943999999999505,
+      "compactionMs": 22.34820000000036,
+      "cpuMs": 16,
+      "preserveBatchMs": 32.58209999999963,
+      "recoveryGetUnionMs": 19.254499999999098,
+      "recoveryGetSumMs": 38.496799999997165,
+      "idleOutsidePreserveMs": 6.361899999999878,
+      "compactionOutsideGetMs": 3.093700000001263,
+      "storeOperations": [
+        {
+          "method": "preserveBatch",
+          "phase": "idle",
+          "startMs": 5.9416999999994005,
+          "endMs": 38.52379999999903,
+          "durationMs": 32.58209999999963
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 39.054299999999785,
+          "endMs": 58.30329999999958,
+          "durationMs": 19.248999999999796
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 39.06100000000151,
+          "endMs": 58.30879999999888,
+          "durationMs": 19.24779999999737
+        }
+      ],
+      "planningMs": 38.840800000001764,
+      "applicationMs": 22.312999999998283,
+      "reportedLocalMs": 61.15270000000237,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "candidate",
+      "iteration": 12,
+      "warmup": false,
+      "durationMs": 67.07909999999902,
+      "idleMs": 42.75560000000041,
+      "compactionMs": 24.323499999998603,
+      "cpuMs": 32,
+      "preserveBatchMs": 37.02690000000075,
+      "recoveryGetUnionMs": 21.156999999999243,
+      "recoveryGetSumMs": 42.29750000000058,
+      "idleOutsidePreserveMs": 5.728699999999662,
+      "compactionOutsideGetMs": 3.1664999999993597,
+      "storeOperations": [
+        {
+          "method": "preserveBatch",
+          "phase": "idle",
+          "startMs": 5.388800000000629,
+          "endMs": 42.41570000000138,
+          "durationMs": 37.02690000000075
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 42.83220000000074,
+          "endMs": 63.981700000000274,
+          "durationMs": 21.149499999999534
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 42.841199999998935,
+          "endMs": 63.98919999999998,
+          "durationMs": 21.148000000001048
+        }
+      ],
+      "planningMs": 42.6877999999997,
+      "applicationMs": 24.28480000000127,
+      "reportedLocalMs": 66.97139999999854,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "candidate",
+      "iteration": 13,
+      "warmup": false,
+      "durationMs": 70.26109999999971,
+      "idleMs": 42.86650000000009,
+      "compactionMs": 27.394599999999627,
+      "cpuMs": 0,
+      "preserveBatchMs": 36.6704000000027,
+      "recoveryGetUnionMs": 24.626100000001315,
+      "recoveryGetSumMs": 49.23960000000079,
+      "idleOutsidePreserveMs": 6.1960999999973865,
+      "compactionOutsideGetMs": 2.768499999998312,
+      "storeOperations": [
+        {
+          "method": "preserveBatch",
+          "phase": "idle",
+          "startMs": 5.792499999999563,
+          "endMs": 42.462900000002264,
+          "durationMs": 36.6704000000027
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 42.904200000000856,
+          "endMs": 67.52549999999974,
+          "durationMs": 24.621299999998882
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 42.91200000000026,
+          "endMs": 67.53030000000217,
+          "durationMs": 24.61830000000191
+        }
+      ],
+      "planningMs": 42.78259999999864,
+      "applicationMs": 27.354999999999563,
+      "reportedLocalMs": 70.13639999999577,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "baseline",
+      "iteration": 13,
+      "warmup": false,
+      "durationMs": 65.73159999999916,
+      "idleMs": 44.63230000000112,
+      "compactionMs": 21.09929999999804,
+      "cpuMs": 15,
+      "preserveBatchMs": 38.657100000000355,
+      "recoveryGetUnionMs": 17.886200000000827,
+      "recoveryGetSumMs": 35.76010000000315,
+      "idleOutsidePreserveMs": 5.975200000000768,
+      "compactionOutsideGetMs": 3.213099999997212,
+      "storeOperations": [
+        {
+          "method": "preserveBatch",
+          "phase": "idle",
+          "startMs": 5.4929000000011,
+          "endMs": 44.150000000001455,
+          "durationMs": 38.657100000000355
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 44.69930000000022,
+          "endMs": 62.579900000000634,
+          "durationMs": 17.880600000000413
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 44.70599999999831,
+          "endMs": 62.58550000000105,
+          "durationMs": 17.879500000002736
+        }
+      ],
+      "planningMs": 44.56290000000081,
+      "applicationMs": 21.063500000000204,
+      "reportedLocalMs": 65.62450000000172,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "baseline",
+      "iteration": 14,
+      "warmup": false,
+      "durationMs": 96.65000000000146,
+      "idleMs": 85.83780000000115,
+      "compactionMs": 10.812200000000303,
+      "cpuMs": 16,
+      "preserveBatchMs": 75.50020000000222,
+      "recoveryGetUnionMs": 7.212999999999738,
+      "recoveryGetSumMs": 14.414300000000367,
+      "idleOutsidePreserveMs": 10.337599999998929,
+      "compactionOutsideGetMs": 3.5992000000005646,
+      "storeOperations": [
+        {
+          "method": "preserveBatch",
+          "phase": "idle",
+          "startMs": 9.797999999998865,
+          "endMs": 85.29820000000109,
+          "durationMs": 75.50020000000222
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 85.9380999999994,
+          "endMs": 93.14740000000165,
+          "durationMs": 7.2093000000022585
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 85.94610000000102,
+          "endMs": 93.15109999999913,
+          "durationMs": 7.204999999998108
+        }
+      ],
+      "planningMs": 85.7648999999983,
+      "applicationMs": 10.7670999999973,
+      "reportedLocalMs": 96.53079999999682,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "candidate",
+      "iteration": 14,
+      "warmup": false,
+      "durationMs": 105.02319999999963,
+      "idleMs": 77.56339999999909,
+      "compactionMs": 27.45980000000054,
+      "cpuMs": 46,
+      "preserveBatchMs": 52.76890000000276,
+      "recoveryGetUnionMs": 23.681499999998778,
+      "recoveryGetSumMs": 47.34719999999652,
+      "idleOutsidePreserveMs": 24.794499999996333,
+      "compactionOutsideGetMs": 3.7783000000017637,
+      "storeOperations": [
+        {
+          "method": "preserveBatch",
+          "phase": "idle",
+          "startMs": 24.179199999998673,
+          "endMs": 76.94810000000143,
+          "durationMs": 52.76890000000276
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 77.60699999999997,
+          "endMs": 101.28199999999924,
+          "durationMs": 23.674999999999272
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 77.6163000000015,
+          "endMs": 101.28849999999875,
+          "durationMs": 23.672199999997247
+        }
+      ],
+      "planningMs": 77.35599999999977,
+      "applicationMs": 27.405800000000454,
+      "reportedLocalMs": 104.75989999999729,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "candidate",
+      "iteration": 15,
+      "warmup": false,
+      "durationMs": 83.01619999999821,
+      "idleMs": 48.62800000000061,
+      "compactionMs": 34.388199999997596,
+      "cpuMs": 47,
+      "preserveBatchMs": 40.26520000000164,
+      "recoveryGetUnionMs": 28.681699999997363,
+      "recoveryGetSumMs": 57.346999999997934,
+      "idleOutsidePreserveMs": 8.36279999999897,
+      "compactionOutsideGetMs": 5.706500000000233,
+      "storeOperations": [
+        {
+          "method": "preserveBatch",
+          "phase": "idle",
+          "startMs": 7.539099999998143,
+          "endMs": 47.804299999999785,
+          "durationMs": 40.26520000000164
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 48.67580000000089,
+          "endMs": 77.34950000000026,
+          "durationMs": 28.67369999999937
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 48.68419999999969,
+          "endMs": 77.35749999999825,
+          "durationMs": 28.673299999998562
+        }
+      ],
+      "planningMs": 48.51339999999982,
+      "applicationMs": 34.334500000000844,
+      "reportedLocalMs": 82.84609999999884,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "baseline",
+      "iteration": 15,
+      "warmup": false,
+      "durationMs": 90.3804999999993,
+      "idleMs": 52.07150000000183,
+      "compactionMs": 38.30899999999747,
+      "cpuMs": 48,
+      "preserveBatchMs": 41.31239999999889,
+      "recoveryGetUnionMs": 33.776999999998225,
+      "recoveryGetSumMs": 67.53559999999561,
+      "idleOutsidePreserveMs": 10.759100000002945,
+      "compactionOutsideGetMs": 4.531999999999243,
+      "storeOperations": [
+        {
+          "method": "preserveBatch",
+          "phase": "idle",
+          "startMs": 10.215500000002066,
+          "endMs": 51.527900000000955,
+          "durationMs": 41.31239999999889
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 52.189000000002125,
+          "endMs": 85.95709999999963,
+          "durationMs": 33.7680999999975
+        },
+        {
+          "method": "get",
+          "phase": "compaction",
+          "startMs": 52.19850000000224,
+          "endMs": 85.96600000000035,
+          "durationMs": 33.76749999999811
+        }
+      ],
+      "planningMs": 51.96759999999995,
+      "applicationMs": 38.25720000000001,
+      "reportedLocalMs": 90.22279999999955,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    }
+  ]
+}

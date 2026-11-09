@@ -10,14 +10,21 @@ export class RecoveryPayloads {
 
   constructor(databasePath: string) {
     this.archiveRoot = dirname(databasePath);
-    this.check(this.archiveRoot, true);
-    this.archiveIdentity = lstatSync(this.archiveRoot, { bigint: true });
+    this.archiveIdentity = this.rootStat();
     this.root = join(this.archiveRoot, "sessions");
   }
 
+  private rootStat() {
+    const stat = lstatSync(this.archiveRoot, { bigint: true }), uid = process.getuid?.();
+    if (!stat.isDirectory() ||
+        (uid !== undefined && (stat.uid !== BigInt(uid) || (stat.mode & 0o077n) !== 0n))) {
+      throw new Error("Non-private recovery payload path");
+    }
+    return stat;
+  }
+
   private checkRoot(): void {
-    this.check(this.archiveRoot, true);
-    const current = lstatSync(this.archiveRoot, { bigint: true });
+    const current = this.rootStat();
     if (current.dev !== this.archiveIdentity.dev || current.ino !== this.archiveIdentity.ino) {
       throw new Error("Recovery archive directory changed");
     }

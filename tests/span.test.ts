@@ -8,6 +8,8 @@ import { applySpan, applySpans, isSpanCheckpoint, planSpan, planSpans, spanMarke
 import type { Span } from "../src/engine/span.ts"
 import { createPlanningDiagnostics, planCuts, scorePlan } from "../src/engine/planner.ts"
 import type { Candidate, PlannerOptions } from "../src/engine/planner.ts"
+import { eligibleResult } from "../src/engine/eligibility.ts"
+import type { EligibleResult } from "../src/engine/eligibility.ts"
 import { estimateTokens, suffixSizes } from "../src/hooks/context.ts"
 import { hashText, recoveryReference } from "../src/recovery/integrity.ts"
 import { RecoveryStore, type RecoveryRecord } from "../src/recovery/store.ts"
@@ -267,6 +269,73 @@ function mixedParallelFixture() {
     identity: { ...candidate.identity, messageID: first.id! } }))
   return { messages, available, suffix: suffixSizes({ messages } as SessionContext) }
 }
+
+test("bounded span scans still reject identities duplicated outside the selected history", () => {
+  const variants = ["assistant-id", "result-message-id", "call", "result", "provider-call", "provider-result",
+    "unsupported-provider-call", "unsupported-result"] as const
+  for (const variant of variants) {
+    const source = mixedParallelFixture()
+    const span = planSpan(sessionID, source.messages, source.available, source.suffix, options)!
+    assert.ok(span)
+    const assistant = source.messages[1]!, result = source.messages[2]!, unsupported = source.messages[4]!
+    assert.equal(assistant.role, "assistant")
+    assert.equal(result.role, "tool")
+    assert.equal(unsupported.role, "tool")
+    const call = assistant.content[2]!
+    assert.equal(call.type, "tool-call")
+    if (variant === "assistant-id") source.messages.push(user(assistant.id!))
+    if (variant === "result-message-id") source.messages.push(user(result.id!))
+    if (variant === "call" || variant === "provider-call") source.messages.push({ role: "assistant", id: "outside-call",
+      content: [{ ...call, ...(variant === "provider-call" ? { providerExecuted: true } : {}) }] })
+    if (variant === "result" || variant === "provider-result") source.messages.push({ role: "tool", id: "outside-result",
+      content: [{ ...result.content[0]!, ...(variant === "provider-result" ? { providerExecuted: true } : {}) }] })
+    if (variant === "unsupported-provider-call") source.messages.push({ role: "assistant", id: "outside-patch-call",
+      content: [{ type: "tool-call", id: "patch-call", name: "apply_patch", input: {}, providerExecuted: true }] })
+    if (variant === "unsupported-result") source.messages.push({ ...unsupported, id: "outside-patch-result" })
+    const suffix = suffixSizes({ messages: source.messages } as SessionContext)
+    assert.deepEqual(planSpans(sessionID, source.messages, source.available, suffix, options), [], variant)
+    assert.equal(applySpan(source.messages, record(span), prefix(source.messages, [span])), undefined, variant)
+  }
+})
+
+test("unselected unique provider calls stay unchanged and cannot bridge unavailable rounds", () => {
+  const source = mixedParallelFixture()
+  const previous = planSpan(sessionID, source.messages, source.available, source.suffix, options)!
+  const unrelated: Message = { role: "assistant", id: "unrelated-provider-call", content: [
+    { type: "tool-call", id: "unrelated-provider-tool", name: "web_search", input: {}, providerExecuted: true },
+  ] }
+  source.messages.push(unrelated)
+  const current = planSpan(sessionID, source.messages, source.available,
+    suffixSizes({ messages: source.messages } as SessionContext), options)!
+  assert.ok(current)
+  for (const key of ["start", "end", "lastChanged", "saved", "reference", "checkpoint", "original"] as const) {
+    assert.equal(current[key], previous[key], key)
+  }
+  const output = applySpan(source.messages, record(current), prefix(source.messages, [current]))!
+  assert.ok(output)
+  assert.equal(output.at(-1), unrelated)
+
+  const separated = fixture([3])
+  assert.deepEqual(planSpans(sessionID, separated.messages, [separated.available[0]!, separated.available[2]!],
+    separated.suffix, options), [], "an unselected middle round remains a span boundary")
+})
+
+test("reusing eligibility within a planning cycle preserves individual and span plans exactly", () => {
+  for (const source of [fixture([2, 2, 2]), fixture([7], 40), mixedParallelFixture()]) {
+    const eligibleResults = new Map<Candidate, EligibleResult>()
+    for (const candidate of source.available) {
+      const result = eligibleResult(candidate)
+      if (result) eligibleResults.set(candidate, result)
+    }
+    const cachedOptions = { ...options, eligibleResults }
+    const spans = planSpans(sessionID, source.messages, source.available, source.suffix, options)
+    const cached = planSpans(sessionID, source.messages, source.available, source.suffix, cachedOptions)
+    assert.deepEqual(cached, spans)
+    assert.deepEqual(planCuts(source.available, cachedOptions), planCuts(source.available, options))
+    assert.deepEqual(applySpans(source.messages, cached.map(record), prefix(source.messages, cached)),
+      applySpans(source.messages, spans.map(record), prefix(source.messages, spans)))
+  }
+})
 
 test("keeps signed reasoning, text, parallel calls, result IDs and unsupported patch results exactly", () => {
   const { messages, available, suffix } = mixedParallelFixture()

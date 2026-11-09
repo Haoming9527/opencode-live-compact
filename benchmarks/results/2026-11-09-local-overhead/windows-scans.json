@@ -1,0 +1,1278 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-11-09T06:34:14.894Z",
+  "node": "v26.12.1",
+  "platform": "win32",
+  "scope": "Offline local plugin hook elapsed time with real RecoveryStore disk IO and collector; NOT host event time or measured user-blocked latency.",
+  "methodology": "Fresh isolated archive per sample; catalog initialized before timer; identical stable session identity and fixture; mocked in-memory SDK history/storage/queue; alternating AB/BA pairs; warmups excluded; collector flush and output validation outside timer; no latency assertions.",
+  "trialsPerVariant": 16,
+  "warmupPairs": 2,
+  "implementations": {
+    "baseline": {
+      "directory": "E:\\01-Projects\\opencode-live-compact\\.runs\\overhead-baseline",
+      "sourceSha256": "f492f2ab2ec70777202f201c92abd7cf982477961bda1376a6ca4b2e24de57b7",
+      "sources": [
+        {
+          "path": "src/config.ts",
+          "bytes": 1690,
+          "sha256": "99ffbdc908ca6d296e3732143582e38e3d1d9e94bd15d67c98011e375c450138"
+        },
+        {
+          "path": "src/engine/checkpoint.ts",
+          "bytes": 2994,
+          "sha256": "3dcb2050682a18e594ec7e886714c122dbd2afded940633d689a77453b6fc62b"
+        },
+        {
+          "path": "src/engine/eligibility.ts",
+          "bytes": 8024,
+          "sha256": "608168e34518ec27dd6110fa4f0aa88abd8add258289a08d26ca263928e9091e"
+        },
+        {
+          "path": "src/engine/planner.ts",
+          "bytes": 3018,
+          "sha256": "e6656ebf523a77024bcf04ee83985166219aa0629bdd06b2160e5389f06dca78"
+        },
+        {
+          "path": "src/engine/reducer.ts",
+          "bytes": 2998,
+          "sha256": "9c9b305ebef732dd62a45726115b82149864322893aed375a652efd6ac93ba15"
+        },
+        {
+          "path": "src/engine/span.ts",
+          "bytes": 17848,
+          "sha256": "c8b1895302eaff569b1ab5ae7a24dff8470babda446f1e7853945374517a67fc"
+        },
+        {
+          "path": "src/hooks/context.ts",
+          "bytes": 1526,
+          "sha256": "7b3badee2c3fdf97011704147bc65cf8d3721302ba46b6cb94ac60af6613dbee"
+        },
+        {
+          "path": "src/hooks/replacement.ts",
+          "bytes": 16257,
+          "sha256": "dc0b0c96f78b298362f5245d977b3619949fcdfa2a2db87b2331c03d5fa5d1bd"
+        },
+        {
+          "path": "src/hooks/session.ts",
+          "bytes": 2336,
+          "sha256": "9728aed39e1882a610469a922952065779202831defd573647781504b23158fb"
+        },
+        {
+          "path": "src/index.ts",
+          "bytes": 2872,
+          "sha256": "aea70d8b1d18c470c77cbb9e792442dc32ded9a9f63958ceedf33883cbf17df6"
+        },
+        {
+          "path": "src/metrics/collector.ts",
+          "bytes": 1460,
+          "sha256": "66dda2bbc08de7c7d0a48772cdd47fc303b29fff85e323c24b523fcc26c60500"
+        },
+        {
+          "path": "src/recovery/integrity.ts",
+          "bytes": 1038,
+          "sha256": "4dded41c9711d15daef0213a29bbdc9ddd7eeaab1b180ef3819fa5d5a18fde5d"
+        },
+        {
+          "path": "src/recovery/payloads.ts",
+          "bytes": 6103,
+          "sha256": "66d09636259559e282e0fb7142532ef5ba1f124195b79e0026763a121a01e5ec"
+        },
+        {
+          "path": "src/recovery/private-directory.ts",
+          "bytes": 5331,
+          "sha256": "348d32662e37cea05608512e9bb48dc2bc89757c1141a4d8d1c63ab9067a9e41"
+        },
+        {
+          "path": "src/recovery/restore.ts",
+          "bytes": 1404,
+          "sha256": "149322af611567e65d52697b03c2eb10bd45dc221745ae61af1b5a36cd9f233c"
+        },
+        {
+          "path": "src/recovery/store.ts",
+          "bytes": 13867,
+          "sha256": "30f205b1087d7156fb88197879058c2d2b3d96ea080e4e887521027645bf998a"
+        },
+        {
+          "path": "src/state/reconciliation.ts",
+          "bytes": 7650,
+          "sha256": "c9e0c63b74626ce508a214a6c67e94297b5aeab9f2c7059dc573112d4943f62a"
+        }
+      ]
+    },
+    "candidate": {
+      "directory": "E:\\01-Projects\\opencode-live-compact",
+      "sourceSha256": "76cfa1e55f84ae3f02bf95a61ae2b9f77cb578d8cf5b8684dd32f4cd9a7a28ae",
+      "sources": [
+        {
+          "path": "src/config.ts",
+          "bytes": 1690,
+          "sha256": "99ffbdc908ca6d296e3732143582e38e3d1d9e94bd15d67c98011e375c450138"
+        },
+        {
+          "path": "src/engine/checkpoint.ts",
+          "bytes": 2994,
+          "sha256": "3dcb2050682a18e594ec7e886714c122dbd2afded940633d689a77453b6fc62b"
+        },
+        {
+          "path": "src/engine/eligibility.ts",
+          "bytes": 8024,
+          "sha256": "608168e34518ec27dd6110fa4f0aa88abd8add258289a08d26ca263928e9091e"
+        },
+        {
+          "path": "src/engine/planner.ts",
+          "bytes": 3239,
+          "sha256": "daf64bf613eeec201b0b83cabdfb5f68f8cb65e73790c5518569a83355e1dfd3"
+        },
+        {
+          "path": "src/engine/reducer.ts",
+          "bytes": 3035,
+          "sha256": "db7d326b6e3d6c499500624e44b8e5751c4ee96a134555275e6019b79ac640b8"
+        },
+        {
+          "path": "src/engine/span.ts",
+          "bytes": 18734,
+          "sha256": "c858c9c02271d5862d64d96cd869fa96b56275fcda95efaf05041eb2a64e0ffd"
+        },
+        {
+          "path": "src/hooks/context.ts",
+          "bytes": 1526,
+          "sha256": "7b3badee2c3fdf97011704147bc65cf8d3721302ba46b6cb94ac60af6613dbee"
+        },
+        {
+          "path": "src/hooks/replacement.ts",
+          "bytes": 16805,
+          "sha256": "b84c72a75491a7f7d4ff2264718cb96280d76045131b19cb7f8e85fa88324d5e"
+        },
+        {
+          "path": "src/hooks/session.ts",
+          "bytes": 2336,
+          "sha256": "9728aed39e1882a610469a922952065779202831defd573647781504b23158fb"
+        },
+        {
+          "path": "src/index.ts",
+          "bytes": 2872,
+          "sha256": "aea70d8b1d18c470c77cbb9e792442dc32ded9a9f63958ceedf33883cbf17df6"
+        },
+        {
+          "path": "src/metrics/collector.ts",
+          "bytes": 1460,
+          "sha256": "66dda2bbc08de7c7d0a48772cdd47fc303b29fff85e323c24b523fcc26c60500"
+        },
+        {
+          "path": "src/recovery/integrity.ts",
+          "bytes": 1038,
+          "sha256": "4dded41c9711d15daef0213a29bbdc9ddd7eeaab1b180ef3819fa5d5a18fde5d"
+        },
+        {
+          "path": "src/recovery/payloads.ts",
+          "bytes": 6103,
+          "sha256": "66d09636259559e282e0fb7142532ef5ba1f124195b79e0026763a121a01e5ec"
+        },
+        {
+          "path": "src/recovery/private-directory.ts",
+          "bytes": 5331,
+          "sha256": "348d32662e37cea05608512e9bb48dc2bc89757c1141a4d8d1c63ab9067a9e41"
+        },
+        {
+          "path": "src/recovery/restore.ts",
+          "bytes": 1404,
+          "sha256": "149322af611567e65d52697b03c2eb10bd45dc221745ae61af1b5a36cd9f233c"
+        },
+        {
+          "path": "src/recovery/store.ts",
+          "bytes": 13867,
+          "sha256": "30f205b1087d7156fb88197879058c2d2b3d96ea080e4e887521027645bf998a"
+        },
+        {
+          "path": "src/state/reconciliation.ts",
+          "bytes": 7650,
+          "sha256": "c9e0c63b74626ce508a214a6c67e94297b5aeab9f2c7059dc573112d4943f62a"
+        }
+      ]
+    }
+  },
+  "fixture": {
+    "files": [
+      {
+        "path": "benchmarks/suites/webbench.ts",
+        "bytes": 20903,
+        "sha256": "56afc3a580bd18bf60c758b7aa893157e1afe60c03e8d286826688690808656b"
+      },
+      {
+        "path": "benchmarks/suites/aider.ts",
+        "bytes": 10978,
+        "sha256": "4ca11636438f25ba08a408bcb7ccb6b062e76571c1ac1f5f4923eabf3cc29cda"
+      },
+      {
+        "path": "benchmarks/run.ts",
+        "bytes": 21959,
+        "sha256": "ce956082759e3a04365416bf017d5ba0cb4f58a96db46f28806ffe887b3f9557"
+      },
+      {
+        "path": "benchmarks/runner/daytona.ts",
+        "bytes": 2598,
+        "sha256": "641ebe52f6eb2eb64c3338b32435a3831ad61cbb97c97b78a9cebb550c58f345"
+      },
+      {
+        "path": "benchmarks/runner/arm.ts",
+        "bytes": 18474,
+        "sha256": "95918ea57c9286cfc8a1a4c2f6917092eb2e1b38ff0b4f1d83653e90a0da507f"
+      },
+      {
+        "path": "tests/benchmark-attempts.test.ts",
+        "bytes": 7617,
+        "sha256": "d4400377b9449a1b63b48cb45f80c671c5bebe1b555a2498d6eaa9a0ce7cc135"
+      },
+      {
+        "path": "tests/webbench.test.ts",
+        "bytes": 8585,
+        "sha256": "b3ca23d91bc2139ec702bb4039586a51f4f477929f0e56a9054acc063230ca2a"
+      },
+      {
+        "path": "tests/aider-grading.test.ts",
+        "bytes": 5892,
+        "sha256": "b42eeef4bd8cf54bad4a7b9a9a1c1eeb206f3dcd8bcb5ae0a3658667bb944971"
+      },
+      {
+        "path": "benchmarks/runner/metrics.ts",
+        "bytes": 8374,
+        "sha256": "d30fef95cfc21124acda73dcfb166bc87a9bf1c80059dec54c1983b7d085cd58"
+      },
+      {
+        "path": "benchmarks/runner/opencode.ts",
+        "bytes": 4456,
+        "sha256": "5264232f1f78240bd6db470b67c6fe7fb52d8e6de2097ba1109319fa397006c1"
+      },
+      {
+        "path": "benchmarks/runner/attempts.ts",
+        "bytes": 2544,
+        "sha256": "f4120c75169892939cae89ad76005f99de0b9cdfe5d8e1c305ff56f8f9b089fd"
+      },
+      {
+        "path": "benchmarks/runner/progress.ts",
+        "bytes": 2454,
+        "sha256": "c1dac17664c74334676846225bb3e064a519a698ae118d493edc6717ddfebdaf"
+      },
+      {
+        "path": "src/recovery/private-directory.ts",
+        "bytes": 5331,
+        "sha256": "348d32662e37cea05608512e9bb48dc2bc89757c1141a4d8d1c63ab9067a9e41"
+      },
+      {
+        "path": "src/recovery/payloads.ts",
+        "bytes": 6103,
+        "sha256": "66d09636259559e282e0fb7142532ef5ba1f124195b79e0026763a121a01e5ec"
+      },
+      {
+        "path": "src/recovery/integrity.ts",
+        "bytes": 1038,
+        "sha256": "4dded41c9711d15daef0213a29bbdc9ddd7eeaab1b180ef3819fa5d5a18fde5d"
+      },
+      {
+        "path": "src/config.ts",
+        "bytes": 1690,
+        "sha256": "99ffbdc908ca6d296e3732143582e38e3d1d9e94bd15d67c98011e375c450138"
+      },
+      {
+        "path": "src/metrics/collector.ts",
+        "bytes": 1460,
+        "sha256": "66dda2bbc08de7c7d0a48772cdd47fc303b29fff85e323c24b523fcc26c60500"
+      }
+    ],
+    "sha256": "df02e6e91f3af827ba2f9df27d62c44dbdd55d15def15321d5c834948e5c48ba",
+    "contextTokens": 36375,
+    "readResults": 17,
+    "duplicatedOrPaddedSource": false,
+    "protectedRecentRounds": 3
+  },
+  "equivalence": {
+    "exactNativeMessages": true,
+    "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+    "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+    "cuts": 2,
+    "strategy": "spans",
+    "savedTokens": 32848,
+    "backups": 2,
+    "backupOriginalBytes": 147960
+  },
+  "summary": {
+    "baseline": {
+      "durationMs": {
+        "median": 57.05159999999887,
+        "p95": 63.592899999999645,
+        "min": 50.33259999999791,
+        "max": 63.592899999999645
+      },
+      "idleMs": {
+        "median": 23.725400000000263,
+        "p95": 27.271200000000135,
+        "min": 19.990499999999884,
+        "max": 27.271200000000135
+      },
+      "compactionMs": {
+        "median": 32.13600000000042,
+        "p95": 39.51479999999901,
+        "min": 29.601299999998446,
+        "max": 39.51479999999901
+      },
+      "planningMs": {
+        "median": 23.645400000001246,
+        "p95": 27.19260000000031,
+        "min": 19.90690000000177,
+        "max": 27.19260000000031
+      },
+      "applicationMs": {
+        "median": 32.076500000000124,
+        "p95": 39.46140000000014,
+        "min": 29.560699999999997,
+        "max": 39.46140000000014
+      },
+      "cpuMs": {
+        "median": 32,
+        "p95": 63,
+        "min": 0,
+        "max": 63
+      }
+    },
+    "candidate": {
+      "durationMs": {
+        "median": 57.67550000000119,
+        "p95": 91.61389999999938,
+        "min": 51.92529999999897,
+        "max": 91.61389999999938
+      },
+      "idleMs": {
+        "median": 23.659699999999248,
+        "p95": 36.255699999999706,
+        "min": 20.773199999999633,
+        "max": 36.255699999999706
+      },
+      "compactionMs": {
+        "median": 34.01105000000098,
+        "p95": 55.35819999999967,
+        "min": 30.397100000000137,
+        "max": 55.35819999999967
+      },
+      "planningMs": {
+        "median": 23.565199999999095,
+        "p95": 36.12670000000071,
+        "min": 20.707500000000437,
+        "max": 36.12670000000071
+      },
+      "applicationMs": {
+        "median": 33.974450000001525,
+        "p95": 55.29820000000018,
+        "min": 30.326499999999214,
+        "max": 55.29820000000018
+      },
+      "cpuMs": {
+        "median": 31,
+        "p95": 62,
+        "min": 15,
+        "max": 62
+      }
+    }
+  },
+  "samples": [
+    {
+      "label": "baseline",
+      "iteration": -2,
+      "warmup": true,
+      "durationMs": 89.0789000000002,
+      "idleMs": 53.820900000000165,
+      "compactionMs": 35.25800000000004,
+      "cpuMs": 78,
+      "planningMs": 52.8442,
+      "applicationMs": 34.86469999999986,
+      "reportedLocalMs": 87.69619999999986,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "candidate",
+      "iteration": -2,
+      "warmup": true,
+      "durationMs": 69.35489999999982,
+      "idleMs": 35.51099999999997,
+      "compactionMs": 33.84389999999985,
+      "cpuMs": 47,
+      "planningMs": 34.767399999999725,
+      "applicationMs": 33.34619999999995,
+      "reportedLocalMs": 68.096,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "candidate",
+      "iteration": -1,
+      "warmup": true,
+      "durationMs": 59.958100000000286,
+      "idleMs": 26.152799999999843,
+      "compactionMs": 33.80530000000044,
+      "cpuMs": 0,
+      "planningMs": 26.035499999999956,
+      "applicationMs": 33.75220000000036,
+      "reportedLocalMs": 59.78530000000001,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "baseline",
+      "iteration": -1,
+      "warmup": true,
+      "durationMs": 55.02150000000029,
+      "idleMs": 23.792500000000018,
+      "compactionMs": 31.22900000000027,
+      "cpuMs": 15,
+      "planningMs": 23.69890000000032,
+      "applicationMs": 31.1884,
+      "reportedLocalMs": 54.884900000000016,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "baseline",
+      "iteration": 0,
+      "warmup": false,
+      "durationMs": 61.06959999999981,
+      "idleMs": 27.271200000000135,
+      "compactionMs": 33.798399999999674,
+      "cpuMs": 31,
+      "planningMs": 27.19260000000031,
+      "applicationMs": 33.72199999999975,
+      "reportedLocalMs": 60.909999999999854,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "candidate",
+      "iteration": 0,
+      "warmup": false,
+      "durationMs": 71.23160000000007,
+      "idleMs": 28.864399999999478,
+      "compactionMs": 42.367200000000594,
+      "cpuMs": 15,
+      "planningMs": 28.759799999999814,
+      "applicationMs": 42.25749999999971,
+      "reportedLocalMs": 71.01449999999932,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "candidate",
+      "iteration": 1,
+      "warmup": false,
+      "durationMs": 91.61389999999938,
+      "idleMs": 36.255699999999706,
+      "compactionMs": 55.35819999999967,
+      "cpuMs": 62,
+      "planningMs": 36.12670000000071,
+      "applicationMs": 55.29820000000018,
+      "reportedLocalMs": 91.42070000000058,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "baseline",
+      "iteration": 1,
+      "warmup": false,
+      "durationMs": 61.3143,
+      "idleMs": 25.541199999999662,
+      "compactionMs": 35.77310000000034,
+      "cpuMs": 62,
+      "planningMs": 25.433999999999287,
+      "applicationMs": 35.72659999999996,
+      "reportedLocalMs": 61.15769999999884,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "baseline",
+      "iteration": 2,
+      "warmup": false,
+      "durationMs": 57.47149999999965,
+      "idleMs": 26.516200000000026,
+      "compactionMs": 30.955299999999625,
+      "cpuMs": 63,
+      "planningMs": 26.381900000000314,
+      "applicationMs": 30.878200000000106,
+      "reportedLocalMs": 57.22820000000047,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "candidate",
+      "iteration": 2,
+      "warmup": false,
+      "durationMs": 70.62620000000061,
+      "idleMs": 29.18000000000029,
+      "compactionMs": 41.44620000000032,
+      "cpuMs": 31,
+      "planningMs": 29.061999999999898,
+      "applicationMs": 41.3739000000005,
+      "reportedLocalMs": 70.43239999999969,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "candidate",
+      "iteration": 3,
+      "warmup": false,
+      "durationMs": 55.95800000000054,
+      "idleMs": 24.72570000000087,
+      "compactionMs": 31.232299999999668,
+      "cpuMs": 48,
+      "planningMs": 24.58390000000145,
+      "applicationMs": 31.183499999999185,
+      "reportedLocalMs": 55.76470000000154,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "baseline",
+      "iteration": 3,
+      "warmup": false,
+      "durationMs": 60.059800000000905,
+      "idleMs": 26.14720000000125,
+      "compactionMs": 33.91259999999966,
+      "cpuMs": 63,
+      "planningMs": 26.040899999999965,
+      "applicationMs": 33.86670000000049,
+      "reportedLocalMs": 59.90480000000025,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "baseline",
+      "iteration": 4,
+      "warmup": false,
+      "durationMs": 52.39549999999872,
+      "idleMs": 22.794200000000274,
+      "compactionMs": 29.601299999998446,
+      "cpuMs": 48,
+      "planningMs": 22.71929999999884,
+      "applicationMs": 29.560699999999997,
+      "reportedLocalMs": 52.27759999999944,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "candidate",
+      "iteration": 4,
+      "warmup": false,
+      "durationMs": 55.979699999999866,
+      "idleMs": 23.693900000000212,
+      "compactionMs": 32.285799999999654,
+      "cpuMs": 31,
+      "planningMs": 23.601800000000367,
+      "applicationMs": 32.23400000000038,
+      "reportedLocalMs": 55.83179999999993,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "candidate",
+      "iteration": 5,
+      "warmup": false,
+      "durationMs": 54.67410000000018,
+      "idleMs": 21.071799999999712,
+      "compactionMs": 33.60230000000047,
+      "cpuMs": 47,
+      "planningMs": 21.004000000000815,
+      "applicationMs": 33.55999999999949,
+      "reportedLocalMs": 54.561100000000806,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "baseline",
+      "iteration": 5,
+      "warmup": false,
+      "durationMs": 63.592899999999645,
+      "idleMs": 24.07810000000063,
+      "compactionMs": 39.51479999999901,
+      "cpuMs": 31,
+      "planningMs": 24.008200000000215,
+      "applicationMs": 39.46140000000014,
+      "reportedLocalMs": 63.46559999999954,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "baseline",
+      "iteration": 6,
+      "warmup": false,
+      "durationMs": 57.749400000000605,
+      "idleMs": 24.874100000000908,
+      "compactionMs": 32.8752999999997,
+      "cpuMs": 47,
+      "planningMs": 24.805899999999383,
+      "applicationMs": 32.792999999999665,
+      "reportedLocalMs": 57.59599999999955,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "candidate",
+      "iteration": 6,
+      "warmup": false,
+      "durationMs": 51.92529999999897,
+      "idleMs": 21.528199999998833,
+      "compactionMs": 30.397100000000137,
+      "cpuMs": 15,
+      "planningMs": 21.441500000000815,
+      "applicationMs": 30.326499999999214,
+      "reportedLocalMs": 51.76520000000164,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "candidate",
+      "iteration": 7,
+      "warmup": false,
+      "durationMs": 58.4992000000002,
+      "idleMs": 27.64979999999923,
+      "compactionMs": 30.84940000000097,
+      "cpuMs": 47,
+      "planningMs": 27.55999999999949,
+      "applicationMs": 30.799600000000282,
+      "reportedLocalMs": 58.35729999999967,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "baseline",
+      "iteration": 7,
+      "warmup": false,
+      "durationMs": 56.63169999999809,
+      "idleMs": 23.372699999999895,
+      "compactionMs": 33.258999999998196,
+      "cpuMs": 16,
+      "planningMs": 23.282600000002276,
+      "applicationMs": 33.20750000000044,
+      "reportedLocalMs": 56.4874000000018,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "baseline",
+      "iteration": 8,
+      "warmup": false,
+      "durationMs": 53.57970000000205,
+      "idleMs": 22.183000000000902,
+      "compactionMs": 31.396700000001147,
+      "cpuMs": 62,
+      "planningMs": 22.098799999999756,
+      "applicationMs": 31.360000000000582,
+      "reportedLocalMs": 53.45769999999902,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "candidate",
+      "iteration": 8,
+      "warmup": false,
+      "durationMs": 60.185899999996764,
+      "idleMs": 22.54569999999876,
+      "compactionMs": 37.640199999998,
+      "cpuMs": 31,
+      "planningMs": 22.461100000000442,
+      "applicationMs": 37.59940000000279,
+      "reportedLocalMs": 60.0593000000008,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "candidate",
+      "iteration": 9,
+      "warmup": false,
+      "durationMs": 55.36789999999746,
+      "idleMs": 23.625499999998283,
+      "compactionMs": 31.74239999999918,
+      "cpuMs": 16,
+      "planningMs": 23.528599999997823,
+      "applicationMs": 31.67030000000159,
+      "reportedLocalMs": 55.19670000000042,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "baseline",
+      "iteration": 9,
+      "warmup": false,
+      "durationMs": 50.53389999999854,
+      "idleMs": 20.425200000001496,
+      "compactionMs": 30.108699999997043,
+      "cpuMs": 31,
+      "planningMs": 20.35440000000017,
+      "applicationMs": 30.0724999999984,
+      "reportedLocalMs": 50.425100000000384,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "baseline",
+      "iteration": 10,
+      "warmup": false,
+      "durationMs": 51.1890999999996,
+      "idleMs": 21.047699999999168,
+      "compactionMs": 30.14140000000043,
+      "cpuMs": 0,
+      "planningMs": 20.94840000000113,
+      "applicationMs": 30.102900000001682,
+      "reportedLocalMs": 51.050200000001496,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "candidate",
+      "iteration": 10,
+      "warmup": false,
+      "durationMs": 57.79479999999967,
+      "idleMs": 24.840299999999843,
+      "compactionMs": 32.954499999999825,
+      "cpuMs": 15,
+      "planningMs": 24.73309999999765,
+      "applicationMs": 32.89320000000225,
+      "reportedLocalMs": 57.6247000000003,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "candidate",
+      "iteration": 11,
+      "warmup": false,
+      "durationMs": 54.77000000000044,
+      "idleMs": 20.773199999999633,
+      "compactionMs": 33.9968000000008,
+      "cpuMs": 31,
+      "planningMs": 20.707500000000437,
+      "applicationMs": 33.96360000000277,
+      "reportedLocalMs": 54.669700000002194,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "baseline",
+      "iteration": 11,
+      "warmup": false,
+      "durationMs": 59.3179999999993,
+      "idleMs": 22.22060000000056,
+      "compactionMs": 37.09739999999874,
+      "cpuMs": 47,
+      "planningMs": 22.126099999997678,
+      "applicationMs": 36.93899999999849,
+      "reportedLocalMs": 59.062999999994645,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "baseline",
+      "iteration": 12,
+      "warmup": false,
+      "durationMs": 51.19239999999991,
+      "idleMs": 21.04059999999663,
+      "compactionMs": 30.151800000003277,
+      "cpuMs": 32,
+      "planningMs": 20.945200000001932,
+      "applicationMs": 30.10900000000038,
+      "reportedLocalMs": 51.0522000000019,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "candidate",
+      "iteration": 12,
+      "warmup": false,
+      "durationMs": 59.86579999999958,
+      "idleMs": 23.082399999999325,
+      "compactionMs": 36.783400000000256,
+      "cpuMs": 31,
+      "planningMs": 22.994900000001508,
+      "applicationMs": 36.74759999999878,
+      "reportedLocalMs": 59.74120000000039,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "candidate",
+      "iteration": 13,
+      "warmup": false,
+      "durationMs": 57.55620000000272,
+      "idleMs": 22.043400000002293,
+      "compactionMs": 35.512800000000425,
+      "cpuMs": 47,
+      "planningMs": 21.95260000000053,
+      "applicationMs": 35.466599999999744,
+      "reportedLocalMs": 57.41740000000209,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "baseline",
+      "iteration": 13,
+      "warmup": false,
+      "durationMs": 54.70400000000154,
+      "idleMs": 24.254899999999907,
+      "compactionMs": 30.449100000001636,
+      "cpuMs": 16,
+      "planningMs": 24.124700000000303,
+      "applicationMs": 30.410100000000966,
+      "reportedLocalMs": 54.53350000000137,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "baseline",
+      "iteration": 14,
+      "warmup": false,
+      "durationMs": 63.45460000000094,
+      "idleMs": 25.36909999999989,
+      "compactionMs": 38.08550000000105,
+      "cpuMs": 32,
+      "planningMs": 25.277099999999336,
+      "applicationMs": 38.03750000000218,
+      "reportedLocalMs": 63.3127999999997,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "candidate",
+      "iteration": 14,
+      "warmup": false,
+      "durationMs": 61.092499999998836,
+      "idleMs": 24.75590000000011,
+      "compactionMs": 36.336599999998725,
+      "cpuMs": 46,
+      "planningMs": 24.657999999999447,
+      "applicationMs": 36.289199999999255,
+      "reportedLocalMs": 60.94549999999799,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "candidate",
+      "iteration": 15,
+      "warmup": false,
+      "durationMs": 55.224700000002485,
+      "idleMs": 21.199400000001333,
+      "compactionMs": 34.02530000000115,
+      "cpuMs": 47,
+      "planningMs": 21.108699999997043,
+      "applicationMs": 33.98530000000028,
+      "reportedLocalMs": 55.09209999999803,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    },
+    {
+      "label": "baseline",
+      "iteration": 15,
+      "warmup": false,
+      "durationMs": 50.33259999999791,
+      "idleMs": 19.990499999999884,
+      "compactionMs": 30.342099999998027,
+      "cpuMs": 30,
+      "planningMs": 19.90690000000177,
+      "applicationMs": 30.30529999999999,
+      "reportedLocalMs": 50.210400000003574,
+      "cuts": 2,
+      "strategy": "spans",
+      "savedTokens": 32848,
+      "backups": 2,
+      "backupOriginalBytes": 147960,
+      "outputSha256": "6aaad14e6a2ef32c5e35a771dfd0be3b3029524b0007bb37b009a0960a25035e",
+      "metadataSha256": "ca1edcede1efe6aa02ffc41100fd2518e81cfda0a0a96b69d3d7fb509185b2bd",
+      "sdkCalls": {
+        "history": 2,
+        "storageGet": 0,
+        "storageSet": 1,
+        "compact": 1
+      }
+    }
+  ]
+}

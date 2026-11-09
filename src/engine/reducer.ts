@@ -27,8 +27,9 @@ function pointerCheckpoint(result: EligibleResult, reference: string, tool: stri
   return [...replacement].length <= 8_000 ? { replacement, changedTail } : undefined;
 }
 
-export function reduce(candidate: Candidate, estimateTokens: TokenEstimate, minimumSourceTokens: number): Cut | undefined {
-  const result = eligibleResult(candidate);
+export function reduce(candidate: Candidate, estimateTokens: TokenEstimate, minimumSourceTokens: number,
+  parsed?: EligibleResult): Cut | undefined {
+  const result = parsed ?? eligibleResult(candidate);
   if (!result) return;
   const sourceTokens = estimateTokens(result.sourceText);
   if (!Number.isFinite(sourceTokens) || sourceTokens < minimumSourceTokens) return;

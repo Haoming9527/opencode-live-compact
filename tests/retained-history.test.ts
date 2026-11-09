@@ -77,7 +77,8 @@ function fixture(recentErrors: boolean, mixedSpan = false, options: Record<strin
       for (const input of inputs) archives.set(input.reference, { ...input, active: true, version: 1 })
       return true
     },
-    get: async (caller: string, reference: string) => caller === sessionID ? archives.get(reference) : undefined,
+    getBatch: async (caller: string, references: readonly string[]) =>
+      references.map(reference => caller === sessionID ? archives.get(reference) : undefined),
   } as unknown as RecoveryStore
   const measurements: Parameters<Collector["report"]>[1][] = []
   const metrics: Collector = { report: (_sessionID, measurement) => { measurements.push(measurement) }, flush: async () => {} }

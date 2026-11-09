@@ -39,14 +39,14 @@ function fixture(options: {
       ]
     } },
   } as unknown as Context
-  const store = { get: async (caller: string, reference: string) => {
+  const store = { getBatch: async (caller: string, references: readonly string[]) => references.map(reference => {
     assert.equal(caller, sessionID)
     assert.equal(reference, plan.references[0])
     calls.archive++
     if (options.archiveThrows) throw new Error("Archive unavailable after admission")
     // A missing original must preserve the full view, even for a confirmed local operation.
     return undefined
-  } } as unknown as RecoveryStore
+  }) } as unknown as RecoveryStore
   const metrics: Collector = { report: (_sessionID, measurement) => { measurements.push(measurement) }, flush: async () => {} }
   const hooks = replacementHooks(ctx, readConfig({}), store, metrics)
   const event: SessionCompaction = { sessionID, agent: "build" as SessionCompaction["agent"], model, system: [], tools: {}, options: {}, messages: [

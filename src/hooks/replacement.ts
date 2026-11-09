@@ -3,6 +3,7 @@ import type { Context } from "@opencode/plugin/promise/plugin"
 import type { SessionCompaction, SessionContext, SessionIdle } from "@opencode/plugin/promise/session"
 import type { Config } from "../config.ts"
 import { eligibleResult } from "../engine/eligibility.ts"
+import type { EligibleResult } from "../engine/eligibility.ts"
 import { createPlanningDiagnostics, planCuts, scorePlan } from "../engine/planner.ts"
 import type { Candidate } from "../engine/planner.ts"
 import { applySpans, planSpans, isSpanCheckpoint } from "../engine/span.ts"
@@ -108,6 +109,9 @@ export function replacementHooks(ctx: Context, config: Config, store: RecoverySt
       )
       const counts = { protected: config.protectedToolRounds ? rounds.slice(-config.protectedToolRounds).flat().length : 0,
         beforeCheckpoint: 0, changed: 0, unsupported: 0, eligible: 0 }
+      // Share parsing only while both planners inspect this same synchronous snapshot.
+      // Queued application still rereads and verifies authoritative history and backups.
+      const eligibleResults = new Map<Candidate, EligibleResult>()
       const available = [...rounds.slice(0, Math.max(0, rounds.length - config.protectedToolRounds)).flat(), ...prose].flatMap((candidate) => {
         const { messageID, callID } = candidate.identity
         const match = visible.get(pairKey(messageID, callID))
@@ -117,15 +121,18 @@ export function replacementHooks(ctx: Context, config: Config, store: RecoverySt
         if (!source) { counts.unsupported++; return [] }
         if (source.sourceText !== match.text) { counts.changed++; return [] }
         counts.eligible++
-        return [{ ...candidate, index: match.index, suffixTokens: suffix[match.index + 1] ?? 0 }]
+        const indexed = { ...candidate, index: match.index, suffixTokens: suffix[match.index + 1] ?? 0 }
+        eligibleResults.set(indexed, source)
+        return [indexed]
       }).sort((a, b) => a.index - b.index)
       if (!available.length) return skip("no-eligible-history", counts)
       const options = { minimumSourceTokens: config.minimumSourceTokens, maxCutsPerCycle: config.maxCutsPerCycle,
-        estimateTokens }
+        estimateTokens, eligibleResults }
       const alternatives = { individual: createPlanningDiagnostics(), spans: createPlanningDiagnostics() }
       const spanBatch = config.compactSpans ? planSpans(sessionID, request.messages, available, suffix,
         { ...options, diagnostics: alternatives.spans }) : []
       const individual = planCuts(available, { ...options, diagnostics: alternatives.individual })
+      eligibleResults.clear()
       const reportDecision = (reason: string, strategy?: "spans" | "individual") => metrics.report(sessionID, { event: "planning", reason, strategy, counts, alternatives,
         contextTokens: measured ?? total, scoreUnit: "prefix-weighted-savings", durationMs: performance.now() - started })
       const spanSaved = spanBatch.reduce((sum, span) => sum + span.saved, 0)
@@ -220,20 +227,23 @@ export function replacementHooks(ctx: Context, config: Config, store: RecoverySt
         metadata: { keepID: null, liveCompact: "replacement-noop", liveCompactInputID: plan.id } }
       const turn = history.findLast((entry) => entry.type === "assistant")
       if (turn?.id !== plan.turn || !sameModel(plan.model, event.model) || event.messages.some((message) => message.role === "system")) return
-      const visible = visibleTargets(event.messages)
       const replacements = new Map<number, { partIndex: number; checkpoint: string }>()
       let spanMessages: typeof event.messages | undefined
-      const records = await Promise.all(plan.references.map(reference => store.get(sessionID, reference)))
+      const records = await store.getBatch(sessionID, plan.references)
       if (records.some(record => !record?.active)) return
       if (records.every(record => record?.identity.tool === "completed_span")) {
         spanMessages = applySpans(event.messages, records.filter(record => record !== undefined), plan.prefixHash)
         if (!spanMessages) return
-      } else for (const record of records) {
-        if (!record || record.identity.tool === "completed_span") return
-        const match = visible.get(pairKey(record.identity.messageID, record.identity.callID))
-        if (!match || match.name !== record.identity.tool || match.text !== record.original ||
-            Buffer.byteLength(JSON.stringify(record.checkpoint)) >= Buffer.byteLength(JSON.stringify(match.text))) return
-        replacements.set(match.index, { partIndex: match.partIndex, checkpoint: record.checkpoint })
+      } else {
+        // Span replay validates its own pairs; it does not need this second index.
+        const visible = visibleTargets(event.messages)
+        for (const record of records) {
+          if (!record || record.identity.tool === "completed_span") return
+          const match = visible.get(pairKey(record.identity.messageID, record.identity.callID))
+          if (!match || match.name !== record.identity.tool || match.text !== record.original ||
+              Buffer.byteLength(JSON.stringify(record.checkpoint)) >= Buffer.byteLength(JSON.stringify(match.text))) return
+          replacements.set(match.index, { partIndex: match.partIndex, checkpoint: record.checkpoint })
+        }
       }
       if (!spanMessages && hashText(JSON.stringify(event.messages.slice(0, Math.min(...replacements.keys())))) !== plan.prefixHash) return
       const messages = spanMessages ?? full.map((message: (typeof event.messages)[number], index: number) => {

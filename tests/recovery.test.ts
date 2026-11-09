@@ -68,6 +68,53 @@ test("recovery survives restart and restores exact text within the calling sessi
   }
 });
 
+test("batch reads preserve request order, duplicates, session isolation and retirement state", async t => {
+  const { create } = await archive(t);
+  const store = create();
+  const first = plan("batch-first"), second = plan("batch-second"), retired = plan("batch-retired");
+  const foreign = plan("batch-foreign", "Other session", "session-b"), missing = plan("batch-missing");
+  assert.equal(await store.preserveBatch([first, second, retired, foreign]), true);
+  await store.reconcile("session-a", new Set([first.reference, second.reference]), new Set([retired.reference]));
+  const records = await store.getBatch("session-a", [second.reference, "../archive.sqlite", foreign.reference,
+    missing.reference, first.reference, second.reference, retired.reference]);
+  assert.deepEqual(records.map(record => record && [record.reference, record.original, record.active]), [
+    [second.reference, second.original, true], undefined, undefined, undefined,
+    [first.reference, first.original, true], [second.reference, second.original, true],
+    [retired.reference, retired.original, false],
+  ]);
+  const references = [first.reference];
+  const pending = store.getBatch("session-a", references);
+  references.splice(0, 1, second.reference, retired.reference);
+  assert.deepEqual((await pending).map(record => record?.reference), [first.reference], "requests are captured before awaiting the database");
+});
+
+test("empty and invalid batch reads do not open a database", async t => {
+  const { create, databasePath } = await archive(t);
+  const store = create();
+  assert.deepEqual(await store.getBatch("session-a", []), []);
+  assert.deepEqual(await store.getBatch("session-a", ["invalid", "../archive.sqlite", ""]), [undefined, undefined, undefined]);
+  assert.equal(await store.get("session-a", "invalid"), undefined);
+  await assert.rejects(stat(databasePath), { code: "ENOENT" });
+});
+
+test("batch reads revalidate changed, missing and corrupt archives on every call", async t => {
+  const { create, directory, databasePath } = await archive(t);
+  const store = create(), first = plan("batch-live-first"), second = plan("batch-live-second");
+  assert.equal(await store.preserveBatch([first, second]), true);
+  const references = [first.reference, second.reference];
+  assert.deepEqual((await store.getBatch("session-a", references)).map(record => record?.original), [first.original, second.original]);
+  await writeFile(payloadPath(directory, first), JSON.stringify("damaged"));
+  assert.deepEqual((await store.getBatch("session-a", references)).map(record => record?.original), [undefined, second.original]);
+  await writeFile(payloadPath(directory, first), JSON.stringify(first.original));
+  await rm(payloadPath(directory, second));
+  assert.deepEqual((await store.getBatch("session-a", references)).map(record => record?.original), [first.original, undefined]);
+  const db = new DatabaseSync(databasePath);
+  try {
+    db.prepare("UPDATE recovery SET checkpoint = ? WHERE reference = ?").run(JSON.stringify("damaged"), first.reference);
+    assert.deepEqual(await store.getBatch("session-a", references), [undefined, undefined]);
+  } finally { db.close(); }
+});
+
 test("cleanup preserves references carried in a native summary and plans outside its snapshot", async (t) => {
   const { create } = await archive(t, { maxRecords: 3, retentionMs: 0 });
   const store = create();

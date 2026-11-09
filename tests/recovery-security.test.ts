@@ -44,6 +44,31 @@ test("external payload hardlinks cannot be recalled or deleted through the archi
   assert.equal(await readFile(outside, "utf8"), JSON.stringify(item.original));
 });
 
+test("a batch rejects an unsafe later payload and validates it again after repair", async t => {
+  const setup = await fixture(t), store = setup.create(), first = plan("batch-safe"), second = plan("batch-linked");
+  assert.equal(await store.preserveBatch([first, second]), true);
+  const references = [first.reference, second.reference];
+  assert.deepEqual((await store.getBatch("session-a", references)).map(record => record?.original), [first.original, second.original]);
+  const payload = setup.payload(second), outside = join(setup.directory, "batch-outside.json");
+  await rename(payload, outside);
+  await link(outside, payload);
+  await assert.rejects(store.getBatch("session-a", references), /Non-private recovery payload path/);
+  assert.equal(await readFile(outside, "utf8"), JSON.stringify(second.original));
+  await unlink(payload);
+  await rename(outside, payload);
+  assert.deepEqual((await store.getBatch("session-a", references)).map(record => record?.original), [first.original, second.original]);
+});
+
+test("batch reads recheck archive root permissions", { skip: process.platform === "win32" }, async t => {
+  const setup = await fixture(t), store = setup.create(), item = plan("root-permissions");
+  assert.equal(await store.preserve(item), true);
+  const root = join(setup.directory, "recovery-v1");
+  fs.chmodSync(root, 0o755);
+  try { await assert.rejects(store.getBatch("session-a", [item.reference]), /Non-private recovery payload path/); }
+  finally { fs.chmodSync(root, 0o700); }
+  assert.equal((await store.getBatch("session-a", [item.reference]))[0]?.original, item.original);
+});
+
 test("a substituted session directory never exposes or deletes its external target", async t => {
   const setup = await fixture(t), store = setup.create(), item = plan("redirected");
   assert.equal(await store.preserve(item), true);

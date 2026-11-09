@@ -153,3 +153,16 @@ tail -n +1 -F ~/benchmark-progress/latest/progress.jsonl
 For Short or SemVer, watch `benchmark.log`; these suites grade at the end and do not emit per-exercise progress lines. They also do not use the staged repair loop. Every suite retains results when tests fail and exits unsuccessfully if either version misses its acceptance target.
 
 Costs include model attempts and repairs and are OpenCode estimates, not billing receipts. Daytona compute is separate. Reports separate cached input, uncached input, cache writes, native compaction pauses, Live Compact cuts, and host wait time. If Original OpenCode never compacts automatically, or timing telemetry is incomplete, the pause comparison is **inconclusive**. Smaller prompts alone do not prove lower cost or preserved correctness.
+
+## Measure local plugin overhead without a model
+
+This separate diagnostic compares two plugin implementations on identical real repository file reads. It uses real recovery files and integrity checks, with an in-memory stand-in for OpenCode's history, storage, and queue APIs. It measures local hook processing, **not stock-host event duration, user-visible waiting, API cost, or cache hits**.
+
+To compare against the implementation before the overhead optimization:
+
+```sh
+git worktree add --detach .runs/overhead-before 6348a6c
+node benchmarks/diagnostics/overhead.ts --baseline .runs/overhead-before --trials 20
+```
+
+The runner alternates versions, excludes warmups, initializes each archive outside the timer, and reports median and p95 times under `.runs/`. It requires identical replacement messages, cut decisions, and recoverable originals across versions. There are no model calls or padded source reads. For a baseline-versus-baseline self-check, add `--candidate .runs/overhead-before`.

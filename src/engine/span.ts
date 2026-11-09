@@ -32,19 +32,21 @@ function checkpointed(message: Message) {
   })
 }
 
-/** Complete native blocks, including parts that must remain unchanged. */
-function units(messages: readonly Message[]): Unit[] {
+/** Validate identities across the full history; inspect only blocks that can participate in a cut. */
+function units(messages: readonly Message[], selectedMessageIDs: ReadonlySet<string>): Unit[] {
   const messageIDs = new Map<string, number>(), callIDs = new Map<string, number>(), resultIDs = new Map<string, number>()
   const count = (map: Map<string, number>, id: string) => map.set(id, (map.get(id) ?? 0) + 1)
-  for (const message of messages) {
+  const selected: { start: number; message: Message }[] = []
+  for (const [start, message] of messages.entries()) {
     if (message.id) count(messageIDs, message.id)
+    if (message.role === "assistant" && message.id && selectedMessageIDs.has(message.id)) selected.push({ start, message })
     for (const part of message.content) {
       if (part.type === "tool-call") count(callIDs, part.id)
       if (part.type === "tool-result") count(resultIDs, part.id)
     }
   }
   const eligible: Unit[] = []
-  for (const [start, message] of messages.entries()) {
+  for (const { start, message } of selected) {
     if (message.role !== "assistant" || !message.id || messageIDs.get(message.id) !== 1 || checkpointed(message) ||
         message.content.some(part => part.type !== "text" && part.type !== "reasoning" && part.type !== "tool-call")) continue
     const calls = message.content.filter(part => part.type === "tool-call")
@@ -118,13 +120,13 @@ export function planSpans(sessionID: string, messages: readonly Message[], avail
     candidates.set(id, candidates.has(id) ? undefined : candidate)
   }
   const placeholderReference = "lc1_" + "0".repeat(32)
-  const groups = units(messages).flatMap(group => {
+  const groups = units(messages, new Set(available.map(candidate => candidate.identity.messageID))).flatMap(group => {
     let matched = false
     const entries = group.targets.flatMap(target => {
       const candidate = candidates.get(key(target.index, target.callID))
       if (candidate?.identity.sessionID !== sessionID || candidate.identity.messageID !== target.messageID ||
           candidate.identity.tool !== target.tool) return []
-      const result = eligibleResult(candidate)
+      const result = options.eligibleResults?.get(candidate) ?? eligibleResult(candidate)
       if (!result || result.sourceText !== target.text) return []
       matched = true
       const entry = checkpointEntry(result)
@@ -277,8 +279,8 @@ export function applySpans(messages: readonly Message[], records: readonly Recov
   for (const [index, message] of messages.entries()) {
     if (message.id) positions.set(message.id, positions.has(message.id) ? -1 : index)
   }
-  const blocks = new Map(units(messages).map(block => [block.start, block]))
-  const selected: { start: number; end: number; replacement: Message[] }[] = []
+  const verified: { record: RecoveryRecord; start: number; end: number }[] = []
+  const selectedMessageIDs = new Set<string>()
   for (const record of records) {
     if (!record.active || record.identity.tool !== "completed_span" ||
         record.identity.sessionID !== records[0]!.identity.sessionID ||
@@ -291,6 +293,17 @@ export function applySpans(messages: readonly Message[], records: readonly Recov
     if (!Array.isArray(archived) || !archived.length) return
     const end = start + archived.length
     if (JSON.stringify(messages.slice(start, end)) !== record.original) return
+    verified.push({ record, start, end })
+    if (record.identity.partID === preserveVersion) {
+      for (let index = start; index < end; index++) {
+        const message = messages[index]!
+        if (message.role === "assistant" && message.id) selectedMessageIDs.add(message.id)
+      }
+    }
+  }
+  const blocks = new Map(units(messages, selectedMessageIDs).map(block => [block.start, block]))
+  const selected: { start: number; end: number; replacement: Message[] }[] = []
+  for (const { record, start, end } of verified) {
     let replacement: Message[] | undefined
     if (record.identity.partID === preserveVersion) {
       replacement = preservedMessages(messages, record, start, end, blocks)
