@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1120" height="920" viewBox="0 0 1120 920" role="img" aria-labelledby="title desc" xml:lang="zh-CN">
 <title id="title">OpenCode Live Compact：Aider 与 Web-Bench 并列对比</title>
-<desc id="desc">Aider 两组通过150/150，Live Compact估算费用降低12.3%。Web-Bench两组完成20/20，最终测试59/59，估算费用降低3.1%；原版没有触发原生压缩，暂停收益尚无结论。</desc>
+<desc id="desc">Aider 两组通过150/150，Live Compact估算费用降低12.3%。Web-Bench两组完成20/20，最终测试59/59，估算费用降低42.1%；原版没有触发原生压缩，暂停收益尚无结论。</desc>
 <style>text{font-family:Consolas,SFMono-Regular,Liberation Mono,Noto Sans SC,Microsoft YaHei,monospace;font-variant-numeric:tabular-nums}</style>
 <rect x="0.5" y="0.5" width="1119" height="919" fill="#0b0b0b" stroke="#292929"/>
 <text x="28" y="34" font-size="18" fill="#ededed" >opencode / live compact</text>
@@ -56,51 +56,51 @@
 <text x="588" y="96" font-size="27" fill="#ededed" font-weight="600">Web-Bench React</text>
 <text x="588" y="122" font-size="15" fill="#969696" >20 个依赖任务 / 同一个 React 项目</text>
 <text x="588" y="162" font-size="13" fill="#969696" >估算 API 费用</text>
-<text x="585" y="222" font-size="62" fill="#8cdb9f" font-weight="600" letter-spacing="-3">-3.1%</text>
-<text x="1092" y="196" font-size="22" fill="#bdbdbd" text-anchor="end">$0.1549</text>
-<text x="1092" y="225" font-size="22" fill="#8cdb9f" text-anchor="end">→ $0.1501</text>
+<text x="585" y="222" font-size="62" fill="#8cdb9f" font-weight="600" letter-spacing="-3">-42.1%</text>
+<text x="1092" y="196" font-size="22" fill="#bdbdbd" text-anchor="end">$0.1655</text>
+<text x="1092" y="225" font-size="22" fill="#8cdb9f" text-anchor="end">→ $0.0958</text>
 <text x="588" y="248" font-size="14" fill="#969696" >原版 OpenCode → Live Compact</text>
 <rect x="588" y="268" width="504" height="57" fill="#151b17"/>
 <text x="602" y="291" font-size="19" fill="#8cdb9f" >两组均完成 20/20 个任务</text>
 <text x="602" y="313" font-size="13" fill="#969696" >最终浏览器测试：两组均通过 59/59</text>
 <text x="588" y="357" font-size="16" fill="#ededed" >上下文峰值</text>
-<text x="1092" y="357" font-size="14" fill="#8cdb9f" text-anchor="end">-41.5%</text>
+<text x="1092" y="357" font-size="14" fill="#8cdb9f" text-anchor="end">-48.3%</text>
 <rect x="588" y="370" width="357" height="11" fill="#696969"/>
-<rect x="588" y="392" width="208.8386833343803" height="11" fill="#8cdb9f"/>
-<text x="1092" y="381" font-size="17" fill="#bdbdbd" text-anchor="end">191K</text>
-<text x="1092" y="403" font-size="17" fill="#8cdb9f" text-anchor="end">112K</text>
+<rect x="588" y="392" width="184.6715519110603" height="11" fill="#8cdb9f"/>
+<text x="1092" y="381" font-size="17" fill="#bdbdbd" text-anchor="end">203K</text>
+<text x="1092" y="403" font-size="17" fill="#8cdb9f" text-anchor="end">105K</text>
 <text x="588" y="439" font-size="16" fill="#ededed" >墙钟时间</text>
-<text x="1092" y="439" font-size="14" fill="#8cdb9f" text-anchor="end">-7.9%</text>
+<text x="1092" y="439" font-size="14" fill="#8cdb9f" text-anchor="end">-3.9%</text>
 <rect x="588" y="452" width="357" height="11" fill="#696969"/>
-<rect x="588" y="474" width="328.9216777208129" height="11" fill="#8cdb9f"/>
-<text x="1092" y="463" font-size="17" fill="#bdbdbd" text-anchor="end">1,346 秒</text>
-<text x="1092" y="485" font-size="17" fill="#8cdb9f" text-anchor="end">1,240 秒</text>
+<rect x="588" y="474" width="343.04710064744205" height="11" fill="#8cdb9f"/>
+<text x="1092" y="463" font-size="17" fill="#bdbdbd" text-anchor="end">1,361 秒</text>
+<text x="1092" y="485" font-size="17" fill="#8cdb9f" text-anchor="end">1,308 秒</text>
 <path d="M588 505h504" stroke="#292929"/>
 <text x="588" y="533" font-size="13" fill="#969696" >输入 / 缓存</text>
 <text x="1092" y="533" font-size="12" fill="#969696" text-anchor="end">原版 → Live Compact</text>
 <text x="588" y="565" font-size="16" fill="#969696" >缓存命中</text>
-<text x="944" y="565" font-size="18" fill="#bdbdbd" text-anchor="end">9.18M</text>
+<text x="944" y="565" font-size="18" fill="#bdbdbd" text-anchor="end">10.08M</text>
 <text x="964" y="565" font-size="17" fill="#696969" >→</text>
-<text x="1092" y="565" font-size="18" fill="#8cdb9f" text-anchor="end">4.47M</text>
+<text x="1092" y="565" font-size="18" fill="#8cdb9f" text-anchor="end">4.49M</text>
 <text x="588" y="596" font-size="16" fill="#969696" >缓存未命中*</text>
-<text x="944" y="596" font-size="18" fill="#bdbdbd" text-anchor="end">0.191M</text>
+<text x="944" y="596" font-size="18" fill="#bdbdbd" text-anchor="end">0.203M</text>
 <text x="964" y="596" font-size="17" fill="#696969" >→</text>
-<text x="1092" y="596" font-size="18" fill="#ededed" text-anchor="end">0.568M</text>
+<text x="1092" y="596" font-size="18" fill="#8cdb9f" text-anchor="end">0.143M</text>
 <text x="588" y="627" font-size="16" fill="#969696" >缓存命中率</text>
-<text x="944" y="627" font-size="18" fill="#bdbdbd" text-anchor="end">97.96%</text>
+<text x="944" y="627" font-size="18" fill="#bdbdbd" text-anchor="end">98.02%</text>
 <text x="964" y="627" font-size="17" fill="#696969" >→</text>
-<text x="1092" y="627" font-size="18" fill="#ededed" text-anchor="end">88.73%</text>
+<text x="1092" y="627" font-size="18" fill="#ededed" text-anchor="end">96.92%</text>
 <path d="M588 647h504" stroke="#292929"/>
 <text x="588" y="674" font-size="13" fill="#969696" >压缩</text>
 <text x="588" y="705" font-size="16" fill="#969696" >原生暂停</text>
 <text x="1092" y="705" font-size="18" fill="#ededed" text-anchor="end">0 → 0</text>
 <text x="588" y="736" font-size="16" fill="#969696" >本地压缩刀数</text>
-<text x="1092" y="736" font-size="17" fill="#ededed" text-anchor="end">0 → 14 刀 / 12 次替换</text>
+<text x="1092" y="736" font-size="17" fill="#ededed" text-anchor="end">0 → 5 刀 / 5 次替换</text>
 <text x="588" y="767" font-size="16" fill="#969696" >宿主事件耗时</text>
-<text x="1092" y="767" font-size="18" fill="#d2b287" text-anchor="end">0 → 435 毫秒</text>
+<text x="1092" y="767" font-size="18" fill="#d2b287" text-anchor="end">0 → 487 毫秒</text>
 <text x="588" y="795" font-size="13" fill="#d2b287" >两组原生压缩均为 0；暂停收益尚未验证。</text>
 <path d="M0 823h1120" stroke="#292929"/>
-<text x="28" y="849" font-size="14" fill="#969696" >Web-Bench 首次评分：原版 19/20 → Live Compact 20/20；额外修复：1 → 0。</text>
-<text x="28" y="876" font-size="13" fill="#969696" >各一组配对实验；费用为估算。测试版本使用 1K 净节省门槛。</text>
+<text x="28" y="849" font-size="14" fill="#969696" >Web-Bench：两组首次评分均通过 20/20，无额外修复。本地处理：124 毫秒。</text>
+<text x="28" y="876" font-size="13" fill="#969696" >各一组配对实验，费用为估算。Aider 为旧版本；React 为更新版本，使用 1K 源文本门槛。</text>
 <text x="28" y="897" font-size="13" fill="#969696" >* 未命中包含缓存写入。事件耗时不含事件外规划；本次未测量用户实际等待时间。</text>
 </svg>

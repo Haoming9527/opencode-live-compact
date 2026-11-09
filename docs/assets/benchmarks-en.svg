@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1120" height="920" viewBox="0 0 1120 920" role="img" aria-labelledby="title desc" xml:lang="en">
 <title id="title">OpenCode Live Compact: Aider and Web-Bench side by side</title>
-<desc id="desc">Aider passed 150/150 in both with 12.3% lower estimated cost. Web-Bench passed 20/20 stages and 59/59 final tests in both with 3.1% lower estimated cost. Web-Bench pause benefit is inconclusive because Original OpenCode never compacted natively.</desc>
+<desc id="desc">Aider passed 150/150 in both with 12.3% lower estimated cost. Web-Bench passed 20/20 stages and 59/59 final tests in both with 42.1% lower estimated cost. Web-Bench pause benefit is inconclusive because Original OpenCode never compacted natively.</desc>
 <style>text{font-family:Consolas,SFMono-Regular,Liberation Mono,Noto Sans SC,Microsoft YaHei,monospace;font-variant-numeric:tabular-nums}</style>
 <rect x="0.5" y="0.5" width="1119" height="919" fill="#0b0b0b" stroke="#292929"/>
 <text x="28" y="34" font-size="18" fill="#ededed" >opencode / live compact</text>
@@ -56,51 +56,51 @@
 <text x="588" y="96" font-size="27" fill="#ededed" font-weight="600">Web-Bench React</text>
 <text x="588" y="122" font-size="15" fill="#969696" >20 dependent tasks / one React project</text>
 <text x="588" y="162" font-size="13" fill="#969696" >ESTIMATED API COST</text>
-<text x="585" y="222" font-size="62" fill="#8cdb9f" font-weight="600" letter-spacing="-3">-3.1%</text>
-<text x="1092" y="196" font-size="22" fill="#bdbdbd" text-anchor="end">$0.1549</text>
-<text x="1092" y="225" font-size="22" fill="#8cdb9f" text-anchor="end">→ $0.1501</text>
+<text x="585" y="222" font-size="62" fill="#8cdb9f" font-weight="600" letter-spacing="-3">-42.1%</text>
+<text x="1092" y="196" font-size="22" fill="#bdbdbd" text-anchor="end">$0.1655</text>
+<text x="1092" y="225" font-size="22" fill="#8cdb9f" text-anchor="end">→ $0.0958</text>
 <text x="588" y="248" font-size="14" fill="#969696" >Original OpenCode → Live Compact</text>
 <rect x="588" y="268" width="504" height="57" fill="#151b17"/>
 <text x="602" y="291" font-size="19" fill="#8cdb9f" >20/20 stages passed in both</text>
 <text x="602" y="313" font-size="13" fill="#969696" >Final browser checks: 59/59 in both</text>
 <text x="588" y="357" font-size="16" fill="#ededed" >Peak context</text>
-<text x="1092" y="357" font-size="14" fill="#8cdb9f" text-anchor="end">-41.5%</text>
+<text x="1092" y="357" font-size="14" fill="#8cdb9f" text-anchor="end">-48.3%</text>
 <rect x="588" y="370" width="357" height="11" fill="#696969"/>
-<rect x="588" y="392" width="208.8386833343803" height="11" fill="#8cdb9f"/>
-<text x="1092" y="381" font-size="17" fill="#bdbdbd" text-anchor="end">191K</text>
-<text x="1092" y="403" font-size="17" fill="#8cdb9f" text-anchor="end">112K</text>
+<rect x="588" y="392" width="184.6715519110603" height="11" fill="#8cdb9f"/>
+<text x="1092" y="381" font-size="17" fill="#bdbdbd" text-anchor="end">203K</text>
+<text x="1092" y="403" font-size="17" fill="#8cdb9f" text-anchor="end">105K</text>
 <text x="588" y="439" font-size="16" fill="#ededed" >Wall-clock time</text>
-<text x="1092" y="439" font-size="14" fill="#8cdb9f" text-anchor="end">-7.9%</text>
+<text x="1092" y="439" font-size="14" fill="#8cdb9f" text-anchor="end">-3.9%</text>
 <rect x="588" y="452" width="357" height="11" fill="#696969"/>
-<rect x="588" y="474" width="328.9216777208129" height="11" fill="#8cdb9f"/>
-<text x="1092" y="463" font-size="17" fill="#bdbdbd" text-anchor="end">1,346 s</text>
-<text x="1092" y="485" font-size="17" fill="#8cdb9f" text-anchor="end">1,240 s</text>
+<rect x="588" y="474" width="343.04710064744205" height="11" fill="#8cdb9f"/>
+<text x="1092" y="463" font-size="17" fill="#bdbdbd" text-anchor="end">1,361 s</text>
+<text x="1092" y="485" font-size="17" fill="#8cdb9f" text-anchor="end">1,308 s</text>
 <path d="M588 505h504" stroke="#292929"/>
 <text x="588" y="533" font-size="13" fill="#969696" >INPUT / CACHE</text>
 <text x="1092" y="533" font-size="12" fill="#969696" text-anchor="end">Original → Live Compact</text>
 <text x="588" y="565" font-size="16" fill="#969696" >Cached input</text>
-<text x="944" y="565" font-size="18" fill="#bdbdbd" text-anchor="end">9.18M</text>
+<text x="944" y="565" font-size="18" fill="#bdbdbd" text-anchor="end">10.08M</text>
 <text x="964" y="565" font-size="17" fill="#696969" >→</text>
-<text x="1092" y="565" font-size="18" fill="#8cdb9f" text-anchor="end">4.47M</text>
+<text x="1092" y="565" font-size="18" fill="#8cdb9f" text-anchor="end">4.49M</text>
 <text x="588" y="596" font-size="16" fill="#969696" >Non-cached*</text>
-<text x="944" y="596" font-size="18" fill="#bdbdbd" text-anchor="end">0.191M</text>
+<text x="944" y="596" font-size="18" fill="#bdbdbd" text-anchor="end">0.203M</text>
 <text x="964" y="596" font-size="17" fill="#696969" >→</text>
-<text x="1092" y="596" font-size="18" fill="#ededed" text-anchor="end">0.568M</text>
+<text x="1092" y="596" font-size="18" fill="#8cdb9f" text-anchor="end">0.143M</text>
 <text x="588" y="627" font-size="16" fill="#969696" >Cache hit rate</text>
-<text x="944" y="627" font-size="18" fill="#bdbdbd" text-anchor="end">97.96%</text>
+<text x="944" y="627" font-size="18" fill="#bdbdbd" text-anchor="end">98.02%</text>
 <text x="964" y="627" font-size="17" fill="#696969" >→</text>
-<text x="1092" y="627" font-size="18" fill="#ededed" text-anchor="end">88.73%</text>
+<text x="1092" y="627" font-size="18" fill="#ededed" text-anchor="end">96.92%</text>
 <path d="M588 647h504" stroke="#292929"/>
 <text x="588" y="674" font-size="13" fill="#969696" >COMPACTION</text>
 <text x="588" y="705" font-size="16" fill="#969696" >Native pauses</text>
 <text x="1092" y="705" font-size="18" fill="#ededed" text-anchor="end">0 → 0</text>
 <text x="588" y="736" font-size="16" fill="#969696" >Local cuts</text>
-<text x="1092" y="736" font-size="17" fill="#ededed" text-anchor="end">0 → 14 / 12 events</text>
+<text x="1092" y="736" font-size="17" fill="#ededed" text-anchor="end">0 → 5 / 5 events</text>
 <text x="588" y="767" font-size="16" fill="#969696" >Host event time</text>
-<text x="1092" y="767" font-size="18" fill="#d2b287" text-anchor="end">0 → 435 ms</text>
+<text x="1092" y="767" font-size="18" fill="#d2b287" text-anchor="end">0 → 487 ms</text>
 <text x="588" y="795" font-size="13" fill="#d2b287" >No native compaction; pause reduction untested.</text>
 <path d="M0 823h1120" stroke="#292929"/>
-<text x="28" y="849" font-size="14" fill="#969696" >Web-Bench first grading: Original 19/20 → Live Compact 20/20; repair attempts: 1 → 0.</text>
-<text x="28" y="876" font-size="13" fill="#969696" >One pair per suite; costs are estimated. Tested build uses a 1K net-savings threshold.</text>
+<text x="28" y="849" font-size="14" fill="#969696" >Web-Bench: both passed 20/20 first attempts; zero repairs. Local processing: 124 ms.</text>
+<text x="28" y="876" font-size="13" fill="#969696" >One pair per suite; costs estimated. Aider: earlier build; React: updated build, 1K source threshold.</text>
 <text x="28" y="897" font-size="13" fill="#969696" >* Non-cached includes writes. Event time excludes outside planning; user-visible waiting was not measured.</text>
 </svg>

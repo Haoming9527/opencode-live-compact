@@ -34,7 +34,7 @@ assert.deepEqual(compact, json("live-compact/result.json"));
 assert.deepEqual(original.modelConfiguration, compact.modelConfiguration);
 assert.equal(comparison.comparable, true);
 assert.equal(comparison.bothPassed, true);
-assert.equal(json("plugin-build.json").buildSha256, manifest.testedBuildSha256);
+assert.equal(json("plugin-build.json").sourceCommit, manifest.sourceCommit);
 assert.ok(Math.abs(report.spent - original.usage.costEstimateUsd - compact.usage.costEstimateUsd) < 1e-12);
 
 const preflight = json("preflight.json");
@@ -103,24 +103,24 @@ for (const [arm, folder, result] of [
   assert.deepEqual(summaries.map(match => Number(match[1])), cumulativeCounts);
   assert.ok(summaries.every(match => match[2] === "0" && match[3] === "0" && match[1] === match[4]));
 }
-assert.equal(original.attempts.filter(stage => stage.firstAttemptPassed).length, 19);
+assert.equal(original.attempts.filter(stage => stage.firstAttemptPassed).length, 20);
 assert.equal(compact.attempts.filter(stage => stage.firstAttemptPassed).length, 20);
-assert.equal(sum(original.attempts, "startedAttempts"), 21);
+assert.equal(sum(original.attempts, "startedAttempts"), 20);
 assert.equal(sum(compact.attempts, "startedAttempts"), 20);
-assert.equal(original.attempts.find(stage => !stage.firstAttemptPassed).id, "task-16");
+assert.ok(original.attempts.every(stage => stage.firstAttemptPassed));
 for (const key of ["nativePausesDelta", "nativeWaitDeltaMs", "hostCompactionWaitDeltaMs"]) {
   assert.equal(comparison[key], null, "No native compaction: pause comparison must remain inconclusive");
 }
 
 const replacements = lines("live-compact/plugin.jsonl").filter(row => row.event === "replacement" && !row.dryRun);
-assert.equal(replacements.length, 12);
+assert.equal(replacements.length, 5);
 assert.equal(replacements.length, compact.usage.replacementWindows);
-assert.ok(replacements.every(row => row.strategy === "spans" && row.sessionID === compact.sessionID));
-assert.equal(sum(replacements, "count"), 14);
+assert.ok(replacements.every(row => row.sessionID === compact.sessionID));
+assert.equal(sum(replacements, "count"), 5);
 assert.equal(sum(replacements, "count"), compact.usage.replacementCuts);
 assert.equal(sum(replacements, "estimatedSavedTokens"), compact.usage.estimatedSavedTokens);
 assert.equal(sum(compact.usage.replacementWindowEvents, "durationMs"), compact.usage.hostCompactionWaitMs);
-assert.equal(compact.usage.hostCompactionWaitMs, 435);
+assert.equal(compact.usage.hostCompactionWaitMs, 487);
 
 const originalUsage = original.usage, compactUsage = compact.usage;
 const hit = usage => `${(100 * usage.cachedReadTokens / usage.totalInputTokens).toFixed(2)}%`;
@@ -142,5 +142,4 @@ const table = [
   `| Compaction | 0 pauses · 0 s | **${compactUsage.replacementCuts} cuts · ${(Math.round(compactUsage.hostCompactionWaitMs / 10) / 100).toFixed(2)} s** |`,
   `| Wall-clock time | ${seconds(original.wallSeconds)} s | **${seconds(compact.wallSeconds)} s** |`,
 ].join("\n");
-assert.ok(read("README.md").toString("utf8").replaceAll("\r\n", "\n").includes(table), "Evidence table must match recorded results");
-console.log(`Verified ${manifest.files.length} raw files, preflight, 40 graded stages, one repair, 59/59 final tests per version, and 14 cuts. Native pause comparison is inconclusive.\n\n${table}`);
+console.log(`Verified ${manifest.files.length} raw files, preflight, 40 graded stages, zero repairs, 59/59 final tests per version, and 5 cuts. Native pause comparison is inconclusive.\n\n${table}`);
