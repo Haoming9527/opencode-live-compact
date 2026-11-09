@@ -16,7 +16,7 @@
 <text x="28" y="248" font-size="14" fill="#969696" >Original OpenCode → Live Compact</text>
 <rect x="28" y="268" width="504" height="57" fill="#151b17"/>
 <text x="42" y="291" font-size="19" fill="#8cdb9f" >150/150 exercises passed in both</text>
-<text x="42" y="313" font-size="13" fill="#969696" >First graded attempt: 149/150 → 150/150</text>
+<text x="42" y="313" font-size="13" fill="#969696" >First graded attempt: 149/150 → <tspan fill="#8cdb9f">150/150</tspan></text>
 <text x="28" y="357" font-size="16" fill="#ededed" >Peak context</text>
 <text x="532" y="357" font-size="14" fill="#8cdb9f" text-anchor="end">-2.7%</text>
 <rect x="28" y="370" width="357" height="11" fill="#696969"/>
@@ -100,7 +100,7 @@
 <text x="1092" y="767" font-size="18" fill="#d2b287" text-anchor="end">0 → 487 ms</text>
 <text x="588" y="795" font-size="13" fill="#d2b287" >No native compaction; pause reduction untested.</text>
 <path d="M0 823h1120" stroke="#292929"/>
-<text x="28" y="849" font-size="14" fill="#969696" >Aider first attempts: 149/150 → 150/150; repairs: 1 → 0. React: 20/20 first attempts in both.</text>
+<text x="28" y="849" font-size="14" fill="#969696" >Aider first attempts: 149/150 → <tspan fill="#8cdb9f">150/150</tspan>; repairs: 1 → <tspan fill="#8cdb9f">0</tspan>. React: 20/20 first attempts in both.</text>
 <text x="28" y="876" font-size="13" fill="#969696" >One pair per suite; costs estimated. Aider: b435cb8; React: d1b707c. Repairs affect cost and time.</text>
 <text x="28" y="897" font-size="13" fill="#969696" >* Non-cached includes writes. Event time excludes outside planning; user-visible waiting was not measured.</text>
 </svg>

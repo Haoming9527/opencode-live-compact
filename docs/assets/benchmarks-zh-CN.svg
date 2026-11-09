@@ -16,7 +16,7 @@
 <text x="28" y="248" font-size="14" fill="#969696" >原版 OpenCode → Live Compact</text>
 <rect x="28" y="268" width="504" height="57" fill="#151b17"/>
 <text x="42" y="291" font-size="19" fill="#8cdb9f" >两组均通过 150/150 道题</text>
-<text x="42" y="313" font-size="13" fill="#969696" >首次独立评分：149/150 → 150/150</text>
+<text x="42" y="313" font-size="13" fill="#969696" >首次独立评分：149/150 → <tspan fill="#8cdb9f">150/150</tspan></text>
 <text x="28" y="357" font-size="16" fill="#ededed" >上下文峰值</text>
 <text x="532" y="357" font-size="14" fill="#8cdb9f" text-anchor="end">-2.7%</text>
 <rect x="28" y="370" width="357" height="11" fill="#696969"/>
@@ -100,7 +100,7 @@
 <text x="1092" y="767" font-size="18" fill="#d2b287" text-anchor="end">0 → 487 毫秒</text>
 <text x="588" y="795" font-size="13" fill="#d2b287" >两组原生压缩均为 0；暂停收益尚未验证。</text>
 <path d="M0 823h1120" stroke="#292929"/>
-<text x="28" y="849" font-size="14" fill="#969696" >Aider 首次评分：149/150 → 150/150；修复：1 → 0。React 两组首次均通过 20/20。</text>
+<text x="28" y="849" font-size="14" fill="#969696" >Aider 首次评分：149/150 → <tspan fill="#8cdb9f">150/150</tspan>；修复：1 → <tspan fill="#8cdb9f">0</tspan>。React 两组首次均通过 20/20。</text>
 <text x="28" y="876" font-size="13" fill="#969696" >各一组配对实验，费用为估算。Aider：b435cb8；React：d1b707c。修复影响费用与时间。</text>
 <text x="28" y="897" font-size="13" fill="#969696" >* 未命中包含缓存写入。事件耗时不含事件外规划；本次未测量用户实际等待时间。</text>
 </svg>
