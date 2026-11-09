@@ -23,7 +23,11 @@ assert.deepEqual(original, json("original-opencode/result.json"));
 assert.deepEqual(compact, json("live-compact/result.json"));
 assert.equal(comparison.comparable, true);
 assert.equal(comparison.bothPassed, true);
-assert.equal(json("plugin-build.json").sourceCommit, manifest.sourceCommit);
+const build = json("plugin-build.json");
+assert.equal(build.sourceCommit, manifest.sourceCommit);
+assert.equal(build.capturedBeforeLaunch, true);
+assert.equal(createHash("sha256").update(JSON.stringify(build.files)).digest("hex"), manifest.testedBuildSha256);
+assert.equal(build.buildSha256, manifest.testedBuildSha256);
 assert.equal(report.model.id, "gpt-6-luna");
 const progress = lines("progress.jsonl");
 for (const [arm, result] of [["control", original], ["plugin", compact]]) {
@@ -31,17 +35,31 @@ for (const [arm, result] of [["control", original], ["plugin", compact]]) {
   assert.equal(result.grade.passed, 150);
   assert.equal(result.grade.failed, 0);
   assert.equal(result.attempts.length, 150);
-  assert.ok(result.attempts.every(attempt => attempt.firstAttemptPassed && attempt.startedAttempts === 1));
+  for (const attempt of result.attempts) {
+    assert.equal(attempt.startedAttempts, attempt.outcomes.length);
+    assert.equal(attempt.firstAttemptPassed, attempt.outcomes[0].passed);
+    assert.equal(attempt.outcomes.at(-1).passed, true);
+  }
+  const repairs = progress.filter(row => row.event === "exercise-repair" && row.arm === arm);
+  assert.equal(repairs.length, result.attempts.reduce((sum, attempt) => sum + attempt.startedAttempts - 1, 0));
   const graded = progress.filter(row => row.event === "exercise-graded" && row.arm === arm);
   assert.equal(graded.length, 150);
   assert.deepEqual(graded.map(row => row.stage), result.grade.outcomes.map(row => row.id));
   assert.equal(graded.at(-1).estimatedUsd, result.usage.costEstimateUsd);
   assert.equal(graded.at(-1).passed, 150);
   assert.equal(graded.at(-1).failed, 0);
+  graded.forEach((row, index) => {
+    assert.equal(row.estimatedUsd, result.attempts[index].outcomes.at(-1).estimatedUsd);
+    assert.equal(row.passed, index + 1);
+    assert.equal(row.failed, 0);
+  });
   assert.equal(result.usage.totalInputTokens,
     result.usage.cachedReadTokens + result.usage.cacheWriteTokens + result.usage.uncachedInputTokens);
   assert.equal(result.usage.nativeCompactionTimingComplete, true);
 }
+assert.equal(original.attempts.filter(attempt => attempt.firstAttemptPassed).length, 149);
+assert.equal(compact.attempts.filter(attempt => attempt.firstAttemptPassed).length, 150);
+assert.equal(original.attempts.find(attempt => !attempt.firstAttemptPassed).id, "javascript-palindrome-products");
 assert.deepEqual(original.grade.outcomes, compact.grade.outcomes);
 const replacements = lines("live-compact/plugin.jsonl").filter(row => row.event === "replacement" && !row.dryRun);
 assert.equal(replacements.length, compact.usage.replacementWindows);
@@ -69,7 +87,7 @@ const values = result => {
 };
 const a = values(original), b = values(compact);
 b[4] += ` · ${savings}% lower`;
-for (const index of [1, 3, 4, 5, 6, 7]) b[index] = `**${b[index]}**`;
+for (const index of [1, 2, 3, 4, 5, 6, 7]) b[index] = `**${b[index]}**`;
 const labels = ["Passed", "Overall cache hit rate", "Cached input tokens", "Non-cached input tokens",
   "Estimated API cost", "Peak context", "Compaction", "Wall-clock time"];
 const table = ["| Metric | Original OpenCode | Live Compact |", "| --- | ---: | ---: |",

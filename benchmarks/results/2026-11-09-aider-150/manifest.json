@@ -4,78 +4,85 @@
   "fixtureCommit": "7e0611e77b54e2dea774cdc0aa00cf9f7ed6144f",
   "opencodeVersion": "2.2.6",
   "model": "openai/gpt-6-luna",
-  "runID": "live-EaPQFq",
-  "launcherID": "run-rJJ72Z",
-  "completedAt": "2026-11-09T10:01:25.891Z",
-  "downloadedAt": "2026-11-09T10:03:23.464Z",
+  "runID": "live-Po7nYN",
+  "launcherID": "run-On8Zfj",
+  "completedAt": "2026-11-09T11:53:25.541Z",
+  "downloadedAt": "2026-11-09T12:19:06.524Z",
   "rawFilesUnmodified": true,
   "files": [
     {
       "path": "comparison.json",
-      "remotePath": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/comparison.json",
-      "bytes": 200115,
-      "sha256": "fce60303efd3b2572741625b61585349fb919fc5a98b7f19622b39721c33a66d"
+      "remotePath": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/comparison.json",
+      "bytes": 196811,
+      "sha256": "fae4b0dbbf0cc28d4c18e0971b83a9e2c6dab01980d941078bbd5483963d8f31"
     },
     {
       "path": "comparison-runner.md",
-      "remotePath": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/comparison-1.md",
-      "bytes": 1028,
-      "sha256": "e1aa3299f2a24165d0b9bb8d241340b5a2586bc9d8ad648edef12f3b900121d9"
+      "remotePath": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/comparison-1.md",
+      "bytes": 1027,
+      "sha256": "5d1713935dea0b223d0e557532579807d935e0301ecbc1c0c40200e4c39e207d"
     },
     {
       "path": "progress.jsonl",
-      "remotePath": "/home/daytona/benchmark-progress/run-rJJ72Z/progress.jsonl",
-      "bytes": 77214,
-      "sha256": "96a4e34fa0be1800f75d1a89dc0cba63956efc6eaa6e9d48519a3a53991b3df9"
+      "remotePath": "/home/daytona/benchmark-progress/run-On8Zfj/progress.jsonl",
+      "bytes": 77530,
+      "sha256": "4581225a2a1eb6cd303023e0b100f8c3528d562dde5ea8453019b77405c609a2"
     },
     {
       "path": "benchmark.log",
-      "remotePath": "/home/daytona/benchmark-progress/run-rJJ72Z/benchmark.log",
-      "bytes": 21025,
-      "sha256": "6f202efee8882b6726c0f011e0ed2c3248d632af9e6ec77c058da88291359a48"
+      "remotePath": "/home/daytona/benchmark-progress/run-On8Zfj/benchmark.log",
+      "bytes": 21116,
+      "sha256": "4a5d16d2c00bc62fb9e2dc7bf10a3e04709c71a8be70f31b4a4cbaf67ff8510a"
     },
     {
       "path": "reference.tap",
-      "remotePath": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/reference.tap",
-      "bytes": 172979,
-      "sha256": "084282d98c28b14373d2c4361d8af706199542215841a26509770ab8978f59da"
+      "remotePath": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/reference.tap",
+      "bytes": 172664,
+      "sha256": "9fcc1323efc2c33dc5ac16654a0523ca3dafefb89c740c6d36ccddb3d00f392c"
     },
     {
       "path": "prompts.json",
-      "remotePath": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/prompts.json",
+      "remotePath": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/prompts.json",
       "bytes": 88053,
       "sha256": "fd3a382c6cd2b931f2c6bc7bd5ea6e3eac65c0a92e9d48e15432cef6eae92c6e"
     },
     {
       "path": "original-opencode/result.json",
-      "remotePath": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/result.json",
-      "bytes": 77402,
-      "sha256": "2cc31192b8033654b0a4a6ea404bad962f8dc4ec23bfbae26e64527e11216602"
+      "remotePath": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/result.json",
+      "bytes": 77645,
+      "sha256": "3e1fc25112a8192ccf8060dcfcb9e3aa3c05426e81cc48c1655b09d56c9fcb02"
     },
     {
       "path": "original-opencode/grade.tap",
-      "remotePath": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/grade.tap",
-      "bytes": 165546,
-      "sha256": "966ff8aa5963aa0e3b346631fff9a2547af8a0fe8684d8343811e34664a6b12d"
+      "remotePath": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/grade.tap",
+      "bytes": 165585,
+      "sha256": "6846b7b1ffeb7ceea6f82cdb9bad200ea8acb8d9d18abb61d4c696b2eb04a09b"
     },
     {
       "path": "live-compact/result.json",
-      "remotePath": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/result.json",
-      "bytes": 86065,
-      "sha256": "01e90b1f3f9861eecb295c7ceb82df8b2df6df6aa1561eb2776b64c9ac8dfb05"
+      "remotePath": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/result.json",
+      "bytes": 83246,
+      "sha256": "a5e70a95a13b904e8675acb23e6e0b37a9ab14a8880b62d3e77ad1e2417283b1"
     },
     {
       "path": "live-compact/grade.tap",
-      "remotePath": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/grade.tap",
-      "bytes": 167059,
-      "sha256": "9bbe8f0c76e621e69d8709dd7accfa5422afa5d82a5a8d30f3a60b16f6bdd5be"
+      "remotePath": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/grade.tap",
+      "bytes": 165630,
+      "sha256": "4cae1a685968cc2a510a3998f7718786bb6380df6e8d299d34a0ed6f8ed880dd"
     },
     {
       "path": "live-compact/plugin.jsonl",
-      "remotePath": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/plugin.jsonl",
-      "bytes": 199181,
-      "sha256": "1c94a7fc21336515b9ea4e278275c180f892f780d25d770c65c7ae2aba9e6252"
+      "remotePath": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/plugin.jsonl",
+      "bytes": 191743,
+      "sha256": "2237f3f14ab672fc3eaae06b393a0766ac6a8d7b4e60834244c503413b8971d0"
+    },
+    {
+      "path": "plugin-build.json",
+      "remotePath": "/home/daytona/benchmark-progress/run-On8Zfj/plugin-build.json",
+      "bytes": 11694,
+      "sha256": "29040c241dee7474c2c8b31fce0125fe8ffe35de8bdc42927d7a5f66bee46f72"
     }
   ],
-  "sourceCommit": "d1b707c"
+  "sourceCommit": "b435cb88ddf5a35cb63785ba8ff5a2fff37acdd8",
+  "testedBuildSha256": "78d922c3f7253cc4b4a07c0e2280e1d1630e442fe34c421b62117b0eec86135f"
 }

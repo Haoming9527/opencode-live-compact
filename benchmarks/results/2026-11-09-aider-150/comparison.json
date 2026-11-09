@@ -6,7 +6,7 @@
   "maxAttempts": 3,
   "budget": 15,
   "reserve": 0.75,
-  "spent": 10.937816135000006,
+  "spent": 11.6923223,
   "expectedPairs": 1,
   "completePairs": 1,
   "results": [
@@ -16,7 +16,7 @@
       "control": {
         "suite": "aider",
         "arm": "control",
-        "sessionID": "ses_e40878e7dffe0hlnq7aqOTRtA8",
+        "sessionID": "ses_e402c578bffecD70gXcAjbFM8b",
         "modelConfiguration": {
           "cost": [
             {
@@ -49,7 +49,7 @@
         },
         "stagesCompleted": 150,
         "stagesExpected": 150,
-        "wallSeconds": 4784.513026416999,
+        "wallSeconds": 5526.106731405,
         "retentionCorrect": null,
         "grade": {
           "total": 150,
@@ -672,8 +672,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.0032451450000000005,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/python-affine-cipher/attempt-1"
+                "estimatedUsd": 0.001577485,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/python-affine-cipher/attempt-1"
               }
             ]
           },
@@ -686,8 +686,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.008189375,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/go-alphametics/attempt-1"
+                "estimatedUsd": 0.0051245200000000005,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/go-alphametics/attempt-1"
               }
             ]
           },
@@ -700,8 +700,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.01082773,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/javascript-affine-cipher/attempt-1"
+                "estimatedUsd": 0.007169985,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/javascript-affine-cipher/attempt-1"
               }
             ]
           },
@@ -714,8 +714,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.01281089,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/rust-accumulate/attempt-1"
+                "estimatedUsd": 0.008791025000000001,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/rust-accumulate/attempt-1"
               }
             ]
           },
@@ -728,8 +728,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.016008534999999997,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/java-affine-cipher/attempt-1"
+                "estimatedUsd": 0.011373940000000003,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/java-affine-cipher/attempt-1"
               }
             ]
           },
@@ -742,8 +742,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.020872534999999998,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/python-beer-song/attempt-1"
+                "estimatedUsd": 0.014341320000000003,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/python-beer-song/attempt-1"
               }
             ]
           },
@@ -756,8 +756,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.025348685,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/go-beer-song/attempt-1"
+                "estimatedUsd": 0.019518175,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/go-beer-song/attempt-1"
               }
             ]
           },
@@ -770,8 +770,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.029043555,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/javascript-alphametics/attempt-1"
+                "estimatedUsd": 0.023356084999999995,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/javascript-alphametics/attempt-1"
               }
             ]
           },
@@ -784,8 +784,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.03263943,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/rust-acronym/attempt-1"
+                "estimatedUsd": 0.026913794999999994,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/rust-acronym/attempt-1"
               }
             ]
           },
@@ -798,8 +798,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.036934345,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/java-all-your-base/attempt-1"
+                "estimatedUsd": 0.031070839999999995,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/java-all-your-base/attempt-1"
               }
             ]
           },
@@ -812,8 +812,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.040960925,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/python-book-store/attempt-1"
+                "estimatedUsd": 0.034509519999999995,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/python-book-store/attempt-1"
               }
             ]
           },
@@ -826,8 +826,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.0450618,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/go-book-store/attempt-1"
+                "estimatedUsd": 0.039331029999999996,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/go-book-store/attempt-1"
               }
             ]
           },
@@ -840,8 +840,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.050063505,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/javascript-beer-song/attempt-1"
+                "estimatedUsd": 0.04456955,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/javascript-beer-song/attempt-1"
               }
             ]
           },
@@ -854,8 +854,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.05756019,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/rust-alphametics/attempt-1"
+                "estimatedUsd": 0.05238807499999999,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/rust-alphametics/attempt-1"
               }
             ]
           },
@@ -868,8 +868,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.06760718,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/java-alphametics/attempt-1"
+                "estimatedUsd": 0.05964923999999999,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/java-alphametics/attempt-1"
               }
             ]
           },
@@ -882,8 +882,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.072628745,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/python-bottle-song/attempt-1"
+                "estimatedUsd": 0.06420688,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/python-bottle-song/attempt-1"
               }
             ]
           },
@@ -896,8 +896,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.07813777499999999,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/go-bottle-song/attempt-1"
+                "estimatedUsd": 0.07553932000000001,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/go-bottle-song/attempt-1"
               }
             ]
           },
@@ -910,8 +910,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.08307131499999999,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/javascript-binary/attempt-1"
+                "estimatedUsd": 0.08098002500000001,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/javascript-binary/attempt-1"
               }
             ]
           },
@@ -924,8 +924,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.08863446999999999,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/rust-book-store/attempt-1"
+                "estimatedUsd": 0.087119875,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/rust-book-store/attempt-1"
               }
             ]
           },
@@ -938,8 +938,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.094403335,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/java-bank-account/attempt-1"
+                "estimatedUsd": 0.09457718,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/java-bank-account/attempt-1"
               }
             ]
           },
@@ -952,8 +952,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.10154155000000001,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/python-bowling/attempt-1"
+                "estimatedUsd": 0.10131246,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/python-bowling/attempt-1"
               }
             ]
           },
@@ -966,8 +966,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.1144339,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/go-bowling/attempt-1"
+                "estimatedUsd": 0.11037567999999998,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/go-bowling/attempt-1"
               }
             ]
           },
@@ -980,8 +980,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.12074426,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/javascript-book-store/attempt-1"
+                "estimatedUsd": 0.11754420999999998,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/javascript-book-store/attempt-1"
               }
             ]
           },
@@ -994,8 +994,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.12816939,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/rust-bowling/attempt-1"
+                "estimatedUsd": 0.12586548499999997,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/rust-bowling/attempt-1"
               }
             ]
           },
@@ -1008,8 +1008,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.13686215999999995,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/java-book-store/attempt-1"
+                "estimatedUsd": 0.13386017499999997,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/java-book-store/attempt-1"
               }
             ]
           },
@@ -1022,8 +1022,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.14417964999999994,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/python-connect/attempt-1"
+                "estimatedUsd": 0.14079368999999997,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/python-connect/attempt-1"
               }
             ]
           },
@@ -1036,8 +1036,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.15309175999999994,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/go-connect/attempt-1"
+                "estimatedUsd": 0.15074401999999998,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/go-connect/attempt-1"
               }
             ]
           },
@@ -1050,8 +1050,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.16031431999999993,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/javascript-bottle-song/attempt-1"
+                "estimatedUsd": 0.15905328999999996,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/javascript-bottle-song/attempt-1"
               }
             ]
           },
@@ -1064,8 +1064,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.17625822499999994,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/rust-decimal/attempt-1"
+                "estimatedUsd": 0.175621895,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/rust-decimal/attempt-1"
               }
             ]
           },
@@ -1078,8 +1078,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.1844299249999999,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/java-bottle-song/attempt-1"
+                "estimatedUsd": 0.18477562,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/java-bottle-song/attempt-1"
               }
             ]
           },
@@ -1092,8 +1092,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.1929318949999999,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/python-dominoes/attempt-1"
+                "estimatedUsd": 0.19293878999999997,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/python-dominoes/attempt-1"
               }
             ]
           },
@@ -1106,8 +1106,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.2060180949999999,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/go-counter/attempt-1"
+                "estimatedUsd": 0.21097180000000001,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/go-counter/attempt-1"
               }
             ]
           },
@@ -1120,8 +1120,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.2153668099999999,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/javascript-bowling/attempt-1"
+                "estimatedUsd": 0.22150339,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/javascript-bowling/attempt-1"
               }
             ]
           },
@@ -1134,8 +1134,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.2353532699999999,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/rust-dot-dsl/attempt-1"
+                "estimatedUsd": 0.236318245,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/rust-dot-dsl/attempt-1"
               }
             ]
           },
@@ -1148,8 +1148,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.2454827499999999,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/java-bowling/attempt-1"
+                "estimatedUsd": 0.24762129,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/java-bowling/attempt-1"
               }
             ]
           },
@@ -1162,8 +1162,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.2557150099999999,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/python-dot-dsl/attempt-1"
+                "estimatedUsd": 0.256980215,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/python-dot-dsl/attempt-1"
               }
             ]
           },
@@ -1176,8 +1176,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.2656064749999999,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/go-crypto-square/attempt-1"
+                "estimatedUsd": 0.26886417,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/go-crypto-square/attempt-1"
               }
             ]
           },
@@ -1190,8 +1190,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.2812219549999999,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/javascript-complex-numbers/attempt-1"
+                "estimatedUsd": 0.285107975,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/javascript-complex-numbers/attempt-1"
               }
             ]
           },
@@ -1204,8 +1204,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.30875976499999985,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/rust-doubly-linked-list/attempt-1"
+                "estimatedUsd": 0.3113051399999999,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/rust-doubly-linked-list/attempt-1"
               }
             ]
           },
@@ -1218,8 +1218,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.32005742999999987,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/java-change/attempt-1"
+                "estimatedUsd": 0.3243678699999999,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/java-change/attempt-1"
               }
             ]
           },
@@ -1232,8 +1232,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.3313590149999998,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/python-food-chain/attempt-1"
+                "estimatedUsd": 0.3378230499999999,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/python-food-chain/attempt-1"
               }
             ]
           },
@@ -1246,8 +1246,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.3453832099999999,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/go-dnd-character/attempt-1"
+                "estimatedUsd": 0.3560922349999999,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/go-dnd-character/attempt-1"
               }
             ]
           },
@@ -1260,8 +1260,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.35682266999999995,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/javascript-connect/attempt-1"
+                "estimatedUsd": 0.36948019999999987,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/javascript-connect/attempt-1"
               }
             ]
           },
@@ -1274,8 +1274,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.371931605,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/rust-fizzy/attempt-1"
+                "estimatedUsd": 0.3863481799999998,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/rust-fizzy/attempt-1"
               }
             ]
           },
@@ -1288,8 +1288,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.39849693499999994,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/java-circular-buffer/attempt-1"
+                "estimatedUsd": 0.4056074849999998,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/java-circular-buffer/attempt-1"
               }
             ]
           },
@@ -1302,8 +1302,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.424763815,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/python-forth/attempt-1"
+                "estimatedUsd": 0.4218373349999998,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/python-forth/attempt-1"
               }
             ]
           },
@@ -1316,8 +1316,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.45026560499999996,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/go-dominoes/attempt-1"
+                "estimatedUsd": 0.4513658849999998,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/go-dominoes/attempt-1"
               }
             ]
           },
@@ -1330,8 +1330,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.48725974499999997,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/javascript-food-chain/attempt-1"
+                "estimatedUsd": 0.4810856749999998,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/javascript-food-chain/attempt-1"
               }
             ]
           },
@@ -1344,8 +1344,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.522332895,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/rust-forth/attempt-1"
+                "estimatedUsd": 0.5210733349999997,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/rust-forth/attempt-1"
               }
             ]
           },
@@ -1358,8 +1358,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.5549884350000001,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/java-connect/attempt-1"
+                "estimatedUsd": 0.5641761249999998,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/java-connect/attempt-1"
               }
             ]
           },
@@ -1372,8 +1372,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.588030965,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/python-go-counting/attempt-1"
+                "estimatedUsd": 0.5958948749999998,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/python-go-counting/attempt-1"
               }
             ]
           },
@@ -1386,8 +1386,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.6243822450000001,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/go-error-handling/attempt-1"
+                "estimatedUsd": 0.6348966749999999,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/go-error-handling/attempt-1"
               }
             ]
           },
@@ -1400,8 +1400,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.6535800350000002,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/javascript-forth/attempt-1"
+                "estimatedUsd": 0.668928825,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/javascript-forth/attempt-1"
               }
             ]
           },
@@ -1414,8 +1414,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.6805110650000002,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/rust-gigasecond/attempt-1"
+                "estimatedUsd": 0.7008668950000001,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/rust-gigasecond/attempt-1"
               }
             ]
           },
@@ -1428,8 +1428,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.7103016450000003,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/java-custom-set/attempt-1"
+                "estimatedUsd": 0.7357354150000002,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/java-custom-set/attempt-1"
               }
             ]
           },
@@ -1442,8 +1442,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.7386360950000004,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/python-grade-school/attempt-1"
+                "estimatedUsd": 0.7628721250000002,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/python-grade-school/attempt-1"
               }
             ]
           },
@@ -1456,8 +1456,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.7675789050000005,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/go-food-chain/attempt-1"
+                "estimatedUsd": 0.7972063050000002,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/go-food-chain/attempt-1"
               }
             ]
           },
@@ -1470,8 +1470,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.8124973150000006,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/javascript-go-counting/attempt-1"
+                "estimatedUsd": 0.8399089950000002,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/javascript-go-counting/attempt-1"
               }
             ]
           },
@@ -1484,8 +1484,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.8419837250000005,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/rust-grade-school/attempt-1"
+                "estimatedUsd": 0.8746790750000002,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/rust-grade-school/attempt-1"
               }
             ]
           },
@@ -1498,8 +1498,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.8888669850000005,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/java-dominoes/attempt-1"
+                "estimatedUsd": 0.9113318150000002,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/java-dominoes/attempt-1"
               }
             ]
           },
@@ -1512,8 +1512,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.9202192150000006,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/python-grep/attempt-1"
+                "estimatedUsd": 0.9578170650000002,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/python-grep/attempt-1"
               }
             ]
           },
@@ -1526,8 +1526,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.9682318250000006,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/go-forth/attempt-1"
+                "estimatedUsd": 1.0046172850000001,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/go-forth/attempt-1"
               }
             ]
           },
@@ -1540,8 +1540,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.9997724750000007,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/javascript-grade-school/attempt-1"
+                "estimatedUsd": 1.065654685,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/javascript-grade-school/attempt-1"
               }
             ]
           },
@@ -1554,8 +1554,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 1.0335428150000006,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/rust-grep/attempt-1"
+                "estimatedUsd": 1.1060715049999998,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/rust-grep/attempt-1"
               }
             ]
           },
@@ -1568,8 +1568,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 1.0666182450000006,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/java-food-chain/attempt-1"
+                "estimatedUsd": 1.1459975949999999,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/java-food-chain/attempt-1"
               }
             ]
           },
@@ -1582,8 +1582,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 1.1154303550000007,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/python-hangman/attempt-1"
+                "estimatedUsd": 1.1938982449999997,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/python-hangman/attempt-1"
               }
             ]
           },
@@ -1596,8 +1596,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 1.164629515000001,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/go-hexadecimal/attempt-1"
+                "estimatedUsd": 1.2342904049999999,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/go-hexadecimal/attempt-1"
               }
             ]
           },
@@ -1610,8 +1610,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 1.2006659450000012,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/javascript-grep/attempt-1"
+                "estimatedUsd": 1.2768536249999998,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/javascript-grep/attempt-1"
               }
             ]
           },
@@ -1624,8 +1624,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 1.2355009350000012,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/rust-luhn-from/attempt-1"
+                "estimatedUsd": 1.3453733749999996,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/rust-luhn-from/attempt-1"
               }
             ]
           },
@@ -1638,8 +1638,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 1.3189537550000014,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/java-forth/attempt-1"
+                "estimatedUsd": 1.4164242149999997,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/java-forth/attempt-1"
               }
             ]
           },
@@ -1652,8 +1652,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 1.3542648650000015,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/python-list-ops/attempt-1"
+                "estimatedUsd": 1.4512385149999996,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/python-list-ops/attempt-1"
               }
             ]
           },
@@ -1666,8 +1666,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 1.4098824850000016,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/go-kindergarten-garden/attempt-1"
+                "estimatedUsd": 1.4960570149999997,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/go-kindergarten-garden/attempt-1"
               }
             ]
           },
@@ -1680,8 +1680,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 1.4470809450000017,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/javascript-house/attempt-1"
+                "estimatedUsd": 1.541094695,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/javascript-house/attempt-1"
               }
             ]
           },
@@ -1694,8 +1694,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 1.519973965000002,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/rust-macros/attempt-1"
+                "estimatedUsd": 1.5860209049999998,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/rust-macros/attempt-1"
               }
             ]
           },
@@ -1708,8 +1708,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 1.567302335000002,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/java-go-counting/attempt-1"
+                "estimatedUsd": 1.677742865,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/java-go-counting/attempt-1"
               }
             ]
           },
@@ -1722,8 +1722,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 1.608107525000002,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/python-paasio/attempt-1"
+                "estimatedUsd": 1.727137445,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/python-paasio/attempt-1"
               }
             ]
           },
@@ -1736,8 +1736,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 1.6589944850000022,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/go-ledger/attempt-1"
+                "estimatedUsd": 1.7965089650000001,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/go-ledger/attempt-1"
               }
             ]
           },
@@ -1750,8 +1750,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 1.6982696650000022,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/javascript-killer-sudoku-helper/attempt-1"
+                "estimatedUsd": 1.853858715,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/javascript-killer-sudoku-helper/attempt-1"
               }
             ]
           },
@@ -1764,8 +1764,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 1.7495377850000022,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/rust-nucleotide-codons/attempt-1"
+                "estimatedUsd": 1.912700705,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/rust-nucleotide-codons/attempt-1"
               }
             ]
           },
@@ -1778,8 +1778,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 1.8022295050000021,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/java-hangman/attempt-1"
+                "estimatedUsd": 2.015036455,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/java-hangman/attempt-1"
               }
             ]
           },
@@ -1792,8 +1792,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 1.853263685000002,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/python-phone-number/attempt-1"
+                "estimatedUsd": 2.066313285,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/python-phone-number/attempt-1"
               }
             ]
           },
@@ -1806,8 +1806,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 1.9060070650000018,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/go-markdown/attempt-1"
+                "estimatedUsd": 2.1486164850000002,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/go-markdown/attempt-1"
               }
             ]
           },
@@ -1820,8 +1820,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 1.9594442150000018,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/javascript-ledger/attempt-1"
+                "estimatedUsd": 2.2213797849999994,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/javascript-ledger/attempt-1"
               }
             ]
           },
@@ -1834,8 +1834,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 2.023800145000002,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/rust-ocr-numbers/attempt-1"
+                "estimatedUsd": 2.316852225,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/rust-ocr-numbers/attempt-1"
               }
             ]
           },
@@ -1848,8 +1848,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 2.067015655000002,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/java-house/attempt-1"
+                "estimatedUsd": 2.3699676149999997,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/java-house/attempt-1"
               }
             ]
           },
@@ -1862,8 +1862,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 2.120151275000002,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/python-pig-latin/attempt-1"
+                "estimatedUsd": 2.4229132649999996,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/python-pig-latin/attempt-1"
               }
             ]
           },
@@ -1876,8 +1876,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 2.1645679650000016,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/go-matrix/attempt-1"
+                "estimatedUsd": 2.4774608349999996,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/go-matrix/attempt-1"
               }
             ]
           },
@@ -1890,8 +1890,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 2.209146145000002,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/javascript-list-ops/attempt-1"
+                "estimatedUsd": 2.543217655,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/javascript-list-ops/attempt-1"
               }
             ]
           },
@@ -1904,8 +1904,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 2.253499595000002,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/rust-parallel-letter-frequency/attempt-1"
+                "estimatedUsd": 2.597685525,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/rust-parallel-letter-frequency/attempt-1"
               }
             ]
           },
@@ -1918,8 +1918,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 2.3197971150000014,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/java-kindergarten-garden/attempt-1"
+                "estimatedUsd": 2.652782795,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/java-kindergarten-garden/attempt-1"
               }
             ]
           },
@@ -1932,8 +1932,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 2.3654641650000015,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/python-poker/attempt-1"
+                "estimatedUsd": 2.6980454249999997,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/python-poker/attempt-1"
               }
             ]
           },
@@ -1946,8 +1946,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 2.4099113750000014,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/go-octal/attempt-1"
+                "estimatedUsd": 2.7535656449999997,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/go-octal/attempt-1"
               }
             ]
           },
@@ -1960,8 +1960,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 2.4570677650000015,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/javascript-meetup/attempt-1"
+                "estimatedUsd": 2.8108357549999994,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/javascript-meetup/attempt-1"
               }
             ]
           },
@@ -1974,8 +1974,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 2.5032419250000015,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/rust-pig-latin/attempt-1"
+                "estimatedUsd": 2.879330245,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/rust-pig-latin/attempt-1"
               }
             ]
           },
@@ -1988,8 +1988,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 2.5743762550000016,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/java-ledger/attempt-1"
+                "estimatedUsd": 2.9499716749999996,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/java-ledger/attempt-1"
               }
             ]
           },
@@ -2002,8 +2002,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 2.6247536150000017,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/python-pov/attempt-1"
+                "estimatedUsd": 2.9977395649999994,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/python-pov/attempt-1"
               }
             ]
           },
@@ -2016,8 +2016,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 2.696152255000001,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/go-paasio/attempt-1"
+                "estimatedUsd": 3.080115415,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/go-paasio/attempt-1"
               }
             ]
           },
@@ -2030,8 +2030,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 2.756451595000001,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/javascript-ocr-numbers/attempt-1"
+                "estimatedUsd": 3.1882523649999994,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/javascript-ocr-numbers/attempt-1"
               }
             ]
           },
@@ -2044,8 +2044,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 2.806654385000001,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/rust-poker/attempt-1"
+                "estimatedUsd": 3.4078653049999996,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/rust-poker/attempt-1"
               }
             ]
           },
@@ -2058,8 +2058,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 2.908713285000001,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/java-mazy-mice/attempt-1"
+                "estimatedUsd": 3.4856733449999995,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/java-mazy-mice/attempt-1"
               }
             ]
           },
@@ -2072,8 +2072,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 2.957754565000001,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/python-proverb/attempt-1"
+                "estimatedUsd": 3.5345879049999995,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/python-proverb/attempt-1"
               }
             ]
           },
@@ -2086,22 +2086,28 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 3.058157335000001,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/go-palindrome-products/attempt-1"
+                "estimatedUsd": 3.5973557549999993,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/go-palindrome-products/attempt-1"
               }
             ]
           },
           {
             "id": "javascript-palindrome-products",
-            "attempts": 1,
-            "startedAttempts": 1,
-            "firstAttemptPassed": true,
+            "attempts": 2,
+            "startedAttempts": 2,
+            "firstAttemptPassed": false,
             "outcomes": [
               {
                 "attempt": 1,
+                "passed": false,
+                "estimatedUsd": 3.6651137949999995,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/javascript-palindrome-products/attempt-1"
+              },
+              {
+                "attempt": 2,
                 "passed": true,
-                "estimatedUsd": 3.1629987750000006,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/javascript-palindrome-products/attempt-1"
+                "estimatedUsd": 3.7314500549999994,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/javascript-palindrome-products/attempt-2"
               }
             ]
           },
@@ -2114,8 +2120,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 3.231990155,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/rust-react/attempt-1"
+                "estimatedUsd": 3.8407994449999996,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/rust-react/attempt-1"
               }
             ]
           },
@@ -2128,8 +2134,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 3.429068675,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/java-ocr-numbers/attempt-1"
+                "estimatedUsd": 3.9073024849999998,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/java-ocr-numbers/attempt-1"
               }
             ]
           },
@@ -2142,8 +2148,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 3.482760205,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/python-react/attempt-1"
+                "estimatedUsd": 3.9622349850000003,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/python-react/attempt-1"
               }
             ]
           },
@@ -2156,8 +2162,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 3.548360565,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/go-pig-latin/attempt-1"
+                "estimatedUsd": 4.042193885000001,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/go-pig-latin/attempt-1"
               }
             ]
           },
@@ -2170,8 +2176,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 3.6155513849999994,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/javascript-parallel-letter-frequency/attempt-1"
+                "estimatedUsd": 4.110136835000002,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/javascript-parallel-letter-frequency/attempt-1"
               }
             ]
           },
@@ -2184,8 +2190,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 3.6833592349999997,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/rust-robot-name/attempt-1"
+                "estimatedUsd": 4.1924030450000025,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/rust-robot-name/attempt-1"
               }
             ]
           },
@@ -2198,8 +2204,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 3.7529412349999998,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/java-palindrome-products/attempt-1"
+                "estimatedUsd": 4.289364555000002,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/java-palindrome-products/attempt-1"
               }
             ]
           },
@@ -2212,8 +2218,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 3.8084945649999997,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/python-rest-api/attempt-1"
+                "estimatedUsd": 4.345991035000003,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/python-rest-api/attempt-1"
               }
             ]
           },
@@ -2226,8 +2232,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 3.865714765,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/go-poker/attempt-1"
+                "estimatedUsd": 4.431499205000002,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/go-poker/attempt-1"
               }
             ]
           },
@@ -2240,8 +2246,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 3.9209414149999997,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/javascript-phone-number/attempt-1"
+                "estimatedUsd": 4.501692755000002,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/javascript-phone-number/attempt-1"
               }
             ]
           },
@@ -2254,8 +2260,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 3.976970115,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/rust-say/attempt-1"
+                "estimatedUsd": 4.572509195000002,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/rust-say/attempt-1"
               }
             ]
           },
@@ -2268,8 +2274,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 4.033163245,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/java-phone-number/attempt-1"
+                "estimatedUsd": 4.643730085000002,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/java-phone-number/attempt-1"
               }
             ]
           },
@@ -2282,8 +2288,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 4.089041595,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/python-robot-name/attempt-1"
+                "estimatedUsd": 4.700741835000003,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/python-robot-name/attempt-1"
               }
             ]
           },
@@ -2296,8 +2302,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 4.147419805000001,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/go-pov/attempt-1"
+                "estimatedUsd": 4.788245975000003,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/go-pov/attempt-1"
               }
             ]
           },
@@ -2310,8 +2316,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 4.204090335000002,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/javascript-pig-latin/attempt-1"
+                "estimatedUsd": 4.860248765000002,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/javascript-pig-latin/attempt-1"
               }
             ]
           },
@@ -2324,8 +2330,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 4.263573745000001,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/rust-scale-generator/attempt-1"
+                "estimatedUsd": 4.948931875000003,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/rust-scale-generator/attempt-1"
               }
             ]
           },
@@ -2338,8 +2344,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 4.3214727050000015,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/java-pig-latin/attempt-1"
+                "estimatedUsd": 5.022284555000003,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/java-pig-latin/attempt-1"
               }
             ]
           },
@@ -2352,8 +2358,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 4.380049585000001,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/python-scale-generator/attempt-1"
+                "estimatedUsd": 5.081822385000003,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/python-scale-generator/attempt-1"
               }
             ]
           },
@@ -2366,8 +2372,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 4.4531008650000015,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/go-protein-translation/attempt-1"
+                "estimatedUsd": 5.170881545000003,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/go-protein-translation/attempt-1"
               }
             ]
           },
@@ -2380,8 +2386,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 4.512689685000002,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/javascript-poker/attempt-1"
+                "estimatedUsd": 5.246113395000003,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/javascript-poker/attempt-1"
               }
             ]
           },
@@ -2394,8 +2400,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 4.5732610450000015,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/rust-simple-cipher/attempt-1"
+                "estimatedUsd": 5.321808435000003,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/rust-simple-cipher/attempt-1"
               }
             ]
           },
@@ -2408,8 +2414,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 4.634730085000002,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/java-poker/attempt-1"
+                "estimatedUsd": 5.398943865000004,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/java-poker/attempt-1"
               }
             ]
           },
@@ -2422,8 +2428,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 4.697367935000003,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/python-sgf-parsing/attempt-1"
+                "estimatedUsd": 5.4932000550000035,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/python-sgf-parsing/attempt-1"
               }
             ]
           },
@@ -2436,8 +2442,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 4.775220845000002,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/go-react/attempt-1"
+                "estimatedUsd": 5.633830295000003,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/go-react/attempt-1"
               }
             ]
           },
@@ -2450,8 +2456,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 4.8376671850000035,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/javascript-promises/attempt-1"
+                "estimatedUsd": 5.712498575000003,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/javascript-promises/attempt-1"
               }
             ]
           },
@@ -2464,8 +2470,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 4.900243795000003,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/rust-two-bucket/attempt-1"
+                "estimatedUsd": 5.792101025000003,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/rust-two-bucket/attempt-1"
               }
             ]
           },
@@ -2478,8 +2484,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 4.994102855000004,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/java-pov/attempt-1"
+                "estimatedUsd": 6.1229905050000015,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/java-pov/attempt-1"
               }
             ]
           },
@@ -2492,8 +2498,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 5.057018605000005,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/python-simple-linked-list/attempt-1"
+                "estimatedUsd": 6.125561280000001,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/python-simple-linked-list/attempt-1"
               }
             ]
           },
@@ -2506,8 +2512,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 5.205674715000005,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/go-robot-simulator/attempt-1"
+                "estimatedUsd": 6.1344472250000015,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/go-robot-simulator/attempt-1"
               }
             ]
           },
@@ -2520,8 +2526,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 5.436403635000007,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/javascript-queen-attack/attempt-1"
+                "estimatedUsd": 6.139164235000002,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/javascript-queen-attack/attempt-1"
               }
             ]
           },
@@ -2534,8 +2540,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 5.4387288700000065,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/rust-variable-length-quantity/attempt-1"
+                "estimatedUsd": 6.1467199950000015,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/rust-variable-length-quantity/attempt-1"
               }
             ]
           },
@@ -2548,8 +2554,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 5.441214960000007,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/java-protein-translation/attempt-1"
+                "estimatedUsd": 6.1508186500000015,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/java-protein-translation/attempt-1"
               }
             ]
           },
@@ -2562,8 +2568,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 5.443704005000007,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/python-transpose/attempt-1"
+                "estimatedUsd": 6.154880225000002,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/python-transpose/attempt-1"
               }
             ]
           },
@@ -2576,8 +2582,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 5.446502840000007,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/go-say/attempt-1"
+                "estimatedUsd": 6.159976930000002,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/go-say/attempt-1"
               }
             ]
           },
@@ -2590,8 +2596,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 5.455088630000007,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/javascript-rational-numbers/attempt-1"
+                "estimatedUsd": 6.169064660000002,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/javascript-rational-numbers/attempt-1"
               }
             ]
           },
@@ -2604,8 +2610,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 5.458567475000008,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/rust-word-count/attempt-1"
+                "estimatedUsd": 6.174247925000002,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/rust-word-count/attempt-1"
               }
             ]
           },
@@ -2618,8 +2624,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 5.4639552800000075,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/java-pythagorean-triplet/attempt-1"
+                "estimatedUsd": 6.180290470000001,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/java-pythagorean-triplet/attempt-1"
               }
             ]
           },
@@ -2632,8 +2638,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 5.468745030000007,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/python-tree-building/attempt-1"
+                "estimatedUsd": 6.188086010000001,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/python-tree-building/attempt-1"
               }
             ]
           },
@@ -2646,8 +2652,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 5.475211780000007,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/go-scale-generator/attempt-1"
+                "estimatedUsd": 6.197240315000002,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/go-scale-generator/attempt-1"
               }
             ]
           },
@@ -2660,8 +2666,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 5.480624650000006,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/javascript-react/attempt-1"
+                "estimatedUsd": 6.204207270000002,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/javascript-react/attempt-1"
               }
             ]
           },
@@ -2674,8 +2680,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 5.487065110000007,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/rust-wordy/attempt-1"
+                "estimatedUsd": 6.212596845000001,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/rust-wordy/attempt-1"
               }
             ]
           },
@@ -2688,8 +2694,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 5.492184115000008,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/java-queen-attack/attempt-1"
+                "estimatedUsd": 6.2192318150000006,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/java-queen-attack/attempt-1"
               }
             ]
           },
@@ -2702,8 +2708,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 5.499216530000008,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/python-two-bucket/attempt-1"
+                "estimatedUsd": 6.2266545,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/python-two-bucket/attempt-1"
               }
             ]
           },
@@ -2716,8 +2722,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 5.506362935000008,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/go-simple-linked-list/attempt-1"
+                "estimatedUsd": 6.235402235,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/go-simple-linked-list/attempt-1"
               }
             ]
           },
@@ -2730,8 +2736,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 5.512076285000009,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/javascript-rectangles/attempt-1"
+                "estimatedUsd": 6.242753769999999,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/javascript-rectangles/attempt-1"
               }
             ]
           },
@@ -2744,8 +2750,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 5.541258805000008,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/rust-xorcism/attempt-1"
+                "estimatedUsd": 6.279186394999998,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/rust-xorcism/attempt-1"
               }
             ]
           },
@@ -2758,40 +2764,40 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 5.5538807300000075,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/control/attempts/java-rational-numbers/attempt-1"
+                "estimatedUsd": 6.295168384999999,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/control/attempts/java-rational-numbers/attempt-1"
               }
             ]
           }
         ],
         "usage": {
-          "costEstimateUsd": 5.5538807300000075,
-          "uncachedInputTokens": 2277,
-          "cachedReadTokens": 260578030,
-          "cacheWriteTokens": 2324928,
-          "totalInputTokens": 262905235,
-          "outputTokens": 166580,
-          "reasoningTokens": 133941,
-          "primaryRequests": 758,
+          "costEstimateUsd": 6.295168384999999,
+          "uncachedInputTokens": 2664,
+          "cachedReadTokens": 302385451,
+          "cacheWriteTokens": 2326917,
+          "totalInputTokens": 304715032,
+          "outputTokens": 170032,
+          "reasoningTokens": 141694,
+          "primaryRequests": 887,
           "retrySchedules": 0,
           "auxiliaryUsageRecords": 1,
-          "knownModelRequests": 759,
+          "knownModelRequests": 888,
           "failedStepsWithoutUsage": 0,
-          "primaryInputSamples": 758,
-          "peakActiveContextTokens": 783361,
-          "meanActiveContextTokens": 345805.57124010555,
+          "primaryInputSamples": 887,
+          "peakActiveContextTokens": 783016,
+          "meanActiveContextTokens": 342650.2254791432,
           "nativeCompactionPauses": 1,
           "automaticNativeCompactionPauses": 1,
-          "nativeCompactionWaitMs": 12273,
-          "nativeCompactionEventDurationMs": 12273,
+          "nativeCompactionWaitMs": 15106,
+          "nativeCompactionEventDurationMs": 15106,
           "nativeCompactionTimingComplete": true,
-          "firstNativeCompactionStage": "javascript-queen-attack",
+          "firstNativeCompactionStage": "java-pov",
           "nativeCompactionEvents": [
             {
-              "stage": "javascript-queen-attack",
+              "stage": "java-pov",
               "reason": "auto",
-              "durationMs": 12273,
-              "endTime": 1794218013731,
+              "durationMs": 15106,
+              "endTime": 1794224444023,
               "outcome": "ended"
             }
           ],
@@ -2809,8 +2815,8 @@
           "replacementPlanningMs": 0,
           "replacementApplicationMs": 0,
           "planningReasons": {},
-          "hostCompactionWaitMs": 12273,
-          "hostCompactionEventDurationMs": 12273,
+          "hostCompactionWaitMs": 15106,
+          "hostCompactionEventDurationMs": 15106,
           "cuts": 0,
           "cutsAfterNativeCompaction": 0,
           "cutOverheadMs": 0,
@@ -2824,7 +2830,7 @@
       "plugin": {
         "suite": "aider",
         "arm": "plugin",
-        "sessionID": "ses_e40878e6bffeoUaz0NNWgINKvP",
+        "sessionID": "ses_e402c572affeDKDak018aWbbUJ",
         "modelConfiguration": {
           "cost": [
             {
@@ -2857,7 +2863,7 @@
         },
         "stagesCompleted": 150,
         "stagesExpected": 150,
-        "wallSeconds": 4333.256696695,
+        "wallSeconds": 3636.60218129,
         "retentionCorrect": null,
         "grade": {
           "total": 150,
@@ -3480,8 +3486,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.00167465,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/python-affine-cipher/attempt-1"
+                "estimatedUsd": 0.00354076,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/python-affine-cipher/attempt-1"
               }
             ]
           },
@@ -3494,8 +3500,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.004899,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/go-alphametics/attempt-1"
+                "estimatedUsd": 0.007620469999999999,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/go-alphametics/attempt-1"
               }
             ]
           },
@@ -3508,8 +3514,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.006723419999999999,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/javascript-affine-cipher/attempt-1"
+                "estimatedUsd": 0.01029466,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/javascript-affine-cipher/attempt-1"
               }
             ]
           },
@@ -3522,8 +3528,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.00830614,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/rust-accumulate/attempt-1"
+                "estimatedUsd": 0.012042095000000001,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/rust-accumulate/attempt-1"
               }
             ]
           },
@@ -3536,8 +3542,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.012154129999999999,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/java-affine-cipher/attempt-1"
+                "estimatedUsd": 0.014690115000000002,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/java-affine-cipher/attempt-1"
               }
             ]
           },
@@ -3550,8 +3556,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.015441595,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/python-beer-song/attempt-1"
+                "estimatedUsd": 0.017997300000000004,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/python-beer-song/attempt-1"
               }
             ]
           },
@@ -3564,8 +3570,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.021362055,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/go-beer-song/attempt-1"
+                "estimatedUsd": 0.024265225000000005,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/go-beer-song/attempt-1"
               }
             ]
           },
@@ -3578,8 +3584,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.02676181,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/javascript-alphametics/attempt-1"
+                "estimatedUsd": 0.029524250000000005,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/javascript-alphametics/attempt-1"
               }
             ]
           },
@@ -3592,8 +3598,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.0297192,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/rust-acronym/attempt-1"
+                "estimatedUsd": 0.033713049999999994,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/rust-acronym/attempt-1"
               }
             ]
           },
@@ -3606,8 +3612,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.03370821,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/java-all-your-base/attempt-1"
+                "estimatedUsd": 0.03770021999999999,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/java-all-your-base/attempt-1"
               }
             ]
           },
@@ -3620,8 +3626,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.03673086,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/python-book-store/attempt-1"
+                "estimatedUsd": 0.04129962499999999,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/python-book-store/attempt-1"
               }
             ]
           },
@@ -3634,8 +3640,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.04075919,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/go-book-store/attempt-1"
+                "estimatedUsd": 0.04514944499999999,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/go-book-store/attempt-1"
               }
             ]
           },
@@ -3648,8 +3654,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.04528693,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/javascript-beer-song/attempt-1"
+                "estimatedUsd": 0.05003359999999999,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/javascript-beer-song/attempt-1"
               }
             ]
           },
@@ -3662,8 +3668,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.050292395,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/rust-alphametics/attempt-1"
+                "estimatedUsd": 0.057418379999999984,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/rust-alphametics/attempt-1"
               }
             ]
           },
@@ -3676,8 +3682,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.056527365,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/java-alphametics/attempt-1"
+                "estimatedUsd": 0.06376765499999999,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/java-alphametics/attempt-1"
               }
             ]
           },
@@ -3690,8 +3696,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.060891020000000004,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/python-bottle-song/attempt-1"
+                "estimatedUsd": 0.06846225499999999,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/python-bottle-song/attempt-1"
               }
             ]
           },
@@ -3704,8 +3710,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.06727200500000002,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/go-bottle-song/attempt-1"
+                "estimatedUsd": 0.07471349999999999,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/go-bottle-song/attempt-1"
               }
             ]
           },
@@ -3718,8 +3724,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.07130414500000001,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/javascript-binary/attempt-1"
+                "estimatedUsd": 0.07933167499999999,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/javascript-binary/attempt-1"
               }
             ]
           },
@@ -3732,8 +3738,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.07694775000000002,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/rust-book-store/attempt-1"
+                "estimatedUsd": 0.08463332,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/rust-book-store/attempt-1"
               }
             ]
           },
@@ -3746,8 +3752,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.08210004000000001,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/java-bank-account/attempt-1"
+                "estimatedUsd": 0.09015005,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/java-bank-account/attempt-1"
               }
             ]
           },
@@ -3760,8 +3766,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.08792407000000002,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/python-bowling/attempt-1"
+                "estimatedUsd": 0.097149395,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/python-bowling/attempt-1"
               }
             ]
           },
@@ -3774,8 +3780,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.09264475500000004,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/go-bowling/attempt-1"
+                "estimatedUsd": 0.10747944,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/go-bowling/attempt-1"
               }
             ]
           },
@@ -3788,8 +3794,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.09773150500000002,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/javascript-book-store/attempt-1"
+                "estimatedUsd": 0.11498923,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/javascript-book-store/attempt-1"
               }
             ]
           },
@@ -3802,8 +3808,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.10871479500000002,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/rust-bowling/attempt-1"
+                "estimatedUsd": 0.128382135,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/rust-bowling/attempt-1"
               }
             ]
           },
@@ -3816,8 +3822,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.11416528000000001,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/java-book-store/attempt-1"
+                "estimatedUsd": 0.13487524,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/java-book-store/attempt-1"
               }
             ]
           },
@@ -3830,8 +3836,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.11964994000000002,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/python-connect/attempt-1"
+                "estimatedUsd": 0.14168975,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/python-connect/attempt-1"
               }
             ]
           },
@@ -3844,8 +3850,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.126172285,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/go-connect/attempt-1"
+                "estimatedUsd": 0.14843629,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/go-connect/attempt-1"
               }
             ]
           },
@@ -3858,8 +3864,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.13130877,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/javascript-bottle-song/attempt-1"
+                "estimatedUsd": 0.15663771999999998,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/javascript-bottle-song/attempt-1"
               }
             ]
           },
@@ -3872,8 +3878,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.14480742500000002,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/rust-decimal/attempt-1"
+                "estimatedUsd": 0.16753157999999999,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/rust-decimal/attempt-1"
               }
             ]
           },
@@ -3886,8 +3892,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.15160623,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/java-bottle-song/attempt-1"
+                "estimatedUsd": 0.17484143,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/java-bottle-song/attempt-1"
               }
             ]
           },
@@ -3900,8 +3906,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.157764405,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/python-dominoes/attempt-1"
+                "estimatedUsd": 0.18262486499999997,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/python-dominoes/attempt-1"
               }
             ]
           },
@@ -3914,8 +3920,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.16764625000000002,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/go-counter/attempt-1"
+                "estimatedUsd": 0.19081496999999997,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/go-counter/attempt-1"
               }
             ]
           },
@@ -3928,8 +3934,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.17462299,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/javascript-bowling/attempt-1"
+                "estimatedUsd": 0.19914866499999997,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/javascript-bowling/attempt-1"
               }
             ]
           },
@@ -3942,8 +3948,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.18885566,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/rust-dot-dsl/attempt-1"
+                "estimatedUsd": 0.20801481,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/rust-dot-dsl/attempt-1"
               }
             ]
           },
@@ -3956,8 +3962,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.19660948,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/java-bowling/attempt-1"
+                "estimatedUsd": 0.21700349,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/java-bowling/attempt-1"
               }
             ]
           },
@@ -3970,8 +3976,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.205998945,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/python-dot-dsl/attempt-1"
+                "estimatedUsd": 0.227658155,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/python-dot-dsl/attempt-1"
               }
             ]
           },
@@ -3984,8 +3990,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.21362563499999998,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/go-crypto-square/attempt-1"
+                "estimatedUsd": 0.23646344,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/go-crypto-square/attempt-1"
               }
             ]
           },
@@ -3998,8 +4004,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.22583255499999996,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/javascript-complex-numbers/attempt-1"
+                "estimatedUsd": 0.2506969,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/javascript-complex-numbers/attempt-1"
               }
             ]
           },
@@ -4012,8 +4018,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.24662157499999995,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/rust-doubly-linked-list/attempt-1"
+                "estimatedUsd": 0.275436145,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/rust-doubly-linked-list/attempt-1"
               }
             ]
           },
@@ -4026,8 +4032,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.25581295499999995,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/java-change/attempt-1"
+                "estimatedUsd": 0.28535965500000005,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/java-change/attempt-1"
               }
             ]
           },
@@ -4040,8 +4046,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.2642995249999999,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/python-food-chain/attempt-1"
+                "estimatedUsd": 0.29777383,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/python-food-chain/attempt-1"
               }
             ]
           },
@@ -4054,8 +4060,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.27247348499999996,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/go-dnd-character/attempt-1"
+                "estimatedUsd": 0.31011363000000003,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/go-dnd-character/attempt-1"
               }
             ]
           },
@@ -4068,8 +4074,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.28091571000000004,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/javascript-connect/attempt-1"
+                "estimatedUsd": 0.322684615,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/javascript-connect/attempt-1"
               }
             ]
           },
@@ -4082,8 +4088,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.29435431000000006,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/rust-fizzy/attempt-1"
+                "estimatedUsd": 0.33389160000000007,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/rust-fizzy/attempt-1"
               }
             ]
           },
@@ -4096,8 +4102,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.30561614500000006,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/java-circular-buffer/attempt-1"
+                "estimatedUsd": 0.3445304150000001,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/java-circular-buffer/attempt-1"
               }
             ]
           },
@@ -4110,8 +4116,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.3158504200000001,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/python-forth/attempt-1"
+                "estimatedUsd": 0.3566406350000001,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/python-forth/attempt-1"
               }
             ]
           },
@@ -4124,8 +4130,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.3252855250000001,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/go-dominoes/attempt-1"
+                "estimatedUsd": 0.3707308050000001,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/go-dominoes/attempt-1"
               }
             ]
           },
@@ -4138,8 +4144,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.3356008950000001,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/javascript-food-chain/attempt-1"
+                "estimatedUsd": 0.38823631000000014,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/javascript-food-chain/attempt-1"
               }
             ]
           },
@@ -4152,8 +4158,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.35365385000000016,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/rust-forth/attempt-1"
+                "estimatedUsd": 0.40540917000000015,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/rust-forth/attempt-1"
               }
             ]
           },
@@ -4166,8 +4172,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.36850848000000014,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/java-connect/attempt-1"
+                "estimatedUsd": 0.4206416700000002,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/java-connect/attempt-1"
               }
             ]
           },
@@ -4180,8 +4186,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.37856715500000016,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/python-go-counting/attempt-1"
+                "estimatedUsd": 0.43240991500000014,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/python-go-counting/attempt-1"
               }
             ]
           },
@@ -4194,8 +4200,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.39125737500000013,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/go-error-handling/attempt-1"
+                "estimatedUsd": 0.4509860850000002,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/go-error-handling/attempt-1"
               }
             ]
           },
@@ -4208,8 +4214,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.4028430550000001,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/javascript-forth/attempt-1"
+                "estimatedUsd": 0.47763617500000016,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/javascript-forth/attempt-1"
               }
             ]
           },
@@ -4222,8 +4228,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.41497005000000015,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/rust-gigasecond/attempt-1"
+                "estimatedUsd": 0.5033644950000002,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/rust-gigasecond/attempt-1"
               }
             ]
           },
@@ -4236,8 +4242,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.4261763500000002,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/java-custom-set/attempt-1"
+                "estimatedUsd": 0.5289307950000002,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/java-custom-set/attempt-1"
               }
             ]
           },
@@ -4250,8 +4256,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.43662609000000013,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/python-grade-school/attempt-1"
+                "estimatedUsd": 0.5532400450000001,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/python-grade-school/attempt-1"
               }
             ]
           },
@@ -4264,8 +4270,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.44741252000000015,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/go-food-chain/attempt-1"
+                "estimatedUsd": 0.5783239950000001,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/go-food-chain/attempt-1"
               }
             ]
           },
@@ -4278,8 +4284,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.45932165000000014,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/javascript-go-counting/attempt-1"
+                "estimatedUsd": 0.6053363550000002,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/javascript-go-counting/attempt-1"
               }
             ]
           },
@@ -4292,8 +4298,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.4727450700000001,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/rust-grade-school/attempt-1"
+                "estimatedUsd": 0.6425116650000002,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/rust-grade-school/attempt-1"
               }
             ]
           },
@@ -4306,8 +4312,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.48782703500000013,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/java-dominoes/attempt-1"
+                "estimatedUsd": 0.6707637850000003,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/java-dominoes/attempt-1"
               }
             ]
           },
@@ -4320,8 +4326,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.4993695450000001,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/python-grep/attempt-1"
+                "estimatedUsd": 0.6977939750000003,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/python-grep/attempt-1"
               }
             ]
           },
@@ -4334,8 +4340,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.540467035,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/go-forth/attempt-1"
+                "estimatedUsd": 0.7321537850000003,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/go-forth/attempt-1"
               }
             ]
           },
@@ -4348,8 +4354,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.568740115,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/javascript-grade-school/attempt-1"
+                "estimatedUsd": 0.7603657950000003,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/javascript-grade-school/attempt-1"
               }
             ]
           },
@@ -4362,8 +4368,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.5998718550000001,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/rust-grep/attempt-1"
+                "estimatedUsd": 0.7907886150000003,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/rust-grep/attempt-1"
               }
             ]
           },
@@ -4376,8 +4382,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.6308056450000001,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/java-food-chain/attempt-1"
+                "estimatedUsd": 0.8191280150000003,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/java-food-chain/attempt-1"
               }
             ]
           },
@@ -4390,8 +4396,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.6687579450000002,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/python-hangman/attempt-1"
+                "estimatedUsd": 0.8622881450000004,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/python-hangman/attempt-1"
               }
             ]
           },
@@ -4404,8 +4410,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.6994938250000002,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/go-hexadecimal/attempt-1"
+                "estimatedUsd": 0.8908468850000004,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/go-hexadecimal/attempt-1"
               }
             ]
           },
@@ -4418,8 +4424,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.7262996750000001,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/javascript-grep/attempt-1"
+                "estimatedUsd": 0.9215970850000005,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/javascript-grep/attempt-1"
               }
             ]
           },
@@ -4432,8 +4438,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.7638923750000001,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/rust-luhn-from/attempt-1"
+                "estimatedUsd": 0.9513320550000005,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/rust-luhn-from/attempt-1"
               }
             ]
           },
@@ -4446,8 +4452,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.813286965,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/java-forth/attempt-1"
+                "estimatedUsd": 0.9850732750000005,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/java-forth/attempt-1"
               }
             ]
           },
@@ -4460,8 +4466,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.839267895,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/python-list-ops/attempt-1"
+                "estimatedUsd": 1.0145715350000006,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/python-list-ops/attempt-1"
               }
             ]
           },
@@ -4474,8 +4480,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.873150095,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/go-kindergarten-garden/attempt-1"
+                "estimatedUsd": 1.0599614250000007,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/go-kindergarten-garden/attempt-1"
               }
             ]
           },
@@ -4488,8 +4494,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.9006561749999998,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/javascript-house/attempt-1"
+                "estimatedUsd": 1.0912977250000009,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/javascript-house/attempt-1"
               }
             ]
           },
@@ -4502,8 +4508,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.9539972649999997,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/rust-macros/attempt-1"
+                "estimatedUsd": 1.144492095000001,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/rust-macros/attempt-1"
               }
             ]
           },
@@ -4516,8 +4522,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 0.9979564949999997,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/java-go-counting/attempt-1"
+                "estimatedUsd": 1.184030835000001,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/java-go-counting/attempt-1"
               }
             ]
           },
@@ -4530,8 +4536,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 1.035534265,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/python-paasio/attempt-1"
+                "estimatedUsd": 1.218069665000001,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/python-paasio/attempt-1"
               }
             ]
           },
@@ -4544,8 +4550,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 1.123229235,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/go-ledger/attempt-1"
+                "estimatedUsd": 1.269862165000001,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/go-ledger/attempt-1"
               }
             ]
           },
@@ -4558,8 +4564,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 1.1554044749999999,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/javascript-killer-sudoku-helper/attempt-1"
+                "estimatedUsd": 1.302922565000001,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/javascript-killer-sudoku-helper/attempt-1"
               }
             ]
           },
@@ -4572,8 +4578,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 1.200753905,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/rust-nucleotide-codons/attempt-1"
+                "estimatedUsd": 1.337485545000001,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/rust-nucleotide-codons/attempt-1"
               }
             ]
           },
@@ -4586,8 +4592,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 1.250767595,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/java-hangman/attempt-1"
+                "estimatedUsd": 1.3746495650000008,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/java-hangman/attempt-1"
               }
             ]
           },
@@ -4600,8 +4606,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 1.2835239550000002,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/python-phone-number/attempt-1"
+                "estimatedUsd": 1.4094666850000008,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/python-phone-number/attempt-1"
               }
             ]
           },
@@ -4614,8 +4620,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 1.3459938450000002,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/go-markdown/attempt-1"
+                "estimatedUsd": 1.4561185450000007,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/go-markdown/attempt-1"
               }
             ]
           },
@@ -4628,8 +4634,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 1.396351075,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/javascript-ledger/attempt-1"
+                "estimatedUsd": 1.5128788750000008,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/javascript-ledger/attempt-1"
               }
             ]
           },
@@ -4642,8 +4648,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 1.4371966150000002,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/rust-ocr-numbers/attempt-1"
+                "estimatedUsd": 1.5767436550000007,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/rust-ocr-numbers/attempt-1"
               }
             ]
           },
@@ -4656,8 +4662,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 1.4702349650000002,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/java-house/attempt-1"
+                "estimatedUsd": 1.6134102050000005,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/java-house/attempt-1"
               }
             ]
           },
@@ -4670,8 +4676,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 1.5046229950000003,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/python-pig-latin/attempt-1"
+                "estimatedUsd": 1.6585407550000006,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/python-pig-latin/attempt-1"
               }
             ]
           },
@@ -4684,8 +4690,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 1.5384430750000004,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/go-matrix/attempt-1"
+                "estimatedUsd": 1.6962240150000008,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/go-matrix/attempt-1"
               }
             ]
           },
@@ -4698,8 +4704,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 1.5723641950000005,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/javascript-list-ops/attempt-1"
+                "estimatedUsd": 1.7527744550000006,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/javascript-list-ops/attempt-1"
               }
             ]
           },
@@ -4712,8 +4718,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 1.6153111450000006,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/rust-parallel-letter-frequency/attempt-1"
+                "estimatedUsd": 1.8195238350000007,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/rust-parallel-letter-frequency/attempt-1"
               }
             ]
           },
@@ -4726,8 +4732,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 1.6672477950000004,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/java-kindergarten-garden/attempt-1"
+                "estimatedUsd": 1.8580758450000006,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/java-kindergarten-garden/attempt-1"
               }
             ]
           },
@@ -4740,8 +4746,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 1.7045561350000005,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/python-poker/attempt-1"
+                "estimatedUsd": 1.8965879050000005,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/python-poker/attempt-1"
               }
             ]
           },
@@ -4754,8 +4760,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 1.7464835450000007,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/go-octal/attempt-1"
+                "estimatedUsd": 1.9342132650000006,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/go-octal/attempt-1"
               }
             ]
           },
@@ -4768,8 +4774,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 1.782145575000001,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/javascript-meetup/attempt-1"
+                "estimatedUsd": 1.9739163350000006,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/javascript-meetup/attempt-1"
               }
             ]
           },
@@ -4782,8 +4788,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 1.825694655000001,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/rust-pig-latin/attempt-1"
+                "estimatedUsd": 2.0227996050000008,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/rust-pig-latin/attempt-1"
               }
             ]
           },
@@ -4796,8 +4802,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 1.8728237750000012,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/java-ledger/attempt-1"
+                "estimatedUsd": 2.0754762450000004,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/java-ledger/attempt-1"
               }
             ]
           },
@@ -4810,8 +4816,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 1.9124294450000012,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/python-pov/attempt-1"
+                "estimatedUsd": 2.116198925,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/python-pov/attempt-1"
               }
             ]
           },
@@ -4824,8 +4830,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 1.9749251450000014,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/go-paasio/attempt-1"
+                "estimatedUsd": 2.1570097550000003,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/go-paasio/attempt-1"
               }
             ]
           },
@@ -4838,8 +4844,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 2.013472125000001,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/javascript-ocr-numbers/attempt-1"
+                "estimatedUsd": 2.1996594750000003,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/javascript-ocr-numbers/attempt-1"
               }
             ]
           },
@@ -4852,8 +4858,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 2.096671295000001,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/rust-poker/attempt-1"
+                "estimatedUsd": 2.2421874450000003,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/rust-poker/attempt-1"
               }
             ]
           },
@@ -4866,8 +4872,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 2.1368616450000006,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/java-mazy-mice/attempt-1"
+                "estimatedUsd": 2.2859194950000004,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/java-mazy-mice/attempt-1"
               }
             ]
           },
@@ -4880,8 +4886,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 2.173469195000001,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/python-proverb/attempt-1"
+                "estimatedUsd": 2.3269654450000004,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/python-proverb/attempt-1"
               }
             ]
           },
@@ -4894,8 +4900,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 2.2118232250000007,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/go-palindrome-products/attempt-1"
+                "estimatedUsd": 2.422404665,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/go-palindrome-products/attempt-1"
               }
             ]
           },
@@ -4908,8 +4914,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 2.2817722550000012,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/javascript-palindrome-products/attempt-1"
+                "estimatedUsd": 2.477437355,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/javascript-palindrome-products/attempt-1"
               }
             ]
           },
@@ -4922,8 +4928,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 2.343857475000001,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/rust-react/attempt-1"
+                "estimatedUsd": 2.5584345950000005,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/rust-react/attempt-1"
               }
             ]
           },
@@ -4936,8 +4942,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 2.384568775000001,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/java-ocr-numbers/attempt-1"
+                "estimatedUsd": 2.6032901350000004,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/java-ocr-numbers/attempt-1"
               }
             ]
           },
@@ -4950,8 +4956,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 2.4251752750000004,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/python-react/attempt-1"
+                "estimatedUsd": 2.6717014250000006,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/python-react/attempt-1"
               }
             ]
           },
@@ -4964,8 +4970,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 2.484108955,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/go-pig-latin/attempt-1"
+                "estimatedUsd": 2.7277220250000007,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/go-pig-latin/attempt-1"
               }
             ]
           },
@@ -4978,8 +4984,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 2.526594795,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/javascript-parallel-letter-frequency/attempt-1"
+                "estimatedUsd": 2.7740921350000005,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/javascript-parallel-letter-frequency/attempt-1"
               }
             ]
           },
@@ -4992,8 +4998,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 2.6096843650000006,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/rust-robot-name/attempt-1"
+                "estimatedUsd": 2.821098085000001,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/rust-robot-name/attempt-1"
               }
             ]
           },
@@ -5006,8 +5012,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 2.6745068150000004,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/java-palindrome-products/attempt-1"
+                "estimatedUsd": 2.8930698550000016,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/java-palindrome-products/attempt-1"
               }
             ]
           },
@@ -5020,8 +5026,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 2.7166858350000003,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/python-rest-api/attempt-1"
+                "estimatedUsd": 2.940748845000001,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/python-rest-api/attempt-1"
               }
             ]
           },
@@ -5034,8 +5040,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 2.780857585,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/go-poker/attempt-1"
+                "estimatedUsd": 3.0017625650000017,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/go-poker/attempt-1"
               }
             ]
           },
@@ -5048,8 +5054,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 2.822985965,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/javascript-phone-number/attempt-1"
+                "estimatedUsd": 3.0491712050000017,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/javascript-phone-number/attempt-1"
               }
             ]
           },
@@ -5062,8 +5068,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 2.8878235849999996,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/rust-say/attempt-1"
+                "estimatedUsd": 3.0984425750000018,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/rust-say/attempt-1"
               }
             ]
           },
@@ -5076,8 +5082,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 2.9309710849999995,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/java-phone-number/attempt-1"
+                "estimatedUsd": 3.146555565000002,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/java-phone-number/attempt-1"
               }
             ]
           },
@@ -5090,8 +5096,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 2.9732355849999994,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/python-robot-name/attempt-1"
+                "estimatedUsd": 3.195743275000002,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/python-robot-name/attempt-1"
               }
             ]
           },
@@ -5104,8 +5110,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 3.039329704999999,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/go-pov/attempt-1"
+                "estimatedUsd": 3.245795695000002,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/go-pov/attempt-1"
               }
             ]
           },
@@ -5118,8 +5124,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 3.116016415,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/javascript-pig-latin/attempt-1"
+                "estimatedUsd": 3.2942827750000023,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/javascript-pig-latin/attempt-1"
               }
             ]
           },
@@ -5132,8 +5138,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 3.1831499149999996,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/rust-scale-generator/attempt-1"
+                "estimatedUsd": 3.3453751250000026,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/rust-scale-generator/attempt-1"
               }
             ]
           },
@@ -5146,8 +5152,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 3.228332105,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/java-pig-latin/attempt-1"
+                "estimatedUsd": 3.3950706550000027,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/java-pig-latin/attempt-1"
               }
             ]
           },
@@ -5160,8 +5166,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 3.295677255,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/python-scale-generator/attempt-1"
+                "estimatedUsd": 3.445622725000003,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/python-scale-generator/attempt-1"
               }
             ]
           },
@@ -5174,8 +5180,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 3.351694075,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/go-protein-translation/attempt-1"
+                "estimatedUsd": 3.508435165000003,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/go-protein-translation/attempt-1"
               }
             ]
           },
@@ -5188,8 +5194,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 3.397735555,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/javascript-poker/attempt-1"
+                "estimatedUsd": 3.5598566750000034,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/javascript-poker/attempt-1"
               }
             ]
           },
@@ -5202,8 +5208,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 3.4551146150000003,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/rust-simple-cipher/attempt-1"
+                "estimatedUsd": 3.611428525000003,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/rust-simple-cipher/attempt-1"
               }
             ]
           },
@@ -5216,8 +5222,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 3.5029457850000005,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/java-poker/attempt-1"
+                "estimatedUsd": 3.664720155000003,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/java-poker/attempt-1"
               }
             ]
           },
@@ -5230,8 +5236,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 3.553735535000001,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/python-sgf-parsing/attempt-1"
+                "estimatedUsd": 3.719490675000003,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/python-sgf-parsing/attempt-1"
               }
             ]
           },
@@ -5244,8 +5250,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 3.6604586550000007,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/go-react/attempt-1"
+                "estimatedUsd": 3.7870416550000026,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/go-react/attempt-1"
               }
             ]
           },
@@ -5258,8 +5264,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 3.7118522050000005,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/javascript-promises/attempt-1"
+                "estimatedUsd": 3.843815155000003,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/javascript-promises/attempt-1"
               }
             ]
           },
@@ -5272,8 +5278,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 3.7722127450000005,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/rust-two-bucket/attempt-1"
+                "estimatedUsd": 3.899446715000003,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/rust-two-bucket/attempt-1"
               }
             ]
           },
@@ -5286,8 +5292,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 3.8572732750000003,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/java-pov/attempt-1"
+                "estimatedUsd": 3.9544201650000033,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/java-pov/attempt-1"
               }
             ]
           },
@@ -5300,8 +5306,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 3.906801915000001,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/python-simple-linked-list/attempt-1"
+                "estimatedUsd": 4.009016525000003,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/python-simple-linked-list/attempt-1"
               }
             ]
           },
@@ -5314,8 +5320,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 4.010971005000001,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/go-robot-simulator/attempt-1"
+                "estimatedUsd": 4.126099585000003,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/go-robot-simulator/attempt-1"
               }
             ]
           },
@@ -5328,8 +5334,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 4.063654105000001,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/javascript-queen-attack/attempt-1"
+                "estimatedUsd": 4.1851308150000035,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/javascript-queen-attack/attempt-1"
               }
             ]
           },
@@ -5342,8 +5348,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 4.126143785000001,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/rust-variable-length-quantity/attempt-1"
+                "estimatedUsd": 4.240987795000003,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/rust-variable-length-quantity/attempt-1"
               }
             ]
           },
@@ -5356,8 +5362,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 4.203245755000001,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/java-protein-translation/attempt-1"
+                "estimatedUsd": 4.298646845000003,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/java-protein-translation/attempt-1"
               }
             ]
           },
@@ -5370,8 +5376,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 4.256142985000001,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/python-transpose/attempt-1"
+                "estimatedUsd": 4.355281685000003,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/python-transpose/attempt-1"
               }
             ]
           },
@@ -5384,8 +5390,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 4.3315341850000015,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/go-say/attempt-1"
+                "estimatedUsd": 4.411696415000002,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/go-say/attempt-1"
               }
             ]
           },
@@ -5398,8 +5404,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 4.4100036450000015,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/javascript-rational-numbers/attempt-1"
+                "estimatedUsd": 4.498653815000002,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/javascript-rational-numbers/attempt-1"
               }
             ]
           },
@@ -5412,8 +5418,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 4.474395895000002,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/rust-word-count/attempt-1"
+                "estimatedUsd": 4.556034885000002,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/rust-word-count/attempt-1"
               }
             ]
           },
@@ -5426,8 +5432,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 4.553263085000002,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/java-pythagorean-triplet/attempt-1"
+                "estimatedUsd": 4.6147327150000015,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/java-pythagorean-triplet/attempt-1"
               }
             ]
           },
@@ -5440,8 +5446,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 4.607631175000002,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/python-tree-building/attempt-1"
+                "estimatedUsd": 4.673456955000001,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/python-tree-building/attempt-1"
               }
             ]
           },
@@ -5454,8 +5460,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 4.686224225000002,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/go-scale-generator/attempt-1"
+                "estimatedUsd": 4.732723225000001,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/go-scale-generator/attempt-1"
               }
             ]
           },
@@ -5468,8 +5474,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 4.766953355000001,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/javascript-react/attempt-1"
+                "estimatedUsd": 4.793662535000001,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/javascript-react/attempt-1"
               }
             ]
           },
@@ -5482,8 +5488,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 4.887081095,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/rust-wordy/attempt-1"
+                "estimatedUsd": 4.8680909250000015,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/rust-wordy/attempt-1"
               }
             ]
           },
@@ -5496,8 +5502,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 4.941696405,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/java-queen-attack/attempt-1"
+                "estimatedUsd": 4.928116865000002,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/java-queen-attack/attempt-1"
               }
             ]
           },
@@ -5510,8 +5516,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 4.996047474999999,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/python-two-bucket/attempt-1"
+                "estimatedUsd": 4.987762445000001,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/python-two-bucket/attempt-1"
               }
             ]
           },
@@ -5524,8 +5530,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 5.050656685,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/go-simple-linked-list/attempt-1"
+                "estimatedUsd": 5.0478593850000015,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/go-simple-linked-list/attempt-1"
               }
             ]
           },
@@ -5538,8 +5544,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 5.104830065000001,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/javascript-rectangles/attempt-1"
+                "estimatedUsd": 5.107660095000002,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/javascript-rectangles/attempt-1"
               }
             ]
           },
@@ -5552,8 +5558,8 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 5.308535655,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/rust-xorcism/attempt-1"
+                "estimatedUsd": 5.284295595,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/rust-xorcism/attempt-1"
               }
             ]
           },
@@ -5566,28 +5572,28 @@
               {
                 "attempt": 1,
                 "passed": true,
-                "estimatedUsd": 5.383935404999999,
-                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-EaPQFq/aider/trial-1/plugin/attempts/java-rational-numbers/attempt-1"
+                "estimatedUsd": 5.3971539150000005,
+                "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Po7nYN/aider/trial-1/plugin/attempts/java-rational-numbers/attempt-1"
               }
             ]
           }
         ],
         "usage": {
-          "costEstimateUsd": 5.383935404999999,
-          "uncachedInputTokens": 2364,
-          "cachedReadTokens": 268551702,
-          "cacheWriteTokens": 1219274,
-          "totalInputTokens": 269773340,
-          "outputTokens": 151010,
-          "reasoningTokens": 112042,
-          "primaryRequests": 788,
+          "costEstimateUsd": 5.3971539150000005,
+          "uncachedInputTokens": 2073,
+          "cachedReadTokens": 265961899,
+          "cacheWriteTokens": 1168423,
+          "totalInputTokens": 267132395,
+          "outputTokens": 157641,
+          "reasoningTokens": 110325,
+          "primaryRequests": 691,
           "retrySchedules": 0,
           "auxiliaryUsageRecords": 0,
-          "knownModelRequests": 788,
+          "knownModelRequests": 691,
           "failedStepsWithoutUsage": 0,
-          "primaryInputSamples": 788,
-          "peakActiveContextTokens": 694644,
-          "meanActiveContextTokens": 342351.9543147208,
+          "primaryInputSamples": 691,
+          "peakActiveContextTokens": 762020,
+          "meanActiveContextTokens": 386588.1259044862,
           "nativeCompactionPauses": 0,
           "automaticNativeCompactionPauses": 0,
           "nativeCompactionWaitMs": 0,
@@ -5595,405 +5601,279 @@
           "nativeCompactionTimingComplete": true,
           "firstNativeCompactionStage": null,
           "nativeCompactionEvents": [],
-          "replacementWindows": 53,
-          "replacementHostWaitMs": 3965,
+          "replacementWindows": 35,
+          "replacementHostWaitMs": 2505,
           "replacementWindowEvents": [
             {
-              "stage": "rust-accumulate",
+              "stage": "go-alphametics",
               "reason": "manual",
-              "durationMs": 78,
-              "endTime": 1794213779925,
+              "durationMs": 14,
+              "endTime": 1794219735831,
               "outcome": "ended"
             },
             {
               "stage": "python-beer-song",
               "reason": "manual",
-              "durationMs": 14,
-              "endTime": 1794213815437,
+              "durationMs": 15,
+              "endTime": 1794219778600,
               "outcome": "ended"
             },
             {
-              "stage": "go-beer-song",
-              "reason": "manual",
-              "durationMs": 13,
-              "endTime": 1794213833649,
-              "outcome": "ended"
-            },
-            {
-              "stage": "rust-acronym",
+              "stage": "javascript-beer-song",
               "reason": "manual",
               "durationMs": 19,
-              "endTime": 1794213876660,
+              "endTime": 1794219895373,
               "outcome": "ended"
             },
             {
-              "stage": "python-book-store",
+              "stage": "python-bowling",
               "reason": "manual",
-              "durationMs": 63,
-              "endTime": 1794213905852,
-              "outcome": "ended"
-            },
-            {
-              "stage": "rust-alphametics",
-              "reason": "manual",
-              "durationMs": 18,
-              "endTime": 1794213962269,
-              "outcome": "ended"
-            },
-            {
-              "stage": "go-bottle-song",
-              "reason": "manual",
-              "durationMs": 172,
-              "endTime": 1794214017955,
-              "outcome": "ended"
-            },
-            {
-              "stage": "java-bank-account",
-              "reason": "manual",
-              "durationMs": 26,
-              "endTime": 1794214066959,
+              "durationMs": 25,
+              "endTime": 1794220048234,
               "outcome": "ended"
             },
             {
               "stage": "go-bowling",
               "reason": "manual",
               "durationMs": 23,
-              "endTime": 1794214102477,
+              "endTime": 1794220070192,
               "outcome": "ended"
             },
             {
-              "stage": "rust-bowling",
+              "stage": "javascript-book-store",
               "reason": "manual",
-              "durationMs": 24,
-              "endTime": 1794214142381,
+              "durationMs": 22,
+              "endTime": 1794220081300,
               "outcome": "ended"
             },
             {
-              "stage": "rust-decimal",
+              "stage": "java-bowling",
               "reason": "manual",
-              "durationMs": 27,
-              "endTime": 1794214267306,
+              "durationMs": 37,
+              "endTime": 1794220316430,
               "outcome": "ended"
             },
             {
-              "stage": "javascript-bowling",
+              "stage": "go-crypto-square",
               "reason": "manual",
-              "durationMs": 30,
-              "endTime": 1794214364616,
-              "outcome": "ended"
-            },
-            {
-              "stage": "rust-dot-dsl",
-              "reason": "manual",
-              "durationMs": 31,
-              "endTime": 1794214391989,
-              "outcome": "ended"
-            },
-            {
-              "stage": "python-dot-dsl",
-              "reason": "manual",
-              "durationMs": 64,
-              "endTime": 1794214456240,
-              "outcome": "ended"
-            },
-            {
-              "stage": "rust-doubly-linked-list",
-              "reason": "manual",
-              "durationMs": 39,
-              "endTime": 1794214585539,
-              "outcome": "ended"
-            },
-            {
-              "stage": "rust-fizzy",
-              "reason": "manual",
-              "durationMs": 41,
-              "endTime": 1794214681949,
+              "durationMs": 85,
+              "endTime": 1794220354932,
               "outcome": "ended"
             },
             {
               "stage": "go-dominoes",
               "reason": "manual",
+              "durationMs": 44,
+              "endTime": 1794220614385,
+              "outcome": "ended"
+            },
+            {
+              "stage": "javascript-food-chain",
+              "reason": "manual",
               "durationMs": 40,
-              "endTime": 1794214752207,
+              "endTime": 1794220634390,
               "outcome": "ended"
             },
             {
               "stage": "rust-forth",
               "reason": "manual",
               "durationMs": 43,
-              "endTime": 1794214813958,
+              "endTime": 1794220673748,
               "outcome": "ended"
             },
             {
               "stage": "go-error-handling",
               "reason": "manual",
-              "durationMs": 49,
-              "endTime": 1794214875204,
+              "durationMs": 47,
+              "endTime": 1794220739198,
+              "outcome": "ended"
+            },
+            {
+              "stage": "javascript-forth",
+              "reason": "manual",
+              "durationMs": 67,
+              "endTime": 1794220760198,
               "outcome": "ended"
             },
             {
               "stage": "go-food-chain",
               "reason": "manual",
-              "durationMs": 47,
-              "endTime": 1794214960352,
+              "durationMs": 52,
+              "endTime": 1794220816246,
               "outcome": "ended"
             },
             {
               "stage": "rust-grade-school",
               "reason": "manual",
-              "durationMs": 48,
-              "endTime": 1794214997285,
+              "durationMs": 52,
+              "endTime": 1794220860457,
               "outcome": "ended"
             },
             {
-              "stage": "go-forth",
+              "stage": "javascript-grade-school",
               "reason": "manual",
-              "durationMs": 49,
-              "endTime": 1794215076744,
+              "durationMs": 64,
+              "endTime": 1794220956059,
               "outcome": "ended"
             },
             {
               "stage": "java-food-chain",
               "reason": "manual",
-              "durationMs": 53,
-              "endTime": 1794215150538,
+              "durationMs": 52,
+              "endTime": 1794220988977,
               "outcome": "ended"
             },
             {
               "stage": "python-hangman",
               "reason": "manual",
-              "durationMs": 54,
-              "endTime": 1794215174533,
+              "durationMs": 55,
+              "endTime": 1794221012906,
               "outcome": "ended"
             },
             {
               "stage": "rust-luhn-from",
               "reason": "manual",
-              "durationMs": 62,
-              "endTime": 1794215244180,
+              "durationMs": 214,
+              "endTime": 1794221080777,
               "outcome": "ended"
             },
             {
-              "stage": "rust-macros",
+              "stage": "python-phone-number",
               "reason": "manual",
-              "durationMs": 71,
-              "endTime": 1794215412305,
-              "outcome": "ended"
-            },
-            {
-              "stage": "go-ledger",
-              "reason": "manual",
-              "durationMs": 63,
-              "endTime": 1794215536703,
-              "outcome": "ended"
-            },
-            {
-              "stage": "java-hangman",
-              "reason": "manual",
-              "durationMs": 66,
-              "endTime": 1794215665935,
+              "durationMs": 70,
+              "endTime": 1794221374824,
               "outcome": "ended"
             },
             {
               "stage": "go-markdown",
               "reason": "manual",
-              "durationMs": 100,
-              "endTime": 1794215735498,
-              "outcome": "ended"
-            },
-            {
-              "stage": "java-house",
-              "reason": "manual",
-              "durationMs": 70,
-              "endTime": 1794215823324,
+              "durationMs": 67,
+              "endTime": 1794221406498,
               "outcome": "ended"
             },
             {
               "stage": "javascript-list-ops",
               "reason": "manual",
-              "durationMs": 78,
-              "endTime": 1794215886431,
+              "durationMs": 75,
+              "endTime": 1794221570885,
               "outcome": "ended"
             },
             {
               "stage": "rust-parallel-letter-frequency",
               "reason": "manual",
-              "durationMs": 73,
-              "endTime": 1794215911700,
-              "outcome": "ended"
-            },
-            {
-              "stage": "java-kindergarten-garden",
-              "reason": "manual",
-              "durationMs": 79,
-              "endTime": 1794215939496,
+              "durationMs": 71,
+              "endTime": 1794221605721,
               "outcome": "ended"
             },
             {
               "stage": "rust-pig-latin",
               "reason": "manual",
-              "durationMs": 78,
-              "endTime": 1794216022919,
-              "outcome": "ended"
-            },
-            {
-              "stage": "java-ledger",
-              "reason": "manual",
-              "durationMs": 110,
-              "endTime": 1794216064813,
+              "durationMs": 92,
+              "endTime": 1794221694085,
               "outcome": "ended"
             },
             {
               "stage": "go-paasio",
               "reason": "manual",
               "durationMs": 75,
-              "endTime": 1794216129154,
-              "outcome": "ended"
-            },
-            {
-              "stage": "rust-poker",
-              "reason": "manual",
-              "durationMs": 91,
-              "endTime": 1794216197164,
-              "outcome": "ended"
-            },
-            {
-              "stage": "rust-react",
-              "reason": "manual",
-              "durationMs": 87,
-              "endTime": 1794216394959,
+              "endTime": 1794221772896,
               "outcome": "ended"
             },
             {
               "stage": "rust-robot-name",
               "reason": "manual",
-              "durationMs": 93,
-              "endTime": 1794216547018,
+              "durationMs": 92,
+              "endTime": 1794222123745,
               "outcome": "ended"
             },
             {
               "stage": "javascript-phone-number",
               "reason": "manual",
-              "durationMs": 110,
-              "endTime": 1794216660003,
-              "outcome": "ended"
-            },
-            {
-              "stage": "rust-say",
-              "reason": "manual",
-              "durationMs": 102,
-              "endTime": 1794216707529,
-              "outcome": "ended"
-            },
-            {
-              "stage": "go-pov",
-              "reason": "manual",
               "durationMs": 90,
-              "endTime": 1794216793667,
+              "endTime": 1794222242259,
               "outcome": "ended"
             },
             {
-              "stage": "rust-scale-generator",
+              "stage": "java-phone-number",
               "reason": "manual",
-              "durationMs": 108,
-              "endTime": 1794216875976,
-              "outcome": "ended"
-            },
-            {
-              "stage": "java-poker",
-              "reason": "manual",
-              "durationMs": 100,
-              "endTime": 1794217054579,
+              "durationMs": 96,
+              "endTime": 1794222283460,
               "outcome": "ended"
             },
             {
               "stage": "go-react",
               "reason": "manual",
-              "durationMs": 106,
-              "endTime": 1794217153813,
+              "durationMs": 121,
+              "endTime": 1794222607380,
               "outcome": "ended"
             },
             {
-              "stage": "java-pov",
+              "stage": "python-simple-linked-list",
               "reason": "manual",
               "durationMs": 99,
-              "endTime": 1794217265706,
+              "endTime": 1794222717426,
               "outcome": "ended"
             },
             {
               "stage": "go-robot-simulator",
               "reason": "manual",
-              "durationMs": 110,
-              "endTime": 1794217370190,
+              "durationMs": 111,
+              "endTime": 1794222801042,
               "outcome": "ended"
             },
             {
               "stage": "rust-variable-length-quantity",
               "reason": "manual",
-              "durationMs": 114,
-              "endTime": 1794217418700,
-              "outcome": "ended"
-            },
-            {
-              "stage": "java-protein-translation",
-              "reason": "manual",
-              "durationMs": 104,
-              "endTime": 1794217453346,
-              "outcome": "ended"
-            },
-            {
-              "stage": "java-pythagorean-triplet",
-              "reason": "manual",
-              "durationMs": 289,
-              "endTime": 1794217613731,
+              "durationMs": 108,
+              "endTime": 1794222843626,
               "outcome": "ended"
             },
             {
               "stage": "go-scale-generator",
               "reason": "manual",
-              "durationMs": 118,
-              "endTime": 1794217675607,
+              "durationMs": 133,
+              "endTime": 1794223046148,
               "outcome": "ended"
             },
             {
               "stage": "rust-wordy",
               "reason": "manual",
-              "durationMs": 121,
-              "endTime": 1794217771980,
+              "durationMs": 114,
+              "endTime": 1794223104986,
               "outcome": "ended"
             },
             {
               "stage": "rust-xorcism",
               "reason": "manual",
-              "durationMs": 133,
-              "endTime": 1794217984874,
+              "durationMs": 121,
+              "endTime": 1794223268001,
               "outcome": "ended"
             }
           ],
           "replacementNoopWindows": 0,
           "replacementNoopWindowEvents": [],
           "replacementNoopEventDurationMs": 0,
-          "localMaintenanceEventDurationMs": 3965,
+          "localMaintenanceEventDurationMs": 2505,
           "replacementWindowsWithUsage": 0,
           "replacementWindowsAfterNativeCompaction": null,
-          "replacementCuts": 58,
-          "replacementOverheadMs": 3952.120289999526,
-          "replacementPlanningMs": 2374.1344170007505,
-          "replacementApplicationMs": 1578.0860879984539,
+          "replacementCuts": 37,
+          "replacementOverheadMs": 2666.3083869999173,
+          "replacementPlanningMs": 1608.4946389995166,
+          "replacementApplicationMs": 1057.8465810006455,
           "planningReasons": {
-            "below-context-threshold": 3,
-            "admitted": 53,
-            "insufficient-savings": 74,
-            "no-eligible-history": 20
+            "below-context-threshold": 1,
+            "admitted": 35,
+            "insufficient-savings": 106,
+            "no-eligible-history": 8
           },
-          "hostCompactionWaitMs": 3965,
-          "hostCompactionEventDurationMs": 3965,
+          "hostCompactionWaitMs": 2505,
+          "hostCompactionEventDurationMs": 2505,
           "cuts": 0,
           "cutsAfterNativeCompaction": null,
           "cutOverheadMs": 0,
-          "contextHookOverheadMs": 2.198331002737632,
-          "estimatedSavedTokens": 126525,
-          "estimatedCacheSuffixTokens": 205535,
+          "contextHookOverheadMs": 2.3180869953796446,
+          "estimatedSavedTokens": 85317,
+          "estimatedCacheSuffixTokens": 159108,
           "recalls": 0,
           "successfulRecalls": 0
         }
@@ -6001,14 +5881,14 @@
       "comparison": {
         "comparable": true,
         "bothPassed": true,
-        "costDeltaUsd": -0.16994532500000847,
-        "peakContextDelta": -88717,
-        "meanContextDelta": -3453.616925384733,
+        "costDeltaUsd": -0.8980144699999988,
+        "peakContextDelta": -20996,
+        "meanContextDelta": 43937.90042534302,
         "nativePausesDelta": -1,
-        "nativeCompactionEventDurationDeltaMs": -12273,
-        "hostCompactionEventDurationDeltaMs": -8308,
-        "nativeWaitDeltaMs": -12273,
-        "hostCompactionWaitDeltaMs": -8308
+        "nativeCompactionEventDurationDeltaMs": -15106,
+        "hostCompactionEventDurationDeltaMs": -12601,
+        "nativeWaitDeltaMs": -15106,
+        "hostCompactionWaitDeltaMs": -12601
       }
     }
   ]

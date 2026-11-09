@@ -1,17 +1,17 @@
 # Publish a new version
 
-[opencode-live-compact@0.1.0](https://www.npmjs.com/package/opencode-live-compact) is published. This guide covers future releases. Run commands from this repository's root with Node.js 22.18 or newer.
+This guide covers releases of [opencode-live-compact](https://www.npmjs.com/package/opencode-live-compact). Run commands from this repository's root with Node.js 22.18 or newer.
 
 ## 1. Choose an unused version
 
-npm cannot overwrite a published version. For the next patch release from 0.1.0:
+npm cannot overwrite a published version. Check existing versions before preparing the next patch:
 
 ```sh
 npm view opencode-live-compact versions --json
 npm version patch --no-git-tag-version
 ```
 
-The example changes 0.1.0 to 0.1.1, updating both `package.json` and `package-lock.json` without creating a Git commit or tag. Choose the appropriate version for later releases and review both files.
+This increments the patch version in both `package.json` and `package-lock.json` without creating a Git commit or tag. Review both files before publishing.
 
 ## 2. Check the release
 

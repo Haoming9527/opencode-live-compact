@@ -126,7 +126,7 @@ The benchmark runner supports four suites:
 
 **150 programming exercises + 20 dependent React tasks.** Each suite used one continuous session per version, stock OpenCode **2.2.6**, **GPT-6 Luna**, and identical tasks and defaults. Run in Daytona on November 9, 2026.
 
-![Side-by-side results: both versions passed Aider 150/150 and Web-Bench 20/20. Live Compact estimated API cost was 3.1% and 42.1% lower respectively.](docs/assets/benchmarks-en.svg)
+![Side-by-side results: both versions passed Aider 150/150 and Web-Bench 20/20. Live Compact estimated API cost was 14.3% and 42.1% lower respectively.](docs/assets/benchmarks-en.svg)
 
 [Aider: logs and source data](benchmarks/results/2026-11-09-aider-150/README.md) · [Web-Bench: logs and source data](benchmarks/results/2026-11-09-webbench-react-20/README.md)
 

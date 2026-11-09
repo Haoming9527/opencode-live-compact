@@ -126,7 +126,7 @@ npm run test:integration
 
 **150 道编程题 + 20 个相互依赖的 React 任务。** 每组测试中，两个版本各用一个连续会话，使用官方原版 OpenCode **2.2.6**、**GPT-6 Luna**，题目、顺序及默认设置一致。于 **2026 年 11 月 9 日**在 Daytona 运行。
 
-![并排对比：两个版本均通过 Aider 150/150 和 Web-Bench 20/20。Live Compact 的估算 API 费用分别降低 3.1% 和 42.1%。](docs/assets/benchmarks-zh-CN.svg)
+![并排对比：两个版本均通过 Aider 150/150 和 Web-Bench 20/20。Live Compact 的估算 API 费用分别降低 14.3% 和 42.1%。](docs/assets/benchmarks-zh-CN.svg)
 
 [Aider：日志与原始数据（英文）](benchmarks/results/2026-11-09-aider-150/README.md) · [Web-Bench：日志与原始数据（英文）](benchmarks/results/2026-11-09-webbench-react-20/README.md)
 
