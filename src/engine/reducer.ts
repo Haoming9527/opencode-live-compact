@@ -37,22 +37,30 @@ export function reduce(candidate: Candidate, estimateTokens: TokenEstimate, mini
   if (oversized && candidate.identity.tool === "assistant_text") return;
   const sourceHash = hashText(result.sourceText);
   const reference = recoveryReference(candidate.identity, sourceHash);
-  const checkpoint = oversized ? pointerCheckpoint(result, reference, candidate.identity.tool) : buildCheckpoint(result, reference);
-  if (!checkpoint) return;
-  const { replacement, changedTail } = checkpoint;
-  if (Buffer.byteLength(JSON.stringify(replacement)) >= Buffer.byteLength(JSON.stringify(result.sourceText))) return;
-  const estimatedSavingsTokens = sourceTokens - estimateTokens(replacement);
-  if (!Number.isFinite(estimatedSavingsTokens) || estimatedSavingsTokens <= 0) return;
-  const cacheSuffixTokens = (candidate.suffixTokens ?? 0) + estimateTokens(changedTail);
-  if (!Number.isFinite(cacheSuffixTokens) || cacheSuffixTokens < 0) return;
-  return {
-    identity: candidate.identity,
-    sourceHash,
-    sourceText: result.sourceText,
-    replacement,
-    reference,
-    estimatedSavingsTokens,
-    cacheSuffixTokens,
-  };
+  const sourceBytes = Buffer.byteLength(JSON.stringify(result.sourceText));
+  // Six lines at each edge can retain almost an entire short result. If the
+  // marker outweighs the omitted text, try smaller previews before giving up.
+  // Keep the usual preview whenever it already shrinks; oversized pointers
+  // retain their existing behavior and all variants keep coordinates/notices.
+  for (const maximumPreviewLines of oversized ? [6] : [6, 3, 1]) {
+    const checkpoint = oversized ? pointerCheckpoint(result, reference, candidate.identity.tool)
+      : buildCheckpoint(result, reference, maximumPreviewLines);
+    if (!checkpoint) continue;
+    const { replacement, changedTail } = checkpoint;
+    if (Buffer.byteLength(JSON.stringify(replacement)) >= sourceBytes) continue;
+    const estimatedSavingsTokens = sourceTokens - estimateTokens(replacement);
+    if (!Number.isFinite(estimatedSavingsTokens) || estimatedSavingsTokens <= 0) continue;
+    const cacheSuffixTokens = (candidate.suffixTokens ?? 0) + estimateTokens(changedTail);
+    if (!Number.isFinite(cacheSuffixTokens) || cacheSuffixTokens < 0) return;
+    return {
+      identity: candidate.identity,
+      sourceHash,
+      sourceText: result.sourceText,
+      replacement,
+      reference,
+      estimatedSavingsTokens,
+      cacheSuffixTokens,
+    };
+  }
 }
 

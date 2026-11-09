@@ -5,6 +5,8 @@ import type { Candidate, PlannerOptions } from "../src/engine/planner.ts";
 import { reduce } from "../src/engine/reducer.ts";
 import { hashText, recoveryReference } from "../src/recovery/integrity.ts";
 import { readConfig } from "../src/config.ts";
+import { buildCheckpoint } from "../src/engine/checkpoint.ts";
+import { eligibleResult } from "../src/engine/eligibility.ts";
 
 const options: PlannerOptions = {
   minimumSourceTokens: 1_000,
@@ -163,6 +165,68 @@ test("a qualifying source cannot admit zero savings, negative savings, or serial
   // Even with a permissive source floor, an omission marker cannot expand a tiny result.
   const tiny = read("tiny", 0, "src/example.ts", ["11: x", "12: y"]);
   assert.equal(reduce(tiny, options.estimateTokens, 1), undefined);
+});
+
+function plainOutput(name: "shell" | "assistant_text", lines: string[]): Candidate {
+  const base = read(`adaptive-${name}`);
+  return { identity: { ...base.identity, tool: name }, tool: { ...base.tool, name,
+    state: { status: "completed", input: { command: "show completed work" },
+      metadata: { exit: 0, truncated: false }, content: [{ type: "text", text: lines.join("\n") }] } } };
+}
+
+test("uses smaller previews only when the usual preview cannot shorten eligible shell or prose", () => {
+  for (const name of ["shell", "assistant_text"] as const) {
+    const candidate = plainOutput(name, Array.from({ length: 13 }, () => "x".repeat(308)));
+    const before = structuredClone(candidate);
+    const source = eligibleResult(candidate)!;
+    const reference = recoveryReference(candidate.identity, hashText(source.sourceText));
+    const usual = buildCheckpoint(source, reference)!;
+    assert.ok(options.estimateTokens(source.sourceText) >= 1_000);
+    assert.ok(options.estimateTokens(usual.replacement) >= options.estimateTokens(source.sourceText));
+    const cut = reduce(candidate, options.estimateTokens, 1_000)!;
+    assert.ok(cut);
+    assert.equal(cut.replacement, buildCheckpoint(source, reference, 3)!.replacement);
+    assert.equal(cut.reference, reference);
+    assert.equal(cut.sourceHash, hashText(source.sourceText));
+    assert.ok(cut.estimatedSavingsTokens > 0);
+    assert.ok(Buffer.byteLength(JSON.stringify(cut.replacement)) < Buffer.byteLength(JSON.stringify(source.sourceText)));
+    assert.ok([...cut.replacement].length <= 8_000);
+    assert.deepEqual(candidate, before);
+  }
+});
+
+test("tries one retained line per edge when both six and three cannot pay for the marker", () => {
+  const lines = Array.from({ length: 13 }, (_, i) => i < 3 || i >= 10 ? "x".repeat(700) : "small");
+  const candidate = plainOutput("shell", lines);
+  const source = eligibleResult(candidate)!;
+  const reference = recoveryReference(candidate.identity, hashText(source.sourceText));
+  for (const count of [6, 3]) assert.ok(options.estimateTokens(buildCheckpoint(source, reference, count)!.replacement) >=
+    options.estimateTokens(source.sourceText));
+  const cut = reduce(candidate, options.estimateTokens, 1_000)!;
+  assert.ok(cut);
+  assert.equal(cut.replacement, buildCheckpoint(source, reference, 1)!.replacement);
+  assert.ok(cut.replacement.startsWith(lines[0]! + "\n"));
+  assert.ok(cut.replacement.endsWith("\n" + lines.at(-1)!));
+  assert.ok(cut.estimatedSavingsTokens > 0);
+});
+
+test("adaptive read previews preserve exact header, truncation notice and Unicode recall offsets", () => {
+  const path = `src/${"nested/".repeat(70)}file.ts`;
+  const lines = Array.from({ length: 13 }, (_, i) => `${i + 11}: ${"🔍".repeat(65)}`);
+  const candidate = read("adaptive-read", 0, path, lines);
+  const source = eligibleResult(candidate)!;
+  const reference = recoveryReference(candidate.identity, hashText(source.sourceText));
+  assert.ok(options.estimateTokens(buildCheckpoint(source, reference)!.replacement) >= options.estimateTokens(source.sourceText));
+  const cut = reduce(candidate, options.estimateTokens, 1_000)!;
+  assert.ok(cut);
+  const prefix = `Read file ${path}, lines 11-23\n${lines.slice(0, 3).join("\n")}\n`;
+  const suffix = `\n${lines.slice(-3).join("\n")}\n[Output truncated. Continue reading with offset: 24]`;
+  assert.ok(cut.sourceText.startsWith(prefix) && cut.replacement.startsWith(prefix));
+  assert.ok(cut.sourceText.endsWith(suffix) && cut.replacement.endsWith(suffix));
+  assert.match(cut.replacement, /omitted lines 14-20 /);
+  assert.ok(cut.replacement.includes(`and offset ${[...prefix].length} `));
+  assert.ok([...cut.replacement].length <= 8_000);
+  assert.ok(cut.estimatedSavingsTokens > 0);
 });
 
 test("retains stock glob result notices and verifies the path count", () => {

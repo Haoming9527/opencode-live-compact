@@ -147,6 +147,20 @@ for (const compactSpans of [true, false]) {
   })
 }
 
+test("planning diagnostics distinguish eligible source sizes without recording content", async () => {
+  const f = fixture(false)
+  const hooks = f.makeHooks()
+  hooks.context(f.request(f.messages))
+  await hooks.idle({ sessionID, background: [] })
+  const decision = f.measurements.findLast(value => value.event === "planning")
+  assert.ok(decision?.event === "planning")
+  assert.equal(decision.counts?.eligible, 4)
+  assert.equal(decision.counts?.sourceBelowMinimum, 2)
+  assert.equal(decision.counts?.sourceAtOrAboveMinimum, 2)
+  assert.ok(decision.counts!.sourceTokens! > 20_000)
+  assert.ok(Object.values(decision.counts!).every(value => typeof value === "number"))
+})
+
 test("signed reasoning permits plain assistant text while message or text signatures protect the target", () => {
   const message: Message = { role: "assistant", id: "msg_prose", content: [
     { type: "reasoning", text: "Preserve reasoning.", providerMetadata: { provider: { signature: "reasoning-only" } } },

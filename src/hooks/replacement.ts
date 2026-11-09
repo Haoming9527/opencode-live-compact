@@ -108,7 +108,8 @@ export function replacementHooks(ctx: Context, config: Config, store: RecoverySt
         ...Array.from(visible.values(), item => isSpanCheckpoint(item.text) || item.text.includes("[Live Compact omitted ") ? item.index : -1),
       )
       const counts = { protected: config.protectedToolRounds ? rounds.slice(-config.protectedToolRounds).flat().length : 0,
-        beforeCheckpoint: 0, changed: 0, unsupported: 0, eligible: 0 }
+        beforeCheckpoint: 0, changed: 0, unsupported: 0, eligible: 0,
+        sourceBelowMinimum: 0, sourceAtOrAboveMinimum: 0, sourceTokens: 0 }
       // Share parsing only while both planners inspect this same synchronous snapshot.
       // Queued application still rereads and verifies authoritative history and backups.
       const eligibleResults = new Map<Candidate, EligibleResult>()
@@ -121,6 +122,10 @@ export function replacementHooks(ctx: Context, config: Config, store: RecoverySt
         if (!source) { counts.unsupported++; return [] }
         if (source.sourceText !== match.text) { counts.changed++; return [] }
         counts.eligible++
+        const sourceTokens = estimateTokens(source.sourceText)
+        counts.sourceTokens += sourceTokens
+        if (sourceTokens < config.minimumSourceTokens) counts.sourceBelowMinimum++
+        else counts.sourceAtOrAboveMinimum++
         const indexed = { ...candidate, index: match.index,
           suffixTokens: (suffix[match.index + 1] ?? 0) + tokensAfterPart(request.messages[match.index]!, match.partIndex) }
         eligibleResults.set(indexed, source)
