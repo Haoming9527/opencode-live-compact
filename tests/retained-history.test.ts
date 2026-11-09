@@ -85,7 +85,7 @@ function fixture(recentErrors: boolean, mixedSpan = false, options: Record<strin
   const config = readConfig({ compactSpans: mixedSpan, maxCutsPerCycle: 1, ...options })
   const request = (value: Message[]): SessionContext => ({ sessionID, agent, model, system: [], tools: {}, options: {}, messages: value })
   const makeHooks = () => replacementHooks(ctx, config, store, metrics)
-  const apply = async (hooks: ReturnType<typeof makeHooks>, view: Message[], turn: number) => {
+  const apply = async (hooks: ReturnType<typeof makeHooks>, view: Message[], turn: number, expected = "replacement-v1") => {
     const queuedID = queued.at(-1)?.id
     assert.ok(queuedID)
     history = [...history, { id: queuedID, type: "compaction", status: "running" }] as History
@@ -93,11 +93,12 @@ function fixture(recentErrors: boolean, mixedSpan = false, options: Record<strin
       role: "assistant", id: `msg_finished${turn}`, content: [{ type: "text", text: "The turn finished." }],
     }] }
     await hooks.compaction(event)
-    assert.equal(event.result?.metadata?.liveCompact, "replacement-v1")
+    assert.equal(event.result?.metadata?.liveCompact, expected)
     assert.ok(Array.isArray(event.result.native?.messages))
     return event.result
   }
   return { messages, queued, request, makeHooks, apply, measurements,
+    history: () => history,
     resume(result: NonNullable<SessionCompaction["result"]>) {
       history = [{ id: queued[0]!.id, type: "compaction", status: "completed", model,
         metadata: result.metadata, native: result.native },
@@ -304,5 +305,46 @@ for (const recentErrors of [false, true]) {
       const retained = (view: Message[]) => view.find(message => message.role === "tool" && message.content[0]?.id === `call_recent${i}`)
       assert.deepEqual(retained(output), retained(nextView), "the latest three tool rounds remain intact")
     }
+  })
+}
+
+for (const compactSpans of [false, true]) {
+  test(`background dev server permits completed cuts and preserves active rounds (spans ${compactSpans})`, async () => {
+    const f = fixture(false, false, { compactSpans })
+    const entry = f.history().find(entry => entry.id === "msg_large")!
+    assert.equal(entry.type, "assistant")
+    const tool = entry.content[0]!
+    assert.equal(tool.type, "tool")
+    Object.assign(tool.state, { status: "running" })
+    const before = structuredClone(f.messages)
+    const hooks = f.makeHooks()
+    hooks.context(f.request(f.messages))
+    await hooks.idle({ sessionID, background: [{ kind: "shell", sessionID,
+      shellID: "dev-server", command: "npm run dev" }] })
+    assert.equal(f.queued.length, 1)
+    const result = await f.apply(hooks, f.messages, 1)
+    const output = result.native!.messages as Message[]
+    assert.deepEqual(output[1], before[1], "active call stays exact")
+    assert.deepEqual(output[2], before[2], "partial output stays exact")
+    assert.notDeepEqual(output[4], before[4], "completed history still compacts")
+    assert.deepEqual(output[0], before[0], "prefix stays exact")
+  })
+}
+
+for (const compactSpans of [false, true]) {
+  test(`queued cut falls back if a selected tool becomes active (spans ${compactSpans})`, async () => {
+    const f = fixture(false, compactSpans)
+    const hooks = f.makeHooks()
+    hooks.context(f.request(f.messages))
+    await hooks.idle({ sessionID, background: [{ kind: "shell", sessionID,
+      shellID: "dev-server", command: "npm run dev" }] })
+    assert.equal(f.queued.length, 1)
+    const entry = f.history().find(entry => entry.id === (compactSpans ? "msg_span1" : "msg_large"))!
+    assert.equal(entry.type, "assistant")
+    const tool = entry.content[0]!
+    assert.equal(tool.type, "tool")
+    Object.assign(tool.state, { status: "running" })
+    const result = await f.apply(hooks, f.messages, 1, "replacement-noop")
+    assert.deepEqual((result.native!.messages as Message[]).slice(0, f.messages.length), f.messages)
   })
 }

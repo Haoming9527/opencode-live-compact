@@ -13,6 +13,11 @@ import type { RecoveryStore } from "../recovery/store.ts"
 import { completedProse, completedRounds, completedTurnTokens, pairKey, proseCandidate, visibleTargets } from "../state/reconciliation.ts"
 import { contextSize, estimateTokens, suffixSizes, tokensAfterPart } from "./context.ts"
 
+function activeToolMessages(history: Awaited<ReturnType<Context["session"]["context"]>>) {
+  return new Set(history.flatMap(entry => entry.type === "assistant" && entry.content.some(part =>
+    part.type === "tool" && part.state.status !== "completed" && part.state.status !== "error") ? [entry.id] : []))
+}
+
 const marker = "replacement-v1"
 export const pendingKey = (id: string) => `replacement/${id}`
 type Model = { providerID: string; id: string; variant?: string }
@@ -70,10 +75,10 @@ export function replacementHooks(ctx: Context, config: Config, store: RecoverySt
     })
   }
 
-  const idle = async ({ sessionID, background }: SessionIdle) => {
+  const idle = async ({ sessionID }: SessionIdle) => {
     const request = requests.get(sessionID)
     requests.delete(sessionID)
-    if (!request || background.length) return
+    if (!request) return
     pending.delete(sessionID)
     const started = performance.now()
     const skip = (reason: string, counts?: Record<string, number>) => metrics.report(sessionID, {
@@ -93,6 +98,7 @@ export function replacementHooks(ctx: Context, config: Config, store: RecoverySt
       const total = contextSize(request, suffix[0]!)
       if ((measured ?? total) < config.minimumContextTokens) return skip("below-context-threshold")
 
+      const protectedIDs = activeToolMessages(history)
       const visible = visibleTargets(request.messages)
       const previous = history.findLast((entry) => entry.type === "compaction" && entry.status === "completed")
       const prior = previous?.metadata?.liveCompact === marker &&
@@ -115,6 +121,7 @@ export function replacementHooks(ctx: Context, config: Config, store: RecoverySt
       const eligibleResults = new Map<Candidate, EligibleResult>()
       const available = [...rounds.slice(0, Math.max(0, rounds.length - config.protectedToolRounds)).flat(), ...prose].flatMap((candidate) => {
         const { messageID, callID } = candidate.identity
+        if (protectedIDs.has(messageID)) return []
         const match = visible.get(pairKey(messageID, callID))
         if (!match) { counts.changed++; return [] }
         if (match.index <= floor) { counts.beforeCheckpoint++; return [] }
@@ -263,6 +270,19 @@ export function replacementHooks(ctx: Context, config: Config, store: RecoverySt
           return part
         }) }
       })
+      // Recheck authoritative tool states after queueing. Preserve entire active
+      // rounds, including calls, reasoning and any partial results.
+      const active = activeToolMessages(history)
+      const activeCalls = new Set(event.messages.flatMap(message =>
+        message.id && active.has(message.id) ? message.content.flatMap(part =>
+          part.type === "tool-call" ? [part.id] : []) : []))
+      for (let i = 0; i < event.messages.length; i++) {
+        const original = event.messages[i]!
+        if ((original.id && active.has(original.id)) || original.content.some(part =>
+          part.type === "tool-result" && activeCalls.has(part.id))) {
+          if (JSON.stringify(messages[i]) !== JSON.stringify(original)) return
+        }
+      }
       event.result = { summary: spanMessages ? "Live Compact shortened a completed span." : "Live Compact shortened completed tool results.", native: { messages },
         metadata: { keepID: null, liveCompact: marker, liveCompactRounds: plan.rounds, liveCompactProse: plan.prose, liveCompactInputID: plan.id } }
       metrics.report(sessionID, { event: "replacement", count: plan.references.length, strategy: plan.strategy,
