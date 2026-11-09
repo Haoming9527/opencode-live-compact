@@ -3,9 +3,9 @@ import type { Context } from "@opencode/plugin/promise/plugin"
 import type { SessionCompaction, SessionContext, SessionIdle } from "@opencode/plugin/promise/session"
 import type { Config } from "../config.ts"
 import { eligibleResult } from "../engine/eligibility.ts"
-import { planCuts } from "../engine/planner.ts"
+import { createPlanningDiagnostics, planCuts, scorePlan } from "../engine/planner.ts"
 import type { Candidate } from "../engine/planner.ts"
-import { applySpan, planSpan, spanMarker } from "../engine/span.ts"
+import { applySpans, planSpans, isSpanCheckpoint } from "../engine/span.ts"
 import type { Collector } from "../metrics/collector.ts"
 import { hashText } from "../recovery/integrity.ts"
 import type { RecoveryStore } from "../recovery/store.ts"
@@ -33,6 +33,7 @@ type Pending = {
   saved: number
   suffix: number
   planningMs: number
+  strategy?: "spans" | "individual"
 }
 
 const sameModel = (left: Model | undefined, right: Model) =>
@@ -64,8 +65,7 @@ export function replacementHooks(ctx: Context, config: Config, store: RecoverySt
     requests.set(event.sessionID, event)
     if (requests.size > 32) requests.delete(requests.keys().next().value!)
     if (config.diagnostics) metrics.report(event.sessionID, {
-      event: "context", estimatedTokens: contextSize(event, suffixSizes(event)[0]!),
-      estimatedReducedTokens: 0, durationMs: performance.now() - start,
+      event: "context", messageCount: event.messages.length, durationMs: performance.now() - start,
     })
   }
 
@@ -75,19 +75,22 @@ export function replacementHooks(ctx: Context, config: Config, store: RecoverySt
     if (!request || background.length) return
     pending.delete(sessionID)
     const started = performance.now()
+    const skip = (reason: string, counts?: Record<string, number>) => metrics.report(sessionID, {
+      event: "planning", reason, counts, durationMs: performance.now() - started,
+    })
     try {
       const history = await ctx.session.context({ sessionID })
       const turn = history.findLast((entry) => entry.type === "assistant" || entry.type === "idle")
-      if (turn?.type !== "assistant" || turn.error || !sameModel(turn.model, request.model)) return
-      // A saved window advances the host instruction baseline. Keep histories with
-      // chronological instruction updates on the ordinary OpenCode path.
+      if (turn?.type !== "assistant" || turn.error || !sameModel(turn.model, request.model)) return skip("unfinished-or-model-changed")
       if (history.some((entry) => entry.type === "system") || request.messages.some((message) =>
         message.role === "system" || message.content.some((part) => part.type === "media" ||
-          (part.type === "tool-result" && part.result.type === "content" && part.result.value.some((item) => item.type === "file"))))) return
+          (part.type === "tool-result" && part.result.type === "content" && part.result.value.some((item) => item.type === "file"))))) return skip("protected-instructions-or-media")
       const measured = completedTurnTokens(history, history.length, request)
-      if (measured !== undefined && measured < config.minimumContextTokens) return
+      if (measured !== undefined && measured < config.minimumContextTokens) return skip("below-context-threshold")
+      // Other hooks may edit this request. Measure its final view once, at idle.
       const suffix = suffixSizes(request)
-      if ((measured ?? contextSize(request, suffix[0]!)) < config.minimumContextTokens) return
+      const total = contextSize(request, suffix[0]!)
+      if ((measured ?? total) < config.minimumContextTokens) return skip("below-context-threshold")
 
       const visible = visibleTargets(request.messages)
       const previous = history.findLast((entry) => entry.type === "compaction" && entry.status === "completed")
@@ -100,54 +103,72 @@ export function replacementHooks(ctx: Context, config: Config, store: RecoverySt
         ...completedProse(history, sessionID, turn.id)]
       const floor = Math.max(
         request.messages.findLastIndex(message => message.role === "assistant" &&
-          message.content.some(part => part.type === "text" && part.text.startsWith(spanMarker))),
-        ...Array.from(visible.values(), item => item.text.includes("[Live Compact omitted ") ? item.index : -1),
+          message.content.some(part => part.type === "text" && isSpanCheckpoint(part.text))),
+        ...Array.from(visible.values(), item => isSpanCheckpoint(item.text) || item.text.includes("[Live Compact omitted ") ? item.index : -1),
       )
+      const counts = { protected: config.protectedToolRounds ? rounds.slice(-config.protectedToolRounds).flat().length : 0,
+        beforeCheckpoint: 0, changed: 0, unsupported: 0, eligible: 0 }
       const available = [...rounds.slice(0, Math.max(0, rounds.length - config.protectedToolRounds)).flat(), ...prose].flatMap((candidate) => {
         const { messageID, callID } = candidate.identity
         const match = visible.get(pairKey(messageID, callID))
+        if (!match) { counts.changed++; return [] }
+        if (match.index <= floor) { counts.beforeCheckpoint++; return [] }
         const source = eligibleResult(candidate)
-        if (!match || match.index <= floor || source?.sourceText !== match.text) return []
+        if (!source) { counts.unsupported++; return [] }
+        if (source.sourceText !== match.text) { counts.changed++; return [] }
+        counts.eligible++
         return [{ ...candidate, index: match.index, suffixTokens: suffix[match.index + 1] ?? 0 }]
       }).sort((a, b) => a.index - b.index)
-      const options = { ...config, estimateTokens }
-      const span = config.compactSpans ? planSpan(sessionID, request.messages, available, suffix, options) : undefined
-      const cuts = span ? [] : planCuts(available, options)
-      if (!span && !cuts.length) return
+      if (!available.length) return skip("no-eligible-history", counts)
+      const options = { minimumSourceTokens: config.minimumSourceTokens, maxCutsPerCycle: config.maxCutsPerCycle,
+        estimateTokens }
+      const alternatives = { individual: createPlanningDiagnostics(), spans: createPlanningDiagnostics() }
+      const spanBatch = config.compactSpans ? planSpans(sessionID, request.messages, available, suffix,
+        { ...options, diagnostics: alternatives.spans }) : []
+      const individual = planCuts(available, { ...options, diagnostics: alternatives.individual })
+      const reportDecision = (reason: string, strategy?: "spans" | "individual") => metrics.report(sessionID, { event: "planning", reason, strategy, counts, alternatives,
+        contextTokens: measured ?? total, scoreUnit: "prefix-weighted-savings", durationMs: performance.now() - started })
+      const spanSaved = spanBatch.reduce((sum, span) => sum + span.saved, 0)
+      const individualSaved = individual.reduce((sum, cut) => sum + cut.estimatedSavingsTokens, 0)
+      const useSpans = spanBatch.length > 0 && scorePlan(spanSaved, spanBatch[0]!.suffix) >=
+        scorePlan(individualSaved, individual[0]?.cacheSuffixTokens ?? 0)
+      const spans = useSpans ? spanBatch : []
+      const cuts = useSpans ? [] : individual
+      if (!spans.length && !cuts.length) return reportDecision("insufficient-savings")
+      const saved = useSpans ? spanSaved : individualSaved
+      const rebuilt = useSpans ? spans[0]!.suffix : cuts[0]!.cacheSuffixTokens
+      reportDecision("admitted", useSpans ? "spans" : "individual")
       if (config.dryRun) {
-        metrics.report(sessionID, { event: "cut", count: span ? 1 : cuts.length, durationMs: performance.now() - started,
-          estimatedSavedTokens: span?.saved ?? cuts.reduce((total, cut) => total + cut.estimatedSavingsTokens, 0),
-          estimatedCacheSuffixTokens: span?.suffix ?? Math.max(...cuts.map((cut) => cut.cacheSuffixTokens)), dryRun: true })
+        metrics.report(sessionID, { event: "cut", count: spans.length || cuts.length, durationMs: performance.now() - started,
+          estimatedSavedTokens: saved, estimatedCacheSuffixTokens: rebuilt, dryRun: true })
         return
       }
       // The summary route can use an explicitly configured auxiliary model.
       const agent = await ctx.agent.get({ agentID: "compaction" }).catch(() => undefined)
       if (agent?.data?.model && !sameModel(agent.data.model, request.model)) return
-      const references: string[] = []
-      let saved = 0
-      if (span) {
-        const { identity, reference, sourceHash, checkpoint, original } = span
-        if (!await store.preserve({ identity, reference, sourceHash, checkpoint, original })) return
-        references.push(reference)
-        saved = span.saved
-      }
-      for (const cut of cuts) {
-        if (!await store.preserve({ identity: cut.identity, reference: cut.reference, sourceHash: cut.sourceHash,
-          checkpoint: cut.replacement, original: cut.sourceText })) continue
-        references.push(cut.reference)
-        saved += cut.estimatedSavingsTokens
-      }
-      if (!references.length) return
-      const positions = span ? [span.start, span.end - 1] : cuts.filter((cut) => references.includes(cut.reference))
+      const archives = spans.length ? spans.map(({ identity, reference, sourceHash, checkpoint, original }) =>
+        ({ identity, reference, sourceHash, checkpoint, original })) : cuts.map(cut => ({
+        identity: cut.identity, reference: cut.reference, sourceHash: cut.sourceHash,
+        checkpoint: cut.replacement, original: cut.sourceText,
+      }))
+      if (!await store.preserveBatch(archives)) return skip("archive-unavailable", counts)
+      const references = archives.map(archive => archive.reference)
+      const positions = spans.length ? spans.flatMap(span => [span.start, span.lastChanged]) : cuts
         .map((cut) => visible.get(pairKey(cut.identity.messageID, cut.identity.callID))!.index)
       const lastCut = Math.max(...positions)
-      const tail = rounds.slice(-Math.max(1, config.protectedToolRounds)).map((round) => round.flatMap((candidate) => {
+      // The replacement becomes the next active-history boundary. Carry every
+      // unchanged eligible result after the cut so a later turn can still select it.
+      // Empty round slots matter: they preserve the age of the protected recent work.
+      const remainingRounds = rounds.map((round) => round.flatMap((candidate) => {
         const { identity, tool } = candidate
         const result = visible.get(pairKey(identity.messageID, identity.callID))
         if (!result || result.index <= lastCut || tool.state.status !== "completed" ||
             eligibleResult(candidate)?.sourceText !== result.text) return []
         return [{ identity, input: tool.state.input, metadata: tool.state.metadata, hash: hashText(result.text) }]
       }))
+      let firstRound = 0
+      while (firstRound < remainingRounds.length - Math.max(1, config.protectedToolRounds) && !remainingRounds[firstRound]!.length) firstRound++
+      const tail = remainingRounds.slice(firstRound)
       const latestProse = proseCandidate(turn, sessionID)
       const keptProse = [...prose, ...(latestProse ? [latestProse] : [])].flatMap(candidate => {
         const source = eligibleResult(candidate)
@@ -157,7 +178,7 @@ export function replacementHooks(ctx: Context, config: Config, store: RecoverySt
       })
       const plan: Pending = { id: `msg_${randomUUID().replaceAll("-", "")}`, model: request.model, turn: turn.id,
         prefixHash: hashText(JSON.stringify(request.messages.slice(0, Math.min(...positions)))),
-        references, rounds: tail, prose: keptProse, saved, suffix: span?.suffix ?? Math.max(...cuts.map((cut) => cut.cacheSuffixTokens)),
+        references, rounds: tail, prose: keptProse, saved, suffix: rebuilt, strategy: useSpans ? "spans" : "individual",
         planningMs: performance.now() - started }
       await ctx.storage.set(pendingKey(sessionID), JSON.parse(JSON.stringify(plan)))
       pending.set(sessionID, plan)
@@ -168,19 +189,33 @@ export function replacementHooks(ctx: Context, config: Config, store: RecoverySt
     }
   }
 
+  const compactionOwnership = async (sessionID: string) => {
+    for (let attempt = 0; attempt < 2; attempt++) {
+      try {
+        const plan = pending.get(sessionID) ?? await ctx.storage.get(pendingKey(sessionID)) as Pending | undefined
+        if (!plan) return
+        const history = await ctx.session.context({ sessionID })
+        if (!history.some((entry) => entry.id === plan.id && entry.type === "compaction" && entry.status === "running")) return
+        return { plan, history }
+      } catch {
+        if (attempt === 1) metrics.report(sessionID, { event: "fallback", operation: "compaction-ownership-unavailable" })
+      }
+    }
+  }
+
   const compaction = async (event: SessionCompaction) => {
     const { sessionID } = event
     const started = performance.now()
     try {
       if (config.dryRun || event.result) return
-      const plan = pending.get(sessionID) ?? await ctx.storage.get(pendingKey(sessionID)) as Pending | undefined
-      if (!plan) return
-      const history = await ctx.session.context({ sessionID })
-      if (!history.some((entry) => entry.id === plan.id && entry.type === "compaction" && entry.status === "running")) return
+      const ownership = await compactionOwnership(sessionID)
+      if (!ownership) return
+      const { plan, history } = ownership
       pending.delete(sessionID)
       // Once we own the request, a changed window or unavailable archive leaves a
       // full replayable window and still suppresses the provider summary call.
-      const full = JSON.parse(JSON.stringify(event.messages))
+      // Hooks receive a detached request. Reuse unchanged messages and copy only edits.
+      const full = event.messages.slice()
       event.result = { summary: "Live Compact preserved the full context.", native: { messages: full },
         metadata: { keepID: null, liveCompact: "replacement-noop", liveCompactInputID: plan.id } }
       const turn = history.findLast((entry) => entry.type === "assistant")
@@ -188,15 +223,13 @@ export function replacementHooks(ctx: Context, config: Config, store: RecoverySt
       const visible = visibleTargets(event.messages)
       const replacements = new Map<number, { partIndex: number; checkpoint: string }>()
       let spanMessages: typeof event.messages | undefined
-      for (const reference of plan.references) {
-        const record = await store.get(sessionID, reference)
-        if (!record?.active) return
-        if (record.identity.tool === "completed_span") {
-          if (plan.references.length !== 1) return
-          spanMessages = applySpan(event.messages, record, plan.prefixHash)
-          if (!spanMessages) return
-          break
-        }
+      const records = await Promise.all(plan.references.map(reference => store.get(sessionID, reference)))
+      if (records.some(record => !record?.active)) return
+      if (records.every(record => record?.identity.tool === "completed_span")) {
+        spanMessages = applySpans(event.messages, records.filter(record => record !== undefined), plan.prefixHash)
+        if (!spanMessages) return
+      } else for (const record of records) {
+        if (!record || record.identity.tool === "completed_span") return
         const match = visible.get(pairKey(record.identity.messageID, record.identity.callID))
         if (!match || match.name !== record.identity.tool || match.text !== record.original ||
             Buffer.byteLength(JSON.stringify(record.checkpoint)) >= Buffer.byteLength(JSON.stringify(match.text))) return
@@ -216,8 +249,9 @@ export function replacementHooks(ctx: Context, config: Config, store: RecoverySt
       })
       event.result = { summary: spanMessages ? "Live Compact shortened a completed span." : "Live Compact shortened completed tool results.", native: { messages },
         metadata: { keepID: null, liveCompact: marker, liveCompactRounds: plan.rounds, liveCompactProse: plan.prose, liveCompactInputID: plan.id } }
-      metrics.report(sessionID, { event: "replacement", count: plan.references.length,
-        durationMs: plan.planningMs + performance.now() - started, estimatedSavedTokens: plan.saved,
+      metrics.report(sessionID, { event: "replacement", count: plan.references.length, strategy: plan.strategy,
+        durationMs: plan.planningMs + performance.now() - started, planningMs: plan.planningMs,
+        applicationMs: performance.now() - started, estimatedSavedTokens: plan.saved,
         estimatedCacheSuffixTokens: plan.suffix, dryRun: false })
     } catch {
       metrics.report(sessionID, { event: "fallback", operation: "replacement-window" })

@@ -1,10 +1,11 @@
 import { DatabaseSync } from "node:sqlite";
 import { hashText, isRecoveryReference, recoveryReference, type RecoveryIdentity } from "./integrity.ts";
 import { privateArchivePath } from "./private-directory.ts";
+import { RecoveryPayloads } from "./payloads.ts";
 
 export interface RecoveryStoreOptions {
   readonly directory: string;
-  readonly maxBytes: number;
+  readonly maxBytes?: number;
   readonly maxRecordBytes?: number;
   readonly maxRecords?: number;
   readonly retentionMs?: number;
@@ -55,10 +56,10 @@ function decodePlan(row: Row): RecoveryPlan | undefined {
   };
 }
 
-function decodeRecord(row: Row | undefined): RecoveryRecord | undefined {
+function decodeRecord(row: Row | undefined, payloads: RecoveryPayloads): RecoveryRecord | undefined {
   if (!row) return undefined;
   const plan = decodePlan(row);
-  const original = parse(row.original);
+  const original = parse(row.external === 1 && plan ? payloads.read(plan.identity.sessionID, plan.reference, Number(row.bytes)) : row.original);
   if (!plan || typeof original !== "string" || hashText(original) !== plan.sourceHash) return undefined;
   return { ...plan, original };
 }
@@ -82,6 +83,8 @@ function transaction<T>(db: DatabaseSync, run: () => T): T {
 
 export class RecoveryStore {
   private connection: Promise<DatabaseSync> | undefined;
+  private payloads: RecoveryPayloads | undefined;
+  private needsSweep = false;
   private closed = false;
   private readonly directory: string;
   private readonly maxBytes: number;
@@ -91,41 +94,73 @@ export class RecoveryStore {
 
   constructor(options: RecoveryStoreOptions) {
     this.directory = options.directory;
-    this.maxBytes = boundedInteger(options.maxBytes, "maxBytes");
+    this.maxBytes = boundedInteger(options.maxBytes ?? 256 * 1024 * 1024, "maxBytes");
     this.maxRecordBytes = boundedInteger(options.maxRecordBytes ?? 512 * 1024, "maxRecordBytes");
     this.maxRecords = boundedInteger(options.maxRecords ?? 2_000, "maxRecords");
     this.retentionMs = boundedInteger(options.retentionMs ?? 7 * 24 * 60 * 60 * 1_000, "retentionMs");
   }
 
   async preserve(input: PreserveInput): Promise<boolean> {
-    if (hashText(input.original) !== input.sourceHash ||
-        recoveryReference(input.identity, input.sourceHash) !== input.reference ||
-        !input.checkpoint.includes(input.reference)) return false;
+    return this.preserveBatch([input]);
+  }
 
-    const identity = JSON.stringify(input.identity);
-    const original = JSON.stringify(input.original);
-    const checkpoint = JSON.stringify(input.checkpoint);
-    const checkpointHash = hashText(input.checkpoint);
-    const bytes = Buffer.byteLength(JSON.stringify(input));
+  /** Preserve the complete admitted batch in one durable transaction, or preserve none. */
+  async preserveBatch(inputs: readonly PreserveInput[]): Promise<boolean> {
+    if (!inputs.length) return false;
+    const unique = new Map<string, PreserveInput>();
+    for (const input of inputs) {
+      if (hashText(input.original) !== input.sourceHash ||
+          recoveryReference(input.identity, input.sourceHash) !== input.reference ||
+          !input.checkpoint.includes(input.reference)) return false;
+      const previous = unique.get(input.reference);
+      if (previous && (previous.original !== input.original || previous.checkpoint !== input.checkpoint)) return false;
+      unique.set(input.reference, input);
+    }
     const db = await this.database();
-    return transaction(db, () => {
-      const previous = db.prepare(`SELECT ${planColumns}, original FROM recovery WHERE reference = ?`).get(input.reference);
-      if (previous) {
-        const valid = decodeRecord(previous);
-        if (!valid || valid.checkpoint !== input.checkpoint || valid.original !== input.original) return false;
-        if (!valid.active) db.prepare("UPDATE recovery SET retired_at = NULL WHERE reference = ?").run(input.reference);
-        return true;
+    if (this.needsSweep) {
+      transaction(db, () => this.sweep(db));
+      this.needsSweep = false;
+    }
+    try { return transaction(db, () => {
+      const lookup = db.prepare(`SELECT ${planColumns}, original, external, bytes FROM recovery WHERE reference = ?`);
+      const additions: { input: PreserveInput; bytes: number }[] = [];
+      const reactivate: string[] = [];
+      let totalBytes = 0;
+      for (const input of unique.values()) {
+        const previous = lookup.get(input.reference);
+        if (previous) {
+          const valid = decodeRecord(previous, this.payloads!);
+          if (!valid || valid.checkpoint !== input.checkpoint || valid.original !== input.original) return false;
+          if (!valid.active) reactivate.push(input.reference);
+        } else {
+          const bytes = Buffer.byteLength(JSON.stringify(input));
+          if (bytes > this.maxRecordBytes) return false;
+          additions.push({ input, bytes });
+          totalBytes += bytes;
+        }
       }
-
-      this.prune(db, Date.now());
-      const usage = db.prepare("SELECT COALESCE(SUM(bytes), 0) AS bytes, COUNT(*) AS count FROM recovery").get() as
-        { bytes: number; count: number };
-      if (bytes > this.maxRecordBytes || usage.bytes + bytes > this.maxBytes || usage.count >= this.maxRecords) return false;
-      db.prepare(`INSERT INTO recovery (session_id, reference, identity, source_hash, checkpoint, checkpoint_hash, original, bytes)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?)`).run(input.identity.sessionID, input.reference, identity, input.sourceHash,
-          checkpoint, checkpointHash, original, bytes);
+      if (totalBytes > this.maxBytes || additions.length > this.maxRecords) return false;
+      // Incoming references stay pinned even if this batch reactivates a retired
+      // record. The same SQLite write lock coordinates all sessions and processes.
+      const retained = new Set(unique.keys());
+      if (!this.prune(db, Date.now(), retained, totalBytes, additions.length)) return false;
+      const insert = db.prepare(`INSERT INTO recovery (session_id, reference, identity, source_hash, checkpoint, checkpoint_hash, original, bytes, external)
+        VALUES (?, ?, ?, ?, ?, ?, 'null', ?, 1)`);
+      for (const { input, bytes } of additions) {
+        this.payloads!.write(input.identity.sessionID, input.reference, input.original);
+        insert.run(input.identity.sessionID, input.reference,
+          JSON.stringify(input.identity), input.sourceHash, JSON.stringify(input.checkpoint), hashText(input.checkpoint), bytes);
+      }
+      const revive = db.prepare("UPDATE recovery SET retired_at = NULL WHERE reference = ?");
+      for (const reference of reactivate) revive.run(reference);
       return true;
-    });
+    }); } catch (error) {
+      // A rolled-back batch may already have durable payloads. Reclaim only
+      // uncommitted files under the same global lock, before another admission.
+      this.needsSweep = true;
+      try { transaction(db, () => this.sweep(db)); this.needsSweep = false; } catch { /* Retry before the next write. */ }
+      throw error;
+    }
   }
 
   async list(sessionID: string): Promise<readonly RecoveryPlan[]> {
@@ -141,9 +176,11 @@ export class RecoveryStore {
   async get(sessionID: string, reference: string): Promise<RecoveryRecord | undefined> {
     if (!isRecoveryReference(reference)) return undefined;
     const db = await this.database();
-    const row = db.prepare(`SELECT ${planColumns}, original FROM recovery WHERE session_id = ? AND reference = ?`)
-      .get(sessionID, reference);
-    return decodeRecord(row);
+    return transaction(db, () => {
+      const row = db.prepare(`SELECT ${planColumns}, original, external, bytes FROM recovery WHERE session_id = ? AND reference = ?`)
+        .get(sessionID, reference);
+      return decodeRecord(row, this.payloads!);
+    });
   }
 
   /** Validate the payload once before reusing a durable plan in a new runtime. */
@@ -169,7 +206,13 @@ export class RecoveryStore {
 
   async deleteSession(sessionID: string): Promise<void> {
     const db = await this.database();
-    db.prepare("DELETE FROM recovery WHERE session_id = ?").run(sessionID);
+    transaction(db, () => {
+      for (const row of db.prepare("SELECT reference, external FROM recovery WHERE session_id = ?").all(sessionID)) {
+        if (row.external === 1) this.payloads!.remove(sessionID, String(row.reference));
+      }
+      db.prepare("DELETE FROM recovery WHERE session_id = ?").run(sessionID);
+      this.sweep(db);
+    });
   }
 
   async close(): Promise<void> {
@@ -179,8 +222,31 @@ export class RecoveryStore {
     this.connection = undefined;
   }
 
-  private prune(db: DatabaseSync, now: number): void {
-    db.prepare("DELETE FROM recovery WHERE retired_at IS NOT NULL AND retired_at <= ?").run(now - this.retentionMs);
+  private prune(db: DatabaseSync, now: number, retained: ReadonlySet<string> = new Set(), incomingBytes = 0, incomingCount = 0): boolean {
+    const usage = db.prepare("SELECT COALESCE(SUM(bytes), 0) AS bytes, COUNT(*) AS count FROM recovery").get() as
+      { bytes: number; count: number };
+    let bytes = usage.bytes + incomingBytes, count = usage.count + incomingCount;
+    const pressure = bytes > this.maxBytes || count > this.maxRecords;
+    const targetBytes = Math.floor(this.maxBytes * 0.8), targetCount = Math.floor(this.maxRecords * 0.8);
+    const remove = db.prepare("DELETE FROM recovery WHERE reference = ?");
+    // rowid records insertion age, independent of reads and retirement order.
+    for (const row of db.prepare("SELECT session_id, reference, bytes, external, retired_at FROM recovery WHERE retired_at IS NOT NULL ORDER BY rowid").all()) {
+      if (retained.has(String(row.reference))) continue;
+      const expired = Number(row.retired_at) <= now - this.retentionMs;
+      const needed = pressure && (bytes > targetBytes || (count > this.maxRecords && count > targetCount));
+      if (!expired && !needed) continue;
+      if (row.external === 1) this.payloads!.remove(String(row.session_id), String(row.reference));
+      remove.run(String(row.reference));
+      bytes -= Number(row.bytes);
+      count--;
+    }
+    return bytes <= this.maxBytes && count <= this.maxRecords;
+  }
+
+  private sweep(db: DatabaseSync): void {
+    const known = new Set(db.prepare("SELECT session_id, reference FROM recovery WHERE external = 1").all()
+      .map(row => this.payloads!.key(String(row.session_id), String(row.reference))));
+    this.payloads!.sweep(known);
   }
 
   private database(): Promise<DatabaseSync> {
@@ -193,7 +259,9 @@ export class RecoveryStore {
   }
 
   private async openDatabase(): Promise<DatabaseSync> {
-    const db = new DatabaseSync(await privateArchivePath(this.directory));
+    const path = await privateArchivePath(this.directory);
+    const db = new DatabaseSync(path);
+    this.payloads = new RecoveryPayloads(path);
     try {
       db.exec(`
         PRAGMA busy_timeout = 25;
@@ -209,11 +277,28 @@ export class RecoveryStore {
           checkpoint_hash TEXT NOT NULL,
           original TEXT NOT NULL,
           bytes INTEGER NOT NULL,
-          retired_at INTEGER
+          retired_at INTEGER,
+          external INTEGER NOT NULL DEFAULT 0
         ) STRICT;
         CREATE INDEX IF NOT EXISTS recovery_session ON recovery (session_id);
         CREATE INDEX IF NOT EXISTS recovery_expiry ON recovery (retired_at) WHERE retired_at IS NOT NULL;
       `);
+      transaction(db, () => {
+        const columns = db.prepare("PRAGMA table_info(recovery)").all();
+        if (!columns.some(column => column.name === "external")) db.exec("ALTER TABLE recovery ADD COLUMN external INTEGER NOT NULL DEFAULT 0");
+        // Inline rows remain authoritative after a crash during migration.
+        // Remove any partial uncommitted files before trying those writes again.
+        this.sweep(db);
+        const migrated = db.prepare("UPDATE recovery SET original = 'null', external = 1 WHERE reference = ?");
+        for (const row of db.prepare(`SELECT ${planColumns}, original, external, bytes FROM recovery WHERE external = 0 ORDER BY rowid`).all()) {
+          const record = decodeRecord(row, this.payloads!);
+          if (!record) continue;
+          this.payloads!.write(record.identity.sessionID, record.reference, record.original);
+          migrated.run(record.reference);
+        }
+        this.sweep(db);
+        this.prune(db, Date.now());
+      });
       return db;
     } catch (error) {
       db.close();

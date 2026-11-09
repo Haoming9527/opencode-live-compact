@@ -63,8 +63,9 @@ test("separates deterministic replacements from host model work and preserves in
     { ...replacement, ...entry(18, 85), data: { ...replacement.data, reason: "auto" } },
   ];
   const usage = summarize(info, [manualStart, replacement, started, ended, ...fallback, ...automaticReplacement], stages, [
-    { event: "replacement", sessionID: info.id, count: 2, durationMs: 3 },
-    { event: "replacement", sessionID: info.id, count: 1, durationMs: 4 },
+    { event: "replacement", sessionID: info.id, count: 2, durationMs: 3, planningMs: 1, applicationMs: 2, estimatedSavedTokens: 1200, estimatedCacheSuffixTokens: 500 },
+    { event: "replacement", sessionID: info.id, count: 1, durationMs: 4, planningMs: 1, applicationMs: 3, estimatedSavedTokens: 1000, estimatedCacheSuffixTokens: 200 },
+    { event: "planning", sessionID: info.id, reason: "size-or-cache-budget" },
     { event: "replacement", sessionID: info.id, count: 4, durationMs: 50, dryRun: true },
     { event: "replacement", sessionID: "other", count: 9, durationMs: 90 },
   ], true);
@@ -78,6 +79,11 @@ test("separates deterministic replacements from host model work and preserves in
   assert.equal(usage.hostCompactionWaitMs, 39);
   assert.equal(usage.replacementCuts, 3);
   assert.equal(usage.replacementOverheadMs, 7);
+  assert.equal(usage.replacementPlanningMs, 2);
+  assert.equal(usage.replacementApplicationMs, 5);
+  assert.equal(usage.estimatedSavedTokens, 2200);
+  assert.equal(usage.estimatedCacheSuffixTokens, 700);
+  assert.deepEqual(usage.planningReasons, { "size-or-cache-budget": 1 });
   assert.equal(usage.replacementWindowsWithUsage, 0);
   assert.equal(usage.nativeCompactionTimingComplete, true);
   assert.equal(usage.replacementWindowEvents[0]?.stage, null);

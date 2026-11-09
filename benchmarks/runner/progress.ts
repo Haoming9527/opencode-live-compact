@@ -46,7 +46,7 @@ export async function formatProgress() {
     const legacy = costs.get(`${arm}/${entry.graded}`);
     const cost = entry.estimatedUsd ?? legacy?.estimatedUsd;
     const expected = entry.expected ?? legacy?.expected;
-    const label = entry.arm === "control" ? "Stock OpenCode" : "Live Compact";
+    const label = entry.arm === "control" ? "Original OpenCode" : "Live Compact";
     const count = expected === undefined ? entry.graded : `${entry.graded}/${expected}`;
     const total = cost === undefined ? "cost pending" : `$${cost.toFixed(4)} estimated total`;
     process.stdout.write(`${label} | ${count} | ${entry.stage} ${entry.outcome?.toUpperCase()} | ${entry.passed} passed, ${entry.failed} failed | ${total}\n`);

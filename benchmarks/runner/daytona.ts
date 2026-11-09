@@ -6,7 +6,7 @@ function quote(value: string) {
   return "'" + value.replaceAll("'", "'\\''") + "'";
 }
 
-export function launchDaytona(sandbox: string, directory: string, args: string[]) {
+export function launchDaytona(sandbox: string, directory: string, args: string[], options: { waitForSlot?: boolean } = {}) {
   let fileEnv: NodeJS.ProcessEnv = {};
   try {
     fileEnv = parseEnv(readFileSync(".env", "utf8"));
@@ -32,14 +32,20 @@ export function launchDaytona(sandbox: string, directory: string, args: string[]
     'test -f benchmarks/run.ts || { echo "Benchmark checkout is missing in the sandbox" >&2; exit 1; }',
     'root="$HOME/benchmark-progress"',
     'mkdir -p "$root"',
-    'launch=$(mktemp -d "$root/aider-XXXXXX")',
+    'launch=$(mktemp -d "$root/run-XXXXXX")',
     'export OPENCODE_BENCHMARK_PROGRESS_FILE="$launch/progress.jsonl"',
-    'nohup flock -n "$root/.benchmark.lock" node benchmarks/run.ts "$@" > "$launch/benchmark.log" 2>&1 </dev/null &',
+    `nohup bash -c ${quote([
+      'exec 9>"$HOME/benchmark-progress/.benchmark.lock"',
+      options.waitForSlot ? 'echo "Waiting for the benchmark slot..."; flock 9' : 'flock -n 9 || exit 1',
+      'ln -sfnT -- "$1" "$HOME/benchmark-progress/latest"',
+      'shift',
+      'echo "Benchmark slot acquired; offline preflight starts before model requests."',
+      'exec node benchmarks/run.ts "$@"',
+    ].join("\n"))} benchmark "$launch" "$@" > "$launch/benchmark.log" 2>&1 </dev/null &`,
     'pid=$!',
     'printf "%s\\n" "$pid" > "$launch/pid"',
     "sleep 1",
     'if ! kill -0 "$pid" 2>/dev/null; then cat "$launch/benchmark.log" >&2; echo "Benchmark did not start or another run holds the lock" >&2; exit 1; fi',
-    'ln -sfnT -- "$launch" "$root/latest"',
     'printf "Benchmark log: %s/benchmark.log\\nProgress: %s/progress.jsonl\\n" "$launch" "$launch"',
   ].join("\n");
   const checkout = directory.startsWith("~/") ? '"$HOME"/' + quote(directory.slice(2)) : quote(directory);

@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { mkdtemp, realpath, rm, stat } from "node:fs/promises";
+import { mkdtemp, readdir, readFile, realpath, rm, stat, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { DatabaseSync } from "node:sqlite";
@@ -7,6 +7,11 @@ import { test, type TestContext } from "node:test";
 import { hashText, recoveryReference, recoveryReferences } from "../src/recovery/integrity.ts";
 import { maxRecallCodePoints, restore } from "../src/recovery/restore.ts";
 import { RecoveryStore, type PreserveInput, type RecoveryStoreOptions } from "../src/recovery/store.ts";
+import { privateArchivePath } from "../src/recovery/private-directory.ts";
+import { readConfig } from "../src/config.ts";
+
+const payloadPath = (directory: string, item: PreserveInput) => join(directory, "recovery-v1", "sessions",
+  `session-${hashText(item.identity.sessionID)}`, `${item.reference}.json`);
 
 function plan(id: string, original = "Original result", sessionID = "session-a"): PreserveInput {
   const identity = { sessionID, messageID: id, partID: `${id}-part`, callID: `${id}-call`, tool: "read" };
@@ -99,8 +104,23 @@ test("storage byte budgets reject new entries without evicting active records", 
   assert.equal((await store.get("session-a", item.reference))?.original, item.original);
 });
 
+test("a recovery batch is all-or-nothing when capacity or integrity fails", async (t) => {
+  const { create } = await archive(t, { maxRecords: 2 });
+  const store = create();
+  const first = plan("first"), second = plan("second"), third = plan("third");
+  assert.equal(await store.preserveBatch([first, second, third]), false);
+  assert.deepEqual(await store.list("session-a"), []);
+  assert.equal(await store.preserveBatch([first, { ...second, original: "corrupt" }]), false);
+  assert.deepEqual(await store.list("session-a"), []);
+  assert.equal(await store.preserveBatch([first, first, second]), true);
+  assert.equal((await store.list("session-a")).length, 2);
+  assert.equal(await store.preserveBatch([first, third]), false);
+  assert.equal((await store.get("session-a", first.reference))?.original, first.original);
+  assert.equal(await store.get("session-a", third.reference), undefined);
+});
+
 test("integrity failures do not return damaged records", async (t) => {
-  const { create, databasePath } = await archive(t);
+  const { create, directory, databasePath } = await archive(t);
   const store = create();
   const item = plan("corrupt");
   assert.equal(await store.preserve(item), true);
@@ -108,7 +128,7 @@ test("integrity failures do not return damaged records", async (t) => {
   try {
     const [stored] = await store.list("session-a");
     assert.ok(stored);
-    db.prepare("UPDATE recovery SET original = ? WHERE reference = ?").run(JSON.stringify("corrupt"), item.reference);
+    await writeFile(payloadPath(directory, item), JSON.stringify("corrupt"));
     assert.equal(await store.verify(stored), false);
     assert.deepEqual(await restore(store, "session-a", item.reference), { status: "unavailable" });
     db.prepare("UPDATE recovery SET checkpoint = ? WHERE reference = ?").run(JSON.stringify("corrupt"), item.reference);
@@ -116,4 +136,121 @@ test("integrity failures do not return damaged records", async (t) => {
   } finally {
     db.close();
   }
+});
+
+test("recovery uses isolated session directories and a 256 MiB default", async (t) => {
+  assert.equal(readConfig({}).archiveMaxBytes, 256 * 1024 * 1024);
+  const { create, directory } = await archive(t, { maxBytes: undefined });
+  const store = create();
+  const a = plan("same-id", "first original", "../../outside\\CON:");
+  const b = plan("same-id", "second original", "session-b");
+  assert.equal(await store.preserveBatch([a, b]), true);
+  for (const item of [a, b]) {
+    assert.equal(JSON.parse(await readFile(payloadPath(directory, item), "utf8")), item.original);
+    assert.equal((await store.get(item.identity.sessionID, item.reference))?.original, item.original);
+    if (process.platform !== "win32") {
+      assert.equal((await stat(payloadPath(directory, item))).mode & 0o777, 0o600);
+      assert.equal((await stat(dirname(payloadPath(directory, item)))).mode & 0o777, 0o700);
+    }
+  }
+  assert.deepEqual((await readdir(join(directory, "recovery-v1", "sessions"))).sort(),
+    [a, b].map(item => `session-${hashText(item.identity.sessionID)}`).sort());
+  assert.equal(await store.get(b.identity.sessionID, a.reference), undefined);
+  await store.deleteSession(a.identity.sessionID);
+  await assert.rejects(readFile(payloadPath(directory, a)), { code: "ENOENT" });
+  assert.equal((await store.get(b.identity.sessionID, b.reference))?.original, b.original);
+});
+
+test("capacity pressure removes oldest retired backups toward 80% before their retention expires", async (t) => {
+  const items = ["aaaa", "bbbb", "cccc", "dddd", "eeee"].map(id => plan(id, "x".repeat(2_048)));
+  const size = Buffer.byteLength(JSON.stringify(items[0]));
+  assert.ok(items.every(item => Buffer.byteLength(JSON.stringify(item)) === size));
+  const { create, directory, databasePath } = await archive(t, { maxBytes: 4 * size });
+  const store = create();
+  assert.equal(await store.preserveBatch(items.slice(0, 4)), true);
+  await store.reconcile("session-a", new Set([items[3]!.reference]), new Set(items.slice(0, 4).map(item => item.reference)));
+  assert.equal((await store.list("session-a")).length, 4, "unexpired backups stay until there is pressure");
+  assert.equal(await store.preserve(items[4]!), true);
+  for (const item of items.slice(0, 2)) {
+    assert.equal(await store.get("session-a", item.reference), undefined);
+    await assert.rejects(readFile(payloadPath(directory, item)), { code: "ENOENT" });
+  }
+  for (const item of items.slice(2)) assert.equal((await store.get("session-a", item.reference))?.original, item.original);
+  assert.equal((await store.get("session-a", items[3]!.reference))?.active, true);
+  const db = new DatabaseSync(databasePath);
+  try {
+    const usage = db.prepare("SELECT SUM(bytes) AS bytes FROM recovery").get() as { bytes: number };
+    assert.ok(usage.bytes <= Math.floor(4 * size * 0.8));
+  } finally { db.close(); }
+});
+
+test("global capacity protects other sessions and references being reactivated in the batch", async (t) => {
+  const first = plan("first", "x".repeat(2_048));
+  const other = plan("other", "x".repeat(2_048), "session-b");
+  const fresh = plan("fresh", "x".repeat(2_048));
+  const bytes = (item: PreserveInput) => Buffer.byteLength(JSON.stringify(item));
+  const { create, directory } = await archive(t, { maxBytes: bytes(first) + bytes(other) });
+  const store = create();
+  assert.equal(await store.preserveBatch([first, other]), true);
+  await store.reconcile("session-a", new Set(), new Set([first.reference]));
+  assert.equal(await store.preserveBatch([first, fresh]), false, "reactivating a backup pins it even before commit");
+  assert.equal((await store.get("session-a", first.reference))?.original, first.original);
+  assert.equal((await store.get("session-b", other.reference))?.active, true);
+  assert.equal(await store.get("session-a", fresh.reference), undefined);
+  await assert.rejects(readFile(payloadPath(directory, fresh)), { code: "ENOENT" });
+});
+
+test("missing retired files are already freed, while missing active originals remain unavailable", async (t) => {
+  const first = plan("first", "x".repeat(2_048)), fresh = plan("fresh", "x".repeat(2_048));
+  const { create, directory } = await archive(t, { maxBytes: Buffer.byteLength(JSON.stringify(first)) });
+  const store = create();
+  assert.equal(await store.preserve(first), true);
+  await rm(payloadPath(directory, first));
+  assert.deepEqual(await restore(store, "session-a", first.reference), { status: "unavailable" });
+  await store.reconcile("session-a", new Set(), new Set([first.reference]));
+  assert.equal(await store.preserve(fresh), true);
+  assert.equal(await store.get("session-a", first.reference), undefined);
+  assert.equal((await store.get("session-a", fresh.reference))?.original, fresh.original);
+});
+
+test("legacy inline backups migrate to session files without changing recall references", async (t) => {
+  const { create, directory, databasePath } = await archive(t);
+  const item = plan("legacy", "Exact original\ud800\r\n🙂");
+  const legacy = new DatabaseSync(await privateArchivePath(directory));
+  try {
+    legacy.exec(`CREATE TABLE recovery (
+      reference TEXT PRIMARY KEY, session_id TEXT NOT NULL, identity TEXT NOT NULL,
+      source_hash TEXT NOT NULL, checkpoint TEXT NOT NULL, checkpoint_hash TEXT NOT NULL,
+      original TEXT NOT NULL, bytes INTEGER NOT NULL, retired_at INTEGER
+    ) STRICT`);
+    legacy.prepare("INSERT INTO recovery VALUES (?, ?, ?, ?, ?, ?, ?, ?, NULL)").run(
+      item.reference, item.identity.sessionID, JSON.stringify(item.identity), item.sourceHash,
+      JSON.stringify(item.checkpoint), hashText(item.checkpoint), JSON.stringify(item.original), Buffer.byteLength(JSON.stringify(item)));
+  } finally { legacy.close(); }
+  const store = create();
+  assert.equal((await store.get("session-a", item.reference))?.original, item.original);
+  assert.equal(JSON.parse(await readFile(payloadPath(directory, item), "utf8")), item.original);
+  await store.close();
+  const restarted = create();
+  assert.deepEqual(await restore(restarted, "session-a", item.reference),
+    { status: "ok", reference: item.reference, offset: 0, text: item.original, nextOffset: null });
+  const db = new DatabaseSync(databasePath);
+  try {
+    const row = db.prepare("SELECT original, external FROM recovery WHERE reference = ?").get(item.reference)!;
+    assert.equal(row.external, 1);
+    assert.notEqual(row.original, JSON.stringify(item.original), "the catalog no longer duplicates the original");
+  } finally { db.close(); }
+});
+
+test("restart clears unindexed payloads without deleting committed backups", async (t) => {
+  const { create, directory } = await archive(t);
+  const active = plan("active"), orphan = plan("orphan");
+  const store = create();
+  assert.equal(await store.preserve(active), true);
+  await store.close();
+  await writeFile(payloadPath(directory, orphan), JSON.stringify(orphan.original), { mode: 0o600 });
+  const restarted = create();
+  assert.equal((await restarted.get("session-a", active.reference))?.original, active.original);
+  await assert.rejects(readFile(payloadPath(directory, orphan)), { code: "ENOENT" });
+  assert.equal(await restarted.get("session-a", orphan.reference), undefined);
 });

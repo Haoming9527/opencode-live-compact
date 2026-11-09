@@ -1,6 +1,7 @@
 import type { Context } from "@opencode/plugin/promise/plugin"
 import type { SessionContext } from "@opencode/plugin/promise/session"
 import type { Candidate } from "../engine/planner.ts"
+import { canRewriteToolResult } from "../engine/eligibility.ts"
 import { recoveryReferences } from "../recovery/integrity.ts"
 import type { RecoveryPlan } from "../recovery/store.ts"
 
@@ -33,7 +34,7 @@ export function visibleResults(messages: readonly Message[]) {
       else if (
         message.content.length === 1 &&
         part.name === call.name &&
-        !part.providerExecuted &&
+        canRewriteToolResult(message, part) &&
         typeof part.result === "object" && part.result !== null &&
         "type" in part.result && part.result.type === "text" &&
         "value" in part.result && typeof part.result.value === "string"
@@ -113,9 +114,10 @@ export function visibleTargets(messages: readonly Message[]) {
   }
   for (const [index, message] of messages.entries()) {
     if (message.role !== "assistant" || !message.id ||
+        ("providerMetadata" in message && message.providerMetadata !== undefined) ||
         message.content.some((part) => part.type !== "text" && part.type !== "reasoning")) continue
     const text = message.content.filter((part) => part.type === "text")
-    if (text.length !== 1 || !text[0] || text[0].providerMetadata) continue
+    if (text.length !== 1 || !text[0] || text[0].providerMetadata !== undefined) continue
     const key = pairKey(message.id, "text")
     if (targets.has(key)) {
       targets.delete(key)

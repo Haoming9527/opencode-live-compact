@@ -7,6 +7,9 @@ export interface PluginMetric {
   event: string;
   count?: number;
   durationMs?: number;
+  planningMs?: number;
+  applicationMs?: number;
+  reason?: string;
   estimatedSavedTokens?: number;
   estimatedCacheSuffixTokens?: number;
   dryRun?: boolean;
@@ -102,6 +105,9 @@ export function summarize(info: SessionInfo, log: readonly OpenCodeEvent[], stag
   const cuts = plugin.filter(record => record.sessionID === info.id && record.event === "cut" && !record.dryRun);
   const replacements = plugin.filter(record => record.sessionID === info.id && record.event === "replacement" && !record.dryRun);
   const contextCalls = plugin.filter(record => record.sessionID === info.id && record.event === "context");
+  const planning = plugin.filter(record => record.sessionID === info.id && record.event === "planning");
+  const planningReasons: Record<string, number> = {};
+  for (const record of planning) if (record.reason) planningReasons[record.reason] = (planningReasons[record.reason] ?? 0) + 1;
   const recalls = plugin.filter(record => record.sessionID === info.id && record.event === "recall");
   const firstSuccessfulCompaction = nativePauses.find(pause => pause.outcome === "ended");
   const replacementHostWaitMs = replacementWindows.reduce((sum, window) => sum + (window.durationMs ?? 0), 0);
@@ -137,6 +143,11 @@ export function summarize(info: SessionInfo, log: readonly OpenCodeEvent[], stag
     replacementCuts: replacements.reduce((sum, replacement) => sum + (replacement.count ?? 0), 0),
     replacementOverheadMs: replacementWindows.length > 0 && replacements.length === 0 ? null
       : replacements.reduce((sum, replacement) => sum + (replacement.durationMs ?? 0), 0),
+    replacementPlanningMs: replacements.every(record => record.planningMs !== undefined)
+      ? replacements.reduce((sum, record) => sum + record.planningMs!, 0) : null,
+    replacementApplicationMs: replacements.every(record => record.applicationMs !== undefined)
+      ? replacements.reduce((sum, record) => sum + record.applicationMs!, 0) : null,
+    planningReasons,
     hostCompactionWaitMs: nativeCompactionWaitMs + replacementHostWaitMs,
     cuts: cuts.reduce((sum, cut) => sum + (cut.count ?? 0), 0),
     cutsAfterNativeCompaction: firstSuccessfulCompaction
@@ -145,8 +156,8 @@ export function summarize(info: SessionInfo, log: readonly OpenCodeEvent[], stag
       : null,
     cutOverheadMs: cuts.reduce((sum, cut) => sum + (cut.durationMs ?? 0), 0),
     contextHookOverheadMs: contextCalls.reduce((sum, call) => sum + (call.durationMs ?? 0), 0),
-    estimatedSavedTokens: cuts.reduce((sum, cut) => sum + (cut.estimatedSavedTokens ?? 0), 0),
-    estimatedCacheSuffixTokens: cuts.reduce((sum, cut) => sum + (cut.estimatedCacheSuffixTokens ?? 0), 0),
+    estimatedSavedTokens: [...cuts, ...replacements].reduce((sum, cut) => sum + (cut.estimatedSavedTokens ?? 0), 0),
+    estimatedCacheSuffixTokens: [...cuts, ...replacements].reduce((sum, cut) => sum + (cut.estimatedCacheSuffixTokens ?? 0), 0),
     recalls: recalls.length,
     successfulRecalls: recalls.filter(recall => recall.success).length,
   };

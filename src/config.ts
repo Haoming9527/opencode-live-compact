@@ -18,15 +18,14 @@ export function readConfig(options: Readonly<Record<string, unknown>>) {
   const stateRoot = process.env.XDG_STATE_HOME || platformStateRoot
   return {
     minimumContextTokens: integer("minimumContextTokens", 20_000, 1, 2_000_000),
-    minimumSavingsTokens: integer("minimumSavingsTokens", 1_000, 1, 100_000),
+    minimumSourceTokens: integer("minimumSourceTokens", 1_000, 1, 100_000),
     protectedToolRounds: integer("protectedToolRounds", 3, 0, 100),
     maxCutsPerCycle: integer("maxCutsPerCycle", 3, 1, 20),
     archiveDirectory: absolute("archiveDirectory") ?? join(stateRoot, "opencode-live-compact"),
-    archiveMaxBytes: integer("archiveMaxBytes", 64 * 1024 * 1024, 1024, 1024 * 1024 * 1024),
+    archiveMaxBytes: integer("archiveMaxBytes", 256 * 1024 * 1024, 1024, 1024 * 1024 * 1024),
     archiveMaxRecords: integer("archiveMaxRecords", 4096, 1, 65_536),
     archiveRetentionMs: integer("archiveRetentionMs", 7 * 24 * 60 * 60 * 1000, 0, 365 * 24 * 60 * 60 * 1000),
     compactSpans: options.compactSpans !== false,
-    cacheRebuildWeight: options.strictCacheBudget === true ? 1 : 0.25,
     dryRun: options.dryRun === true,
     diagnostics: options.diagnostics === true,
     metricsFile: absolute("metricsFile"),

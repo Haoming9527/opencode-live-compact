@@ -1,67 +1,153 @@
-# Paired OpenCode benchmarks
+# Run the four benchmarks
 
-Each arm gets a fresh copy of the same source, a separate OpenCode profile and one continuous session. The runner submits the same prompts in the same order and waits for each turn to finish. Trial order alternates. Native compaction and model output limits use stock OpenCode 2.2.6 defaults.
+Every live command compares **Original OpenCode** with **Live Compact**, using the same model and ordered prompts, separate workspaces, and one continuous session per version. Both keep stock OpenCode **2.2.6** compaction and output defaults.
 
-| Suite | Workload | Independent acceptance |
+| Suite | What it runs | Acceptance checks |
 | --- | --- | --- |
-| `short` | Six sequential JavaScript programming exercises | Six Node test cases with additional assertions |
-| `semver` | A range-diagnostics feature on the public `semver` 7.7.2 package | Eight tests, including a compatibility matrix, plus a final recall of an earlier requirement |
-| `aider` | 150 exercises from Aider Polyglot `7e0611e` | Original exercise tests in five language runtimes |
+| [1. Short](#1-short) | 6 small JavaScript tasks | 6 tests |
+| [2. SemVer](#2-semver) | 10 stages developing a SemVer feature | 8 tests and a requirement-retention check |
+| [3. Aider](#3-aider) | 150 programming exercises across five languages | Complete exercise tests; target 150/150 |
+| [4. Web-Bench React](#4-web-bench-react) | 20 dependent tasks building one React app | Cumulative browser tests; 59 cases at task 20 |
 
-The Aider suite interleaves the first 30 alphabetical exercises in Python, Go, JavaScript, Rust, and Java in that order. The grader overlays only declared solution files on pristine exercise copies and enables the tests that Exercism initially skips. Each live arm gets one continuous session. The Aider arms start in parallel. [Pinned exercise set](https://github.com/Aider-AI/polyglot-benchmark/tree/7e0611e)
+**Preflight** checks fixtures and tests without model calls. **Live** runs the paid comparison, repeating preflight before making model calls. Fixture and dependency downloads can still require network access.
 
-Use `node benchmarks/run.ts` with the same flags if PowerShell intercepts npm’s argument separator.
+Use an explicit suite name: `--suite all` currently runs **Short and SemVer only**, not all four.
 
-## Preflight
+## Setup once
 
-The short and SemVer suites are the default pair. Preflight exercises the fixture and acceptance harness without inference. Provide the pinned archive as `--semver-tarball` for a fully offline preflight.
-
-```sh
-npm run benchmark -- --preflight
-```
-
-For Aider, provide the unpacked pinned revision, a Python with pytest, a tools directory containing `go/bin/go` and JUnit Platform Console 1.10.0 plus AssertJ 3.25.1, and a `node_modules` directory with Jest 29.7 and the Exercism Babel preset. Java and Cargo must be on PATH. Point `--python` at the absolute path to the pytest environment's interpreter.
+Run commands from this repository's root. Use Node.js **22.18 or newer** and install stock OpenCode **2.2.6** for live runs.
 
 ```sh
-npm run benchmark -- --preflight --suite aider --aider-fixture-dir /path/to/polyglot-benchmark --aider-tools-dir /path/to/tools --aider-js-dir /path/to/node_modules --python /path/to/python
-```
-
-## Metered runs
-
-Build the plugin and install stock `@opencode/cli@2.2.6` first. Use `--opencode-bin` or `OPENCODE_BIN` when the executable is outside PATH. Select the model, the environment variable holding the provider key, a combined estimated spend cap and an amount to reserve before admitting each stage. The runner adds the credential through the official SDK and removes the isolated profile after the arm. Provider costs arrive after requests settle, so a stage can consume more than its reserve. Apply an account-level cap when a hard spending limit is required. The runner accepts `--trials 1` for one pair and defaults to three.
-
-```sh
+npm ci
 npm run build
-npm run benchmark -- --live --suite aider --parallel --model openai/gpt-6-luna --key-env OPENAI_API_KEY --budget-usd 15 --reserve-usd 0.35 --trials 1 --aider-fixture-dir /path/to/polyglot-benchmark --aider-tools-dir /path/to/tools --aider-js-dir /path/to/node_modules --python /path/to/python
+opencode --version
 ```
 
-Each `result.json` in `.runs/live-*/` includes independent grades, the model's advertised pricing and limits, OpenCode's estimated USD, uncached input, cache reads and writes, output and reasoning, observed request counts, measured primary prompt sizes, plugin cuts and time, recovery telemetry and native compaction timing. Prompt sizes use reported primary request input plus cache reads and writes. Observed request counts are a lower bound because stock telemetry does not expose every physical retry or background request. Exact recovery is verified in the stock integration test. The live runner records whether recalls succeed when the agent chooses to call the tool. [OpenCode client and events](https://opencode.ai/docs/build/client/)
+For local paid runs, put your existing `OPENAI_API_KEY` in the project's ignored `.env`. The commands below use `node --env-file=.env` to load it. If the key is already exported in your shell, omit `--env-file=.env`. Preflight needs no API key.
 
-`comparison.json` contains paired differences and reports whether both candidates passed. Timing uses the host's compaction start and terminal events. Confirmed Live Compact replacement windows have a separate count and host wait total. Local replacement processing time comes from the plugin diagnostics. An unmarked model-driven compaction still counts as native work, including a manual fallback in the treatment arm. The report also includes combined host wait for both kinds of compaction. If the stock arm never compacts automatically or a timing event is missing, the pause and wait differences are inconclusive. Treat a smaller context or reduced estimated API spend as beneficial only when both candidates meet the same correctness checks.
+The examples run **one pair**, with both versions in parallel. The `$15` budget is combined across the two versions **for that command**, not across all four suites. Change `--budget-usd` as needed. `--reserve-usd 0.75` reserves room before another model attempt; it is not a fee or a hard billing limit.
 
-## Run Aider in Daytona
+Commands are single lines so they can be pasted into PowerShell or a Linux shell. Replace `/path/to/...` with installed fixture paths. If OpenCode is outside PATH, append `--opencode-bin /path/to/opencode` to a live command.
 
-Use a persistent Linux sandbox and set its auto-stop interval to `0` so the run can continue after you disconnect. Daytona bills sandbox compute separately from model API usage. [Daytona lifecycle settings](https://www.daytona.io/docs/en/sandboxes/#automated-lifecycle-management)
+## 1. Short
 
-Prepare a checkout in the sandbox with Node.js 22.18 or newer. Install dependencies with `npm ci`, build the plugin with `npm run build`, and install stock OpenCode 2.2.6. Set `OPENAI_API_KEY` in the sandbox environment. Follow the [Aider benchmark instructions](README.md) for the pinned fixtures and test runtimes. Warm the Cargo cache for the Rust exercise and reference manifests. Include RxJava 2.2.12 and Reactive Streams 1.0.2 for Java Hangman.
+No external fixture setup is needed.
 
-On your laptop, install and authenticate the Daytona CLI or set `DAYTONA_API_KEY` and `DAYTONA_API_URL` in the project `.env`. Run the benchmark with `--target daytona`. All tool and fixture paths below are sandbox paths. Use `--target local` or omit `--target` to run locally.
+**Preflight:**
 
 ```sh
-npm run benchmark -- --target daytona --live --suite aider --trials 1 \
-  --model openai/gpt-6-luna --key-env OPENAI_API_KEY --budget-usd 15 --reserve-usd 0.75 \
-  --opencode-bin /path/to/opencode --aider-fixture-dir /path/to/polyglot-benchmark \
-  --aider-tools-dir /path/to/tools --aider-js-dir /path/to/node_modules \
-  --python /path/to/venv/bin/python
+node benchmarks/run.ts --preflight --suite short
 ```
 
-The default sandbox is `Benchmark-sandbox` and the default remote checkout is `~/benchmark-progress/cloud/repo`. Override them with `--daytona-sandbox` and `--daytona-project-dir`.
-
-Watch live grades from the sandbox terminal.
+**Run both versions:**
 
 ```sh
-tail -n +1 -F ~/benchmark-progress/latest/progress.jsonl |
-  node ~/benchmark-progress/cloud/repo/benchmarks/run.ts --format-progress
+node --env-file=.env benchmarks/run.ts --live --suite short --parallel --trials 1 --model openai/gpt-6-luna --key-env OPENAI_API_KEY --budget-usd 15 --reserve-usd 0.75
 ```
 
-`~/benchmark-progress/latest/benchmark.log` prints the run directory. When the arms finish, open `comparison.json` and `comparison-1.md` there.
+## 2. SemVer
+
+Requires `tar` on PATH. The runner downloads and integrity-checks SemVer **7.7.2**. To use an existing archive, append `--semver-tarball /path/to/semver-7.7.2.tgz` to either command.
+
+**Preflight:**
+
+```sh
+node benchmarks/run.ts --preflight --suite semver
+```
+
+**Run both versions:**
+
+```sh
+node --env-file=.env benchmarks/run.ts --live --suite semver --parallel --trials 1 --model openai/gpt-6-luna --key-env OPENAI_API_KEY --budget-usd 15 --reserve-usd 0.75
+```
+
+## 3. Aider
+
+Prepare [Aider Polyglot at `7e0611e77b54e2dea774cdc0aa00cf9f7ed6144f`](https://github.com/Aider-AI/polyglot-benchmark/tree/7e0611e77b54e2dea774cdc0aa00cf9f7ed6144f) and its test runtimes first:
+
+| Argument / requirement | What to provide |
+| --- | --- |
+| `--aider-fixture-dir` | Root of the pinned Polyglot checkout |
+| `--aider-tools-dir` | Directory containing `go/bin/go`, JUnit Platform Console 1.10.0, AssertJ 3.25.1, RxJava 2.2.12, and Reactive Streams 1.0.2 jars |
+| `--aider-js-dir` | `node_modules` containing Jest 29.7 and the Exercism Babel preset |
+| `--python` | Absolute path to a Python interpreter with pytest installed |
+| PATH / dependency cache | Java and Cargo available; Rust dependencies cached for offline tests and Go dependencies available locally |
+
+**Preflight — require the reference to pass all 150 exercises:**
+
+```sh
+node benchmarks/run.ts --preflight --suite aider --aider-fixture-dir /path/to/polyglot --aider-tools-dir /path/to/tools --aider-js-dir /path/to/js/node_modules --python /path/to/python
+```
+
+**Run both versions:**
+
+```sh
+node --env-file=.env benchmarks/run.ts --live --suite aider --parallel --trials 1 --model openai/gpt-6-luna --key-env OPENAI_API_KEY --budget-usd 15 --reserve-usd 0.75 --max-attempts 3 --aider-fixture-dir /path/to/polyglot --aider-tools-dir /path/to/tools --aider-js-dir /path/to/js/node_modules --python /path/to/python
+```
+
+The runner interleaves the first 30 alphabetical exercises in Python, Go, JavaScript, Rust, and Java. It enables supplied skipped tests and grades only candidate solution files against pristine tests. Both versions get the same self-test command and up to three attempts per exercise, including the first attempt. All repairs count toward cost and time.
+
+## 4. Web-Bench React
+
+Prepare a clean [Web-Bench checkout at `7b31ca2b786eef120dd49ce63dd03d0c0006046d`](https://github.com/bytedance/web-bench/tree/7b31ca2b786eef120dd49ce63dd03d0c0006046d). Install React and `@web-bench/test-util` dependencies using pnpm **8.15.8** and `common/config/rush/pnpm-lock.yaml`; the root lockfile is unrelated. Install Playwright **1.57.0**'s matching Chromium headless shell. Keep the benchmark's Apache-2.0 license with its fixtures.
+
+| Argument | What to provide |
+| --- | --- |
+| `--webbench-fixture-dir` | Clean pinned Git checkout, with `projects/react/node_modules` installed |
+| `--webbench-browsers-dir` | Playwright browser cache containing the matching Chromium installation |
+
+**Preflight — require the reference to pass 59/59 twice:**
+
+```sh
+node benchmarks/run.ts --preflight --suite webbench --webbench-fixture-dir /path/to/web-bench --webbench-browsers-dir /path/to/playwright-browsers
+```
+
+**Run both versions:**
+
+```sh
+node --env-file=.env benchmarks/run.ts --live --suite webbench --parallel --trials 1 --model openai/gpt-6-luna --key-env OPENAI_API_KEY --budget-usd 15 --reserve-usd 0.75 --max-attempts 3 --timeout-minutes 30 --webbench-fixture-dir /path/to/web-bench --webbench-browsers-dir /path/to/playwright-browsers
+```
+
+Preflight also requires the starter and a deliberately broken reference to fail real assertions. Each live stage runs tests for tasks 1 through the current task, with one browser worker, no test retries, and separate ports. Each version gets up to three model attempts per stage. Candidate `src/` files are graded in fresh copies with pristine tests and configuration.
+
+Reports distinguish stages passed within the attempt limit from the final application's cumulative test results. This is an adapted Web-Bench protocol, not an official leaderboard score. See [the workload and validation details](long-tasks.md).
+
+## Run any suite in Daytona
+
+Prepare the repository, dependencies, stock OpenCode, and the chosen fixtures **inside the sandbox**. Its environment must already contain `OPENAI_API_KEY`. Configure the sandbox to stay running if you want to close your laptop.
+
+From your laptop, install the Daytona CLI and put `DAYTONA_API_KEY` and `DAYTONA_API_URL` in the local `.env`. Take one of the commands above, omit `--env-file=.env`, and append:
+
+```text
+--target daytona --daytona-sandbox Benchmark-sandbox-8gb --daytona-project-dir /path/to/remote/repo --wait-for-slot
+```
+
+All fixture, browser, Python, and OpenCode paths must then be **sandbox paths**. The launcher loads local Daytona authentication; the model key stays in the sandbox. `--wait-for-slot` waits behind an existing benchmark. The versions within a pair still run in parallel.
+
+For example, this queues a Short preflight using the prepared Web-Bench checkout:
+
+```sh
+node benchmarks/run.ts --preflight --suite short --target daytona --daytona-sandbox Benchmark-sandbox-8gb --daytona-project-dir /home/daytona/benchmark-progress/webbench/repo --wait-for-slot
+```
+
+The launcher prints its `benchmark.log` and `progress.jsonl` paths. While queued, read the printed **benchmark.log** path. `latest` switches to the new job only when it acquires the slot; `progress.jsonl` is created when a live run begins.
+
+## See progress and results
+
+| Location | Contents |
+| --- | --- |
+| `benchmark.log` in the Daytona launch folder | Queue status, preflight output, errors, and the run artifacts directory |
+| `progress.jsonl` | Aider / Web-Bench stage pass/fail counts and cumulative estimated cost together on one line |
+| `.runs/live-*/comparison.json` | Paired results for every suite |
+| `.runs/live-*/comparison-1.md` | English comparison tables for Aider and Web-Bench |
+| Each version's `result.json` and `grade.tap` | Usage, timing, independent grades, and test output |
+
+For an active Aider or Web-Bench run, open the sandbox terminal:
+
+```sh
+tail -n +1 -F ~/benchmark-progress/latest/progress.jsonl
+```
+
+For Short or SemVer, watch `benchmark.log`; these suites grade at the end and do not emit per-exercise progress lines. They also do not use the staged repair loop. Every suite retains results when tests fail and exits unsuccessfully if either version misses its acceptance target.
+
+Costs include model attempts and repairs and are OpenCode estimates, not billing receipts. Daytona compute is separate. Reports separate cached input, uncached input, cache writes, native compaction pauses, Live Compact cuts, and host wait time. If Original OpenCode never compacts automatically, or timing telemetry is incomplete, the pause comparison is **inconclusive**. Smaller prompts alone do not prove lower cost or preserved correctness.

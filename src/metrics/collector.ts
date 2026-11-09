@@ -1,9 +1,13 @@
 import { appendFile } from "node:fs/promises"
 import type { Config } from "../config.ts"
+import type { PlanningDiagnostics } from "../engine/planner.ts"
 
 type Measurement =
-  | { event: "cut" | "replacement"; count: number; durationMs: number; estimatedSavedTokens: number; estimatedCacheSuffixTokens: number; dryRun: boolean }
-  | { event: "context"; estimatedTokens: number; estimatedReducedTokens: number; durationMs: number }
+  | { event: "cut" | "replacement"; count: number; strategy?: "spans" | "individual"; durationMs: number; planningMs?: number; applicationMs?: number; estimatedSavedTokens: number; estimatedCacheSuffixTokens: number; dryRun: boolean }
+  | { event: "planning"; reason: string; strategy?: "spans" | "individual"; counts?: Record<string, number>; durationMs: number;
+      contextTokens?: number; scoreUnit?: "prefix-weighted-savings";
+      alternatives?: { individual: PlanningDiagnostics; spans: PlanningDiagnostics } }
+  | { event: "context"; messageCount: number; durationMs: number }
   | { event: "recall"; success: boolean }
   | { event: "fallback"; operation: string }
 

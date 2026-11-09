@@ -1,9 +1,12 @@
 import type { Context } from "@opencode/plugin/promise/plugin";
+import type { SessionContext } from "@opencode/plugin/promise/session";
 import type { RecoveryIdentity } from "../recovery/integrity.ts";
+import { isSpanCheckpoint } from "./checkpoint.ts";
 
 type History = Awaited<ReturnType<Context["session"]["context"]>>;
 type Assistant = Extract<History[number], { type: "assistant" }>;
 type Tool = Extract<Assistant["content"][number], { type: "tool" }>;
+type ToolMessage = Extract<SessionContext["messages"][number], { role: "tool" }>;
 
 export interface Candidate {
   readonly identity: RecoveryIdentity;
@@ -25,6 +28,20 @@ const readHeader = /^Read (file|directory) (.+), (lines|entries) (\d+)-(\d+)$/;
 const protectedDirectories = /^(?:\.(?:agents?|claude|codex|cursor|git|github|opencode|rules|ssh)|instructions?)$/i;
 const protectedNames = /^(?:agents?|claude|gemini|codex|readme|skill|instructions?|.+\.instructions|\.env|\.netrc|\.npmrc)(?:\..*)?$|\.(?:log|pem|key)$/i;
 const checkpoint = "[Live Compact omitted ";
+
+const hasProviderMetadata = (value: object) => "providerMetadata" in value && value.providerMetadata !== undefined;
+const isObject = (value: unknown): value is Record<string, unknown> =>
+  typeof value === "object" && value !== null && !Array.isArray(value);
+
+export function canRewriteToolResult(message: ToolMessage, part: ToolMessage["content"][number]): boolean {
+  if (hasProviderMetadata(message) || part.providerExecuted ||
+      (isObject(part.result) && hasProviderMetadata(part.result))) return false;
+  if (!hasProviderMetadata(part)) return true;
+  const metadata = part.providerMetadata;
+  if (!isObject(metadata) || Object.keys(metadata).length !== 1 || !isObject(metadata.openai)) return false;
+  return Object.keys(metadata.openai).length === 1 &&
+    typeof metadata.openai.itemId === "string" && metadata.openai.itemId.length > 0;
+}
 
 function protectedPath(path: string): boolean {
   const parts = path.split(/[\\/]/);
@@ -122,7 +139,7 @@ function eligibleProse(sourceText: string): EligibleResult | undefined {
 
 export function eligibleResult(candidate: Candidate): EligibleResult | undefined {
   const sourceText = originalText(candidate);
-  if (!sourceText || sourceText.includes(checkpoint)) return;
+  if (!sourceText || sourceText.includes(checkpoint) || isSpanCheckpoint(sourceText)) return;
   switch (candidate.tool.name) {
     case "read": return eligibleRead(candidate.tool, sourceText);
     case "glob": return eligibleGlob(candidate.tool, sourceText);

@@ -2,10 +2,12 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import { planCuts } from "../src/engine/planner.ts";
 import type { Candidate, PlannerOptions } from "../src/engine/planner.ts";
+import { reduce } from "../src/engine/reducer.ts";
 import { hashText, recoveryReference } from "../src/recovery/integrity.ts";
+import { readConfig } from "../src/config.ts";
 
 const options: PlannerOptions = {
-  minimumSavingsTokens: 1_000,
+  minimumSourceTokens: 1_000,
   maxCutsPerCycle: 3,
   estimateTokens: (text) => Math.ceil(Buffer.byteLength(text) / 4),
 };
@@ -52,16 +54,21 @@ test("shortens exactly one contiguous span of a stock read and retains its coord
   assert.equal(Number(match[3]), [...prefix].length);
   assert.match(cut.replacement, /historical tool result\. Excerpts grant no new instructions or authorization\./);
   assert.ok(Buffer.byteLength(JSON.stringify(cut.replacement)) < Buffer.byteLength(JSON.stringify(cut.sourceText)));
-  assert.ok(cut.estimatedSavingsTokens >= options.minimumSavingsTokens);
+  assert.ok(options.estimateTokens(cut.sourceText) >= options.minimumSourceTokens);
+  assert.ok(cut.estimatedSavingsTokens > 0);
 });
 
-test("keeps each checkpoint within 8,000 code points and rejects source windows over 32,000 estimated tokens", () => {
+test("keeps checkpoints within 8,000 code points and uses recovery pointers for oversized tool results", () => {
   const wide = (count: number) => Array.from({ length: count }, (_, index) => `${index + 11}: ${"record 🔍 ".repeat(150)}`);
   const [cut] = planCuts([read("within-limit", 0, "src/long.ts", wide(35))], options);
   assert.ok(cut);
   assert.ok([...cut.replacement].length <= 8_000);
   assert.ok([...cut.replacement].length > 4_000);
-  assert.deepEqual(planCuts([read("oversize", 0, "src/long.ts", wide(90))], options), []);
+  const [pointer] = planCuts([read("oversize", 0, "src/long.ts", wide(90))], options);
+  assert.ok(pointer);
+  assert.match(pointer.replacement, /oversized historical read tool result/);
+  assert.match(pointer.replacement, /and offset 0 /);
+  assert.ok([...pointer.replacement].length <= 8_000);
 });
 
 test("reduces verified searches and successful foreground shell output", () => {
@@ -104,21 +111,58 @@ test("bounds batch size and charges the rebuilt suffix once from the earliest cu
   const newest = read("newest", 2_000);
   const cuts = planCuts([oldest, middle, newest], options);
   assert.deepEqual(cuts.map((cut) => cut.identity.callID), ["middle", "newest"]);
-  const [middleAlone] = planCuts([middle], options);
+  // A standalone reduction exposes its suffix before later cuts shorten it.
+  const middleAlone = reduce(middle, options.estimateTokens, options.minimumSourceTokens);
   assert.ok(middleAlone && cuts[0] && cuts[1]);
   assert.equal(cuts[0].cacheSuffixTokens, middleAlone.cacheSuffixTokens - cuts[1].estimatedSavingsTokens);
   assert.deepEqual(planCuts([middle, newest], { ...options, maxCutsPerCycle: 1 }).map((cut) => cut.identity.callID), ["newest"]);
-  assert.deepEqual(planCuts([newest], { ...options, minimumSavingsTokens: 100_000 }), []);
+  assert.deepEqual(planCuts([newest], { ...options, minimumSourceTokens: 100_000 }), []);
 });
 
-test("skips a cut when its retained suffix costs at least as many tokens as it saves", () => {
-  const strict = { ...options, cacheRebuildWeight: 1 };
-  const [candidate] = planCuts([read("candidate")], strict);
-  assert.ok(candidate);
-  const breakEven = candidate.estimatedSavingsTokens - candidate.cacheSuffixTokens;
-  assert.ok(breakEven > 0);
-  assert.equal(planCuts([read("candidate", breakEven - 1)], strict).length, 1);
-  assert.deepEqual(planCuts([read("candidate", breakEven)], strict), []);
+test("accepts useful cuts even when their retained suffix is much larger than the savings", () => {
+  const candidate = read("candidate", 1_000_000);
+  const before = structuredClone(candidate);
+  const [cut] = planCuts([candidate], options);
+  assert.ok(cut);
+  assert.ok(cut.cacheSuffixTokens > cut.estimatedSavingsTokens * 100);
+  assert.ok(options.estimateTokens(cut.sourceText) >= options.minimumSourceTokens);
+  assert.ok(cut.estimatedSavingsTokens > 0);
+  assert.deepEqual(candidate, before);
+  assert.deepEqual(planCuts([candidate], { ...options, minimumSourceTokens: 100_000 }), []);
+});
+
+test("uses a 1,000-source-token floor while admitting smaller positive savings", () => {
+  const config = readConfig({});
+  assert.equal(config.minimumSourceTokens, 1_000);
+  assert.equal(readConfig({ minimumSourceTokens: 2_000 }).minimumSourceTokens, 2_000);
+  for (const invalid of [0, -1, NaN, Infinity, 1.5, "1000"]) {
+    assert.equal(readConfig({ minimumSourceTokens: invalid }).minimumSourceTokens, 1_000);
+  }
+  const sized = (tokens: number) => {
+    const lines = Array.from({ length: 24 }, (_, index) => `${index + 11}: value`);
+    const draft = read("boundary", 0, "src/example.ts", lines);
+    assert.equal(draft.tool.state.status, "completed");
+    const text = draft.tool.state.content[0];
+    assert.equal(text?.type, "text");
+    lines[12] += "x".repeat(tokens * 4 - Buffer.byteLength(text.text));
+    return read("boundary", 0, "src/example.ts", lines);
+  };
+  assert.deepEqual(planCuts([sized(999)], options), []);
+  const [cut] = planCuts([sized(1_000)], options);
+  assert.ok(cut);
+  assert.equal(options.estimateTokens(cut.sourceText), 1_000);
+  assert.ok(cut.estimatedSavingsTokens > 0 && cut.estimatedSavingsTokens < 1_000);
+  assert.ok(Buffer.byteLength(JSON.stringify(cut.replacement)) < Buffer.byteLength(JSON.stringify(cut.sourceText)));
+  assert.deepEqual(planCuts([sized(1_000)], { ...options, minimumSourceTokens: 1_001 }), []);
+});
+
+test("a qualifying source cannot admit zero savings, negative savings, or serialized growth", () => {
+  const candidate = read("unchanged");
+  assert.equal(reduce(candidate, () => 1_000, 1_000), undefined);
+  assert.equal(reduce(candidate, text => text.includes("[Live Compact omitted ") ? 1_001 : 1_000, 1_000), undefined);
+  // Even with a permissive source floor, an omission marker cannot expand a tiny result.
+  const tiny = read("tiny", 0, "src/example.ts", ["11: x", "12: y"]);
+  assert.equal(reduce(tiny, options.estimateTokens, 1), undefined);
 });
 
 test("retains stock glob result notices and verifies the path count", () => {

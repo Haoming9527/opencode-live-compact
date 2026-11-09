@@ -6,6 +6,8 @@ import { promisify } from "node:util";
 const runFile = promisify(execFile);
 const filename = "archive.sqlite";
 const archiveFiles = new Set([filename, `${filename}-journal`, `${filename}-wal`, `${filename}-shm`]);
+const sessionDirectory = /^session-[0-9a-f]{64}$/;
+const payloadFile = /^lc1_[0-9a-f]{32}\.json$/;
 
 // POSIX modes do not restrict other Windows users. Provision and check a private DACL there.
 const secureWindowsDirectory = String.raw`
@@ -51,8 +53,14 @@ if (-not $acl.AreAccessRulesProtected -or -not (Is-Private $acl)) {
 }
 if (-not $acl.AreAccessRulesProtected -or -not (Is-Private $acl)) { throw 'Archive directory ACL is not private' }
 
-foreach ($file in $directory.GetFileSystemInfos()) {
+$pending = [System.Collections.Generic.Stack[System.IO.FileSystemInfo]]::new()
+foreach ($file in $directory.GetFileSystemInfos()) { $pending.Push($file) }
+while ($pending.Count -gt 0) {
+  $file = $pending.Pop()
   if (-not (Is-Private (Read-OwnedAcl $file))) { throw 'Archive file ACL is not private' }
+  if ($file -is [System.IO.DirectoryInfo]) {
+    foreach ($child in $file.GetFileSystemInfos()) { $pending.Push($child) }
+  }
 }
 `;
 
@@ -67,11 +75,26 @@ export async function privateArchivePath(base: string): Promise<string> {
     throw new Error("Recovery directory is not private");
   }
 
+  const check = async (path: string, folder: boolean) => {
+    const stat = await lstat(path);
+    if ((folder ? !stat.isDirectory() : !stat.isFile() || stat.nlink !== 1) ||
+      (uid !== undefined && (stat.uid !== uid || (stat.mode & 0o077) !== 0))) {
+      throw new Error("Unexpected or non-private recovery entry");
+    }
+  };
   for (const entry of await readdir(directory)) {
-    const stat = await lstat(join(directory, entry));
-    if (!archiveFiles.has(entry) || !stat.isFile() || stat.nlink !== 1 ||
-        (uid !== undefined && (stat.uid !== uid || (stat.mode & 0o077) !== 0))) {
-      throw new Error("Unexpected or non-private recovery file");
+    const path = join(directory, entry);
+    if (archiveFiles.has(entry)) { await check(path, false); continue; }
+    if (entry !== "sessions") throw new Error("Unexpected recovery entry");
+    await check(path, true);
+    for (const session of await readdir(path)) {
+      if (!sessionDirectory.test(session)) throw new Error("Unexpected recovery session");
+      const sessionPath = join(path, session);
+      await check(sessionPath, true);
+      for (const file of await readdir(sessionPath)) {
+        if (!payloadFile.test(file)) throw new Error("Unexpected recovery payload");
+        await check(join(sessionPath, file), false);
+      }
     }
   }
 
