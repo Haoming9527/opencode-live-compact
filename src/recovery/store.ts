@@ -28,6 +28,10 @@ export interface RecoveryRecord extends RecoveryPlan {
   readonly original: string;
 }
 
+export type RecallLookup =
+  | { status: "ok"; record: RecoveryRecord }
+  | { status: "unavailable"; reason: "missing" | "expired" | "unreadable" | "storage-unavailable" };
+
 const planColumns = "session_id, reference, identity, source_hash, checkpoint, checkpoint_hash, retired_at";
 type Row = Record<string, unknown>;
 
@@ -177,6 +181,25 @@ export class RecoveryStore {
     return (await this.getBatch(sessionID, [reference]))[0];
   }
 
+  /** Scope every lookup to the caller; never disclose another session's records. */
+  async recall(sessionID: string, reference: string): Promise<RecallLookup> {
+    if (!isRecoveryReference(reference)) return { status: "unavailable", reason: "missing" };
+    try {
+      const db = await this.database();
+      return transaction(db, () => {
+        const row = db.prepare(`SELECT ${planColumns}, original, external, bytes FROM recovery WHERE session_id = ? AND reference = ?`).get(sessionID, reference);
+        if (row) {
+          const record = decodeRecord(row, this.payloads!);
+          return record ? { status: "ok", record } : { status: "unavailable", reason: "unreadable" };
+        }
+        const expired = db.prepare("SELECT 1 FROM recovery_expired WHERE session_id = ? AND reference = ?").get(sessionID, reference);
+        return { status: "unavailable", reason: expired ? "expired" : "missing" };
+      });
+    } catch {
+      return { status: "unavailable", reason: "storage-unavailable" };
+    }
+  }
+
   /** Read a bounded replacement batch under one lock; validate every payload afresh. */
   async getBatch(sessionID: string, references: readonly string[]): Promise<(RecoveryRecord | undefined)[]> {
     const requested = references.map(reference => isRecoveryReference(reference) ? reference : undefined);
@@ -217,6 +240,7 @@ export class RecoveryStore {
         if (row.external === 1) this.payloads!.remove(sessionID, String(row.reference));
       }
       db.prepare("DELETE FROM recovery WHERE session_id = ?").run(sessionID);
+      db.prepare("DELETE FROM recovery_expired WHERE session_id = ?").run(sessionID);
       this.sweep(db);
     });
   }
@@ -242,10 +266,14 @@ export class RecoveryStore {
       const needed = pressure && (bytes > targetBytes || (count > this.maxRecords && count > targetCount));
       if (!expired && !needed) continue;
       if (row.external === 1) this.payloads!.remove(String(row.session_id), String(row.reference));
+      db.prepare("INSERT OR REPLACE INTO recovery_expired (session_id, reference) VALUES (?, ?)").run(String(row.session_id), String(row.reference));
       remove.run(String(row.reference));
       bytes -= Number(row.bytes);
       count--;
     }
+    // Bounded, content-free tombstones explain recent expiry across restarts.
+    // Once an old tombstone is evicted, recall conservatively reports missing.
+    db.prepare("DELETE FROM recovery_expired WHERE rowid NOT IN (SELECT rowid FROM recovery_expired ORDER BY rowid DESC LIMIT ?)").run(this.maxRecords);
     return bytes <= this.maxBytes && count <= this.maxRecords;
   }
 
@@ -285,6 +313,11 @@ export class RecoveryStore {
           bytes INTEGER NOT NULL,
           retired_at INTEGER,
           external INTEGER NOT NULL DEFAULT 0
+        ) STRICT;
+        CREATE TABLE IF NOT EXISTS recovery_expired (
+          session_id TEXT NOT NULL,
+          reference TEXT NOT NULL,
+          PRIMARY KEY (session_id, reference)
         ) STRICT;
         CREATE INDEX IF NOT EXISTS recovery_session ON recovery (session_id);
         CREATE INDEX IF NOT EXISTS recovery_expiry ON recovery (retired_at) WHERE retired_at IS NOT NULL;

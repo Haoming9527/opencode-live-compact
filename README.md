@@ -101,6 +101,12 @@ Set overrides in the plugin entry's `options` object. [All configuration options
 
 Recovery files live in private per-session directories. Before a backup would exceed the shared budget, cleanup removes the oldest retired backups toward 80% usage. Active checkpoints stay protected; if they leave insufficient room, the plugin keeps the full context.
 
+## Checking plugin status
+
+Ask OpenCode to call `live_compact_status` to see this session's latest planning or failure reason. Normal skips are logged once per reason change; storage and replay failures produce warnings even with `diagnostics: false`. Enable diagnostics for detailed JSONL measurements.
+
+Recall reports `missing`, `expired`, `unreadable`, or `storage-unavailable` when it cannot recover text. Re-read the source instead of guessing omitted details. References from other sessions also report `missing` to preserve isolation. Active backups do not expire after seven days; that grace period applies only to retired records.
+
 ## Development and benchmarks
 
 ```sh

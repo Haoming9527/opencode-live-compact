@@ -95,7 +95,7 @@ test("oversized pointers retain exact same-session recovery and refuse archives 
   const recall = await restore(store, cut.identity.sessionID, cut.reference, 0, 2_048)
   assert.equal(recall.status, "ok")
   assert.equal(recall.text, [...cut.sourceText].slice(0, 2_048).join(""))
-  assert.deepEqual(await restore(store, "different_session", cut.reference), { status: "unavailable" })
+  assert.deepEqual(await restore(store, "different_session", cut.reference), { status: "unavailable", reason: "missing", action: "Re-read the original source or rerun the relevant tool; do not infer omitted details." })
 
   const candidate = read("src/too-large.ts", 3_000)
   const before = structuredClone(candidate)

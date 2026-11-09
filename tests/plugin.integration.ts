@@ -121,6 +121,9 @@ async function scriptedProvider(span = false, reads = 5, reasoning = false) {
           break;
         }
       }
+      if (stage === 21 && !result(request, "call_lc_status")) {
+        call = { id: "call_lc_status", name: "live_compact_status", input: {} };
+      }
       if (stage === 2 && !result(request, recallID(stage))) {
         const match = span
           ? request.messages.map(contentText).find(text => text?.startsWith("[Live Compact completed span"))
@@ -387,6 +390,11 @@ test("stock OpenCode 2.2.6 applies completed-turn cuts, recalls originals and re
     }
     assert.match(contentText(compactProse) ?? "", archiveMarker);
     assert.ok((contentText(originalProse)?.length ?? 0) > (contentText(compactProse)?.length ?? 0));
+    const statusRequests = await run(21, "succeeded", proseSession.id);
+    const status = JSON.parse(contentText(result(statusRequests.at(-1)!, "call_lc_status")) ?? "null");
+    assert.equal(status.planning.event, "planning");
+    assert.equal(typeof status.planning.reason, "string");
+    assert.ok(!JSON.stringify(status).includes("Paragraph 0:"), "status must not expose transcript content");
   } catch (error) {
     const details = [];
     for (const file of await readdir(profile).catch(() => [] as string[])) {

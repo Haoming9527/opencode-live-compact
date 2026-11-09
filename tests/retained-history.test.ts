@@ -348,3 +348,33 @@ for (const compactSpans of [false, true]) {
     assert.deepEqual((result.native!.messages as Message[]).slice(0, f.messages.length), f.messages)
   })
 }
+
+test("carried shell evidence drops large commands and metadata but still replans after restart", async () => {
+  const f = fixture(false)
+  const entry = f.history().find(entry => entry.id === "msg_retained")!
+  assert.equal(entry.type, "assistant")
+  const tool = entry.content[0]!
+  assert.equal(tool.type, "tool")
+  assert.equal(tool.state.status, "completed")
+  const command = "echo " + "large-command-".repeat(2_000)
+  Object.assign(tool, { name: "shell" })
+  Object.assign(tool.state, { input: { command }, metadata: { exit: 0, truncated: false, debug: command.repeat(10) } })
+  const call = f.messages[3]!, result = f.messages[4]!
+  Object.assign(call.content[0]!, { name: "shell", input: { command } })
+  Object.assign(result.content[0]!, { name: "shell" })
+  const hooks = f.makeHooks()
+  hooks.context(f.request(f.messages))
+  await hooks.idle({ sessionID, background: [] })
+  const first = await f.apply(hooks, f.messages, 1)
+  const encoded = JSON.stringify(first.metadata)
+  assert.ok(encoded.length < 8_000, `metadata is ${encoded.length} characters`)
+  assert.ok(!encoded.includes("large-command-"))
+  assert.deepEqual((first.native!.messages as Message[])[3], call, "real tool arguments are never changed")
+  const next = f.resume(first)
+  const restarted = f.makeHooks()
+  restarted.context(f.request(next))
+  await restarted.idle({ sessionID, background: [] })
+  assert.equal(f.queued.length, 2, "compact evidence must survive restart and remain eligible")
+  const second = await f.apply(restarted, next, 2)
+  assert.notDeepEqual((second.native!.messages as Message[])[4], result)
+})

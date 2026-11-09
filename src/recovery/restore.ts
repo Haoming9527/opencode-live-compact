@@ -1,13 +1,14 @@
-import type { RecoveryStore } from "./store.ts";
+import type { RecallLookup, RecoveryStore } from "./store.ts";
 
 export const maxRecallCodePoints = 2_048;
 
 export type RecallResult =
   | { readonly status: "ok"; readonly reference: string; readonly offset: number; readonly text: string; readonly nextOffset: number | null }
-  | { readonly status: "unavailable" | "invalid_range" };
+  | { readonly status: "invalid_range" }
+  | { readonly status: "unavailable"; readonly reason: Extract<RecallLookup, { status: "unavailable" }>["reason"]; readonly action: "Re-read the original source or rerun the relevant tool; do not infer omitted details." };
 
 export async function restore(
-  store: Pick<RecoveryStore, "get">,
+  store: Pick<RecoveryStore, "recall">,
   sessionID: string,
   reference: string,
   offset = 0,
@@ -17,8 +18,9 @@ export async function restore(
     return { status: "invalid_range" };
   }
 
-  const record = await store.get(sessionID, reference).catch(() => undefined);
-  if (!record) return { status: "unavailable" };
+  const lookup = await store.recall(sessionID, reference).catch(() => ({ status: "unavailable", reason: "storage-unavailable" } as const));
+  if (lookup.status === "unavailable") return { ...lookup, action: "Re-read the original source or rerun the relevant tool; do not infer omitted details." };
+  const record = lookup.record;
 
   let codePoints = 0;
   let start = 0;

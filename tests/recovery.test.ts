@@ -59,8 +59,8 @@ test("recovery survives restart and restores exact text within the calling sessi
   assert.deepEqual(first, { status: "ok", reference: item.reference, offset: 0, text: prefix, nextOffset: maxRecallCodePoints });
   const last = await restore(restarted, item.identity.sessionID, item.reference, maxRecallCodePoints);
   assert.deepEqual(last, { status: "ok", reference: item.reference, offset: maxRecallCodePoints, text: "\0é\ud800\r\n", nextOffset: null });
-  assert.deepEqual(await restore(restarted, "session-b", item.reference), { status: "unavailable" });
-  assert.deepEqual(await restore(restarted, item.identity.sessionID, "../archive.sqlite"), { status: "unavailable" });
+  assert.deepEqual(await restore(restarted, "session-b", item.reference), { status: "unavailable", reason: "missing", action: "Re-read the original source or rerun the relevant tool; do not infer omitted details." });
+  assert.deepEqual(await restore(restarted, item.identity.sessionID, "../archive.sqlite"), { status: "unavailable", reason: "missing", action: "Re-read the original source or rerun the relevant tool; do not infer omitted details." });
   assert.deepEqual(await restore(restarted, item.identity.sessionID, item.reference, -1), { status: "invalid_range" });
   if (process.platform !== "win32") {
     assert.equal((await stat(databasePath)).mode & 0o777, 0o600);
@@ -177,7 +177,7 @@ test("integrity failures do not return damaged records", async (t) => {
     assert.ok(stored);
     await writeFile(payloadPath(directory, item), JSON.stringify("corrupt"));
     assert.equal(await store.verify(stored), false);
-    assert.deepEqual(await restore(store, "session-a", item.reference), { status: "unavailable" });
+    assert.deepEqual(await restore(store, "session-a", item.reference), { status: "unavailable", reason: "unreadable", action: "Re-read the original source or rerun the relevant tool; do not infer omitted details." });
     db.prepare("UPDATE recovery SET checkpoint = ? WHERE reference = ?").run(JSON.stringify("corrupt"), item.reference);
     assert.deepEqual(await store.list("session-a"), []);
   } finally {
@@ -253,7 +253,7 @@ test("missing retired files are already freed, while missing active originals re
   const store = create();
   assert.equal(await store.preserve(first), true);
   await rm(payloadPath(directory, first));
-  assert.deepEqual(await restore(store, "session-a", first.reference), { status: "unavailable" });
+  assert.deepEqual(await restore(store, "session-a", first.reference), { status: "unavailable", reason: "unreadable", action: "Re-read the original source or rerun the relevant tool; do not infer omitted details." });
   await store.reconcile("session-a", new Set(), new Set([first.reference]));
   assert.equal(await store.preserve(fresh), true);
   assert.equal(await store.get("session-a", first.reference), undefined);
@@ -301,3 +301,49 @@ test("restart clears unindexed payloads without deleting committed backups", asy
   await assert.rejects(readFile(payloadPath(directory, orphan)), { code: "ENOENT" });
   assert.equal(await restarted.get("session-a", orphan.reference), undefined);
 });
+
+test("retention pins active references and reports retired expiry across restart without leaking sessions", async t => {
+  const { create } = await archive(t, { retentionMs: 0 })
+  const store = create()
+  const active = plan("pinned"), retired = plan("expired")
+  assert.equal(await store.preserveBatch([active, retired]), true)
+  await store.reconcile("session-a", new Set([active.reference]), new Set([active.reference, retired.reference]))
+  assert.equal((await restore(store, "session-a", active.reference)).status, "ok")
+  await store.close()
+  const restarted = create()
+  const expired = await restore(restarted, "session-a", retired.reference)
+  assert.equal(expired.status, "unavailable")
+  assert.equal(expired.reason, "expired")
+  assert.equal((await restore(restarted, "session-a", active.reference)).status, "ok")
+  const foreign = await restore(restarted, "session-b", retired.reference)
+  const missing = await restore(restarted, "session-b", plan("never").reference)
+  assert.deepEqual(foreign, missing)
+  await restarted.deleteSession("session-a")
+  assert.equal((await restarted.recall("session-a", retired.reference)).status, "unavailable")
+  assert.deepEqual(await restarted.recall("session-a", retired.reference), { status: "unavailable", reason: "missing" })
+})
+
+test("closed recovery storage returns an explicit failure with no original content", async t => {
+  const { create } = await archive(t)
+  const store = create()
+  await store.close()
+  const result = await restore(store, "session-a", plan("closed").reference)
+  assert.equal(result.status, "unavailable")
+  assert.equal(result.reason, "storage-unavailable")
+})
+
+test("expiry tombstones are bounded independently of active backup protection", async t => {
+  const { create, databasePath } = await archive(t, { retentionMs: 0, maxRecords: 1 })
+  const store = create()
+  for (let i = 0; i < 4; i++) {
+    const item = plan(`retired-${i}`)
+    assert.equal(await store.preserve(item), true)
+    await store.reconcile("session-a", new Set(), new Set([item.reference]))
+  }
+  const db = new DatabaseSync(databasePath)
+  try {
+    assert.equal(db.prepare("SELECT COUNT(*) AS count FROM recovery_expired").get()!.count, 1)
+  } finally { db.close() }
+  assert.deepEqual(await store.recall("session-a", plan("retired-0").reference), { status: "unavailable", reason: "missing" })
+  assert.deepEqual(await store.recall("session-a", plan("retired-3").reference), { status: "unavailable", reason: "expired" })
+})

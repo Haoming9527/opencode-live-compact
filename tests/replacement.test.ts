@@ -69,7 +69,7 @@ test("confirmed ownership uses one storage/history read and preserves unavailabl
   await hooks.compaction(event)
   fullReplay(event, original)
   assert.deepEqual(calls, { storage: 1, history: 1, archive: 1 })
-  assert.deepEqual(measurements, [])
+  assert.deepEqual(measurements, [{ event: "fallback", operation: "replacement-archive-unavailable" }])
 })
 
 test("one transient history failure still produces an owned full replay without a model summary", async () => {
@@ -78,7 +78,7 @@ test("one transient history failure still produces an owned full replay without 
   await hooks.compaction(event)
   fullReplay(event, original)
   assert.deepEqual(calls, { storage: 2, history: 2, archive: 1 })
-  assert.deepEqual(measurements, [])
+  assert.deepEqual(measurements, [{ event: "fallback", operation: "replacement-archive-unavailable" }])
 })
 
 test("one transient pending-storage failure recovers a saved plan before preserving the full view", async () => {
@@ -87,7 +87,7 @@ test("one transient pending-storage failure recovers a saved plan before preserv
   await hooks.compaction(event)
   fullReplay(event, original)
   assert.deepEqual(calls, { storage: 2, history: 1, archive: 1 })
-  assert.deepEqual(measurements, [])
+  assert.deepEqual(measurements, [{ event: "fallback", operation: "replacement-archive-unavailable" }])
 })
 
 test("an archive exception after confirmed ownership keeps the full local replay", async () => {

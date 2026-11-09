@@ -13,8 +13,31 @@ type Measurement =
 
 export function createCollector(config: Config) {
   let pending = Promise.resolve()
+  const states = new Map<string, { last: Measurement; planning?: Measurement; warning?: Measurement }>()
+  const emitted = new Map<string, string>()
+  const status = (sessionID: string) => states.get(sessionID) ?? { state: "waiting-for-completed-turn" }
+
   const report = (sessionID: string, measurement: Measurement) => {
-    if (!config.diagnostics) return
+    if (measurement.event !== "context") {
+      const previous = states.get(sessionID)
+      states.set(sessionID, { ...previous, last: measurement,
+        ...(measurement.event === "planning" ? { planning: measurement } : {}),
+        ...(measurement.event === "fallback" ? { warning: measurement } : {}) })
+      if (states.size > 128) { const oldest = states.keys().next().value!; states.delete(oldest); emitted.delete(oldest) }
+    }
+    if (!config.diagnostics) {
+      const reason = measurement.event === "planning" ? measurement.reason
+        : measurement.event === "fallback" ? measurement.operation : undefined
+      if (reason) {
+        const key = `${measurement.event}:${reason}`
+        if (emitted.get(sessionID) !== key) {
+          emitted.set(sessionID, key)
+          const warning = measurement.event === "fallback" || reason === "archive-unavailable"
+          console.error(`[opencode-live-compact] ${warning ? "WARN" : "INFO"} ${JSON.stringify({ sessionID, reason })}`)
+        }
+      }
+      return
+    }
     const row = JSON.stringify({ time: new Date().toISOString(), sessionID, ...measurement })
     const file = config.metricsFile
     if (!file) {
@@ -23,7 +46,7 @@ export function createCollector(config: Config) {
     }
     pending = pending.then(() => appendFile(file, row + "\n", { mode: 0o600 })).catch(() => {})
   }
-  return { report, flush: () => pending }
+  return { report, flush: () => pending, status }
 }
 
-export type Collector = ReturnType<typeof createCollector>
+export type Collector = Pick<ReturnType<typeof createCollector>, "report" | "flush">

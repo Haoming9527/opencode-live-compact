@@ -52,3 +52,11 @@ Individual previews normally keep up to six lines at each end. If that preview w
 
 Planning diagnostics include the context size, eligible candidate counts, source token totals, counts below or at/above the source minimum, and the number of size-valid candidates and batches evaluated. Short eligible results can still combine into a span. `insufficient-savings` means neither planning route found a useful cut; it does not mean cache profitability rejected a valid plan. Diagnostics contain counts rather than source text. Estimated savings and retained suffix size are reported for applied replacements; actual API savings still require a paired benchmark.
 
+
+## Operational status and compact evidence
+
+Without diagnostics, planning reason changes are logged at INFO and storage/replay failures at WARN. Consecutive identical reasons are suppressed per session. `live_compact_status` exposes the latest planning and failure measurements for the calling session without transcript content; its in-memory cache is bounded to 128 sessions and resets on restart. Detailed diagnostics retain the existing JSONL format.
+
+Recall failures include a reason and an instruction to re-read the source: `missing` (including foreign-session references), `expired` (recently evicted retired record), `unreadable` (the owned payload or integrity check is invalid), or `storage-unavailable`. Content-free expiry records survive restart, are capped at `archiveMaxRecords`, and are removed on session deletion. Older evictions eventually become `missing`. Active records remain protected from retention and capacity eviction.
+
+Carried round metadata contains only fields used by eligibility checks. Reads retain path and offset; shell/search inputs use empty string sentinels because eligibility checks only their string type. These are internal validation evidence, not executable or model-visible tool arguments. Original calls and recoverable text stay unchanged. Only relevant outcome metadata is retained. Legacy full-input evidence remains readable, and hashes, active-tool protection, pairing, and prefix checks still apply on replay.

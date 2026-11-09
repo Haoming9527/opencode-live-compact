@@ -31,6 +31,13 @@ export default Plugin.define({
       registrations.push(await ctx.session.hook("experimental.idle", replacement.idle))
       registrations.push(await ctx.tool.transform((editor) => {
         editor.add({
+          name: "live_compact_status",
+          description: "Check this session's latest Live Compact planning or failure reason. Contains no conversation content.",
+          options: { codemode: false },
+          input: { type: "object", properties: {}, additionalProperties: false },
+          execute: async (_input, { sessionID }) => ({ content: JSON.stringify(metrics.status(sessionID)) }),
+        })
+        editor.add({
           name: "live_compact_recall",
           description: "Retrieve exact text from a Live Compact checkpoint in this session. Use the reference printed in the checkpoint and continue with nextOffset as needed.",
           options: { codemode: false },

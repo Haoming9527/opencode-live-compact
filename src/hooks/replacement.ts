@@ -28,6 +28,24 @@ type Evidence = {
   metadata: Finished["metadata"]
   hash: string
 }
+// Carry eligibility evidence, never executable commands or arbitrary tool metadata.
+// Shell/search eligibility checks only the presence of a string input, not its
+// contents. Empty sentinels preserve that check without duplicating long inputs.
+function evidence(candidate: Candidate, hash: string): Evidence {
+  const state = candidate.tool.state
+  if (state.status !== "completed") throw new Error("Nonterminal evidence")
+  const input = candidate.identity.tool === "read"
+    ? Object.fromEntries(["path", "offset"].filter(key => key in state.input).map(key => [key, state.input[key]!]))
+    : candidate.identity.tool === "shell" ? { command: "" }
+    : ["glob", "grep"].includes(candidate.identity.tool) ? { pattern: "" } : {}
+  const keys = candidate.identity.tool === "read" ? ["truncated"]
+    : candidate.identity.tool === "glob" ? ["count", "truncated"]
+    : candidate.identity.tool === "grep" ? ["matches", "truncated"]
+    : candidate.identity.tool === "shell" ? ["exit", "signal", "timeout", "status", "shellID", "truncated"] : []
+  const metadata = state.metadata ? Object.fromEntries(keys.filter(key => key in state.metadata!).map(key => [key, state.metadata![key]!])) : undefined
+  return { identity: candidate.identity, input, metadata, hash }
+}
+
 type Pending = {
   id: string
   model: Model
@@ -78,7 +96,10 @@ export function replacementHooks(ctx: Context, config: Config, store: RecoverySt
   const idle = async ({ sessionID }: SessionIdle) => {
     const request = requests.get(sessionID)
     requests.delete(sessionID)
-    if (!request) return
+    if (!request) {
+      metrics.report(sessionID, { event: "planning", reason: "no-request-snapshot", durationMs: 0 })
+      return
+    }
     pending.delete(sessionID)
     const started = performance.now()
     const skip = (reason: string, counts?: Record<string, number>) => metrics.report(sessionID, {
@@ -165,7 +186,7 @@ export function replacementHooks(ctx: Context, config: Config, store: RecoverySt
       }
       // The summary route can use an explicitly configured auxiliary model.
       const agent = await ctx.agent.get({ agentID: "compaction" }).catch(() => undefined)
-      if (agent?.data?.model && !sameModel(agent.data.model, request.model)) return
+      if (agent?.data?.model && !sameModel(agent.data.model, request.model)) return skip("compaction-model-changed")
       const archives = spans.length ? spans.map(({ identity, reference, sourceHash, checkpoint, original }) =>
         ({ identity, reference, sourceHash, checkpoint, original })) : cuts.map(cut => ({
         identity: cut.identity, reference: cut.reference, sourceHash: cut.sourceHash,
@@ -184,7 +205,7 @@ export function replacementHooks(ctx: Context, config: Config, store: RecoverySt
         const result = visible.get(pairKey(identity.messageID, identity.callID))
         if (!result || result.index <= lastCut || tool.state.status !== "completed" ||
             eligibleResult(candidate)?.sourceText !== result.text) return []
-        return [{ identity, input: tool.state.input, metadata: tool.state.metadata, hash: hashText(result.text) }]
+        return [evidence(candidate, hashText(result.text))]
       }))
       let firstRound = 0
       while (firstRound < remainingRounds.length - Math.max(1, config.protectedToolRounds) && !remainingRounds[firstRound]!.length) firstRound++
@@ -238,27 +259,28 @@ export function replacementHooks(ctx: Context, config: Config, store: RecoverySt
       const full = event.messages.slice()
       event.result = { summary: "Live Compact preserved the full context.", native: { messages: full },
         metadata: { keepID: null, liveCompact: "replacement-noop", liveCompactInputID: plan.id } }
+      const preserve = (operation: string) => metrics.report(sessionID, { event: "fallback", operation })
       const turn = history.findLast((entry) => entry.type === "assistant")
-      if (turn?.id !== plan.turn || !sameModel(plan.model, event.model) || event.messages.some((message) => message.role === "system")) return
+      if (turn?.id !== plan.turn || !sameModel(plan.model, event.model) || event.messages.some((message) => message.role === "system")) return preserve("replacement-context-changed")
       const replacements = new Map<number, { partIndex: number; checkpoint: string }>()
       let spanMessages: typeof event.messages | undefined
       const records = await store.getBatch(sessionID, plan.references)
-      if (records.some(record => !record?.active)) return
+      if (records.some(record => !record?.active)) return preserve("replacement-archive-unavailable")
       if (records.every(record => record?.identity.tool === "completed_span")) {
         spanMessages = applySpans(event.messages, records.filter(record => record !== undefined), plan.prefixHash)
-        if (!spanMessages) return
+        if (!spanMessages) return preserve("replacement-span-changed")
       } else {
         // Span replay validates its own pairs; it does not need this second index.
         const visible = visibleTargets(event.messages)
         for (const record of records) {
-          if (!record || record.identity.tool === "completed_span") return
+          if (!record || record.identity.tool === "completed_span") return preserve("replacement-record-invalid")
           const match = visible.get(pairKey(record.identity.messageID, record.identity.callID))
           if (!match || match.name !== record.identity.tool || match.text !== record.original ||
-              Buffer.byteLength(JSON.stringify(record.checkpoint)) >= Buffer.byteLength(JSON.stringify(match.text))) return
+              Buffer.byteLength(JSON.stringify(record.checkpoint)) >= Buffer.byteLength(JSON.stringify(match.text))) return preserve("replacement-result-changed")
           replacements.set(match.index, { partIndex: match.partIndex, checkpoint: record.checkpoint })
         }
       }
-      if (!spanMessages && hashText(JSON.stringify(event.messages.slice(0, Math.min(...replacements.keys())))) !== plan.prefixHash) return
+      if (!spanMessages && hashText(JSON.stringify(event.messages.slice(0, Math.min(...replacements.keys())))) !== plan.prefixHash) return preserve("replacement-prefix-changed")
       const messages = spanMessages ?? full.map((message: (typeof event.messages)[number], index: number) => {
         const replacement = replacements.get(index)
         if (!replacement) return message
@@ -280,7 +302,7 @@ export function replacementHooks(ctx: Context, config: Config, store: RecoverySt
         const original = event.messages[i]!
         if ((original.id && active.has(original.id)) || original.content.some(part =>
           part.type === "tool-result" && activeCalls.has(part.id))) {
-          if (JSON.stringify(messages[i]) !== JSON.stringify(original)) return
+          if (JSON.stringify(messages[i]) !== JSON.stringify(original)) return preserve("replacement-active-tool")
         }
       }
       event.result = { summary: spanMessages ? "Live Compact shortened a completed span." : "Live Compact shortened completed tool results.", native: { messages },
