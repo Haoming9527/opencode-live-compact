@@ -17,7 +17,7 @@ const ended: OpenCodeEvent = {
   ...entry(13, 75), type: "session.compaction.ended", data: { sessionID: info.id, reason: "auto", text: "summary", tokens: info.tokens },
 };
 
-test("attributes native wait to the completed stage and reports observed cache categories", () => {
+test("attributes native event duration to the completed stage and reports observed cache categories", () => {
   const usage = summarize(info, [started, ended], stages, [
     { event: "cut", count: 1, durationMs: 2, time: new Date(70).toISOString(), sessionID: info.id },
     { event: "cut", count: 2, durationMs: 3, time: new Date(90).toISOString(), sessionID: info.id },
@@ -32,6 +32,8 @@ test("attributes native wait to the completed stage and reports observed cache c
   assert.equal(usage.cacheWriteTokens, 20);
   assert.equal(usage.nativeCompactionTimingComplete, true);
   assert.equal(usage.nativeCompactionWaitMs, 25);
+  assert.equal(usage.nativeCompactionEventDurationMs, 25);
+  assert.equal(usage.hostCompactionEventDurationMs, 25);
   assert.equal(usage.firstNativeCompactionStage, "second");
   assert.equal(usage.cuts, 3);
   assert.equal(usage.cutsAfterNativeCompaction, 2);
@@ -77,6 +79,9 @@ test("separates deterministic replacements from host model work and preserves in
   assert.equal(usage.replacementWindowsAfterNativeCompaction, 1);
   assert.equal(usage.replacementHostWaitMs, 11);
   assert.equal(usage.hostCompactionWaitMs, 39);
+  assert.equal(usage.hostCompactionEventDurationMs, 39);
+  assert.equal(usage.localMaintenanceEventDurationMs, 11);
+  assert.equal(usage.replacementNoopWindows, 0);
   assert.equal(usage.replacementCuts, 3);
   assert.equal(usage.replacementOverheadMs, 7);
   assert.equal(usage.replacementPlanningMs, 2);
@@ -88,6 +93,49 @@ test("separates deterministic replacements from host model work and preserves in
   assert.equal(usage.nativeCompactionTimingComplete, true);
   assert.equal(usage.replacementWindowEvents[0]?.stage, null);
   assert.equal(usage.replacementWindowEvents[1]?.stage, "second");
+});
+
+test("counts full-context replays as local maintenance without inventing cuts or native compactions", () => {
+  const localStart = (seq: number, created: number): OpenCodeEvent => ({
+    ...entry(seq, created), type: "session.compaction.started", data: { sessionID: info.id, reason: "manual" },
+  });
+  const localEnd = (seq: number, created: number, marker: string): OpenCodeEvent => ({
+    ...entry(seq, created), type: "session.compaction.ended", metadata: { liveCompact: marker },
+    data: { sessionID: info.id, reason: "manual", text: "", native: { messages: [] } },
+  });
+  const usage = summarize(info, [
+    localStart(2, 10), localEnd(3, 18, "replacement-noop"),
+    localStart(4, 20), localEnd(5, 30, "replacement-v1"),
+    started, ended,
+    localStart(14, 80), localEnd(15, 85, "replacement-noop"),
+  ], stages, [{ event: "replacement", sessionID: info.id, count: 2, durationMs: 3 }], true);
+
+  assert.equal(usage.nativeCompactionPauses, 1);
+  assert.equal(usage.automaticNativeCompactionPauses, 1);
+  assert.equal(usage.firstNativeCompactionStage, "second");
+  assert.equal(usage.nativeCompactionEventDurationMs, 25);
+  assert.equal(usage.nativeCompactionWaitMs, 25);
+  assert.equal(usage.replacementWindows, 1);
+  assert.equal(usage.replacementCuts, 2);
+  assert.equal(usage.replacementHostWaitMs, 10);
+  assert.equal(usage.replacementNoopWindows, 2);
+  assert.deepEqual(usage.replacementNoopWindowEvents.map(event => event.durationMs), [8, 5]);
+  assert.equal(usage.replacementNoopEventDurationMs, 13);
+  assert.equal(usage.localMaintenanceEventDurationMs, 23);
+  assert.equal(usage.hostCompactionEventDurationMs, 48);
+  assert.equal(usage.hostCompactionWaitMs, 48);
+  assert.equal(usage.replacementWindowsAfterNativeCompaction, 0);
+  assert.equal(usage.auxiliaryUsageRecords, 1);
+  assert.equal(usage.nativeCompactionTimingComplete, true);
+
+  const onlyReplay = summarize(info, [localStart(2, 10), localEnd(3, 18, "replacement-noop")], stages, [], true);
+  assert.equal(onlyReplay.nativeCompactionPauses, 0);
+  assert.equal(onlyReplay.firstNativeCompactionStage, null);
+  assert.equal(onlyReplay.replacementWindowsAfterNativeCompaction, null);
+  assert.equal(onlyReplay.replacementWindows, 0);
+  assert.equal(onlyReplay.replacementCuts, 0);
+  assert.equal(onlyReplay.localMaintenanceEventDurationMs, 8);
+  assert.equal(onlyReplay.knownModelRequests, 0);
 });
 
 test("a maintenance drain cannot complete a stage before that prompt is delivered", () => {

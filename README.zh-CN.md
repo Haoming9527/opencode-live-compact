@@ -8,7 +8,7 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)](package.json)
 [![Node.js 22.18+](https://img.shields.io/badge/Node.js-%E2%89%A522.18-417E38?logo=nodedotjs&logoColor=white)](package.json)
 [![MIT license](https://img.shields.io/badge/License-MIT-22C55E)](LICENSE)
-[![Version 0.1.0](https://img.shields.io/badge/version-0.1.0-8cdb9f)](package.json)
+[![npm](https://img.shields.io/npm/v/opencode-live-compact?color=8cdb9f)](https://www.npmjs.com/package/opencode-live-compact)
 
 [测试结果](#测试结果) · [快速开始](#快速开始) · [工作原理](#工作原理) · [完整配置（英文）](docs/architecture.md#configuration) · [运行测试（英文）](benchmarks/README.md)
 
@@ -51,17 +51,15 @@ OpenCode 的自动压缩仍然开启；原生压缩后，插件可以继续工�
 
 ## 快速开始
 
-需要 **Node.js 22.18+** 和官方原版 **OpenCode 2.2.6**。
+需要 **Node.js 22.18+**；插件已在官方原版 **OpenCode 2.2.6** 上验证。
 
-### 从 npm 安装（发布后可用）
-
-npm 包已准备好，但尚未发布。现在请使用下方的本地源码安装方式；发布后可运行：
+### 从 npm 安装
 
 ```sh
 opencode plugin add opencode-live-compact
 ```
 
-**0.1.0** 面向官方原版 OpenCode 2.2.6。安装插件后请重启 OpenCode。
+此命令将 [npm 包](https://www.npmjs.com/package/opencode-live-compact) 安装到 OpenCode 的全局配置中。安装后请重启 OpenCode。
 
 ### 从本地源码加载
 
@@ -122,7 +120,7 @@ npm run test:integration
 | Aider Polyglot | 五种编程语言的 150 道题 |
 | Web-Bench React | 构建同一个应用的 20 个依赖任务 |
 
-[在本地或 Daytona 运行这四组测试（英文）→](benchmarks/README.md) · [发布到 npm（英文）](docs/publishing.md)
+[在本地或 Daytona 运行这四组测试（英文）→](benchmarks/README.md) · [发布新版本（英文）](docs/publishing.md)
 
 ## 测试结果
 

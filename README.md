@@ -8,7 +8,7 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)](package.json)
 [![Node.js 22.18+](https://img.shields.io/badge/Node.js-%E2%89%A522.18-417E38?logo=nodedotjs&logoColor=white)](package.json)
 [![MIT license](https://img.shields.io/badge/License-MIT-22C55E)](LICENSE)
-[![Version 0.1.0](https://img.shields.io/badge/version-0.1.0-8cdb9f)](package.json)
+[![npm](https://img.shields.io/npm/v/opencode-live-compact?color=8cdb9f)](https://www.npmjs.com/package/opencode-live-compact)
 
 [Results](#benchmark-results) · [Quick start](#quick-start) · [How it works](#how-it-works) · [Configuration](docs/architecture.md#configuration) · [Run benchmarks](benchmarks/README.md)
 
@@ -51,17 +51,15 @@ OpenCode's automatic compaction stays enabled. The plugin can resume after nativ
 
 ## Quick start
 
-Requires **Node.js 22.18+** and stock **OpenCode 2.2.6**.
+Use **Node.js 22.18+** and stock **OpenCode 2.2.6**, the version covered by our tests.
 
-### Install from npm (after publication)
-
-The npm package is prepared but not published yet. For now, use the local checkout below. After publication:
+### Install from npm
 
 ```sh
 opencode plugin add opencode-live-compact
 ```
 
-Version **0.1.0** targets stock OpenCode 2.2.6. Restart OpenCode after installing the plugin.
+This installs the [npm package](https://www.npmjs.com/package/opencode-live-compact) into OpenCode's global configuration. Restart OpenCode after installation.
 
 ### Use the local checkout
 
@@ -122,7 +120,7 @@ The benchmark runner supports four suites:
 | Aider Polyglot | 150 programming exercises across five languages |
 | Web-Bench React | 20 dependent tasks building one application |
 
-[Run any of the four locally or in Daytona →](benchmarks/README.md) · [Publish to npm](docs/publishing.md)
+[Run any of the four locally or in Daytona →](benchmarks/README.md) · [Publish a new version](docs/publishing.md)
 
 ## Benchmark results
 

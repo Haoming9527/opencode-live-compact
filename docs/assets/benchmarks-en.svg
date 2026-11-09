@@ -50,9 +50,9 @@
 <text x="532" y="705" font-size="18" fill="#8cdb9f" text-anchor="end">1 → 0</text>
 <text x="28" y="736" font-size="16" fill="#969696" >Local cuts</text>
 <text x="532" y="736" font-size="17" fill="#ededed" text-anchor="end">0 → 93 / 81 events</text>
-<text x="28" y="767" font-size="16" fill="#969696" >Host wait</text>
+<text x="28" y="767" font-size="16" fill="#969696" >Host event time</text>
 <text x="532" y="767" font-size="18" fill="#8cdb9f" text-anchor="end">16.30 → 5.93 s</text>
-<text x="28" y="795" font-size="13" fill="#8cdb9f" >63.6% less host compaction wait.</text>
+<text x="28" y="795" font-size="13" fill="#8cdb9f" >63.6% less host event time.</text>
 <text x="588" y="96" font-size="27" fill="#ededed" font-weight="600">Web-Bench React</text>
 <text x="588" y="122" font-size="15" fill="#969696" >20 dependent tasks / one React project</text>
 <text x="588" y="162" font-size="13" fill="#969696" >ESTIMATED API COST</text>
@@ -96,11 +96,11 @@
 <text x="1092" y="705" font-size="18" fill="#ededed" text-anchor="end">0 → 0</text>
 <text x="588" y="736" font-size="16" fill="#969696" >Local cuts</text>
 <text x="1092" y="736" font-size="17" fill="#ededed" text-anchor="end">0 → 14 / 12 events</text>
-<text x="588" y="767" font-size="16" fill="#969696" >Host wait</text>
-<text x="1092" y="767" font-size="18" fill="#d2b287" text-anchor="end">0 → 0.435 s</text>
-<text x="588" y="795" font-size="13" fill="#d2b287" >Pause benefit inconclusive: no native pause.</text>
+<text x="588" y="767" font-size="16" fill="#969696" >Host event time</text>
+<text x="1092" y="767" font-size="18" fill="#d2b287" text-anchor="end">0 → 435 ms</text>
+<text x="588" y="795" font-size="13" fill="#d2b287" >No native compaction; pause reduction untested.</text>
 <path d="M0 823h1120" stroke="#292929"/>
 <text x="28" y="849" font-size="14" fill="#969696" >Web-Bench first grading: Original 19/20 → Live Compact 20/20; repair attempts: 1 → 0.</text>
 <text x="28" y="876" font-size="13" fill="#969696" >One pair per suite; costs are estimated. Tested build uses a 1K net-savings threshold.</text>
-<text x="28" y="897" font-size="13" fill="#969696" >* Non-cached includes writes. Wait includes native + local host events, excluding outside planning.</text>
+<text x="28" y="897" font-size="13" fill="#969696" >* Non-cached includes writes. Event time excludes outside planning; user-visible waiting was not measured.</text>
 </svg>

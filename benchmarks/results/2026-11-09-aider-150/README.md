@@ -17,7 +17,7 @@ Completed **November 9, 2026, 13:19 SGT / 05:19 UTC**. These files are the origi
 | Compaction | 1 pause · 16.30 s | **93 cuts · 5.93 s** |
 | Wall-clock time | 5,106 s | **4,633 s** |
 
-Both versions passed all 150 exercises on their first graded attempt, with zero failed exercises and zero repair attempts. Combined estimated API cost was **$11.3496**. Live Compact's total host compaction wait was **63.6% lower** and its wall-clock time was **9.3% lower** in this pair.
+Both versions passed all 150 exercises on their first graded attempt, with zero failed exercises and zero repair attempts. Combined estimated API cost was **$11.3496**. Live Compact's summed host compaction-event duration was **63.6% lower** and its wall-clock time was **9.3% lower** in this pair.
 
 ## Protocol and tested version
 
@@ -48,7 +48,7 @@ Both versions passed all 150 exercises on their first graded attempt, with zero 
 
 Original OpenCode had **one automatic native compaction**, at `javascript-rational-numbers` (exercise 138), taking **16.301 seconds**. Live Compact had **zero native compactions** and **93 cuts grouped into 81 replacement events**: 21 span cuts and 72 individual cuts. Those local host events took **5.928 seconds** in total. Timing telemetry is complete for both versions.
 
-Local planning/application time was **6.304 seconds**. It overlaps host-event timing in part, so it must not be added wholesale to the 5.928 seconds. The compact table reports host compaction wait consistently for both versions; planning outside host events is excluded.
+Local planning/application time was **6.304 seconds**. It overlaps host-event timing in part, so it must not be added wholesale to the 5.928 seconds. The compact table reports summed host compaction-event duration for both versions; planning outside host events is excluded. These event intervals do not measure user-visible blocking. The historical `*WaitMs` JSON field names are retained unchanged.
 
 No recall calls occurred in this pair. Exact recovery and operation after native compaction have separate offline integration coverage; this workload does not establish either through live recall or treatment-side native compaction.
 

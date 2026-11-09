@@ -1,5 +1,6 @@
 import type { SessionContext } from "@opencode/plugin/promise/session"
 import { hashText, recoveryReference } from "../recovery/integrity.ts"
+import { tokensAfterPart } from "../hooks/context.ts"
 import type { PreserveInput, RecoveryRecord } from "../recovery/store.ts"
 import type { EligibleResult } from "./eligibility.ts"
 import { canRewriteToolResult, eligibleResult } from "./eligibility.ts"
@@ -168,7 +169,12 @@ export function planSpans(sessionID: string, messages: readonly Message[], avail
       // The minimum applies to the source text selected for shortening, not net
       // savings. Preserved reasoning, calls and unselected results do not count.
       // Every replacement still saves tokens and pays for its repeated marker.
-      const rebuilt = suffix[group.start]! - saved
+      // Replay preserves the archive's leading calls/reasoning and any parts
+      // before the first edited text. Only the content from that text onward
+      // loses its old prefix; later edits shorten this same suffix once.
+      const firstEntry = group.entries[0]!, target = firstEntry.target
+      const rebuilt = suffix[target.index + 1]! + tokensAfterPart(messages[target.index]!, target.partIndex, options.estimateTokens) +
+        firstEntry.sourceTokens - saved
       if (!Number.isFinite(sourceTokens) || sourceTokens < options.minimumSourceTokens ||
           !Number.isFinite(saved) || saved <= 0 || !Number.isFinite(rebuilt) || rebuilt < 0) continue
       if (options.diagnostics) options.diagnostics.sizeValidCandidates++

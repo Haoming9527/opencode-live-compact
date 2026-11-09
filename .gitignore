@@ -6,3 +6,8 @@ dist/
 .runs/
 .test-runs/
 *.tsbuildinfo
+
+# Routine output stays in .runs/. Publish only explicitly selected evidence.
+benchmarks/results/*
+!benchmarks/results/2026-11-09-aider-150/
+!benchmarks/results/2026-11-09-webbench-react-20/

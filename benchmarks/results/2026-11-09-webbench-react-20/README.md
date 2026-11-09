@@ -19,7 +19,7 @@ Completed **November 9, 2026, 13:44 SGT / 05:44 UTC**. This bundle contains the 
 
 Both ended with **59/59 cumulative browser tests passing**, zero failed stages, and zero skipped tests. Original OpenCode passed **19/20 stages on the first graded attempt** and repaired task 16 once; Live Compact passed **20/20 first attempts**, with no repairs. Costs and wall time include that repair.
 
-**Native pause benefit is inconclusive:** neither version reached native compaction. Original OpenCode waited 0 seconds for compaction; Live Compact's 12 local replacement events took 0.435 seconds. This run demonstrates a smaller context and 3.1% lower estimated cost in one pair, not fewer native pauses. Combined estimated cost was **$0.3050**.
+**Native pause benefit is inconclusive:** neither version reached native compaction. Original OpenCode recorded no compaction events; Live Compact's 12 local replacement-event durations sum to **435 milliseconds** (14–175 ms each; median 22.5 ms). This is host event elapsed time, not measured user-visible waiting. This run demonstrates a smaller context and 3.1% lower estimated cost in one pair, not fewer native pauses. Combined estimated cost was **$0.3050**.
 
 ## Protocol and tested version
 
@@ -35,7 +35,7 @@ Both ended with **59/59 cumulative browser tests passing**, zero failed stages, 
 
 Cache hit rate is `cachedReadTokens / totalInputTokens`; non-cached input includes cache writes. `M` means one million tokens and `K` means one thousand. Cache writes increased from **191,025** to **568,051** despite lower total cost. Mean active request context fell from **82,183** to **52,517** tokens; peak context is the largest recorded model request, not the ending transcript size.
 
-All **14 cuts were span cuts**, grouped into **12 host replacement events**. The displayed compaction time is host wait (`usage.hostCompactionWaitMs`); local planning/application took 0.439 seconds and overlaps that time, so it is not added again. Timing telemetry is complete. Neither version made a recall call, and neither demonstrates resumption after native compaction in this live run.
+All **14 cuts were span cuts**, grouped into **12 host replacement events**. The displayed compaction time is the sum of host event durations (historically named `usage.hostCompactionWaitMs`); local planning/application took 0.439 seconds and overlaps that time, so it is not added again. Timing telemetry is complete. Neither version made a recall call, and neither demonstrates resumption after native compaction in this live run.
 
 Costs come from OpenCode's recorded usage and model rates, not billing receipts; they exclude sandbox fees and other runs. The pair used **114 vs 96 known model requests**. Wall time was **7.9% lower**, but one paired run and different repair paths cannot establish a general speed or quality advantage.
 

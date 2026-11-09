@@ -50,9 +50,9 @@
 <text x="532" y="705" font-size="18" fill="#8cdb9f" text-anchor="end">1 → 0</text>
 <text x="28" y="736" font-size="16" fill="#969696" >本地压缩刀数</text>
 <text x="532" y="736" font-size="17" fill="#ededed" text-anchor="end">0 → 93 刀 / 81 次替换</text>
-<text x="28" y="767" font-size="16" fill="#969696" >宿主等待</text>
+<text x="28" y="767" font-size="16" fill="#969696" >宿主事件耗时</text>
 <text x="532" y="767" font-size="18" fill="#8cdb9f" text-anchor="end">16.30 → 5.93 秒</text>
-<text x="28" y="795" font-size="13" fill="#8cdb9f" >宿主压缩等待减少 63.6%。</text>
+<text x="28" y="795" font-size="13" fill="#8cdb9f" >宿主事件耗时减少 63.6%。</text>
 <text x="588" y="96" font-size="27" fill="#ededed" font-weight="600">Web-Bench React</text>
 <text x="588" y="122" font-size="15" fill="#969696" >20 个依赖任务 / 同一个 React 项目</text>
 <text x="588" y="162" font-size="13" fill="#969696" >估算 API 费用</text>
@@ -96,11 +96,11 @@
 <text x="1092" y="705" font-size="18" fill="#ededed" text-anchor="end">0 → 0</text>
 <text x="588" y="736" font-size="16" fill="#969696" >本地压缩刀数</text>
 <text x="1092" y="736" font-size="17" fill="#ededed" text-anchor="end">0 → 14 刀 / 12 次替换</text>
-<text x="588" y="767" font-size="16" fill="#969696" >宿主等待</text>
-<text x="1092" y="767" font-size="18" fill="#d2b287" text-anchor="end">0 → 0.435 秒</text>
-<text x="588" y="795" font-size="13" fill="#d2b287" >原版未触发原生压缩，暂停收益尚无结论。</text>
+<text x="588" y="767" font-size="16" fill="#969696" >宿主事件耗时</text>
+<text x="1092" y="767" font-size="18" fill="#d2b287" text-anchor="end">0 → 435 毫秒</text>
+<text x="588" y="795" font-size="13" fill="#d2b287" >两组原生压缩均为 0；暂停收益尚未验证。</text>
 <path d="M0 823h1120" stroke="#292929"/>
 <text x="28" y="849" font-size="14" fill="#969696" >Web-Bench 首次评分：原版 19/20 → Live Compact 20/20；额外修复：1 → 0。</text>
 <text x="28" y="876" font-size="13" fill="#969696" >各一组配对实验；费用为估算。测试版本使用 1K 净节省门槛。</text>
-<text x="28" y="897" font-size="13" fill="#969696" >* 未命中包含缓存写入。等待时间包含原生和本地宿主事件，不含事件之外的规划。</text>
+<text x="28" y="897" font-size="13" fill="#969696" >* 未命中包含缓存写入。事件耗时不含事件外规划；本次未测量用户实际等待时间。</text>
 </svg>

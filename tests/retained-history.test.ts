@@ -160,6 +160,67 @@ test("signed reasoning permits plain assistant text while message or text signat
   assert.equal(visibleTargets([message]).has(key), false)
 })
 
+test("individual prose cuts charge trailing reasoning and preserve it through replay", async () => {
+  const suffixes: number[] = [], savings: number[] = []
+  const text = Array.from({ length: 32 }, (_, line) => `Observation ${line}: ${"x".repeat(180)}`).join("\n")
+  for (const bytes of [0, 32_000]) {
+    const reasoning = { type: "reasoning" as const, text: "r".repeat(bytes),
+      providerMetadata: { fixture: { signature: "preserved-reasoning" } } }
+    const messages: Message[] = [
+      { role: "user", id: "msg_prefix", content: [{ type: "text", text: "Keep the earlier instructions." }] },
+      { role: "assistant", id: "msg_prose", content: [{ type: "text", text }, reasoning] },
+      { role: "user", id: "msg_tail", content: [{ type: "text", text: "Continue with the next task." }] },
+    ]
+    let history = [
+      { type: "assistant", id: "msg_prose", model, agent, content: [{ type: "text", text }] },
+      { type: "idle", id: "msg_prose_idle", outcome: "succeeded" },
+      { type: "assistant", id: "msg_finished", model, agent, content: [{ type: "text", text: "The turn finished." }],
+        tokens: { input: 30_000, output: 12, reasoning: 0, cache: { read: 0, write: 0 } } },
+    ] as History
+    const storage = new Map<string, unknown>(), archives = new Map<string, RecoveryRecord>()
+    const queued: string[] = []
+    const ctx = {
+      agent: { get: async () => ({}) },
+      storage: { get: async (key: string) => storage.get(key), set: async (key: string, value: unknown) => { storage.set(key, value) } },
+      session: { context: async () => history, compact: async ({ id }: { id: string }) => { queued.push(id) } },
+    } as unknown as Context
+    const store = {
+      preserveBatch: async (inputs: PreserveInput[]) => {
+        for (const input of inputs) archives.set(input.reference, { ...input, active: true, version: 1 })
+        return true
+      },
+      getBatch: async (caller: string, references: readonly string[]) =>
+        references.map(reference => caller === sessionID ? archives.get(reference) : undefined),
+    } as unknown as RecoveryStore
+    const measurements: Parameters<Collector["report"]>[1][] = []
+    const metrics: Collector = { report: (_sessionID, value) => { measurements.push(value) }, flush: async () => {} }
+    const hooks = replacementHooks(ctx, readConfig({ compactSpans: false, maxCutsPerCycle: 1 }), store, metrics)
+    const request: SessionContext = { sessionID, agent, model, system: [], tools: {}, options: {}, messages }
+    hooks.context(request)
+    await hooks.idle({ sessionID, background: [] })
+    assert.equal(queued.length, 1)
+    assert.equal(archives.size, 1)
+    assert.equal([...archives.values()][0]!.identity.tool, "assistant_text")
+    history = [...history, { type: "compaction", id: queued[0], status: "running" }] as History
+    const event: SessionCompaction = { ...request }
+    await hooks.compaction(event)
+    assert.equal(event.result?.metadata?.liveCompact, "replacement-v1")
+    const output = event.result.native!.messages as Message[]
+    assert.notDeepEqual(output[1]!.content[0], messages[1]!.content[0])
+    assert.equal(output[1]!.content[1], reasoning, "trailing reasoning and its signature remain unchanged")
+    assert.equal(output[0], messages[0])
+    assert.equal(output[2], messages[2])
+    const measurement = measurements.findLast(value => value.event === "replacement")
+    assert.ok(measurement?.event === "replacement")
+    assert.equal(measurement.strategy, "individual")
+    assert.equal(measurement.count, 1)
+    suffixes.push(measurement.estimatedCacheSuffixTokens)
+    savings.push(measurement.estimatedSavedTokens)
+  }
+  assert.equal(savings[1], savings[0], "the same prose cut saves the same text")
+  assert.equal(suffixes[1]! - suffixes[0]!, 8_000, "32,000 retained ASCII bytes add 8,000 suffix tokens")
+})
+
 test("a mixed span carries an unedited parallel result and keeps its checkpoint prefix stable after restart", async () => {
   const f = fixture(false, true)
   const hooks = f.makeHooks()

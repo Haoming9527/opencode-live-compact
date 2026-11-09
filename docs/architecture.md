@@ -13,7 +13,7 @@ Use `live_compact_recall` in the source session with the reference and an option
 
 Span cuts preserve OpenCode's mixed messages in place. Reasoning, tool calls, their arguments, result IDs, and message order remain unchanged; only eligible result text or eligible older assistant text is shortened. Unsupported results in a parallel tool round stay intact. The archive stores the exact original span and a validated replacement recipe, so replay after a restart applies the same edits. Preserved reasoning and tool-call tokens are excluded from estimated savings.
 
-OpenCode records each local replacement as a compaction event and stores the full active window for that event. The benchmark separates these events from stock compaction and counts their wait time too. Compatibility was verified with stock compaction defaults.
+OpenCode records each local replacement as a compaction event and stores the full active window for that event. The benchmark separates these events from stock compaction and records their start-to-end durations. These intervals do not directly measure user-visible waiting: planning can occur before an event, while application overlaps it. A full-context replay is local maintenance, not another cut or a native summary. Compatibility was verified with stock compaction defaults.
 
 User messages, system instructions, provider-bound reasoning, recent assistant responses, diagnostics, and active or interrupted work stay intact. Cuts use a local byte-based token estimate. Actual prompt-cache reuse and billing depend on the provider and workload.
 
@@ -46,7 +46,7 @@ The plugin measures the request once at idle instead of scanning its complete te
 
 Queued application still rereads authoritative history and durable backups and verifies their hashes, tool pairs, and unchanged prefix. Recovery reads for a bounded cut batch share one catalog transaction; every payload is still checked afresh. A single filesystem stat validates the recovery root's type, permissions, and identity together. These optimizations do not change selection rules or skip preservation checks. Planning needs no model-price lookup. The stock host still serializes and persists each replacement window; local processing cannot have zero cost.
 
-The span planner evaluates smaller contiguous alternatives as well as larger spans, then selects nonoverlapping cuts under the same safety and size limits. Replacement windows retain the evidence for all unchanged eligible tool rounds after the last cut, so later turns can still reduce them while preserving recent-round protection.
+The span planner evaluates smaller contiguous alternatives as well as larger spans, then selects nonoverlapping cuts under the same safety and size limits. The cache-suffix estimate starts at the first edited part, excluding preserved reasoning and calls before it while including retained parts after it, even within the same message. This keeps span and individual cut ranking consistent; the estimate is not a measurement of the provider's cache. Replacement windows retain the evidence for all unchanged eligible tool rounds after the last cut, so later turns can still reduce them while preserving recent-round protection.
 
 Planning diagnostics include the context size, eligible candidate counts, and the number of size-valid candidates and batches evaluated. `insufficient-savings` means neither planning route found a useful cut. Estimated savings and retained suffix size are reported for applied replacements; actual API savings still require a paired benchmark.
 

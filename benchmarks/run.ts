@@ -65,7 +65,7 @@ function englishTable(control: ArmResult, plugin: ArmResult) {
       ...rows.map(([name, value]) => `| ${name} | ${value(control)} | ${value(plugin)} |`),
     ].join("\n");
     const seconds = (value: number | null | undefined) => value == null ? "—" : `${count(value / 1000)} s`;
-    const wait = (arm: ArmResult, value: number | undefined) => arm.usage?.nativeCompactionTimingComplete ? seconds(value) : "timing incomplete";
+    const duration = (arm: ArmResult, value: number | undefined) => arm.usage?.nativeCompactionTimingComplete ? seconds(value) : "timing incomplete";
     const quality = table([
       ["Stages passed within attempt limit", a => `${a.grade.passed}/${a.stagesExpected}`],
       ["Stages failed", a => count(a.grade.failed)],
@@ -87,21 +87,24 @@ function englishTable(control: ArmResult, plugin: ArmResult) {
       ["Mean active context tokens", a => count(a.usage?.meanActiveContextTokens)],
     ]);
     const timing = table([
-      ["Native compaction pauses", a => count(a.usage?.nativeCompactionPauses)],
+      ["Native compaction events", a => count(a.usage?.nativeCompactionPauses)],
       ["First native compaction stage", a => a.usage?.firstNativeCompactionStage ?? "none"],
-      ["Native compaction wait", a => wait(a, a.usage?.nativeCompactionWaitMs)],
+      ["Native compaction event duration", a => duration(a, a.usage?.nativeCompactionEventDurationMs)],
       ["Live Compact cuts", a => count(a.usage?.replacementCuts)],
-      ["Local replacement host wait", a => wait(a, a.usage?.replacementHostWaitMs)],
-      ["Total host compaction wait", a => wait(a, a.usage?.hostCompactionWaitMs)],
-      ["Local replacement processing", a => seconds(a.usage?.replacementOverheadMs)],
+      ["Local replacement events", a => count(a.usage?.replacementWindows)],
+      ["Local full-context replay events", a => count(a.usage?.replacementNoopWindows)],
+      ["Local maintenance event duration", a => duration(a, a.usage?.localMaintenanceEventDurationMs)],
+      ["Total compaction event duration", a => duration(a, a.usage?.hostCompactionEventDurationMs)],
+      ["Recorded cut planning + application", a => seconds(a.usage?.replacementOverheadMs)],
       ["Recall calls", a => count(a.usage?.recalls)],
       ["Wall time", a => `${count(a.wallSeconds)} s`],
     ]);
-    const pauseConclusion = compare(control, plugin).nativeWaitDeltaMs === null
-      ? "Pause comparison is inconclusive: Original OpenCode must compact automatically, both runs must finish, and timing telemetry must be complete."
-      : "Native and local replacement host wait are reported separately and together; local processing may overlap host wait and is not added twice.";
+    const pauseConclusion = compare(control, plugin).nativeCompactionEventDurationDeltaMs === null
+      ? "Native compaction comparison is inconclusive: Original OpenCode must compact automatically, both runs must finish, and event timing must be complete."
+      : "Native and local maintenance event durations are comparable for this pair.";
     return [quality, usage, timing,
-      "Costs are OpenCode estimates, not billing receipts. Stage outcomes retain failures after the fixed repair limit; final cumulative test results show the ending application. This is an adapted Web-Bench run with three attempts per stage by default, not an official leaderboard score.", pauseConclusion].join("\n\n");
+      "Costs are OpenCode estimates, not billing receipts. Stage outcomes retain failures after the fixed repair limit; final cumulative test results show the ending application. This is an adapted Web-Bench run with three attempts per stage by default, not an official leaderboard score.",
+      "Event durations sum paired host start/end timestamps; they do not measure user-blocked latency. Local planning can occur outside these events, while application overlaps them, so local processing is not added again. Full-context replays count as local maintenance, not cuts or native compactions.", pauseConclusion].join("\n\n");
   }
   const values = (arm: ArmResult) => {
     const u = arm.usage;
@@ -109,8 +112,10 @@ function englishTable(control: ArmResult, plugin: ArmResult) {
     const rate = (value: number) => arm.grade.total ? `${(100 * value / arm.grade.total).toFixed(2)}%` : "—";
     const compaction = u ? [
       ...(u.replacementCuts ? [`${u.replacementCuts} cuts`] : []),
-      ...(u.nativeCompactionPauses || !u.replacementCuts ? [`${u.nativeCompactionPauses} pause${u.nativeCompactionPauses === 1 ? "" : "s"}`] : []),
-    ].join(" + ") + ` · ${u.nativeCompactionTimingComplete ? count(u.hostCompactionWaitMs / 1000) + " s" : "timing incomplete"}` : "—";
+      ...(u.replacementNoopWindows ? [`${u.replacementNoopWindows} full replays`] : []),
+      ...(u.nativeCompactionPauses || (!u.replacementCuts && !u.replacementNoopWindows)
+        ? [`${u.nativeCompactionPauses} native event${u.nativeCompactionPauses === 1 ? "" : "s"}`] : []),
+    ].join(" + ") + ` · ${u.nativeCompactionTimingComplete ? count(u.hostCompactionEventDurationMs / 1000) + " s" : "timing incomplete"}` : "—";
     return [
       `${arm.grade.passed}/${arm.stagesExpected}`,
       arm.attempts ? `${arm.attempts.filter(exercise => exercise.firstAttemptPassed).length}/${arm.stagesExpected}` : "—",
@@ -124,14 +129,14 @@ function englishTable(control: ArmResult, plugin: ArmResult) {
     ];
   };
   const rows = ["Exercises passed", "Passed on first attempt", "Repair attempts", "Pass rate among graded exercises", "Failed exercises and rate", "Overall cache hit rate", "Cached input tokens", "Non-cached input tokens (including cache writes)",
-    "Estimated API cost", "Peak context tokens", "Compaction", "Wall time (seconds)"];
+    "Estimated API cost", "Peak context tokens", "Compaction cuts/events · event duration", "Wall time (seconds)"];
   const stock = values(control);
   const treatment = values(plugin);
   return [
     "| Metric | Original OpenCode | Live Compact |",
     "| --- | ---: | ---: |",
     ...rows.map((row, index) => `| ${row} | ${stock[index]} | ${treatment[index]} |`),
-    "", "Costs include every original and repair attempt and are estimates from OpenCode. Cache hit rate is cached reads divided by total input, including writes. Compaction time measures native and local replacement host lifecycles; planning outside those events is excluded.",
+    "", "Costs include every original and repair attempt and are estimates from OpenCode. Cache hit rate is cached reads divided by total input, including writes. Compaction duration sums paired host start/end events, including local full-context replays; it is not measured user-blocked latency. Planning outside those events is excluded.",
   ].join("\n");
 }
 
@@ -146,6 +151,10 @@ function compare(control: ArmResult, treatment: ArmResult) {
   const plugin = treatment.usage;
   const timingComparable = comparable && stock !== null && plugin !== null && stock.automaticNativeCompactionPauses > 0 &&
     stock.nativeCompactionTimingComplete && plugin.nativeCompactionTimingComplete;
+  const nativeCompactionEventDurationDeltaMs = timingComparable
+    ? plugin.nativeCompactionEventDurationMs - stock.nativeCompactionEventDurationMs : null;
+  const hostCompactionEventDurationDeltaMs = timingComparable
+    ? plugin.hostCompactionEventDurationMs - stock.hostCompactionEventDurationMs : null;
   return {
     comparable,
     bothPassed,
@@ -155,8 +164,11 @@ function compare(control: ArmResult, treatment: ArmResult) {
     meanContextDelta: comparable && stock?.meanActiveContextTokens != null && plugin?.meanActiveContextTokens != null
       ? plugin.meanActiveContextTokens - stock.meanActiveContextTokens : null,
     nativePausesDelta: timingComparable ? plugin.nativeCompactionPauses - stock.nativeCompactionPauses : null,
-    nativeWaitDeltaMs: timingComparable ? plugin.nativeCompactionWaitMs - stock.nativeCompactionWaitMs : null,
-    hostCompactionWaitDeltaMs: timingComparable ? plugin.hostCompactionWaitMs - stock.hostCompactionWaitMs : null,
+    nativeCompactionEventDurationDeltaMs,
+    hostCompactionEventDurationDeltaMs,
+    // Compatibility names retain event-duration semantics, not user wait.
+    nativeWaitDeltaMs: nativeCompactionEventDurationDeltaMs,
+    hostCompactionWaitDeltaMs: hostCompactionEventDurationDeltaMs,
   };
 }
 

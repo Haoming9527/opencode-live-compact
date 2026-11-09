@@ -136,6 +136,8 @@ The launcher prints its `benchmark.log` and `progress.jsonl` paths. While queued
 
 ## See progress and results
 
+Routine run logs, reports, and diagnostics stay in the ignored `.runs/` directory. `benchmarks/results/` contains only explicitly selected public evidence; new result folders are ignored by default.
+
 | Location | Contents |
 | --- | --- |
 | `benchmark.log` in the Daytona launch folder | Queue status, preflight output, errors, and the run artifacts directory |
@@ -152,7 +154,11 @@ tail -n +1 -F ~/benchmark-progress/latest/progress.jsonl
 
 For Short or SemVer, watch `benchmark.log`; these suites grade at the end and do not emit per-exercise progress lines. They also do not use the staged repair loop. Every suite retains results when tests fail and exits unsuccessfully if either version misses its acceptance target.
 
-Costs include model attempts and repairs and are OpenCode estimates, not billing receipts. Daytona compute is separate. Reports separate cached input, uncached input, cache writes, native compaction pauses, Live Compact cuts, and host wait time. If Original OpenCode never compacts automatically, or timing telemetry is incomplete, the pause comparison is **inconclusive**. Smaller prompts alone do not prove lower cost or preserved correctness.
+Costs include model attempts and repairs and are OpenCode estimates, not billing receipts. Daytona compute is separate. Reports separate cached input, uncached input, cache writes, native compaction events, Live Compact cuts, and local full-context replays. A full-context replay is local maintenance that preserves the original view; it is not a cut or native compaction.
+
+**Event duration is not measured user wait.** It sums paired `session.compaction.started` / `ended` (or `failed`) timestamps. Planning may happen before the event; application can overlap it, so their durations must not be added wholesale. New reports use explicit `*EventDurationMs` fields. Legacy `nativeCompactionWaitMs`, `replacementHostWaitMs`, `hostCompactionWaitMs`, and corresponding `*WaitDeltaMs` comparison fields remain compatibility names for event-duration values. Recorded local planning/application covers successful cut cycles, not every full-context replay.
+
+If Original OpenCode never compacts automatically, or event timing is incomplete, the native compaction comparison is **inconclusive**. A complete event stream does not establish user-blocked latency. Smaller prompts alone do not prove lower cost or preserved correctness.
 
 ## Measure local plugin overhead without a model
 

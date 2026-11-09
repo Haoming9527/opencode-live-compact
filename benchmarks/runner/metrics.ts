@@ -40,7 +40,8 @@ function inputTokens(tokens: TokenUsageInfo) {
   return tokens.input + tokens.cache.read + tokens.cache.write;
 }
 
-type CompactionPause = {
+/** Elapsed host lifecycle interval; this does not measure user-blocked time. */
+type CompactionEvent = {
   stage: string | null;
   reason: "auto" | "manual";
   durationMs: number | null;
@@ -50,8 +51,9 @@ type CompactionPause = {
 
 export function summarize(info: SessionInfo, log: readonly OpenCodeEvent[], stages: readonly StageReceipt[], plugin: readonly PluginMetric[], streamComplete: boolean) {
   const requests: number[] = [];
-  const nativePauses: CompactionPause[] = [];
-  const replacementWindows: CompactionPause[] = [];
+  const nativePauses: CompactionEvent[] = [];
+  const replacementWindows: CompactionEvent[] = [];
+  const replacementNoopWindows: CompactionEvent[] = [];
   let started: { stage: string | null; created: number; reason: "auto" | "manual" } | undefined;
   let complete = streamComplete;
   let primaryRequests = 0;
@@ -85,10 +87,13 @@ export function summarize(info: SessionInfo, log: readonly OpenCodeEvent[], stag
         const hasUsage = event.data.tokens && inputTokens(event.data.tokens) > 0;
         if (hasUsage) auxiliaryUsageRecords++;
         const replacement = event.type === "session.compaction.ended" && event.metadata?.liveCompact === "replacement-v1";
+        const replacementNoop = event.type === "session.compaction.ended" && event.metadata?.liveCompact === "replacement-noop";
         if (replacement && hasUsage) replacementWindowsWithUsage++;
         const matchingStart = started?.reason === event.data.reason && started.created <= event.created ? started : undefined;
         if (!matchingStart) complete = false;
-        const pauses = replacement ? replacementWindows : nativePauses;
+        // A verified full-context replay is still local maintenance. It neither
+        // shortens the window nor establishes a native/model-summary compaction.
+        const pauses = replacement ? replacementWindows : replacementNoop ? replacementNoopWindows : nativePauses;
         pauses.push({
           stage: matchingStart?.stage ?? null,
           reason: event.data.reason,
@@ -112,6 +117,9 @@ export function summarize(info: SessionInfo, log: readonly OpenCodeEvent[], stag
   const firstSuccessfulCompaction = nativePauses.find(pause => pause.outcome === "ended");
   const replacementHostWaitMs = replacementWindows.reduce((sum, window) => sum + (window.durationMs ?? 0), 0);
   const nativeCompactionWaitMs = nativePauses.reduce((sum, pause) => sum + (pause.durationMs ?? 0), 0);
+  const replacementNoopEventDurationMs = replacementNoopWindows.reduce((sum, window) => sum + (window.durationMs ?? 0), 0);
+  const localMaintenanceEventDurationMs = replacementHostWaitMs + replacementNoopEventDurationMs;
+  const hostCompactionEventDurationMs = nativeCompactionWaitMs + localMaintenanceEventDurationMs;
   return {
     costEstimateUsd: info.cost,
     uncachedInputTokens: info.tokens.input,
@@ -130,13 +138,19 @@ export function summarize(info: SessionInfo, log: readonly OpenCodeEvent[], stag
     meanActiveContextTokens: requests.length ? requests.reduce((sum, tokens) => sum + tokens, 0) / requests.length : null,
     nativeCompactionPauses: nativePauses.length,
     automaticNativeCompactionPauses: nativePauses.filter(pause => pause.reason === "auto").length,
+    // Legacy *WaitMs fields are event-duration values, not measured user wait.
     nativeCompactionWaitMs,
+    nativeCompactionEventDurationMs: nativeCompactionWaitMs,
     nativeCompactionTimingComplete: complete && started === undefined,
     firstNativeCompactionStage: nativePauses[0]?.stage ?? null,
     nativeCompactionEvents: nativePauses,
     replacementWindows: replacementWindows.length,
     replacementHostWaitMs,
     replacementWindowEvents: replacementWindows,
+    replacementNoopWindows: replacementNoopWindows.length,
+    replacementNoopWindowEvents: replacementNoopWindows,
+    replacementNoopEventDurationMs,
+    localMaintenanceEventDurationMs,
     replacementWindowsWithUsage,
     replacementWindowsAfterNativeCompaction: firstSuccessfulCompaction
       ? replacementWindows.filter(window => window.endTime > firstSuccessfulCompaction.endTime).length : null,
@@ -148,7 +162,8 @@ export function summarize(info: SessionInfo, log: readonly OpenCodeEvent[], stag
     replacementApplicationMs: replacements.every(record => record.applicationMs !== undefined)
       ? replacements.reduce((sum, record) => sum + record.applicationMs!, 0) : null,
     planningReasons,
-    hostCompactionWaitMs: nativeCompactionWaitMs + replacementHostWaitMs,
+    hostCompactionWaitMs: hostCompactionEventDurationMs,
+    hostCompactionEventDurationMs,
     cuts: cuts.reduce((sum, cut) => sum + (cut.count ?? 0), 0),
     cutsAfterNativeCompaction: firstSuccessfulCompaction
       ? cuts.filter(cut => cut.time && Date.parse(cut.time) > firstSuccessfulCompaction.endTime)

@@ -2,20 +2,33 @@ import type { SessionContext } from "@opencode/plugin/promise/session"
 
 export const estimateTokens = (text: string) => Math.ceil(Buffer.byteLength(text, "utf8") / 4)
 
+type Message = SessionContext["messages"][number]
+
+function estimatePart(part: Message["content"][number], estimate: typeof estimateTokens) {
+  if ("text" in part && typeof part.text === "string") return estimate(part.text)
+  if (part.type === "tool-call") return estimate(part.name + JSON.stringify(part.input))
+  if (part.type === "tool-result") {
+    const result = part.result
+    return estimate(
+      result && typeof result === "object" && "type" in result && result.type === "text" &&
+      "value" in result && typeof result.value === "string" ? result.value : JSON.stringify(result),
+    )
+  }
+  return 0
+}
+
+/** Retained content after an edited part still belongs to the rebuilt suffix. */
+export function tokensAfterPart(message: Message, partIndex: number, estimate = estimateTokens) {
+  let tokens = 0
+  for (let index = partIndex + 1; index < message.content.length; index++) {
+    tokens += estimatePart(message.content[index]!, estimate)
+  }
+  return tokens
+}
+
 // This provider-independent estimate is separate from billed usage.
-function estimateMessage(message: SessionContext["messages"][number]) {
-  return 4 + message.content.reduce((sum, part) => {
-    if ("text" in part && typeof part.text === "string") return sum + estimateTokens(part.text)
-    if (part.type === "tool-call") return sum + estimateTokens(part.name + JSON.stringify(part.input))
-    if (part.type === "tool-result") {
-      const result = part.result
-      return sum + estimateTokens(
-        result && typeof result === "object" && "type" in result && result.type === "text" &&
-        "value" in result && typeof result.value === "string" ? result.value : JSON.stringify(result),
-      )
-    }
-    return sum
-  }, 0)
+function estimateMessage(message: Message) {
+  return 4 + tokensAfterPart(message, -1)
 }
 
 export function suffixSizes(event: SessionContext) {

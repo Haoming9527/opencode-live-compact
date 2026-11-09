@@ -11,7 +11,7 @@ import type { Collector } from "../metrics/collector.ts"
 import { hashText } from "../recovery/integrity.ts"
 import type { RecoveryStore } from "../recovery/store.ts"
 import { completedProse, completedRounds, completedTurnTokens, pairKey, proseCandidate, visibleTargets } from "../state/reconciliation.ts"
-import { contextSize, estimateTokens, suffixSizes } from "./context.ts"
+import { contextSize, estimateTokens, suffixSizes, tokensAfterPart } from "./context.ts"
 
 const marker = "replacement-v1"
 export const pendingKey = (id: string) => `replacement/${id}`
@@ -121,7 +121,8 @@ export function replacementHooks(ctx: Context, config: Config, store: RecoverySt
         if (!source) { counts.unsupported++; return [] }
         if (source.sourceText !== match.text) { counts.changed++; return [] }
         counts.eligible++
-        const indexed = { ...candidate, index: match.index, suffixTokens: suffix[match.index + 1] ?? 0 }
+        const indexed = { ...candidate, index: match.index,
+          suffixTokens: (suffix[match.index + 1] ?? 0) + tokensAfterPart(request.messages[match.index]!, match.partIndex) }
         eligibleResults.set(indexed, source)
         return [indexed]
       }).sort((a, b) => a.index - b.index)

@@ -56,13 +56,23 @@ const prefix = (messages: Message[], spans: Span[]) => hashText(JSON.stringify(m
 const recipe = (span: Pick<Span, "checkpoint">): { version: 1; replacements: { messageOffset: number; partIndex: number; text: string }[] } => JSON.parse(span.checkpoint)
 const renderedCharacters = (span: Span) => recipe(span).replacements.reduce((sum, entry) => sum + [...entry.text].length, 0)
 
+function replaySuffix(before: Message[], after: Message[]) {
+  const index = after.findIndex((message, index) => JSON.stringify(message) !== JSON.stringify(before[index]))
+  assert.ok(index >= 0)
+  const message = after[index]!
+  const partIndex = message.content.findIndex((part, partIndex) => JSON.stringify(part) !== JSON.stringify(before[index]!.content[partIndex]))
+  assert.ok(partIndex >= 0)
+  const remainder = { ...message, content: message.content.slice(partIndex) } as Message
+  // The message envelope precedes the changed text and remains in the prefix.
+  return suffixSizes({ messages: [remainder, ...after.slice(index + 1)] } as SessionContext)[0]! - 4
+}
+
 test("batches disjoint completed spans without changing user messages or the original prompt prefix", () => {
   const { messages, available, suffix } = fixture([2, 2, 2])
   const before = JSON.stringify(messages)
   const spans = planSpans(sessionID, messages, available, suffix, { ...options, maxCutsPerCycle: 2 })
   assert.equal(spans.length, 2)
   assert.ok(spans[0]!.end <= spans[1]!.start)
-  assert.equal(spans[0]!.suffix, suffix[spans[0]!.start]! - spans[0]!.saved - spans[1]!.saved)
   for (const span of spans) {
     assert.deepEqual(JSON.parse(span.original), messages.slice(span.start, span.end))
     assert.equal(span.sourceHash, hashText(span.original))
@@ -70,6 +80,7 @@ test("batches disjoint completed spans without changing user messages or the ori
   }
   const result = applySpans(messages, spans.toReversed().map(record), prefix(messages, spans))
   assert.ok(result)
+  assert.equal(spans[0]!.suffix, replaySuffix(messages, result))
   assert.equal(JSON.stringify(messages), before)
   assert.equal(JSON.stringify(result.slice(0, spans[0]!.start)), JSON.stringify(messages.slice(0, spans[0]!.start)))
   assert.deepEqual(result.filter(message => message.role === "user"), messages.filter(message => message.role === "user"))
@@ -112,13 +123,13 @@ test("an eligible older result cannot hide a better narrower completed span", ()
   for (let index = 0; index < 3; index++) {
     const id = `call_${index}`, messageID = `msg_${index}`, path = `src/${index}.ts`
     const count = index === 0 ? 1 : 24
-    // This older result saves little, while its retained reasoning makes the
-    // earlier rebuilt suffix much larger than the narrower interval.
+    // The older result saves little. Reasoning after that result must be rebuilt
+    // when it is cut, but stays in the prefix when the narrower interval wins.
     const lineText = index === 0 ? "x".repeat(500) : "x".repeat(120)
     const text = [`Read file ${path}, lines 1-${count}`, ...Array.from({ length: count }, (_, line) =>
       `${line + 1}: ${lineText}`)].join("\n")
     messages.push({ role: "assistant", id: messageID, content: [
-      ...(index === 0 ? [{ type: "reasoning" as const, text: "Retain reasoning. ".repeat(500) }] : []),
+      ...(index === 1 ? [{ type: "reasoning" as const, text: "Retain reasoning. ".repeat(500) }] : []),
       { type: "tool-call", id, name: "read", input: { path } },
     ] })
     available.push({ index: messages.length, identity: { sessionID, messageID, callID: id, partID: id, tool: "read" },
@@ -270,6 +281,56 @@ function mixedParallelFixture() {
   return { messages, available, suffix: suffixSizes({ messages } as SessionContext) }
 }
 
+test("span scores exclude preserved reasoning before the first changed result", () => {
+  const suffixes: number[] = []
+  for (const bytes of [0, 32_000]) {
+    const source = fixture([2])
+    const assistant = source.messages[1]!
+    assert.equal(assistant.role, "assistant")
+    source.messages[1] = { ...assistant, content: [{ type: "reasoning", text: "r".repeat(bytes) }, ...assistant.content] }
+    const suffix = suffixSizes({ messages: source.messages } as SessionContext)
+    const spans = planSpans(sessionID, source.messages, source.available, suffix, options)
+    assert.equal(spans.length, 1)
+    const individual = planCuts(source.available.map(candidate => ({ ...candidate, suffixTokens: suffix[candidate.index + 1]! })), options)
+    const saved = spans.reduce((sum, span) => sum + span.saved, 0)
+    const individualSaved = individual.reduce((sum, cut) => sum + cut.estimatedSavingsTokens, 0)
+    assert.ok(scorePlan(saved, spans[0]!.suffix) > scorePlan(individualSaved, individual[0]!.cacheSuffixTokens),
+      "adding an unchanged prefix must not reverse the strategy comparison")
+    const output = applySpans(source.messages, spans.map(record), prefix(source.messages, spans))!
+    assert.ok(output)
+    assert.equal(output[1], source.messages[1])
+    assert.equal(spans[0]!.suffix, replaySuffix(source.messages, output))
+    suffixes.push(spans[0]!.suffix)
+  }
+  assert.equal(suffixes[1], suffixes[0])
+})
+
+test("span suffixes exclude earlier parts and retain later parts within one result message", () => {
+  for (const position of ["before", "after"] as const) {
+    const suffixes: number[] = []
+    for (const bytes of [0, 16_000]) {
+      const source = mixedParallelFixture()
+      const first = source.messages[2]!, second = source.messages[3]!, unsupported = source.messages[4]!
+      assert.equal(first.role, "tool")
+      assert.equal(second.role, "tool")
+      assert.equal(unsupported.role, "tool")
+      const retained = { ...unsupported.content[0]!, result: { type: "text" as const, value: "x".repeat(bytes) } }
+      const content = position === "before" ? [retained, ...first.content, ...second.content] :
+        [...first.content, retained, ...second.content]
+      const messages: Message[] = [source.messages[0]!, source.messages[1]!, { role: "tool", id: "packed-results", content }, source.messages.at(-1)!]
+      const available = source.available.map(candidate => ({ ...candidate, index: 2 }))
+      const spans = planSpans(sessionID, messages, available, suffixSizes({ messages } as SessionContext), options)
+      assert.equal(spans.length, 1)
+      const output = applySpans(messages, spans.map(record), prefix(messages, spans))!
+      assert.ok(output)
+      assert.equal(output[2]!.content[position === "before" ? 0 : 1], retained)
+      assert.equal(spans[0]!.suffix, replaySuffix(messages, output))
+      suffixes.push(spans[0]!.suffix)
+    }
+    assert.equal(suffixes[1]! - suffixes[0]!, position === "before" ? 0 : 4_000)
+  }
+})
+
 test("bounded span scans still reject identities duplicated outside the selected history", () => {
   const variants = ["assistant-id", "result-message-id", "call", "result", "provider-call", "provider-result",
     "unsupported-provider-call", "unsupported-result"] as const
@@ -367,7 +428,7 @@ test("keeps signed reasoning, text, parallel calls, result IDs and unsupported p
     assert.ok(JSON.stringify(changed).includes(span.reference))
   }
   assert.equal(span.saved, suffix[0]! - suffixSizes({ messages: result } as SessionContext)[0]!)
-  assert.equal(span.suffix, suffixSizes({ messages: result } as SessionContext)[span.start])
+  assert.equal(span.suffix, replaySuffix(messages, result))
 })
 
 test("combines short mixed-message results that each fall below the individual source floor", () => {

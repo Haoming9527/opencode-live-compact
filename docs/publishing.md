@@ -1,10 +1,19 @@
-# Publish to npm
+# Publish a new version
 
-GitHub hosts the source. npm hosts the installable package used by `opencode plugin add`.
+[opencode-live-compact@0.1.0](https://www.npmjs.com/package/opencode-live-compact) is published. This guide covers future releases. Run commands from this repository's root with Node.js 22.18 or newer.
 
-The package is prepared as **opencode-live-compact@0.1.0**. Run these commands from this repository's root using Node.js 22.18 or newer.
+## 1. Choose an unused version
 
-## 1. Check the release
+npm cannot overwrite a published version. For the next patch release from 0.1.0:
+
+```sh
+npm view opencode-live-compact versions --json
+npm version patch --no-git-tag-version
+```
+
+The example changes 0.1.0 to 0.1.1, updating both `package.json` and `package-lock.json` without creating a Git commit or tag. Choose the appropriate version for later releases and review both files.
+
+## 2. Check the release
 
 ```sh
 npm ci
@@ -14,27 +23,27 @@ npm run test:integration
 npm pack --dry-run
 ```
 
-The integration tests require stock OpenCode **2.2.6** and use a local provider, with no paid model calls. Check the package file list: compiled `dist/`, the license, READMEs, and selected documentation only. Credentials and benchmark artifacts must stay out of the npm package.
+Integration tests require stock OpenCode **2.2.6** and use a local provider with no paid model calls. Check that the package contains compiled `dist/`, the license, READMEs, and selected documentation. Credentials and benchmark artifacts stay outside the package.
 
-## 2. Sign in and publish
+## 3. Publish
 
 ```sh
 npm login --registry=https://registry.npmjs.org/
 npm whoami --registry=https://registry.npmjs.org/
-npm publish --access public
+npm publish --access public --registry=https://registry.npmjs.org/
 ```
 
-Use your own npm account and complete the browser sign-in and any two-factor verification npm requests. `npm publish` builds the plugin automatically through the `prepack` script. This command makes version **0.1.0** public; each later release needs a new version number.
+Complete npm's browser sign-in and any requested two-factor verification. Publishing builds the plugin through the `prepack` script and uploads the new version.
 
-## 3. Verify installation
+## 4. Verify the published version
+
+For the 0.1.1 example:
 
 ```sh
-npm view opencode-live-compact@0.1.0 version
-opencode plugin add opencode-live-compact
+npm view opencode-live-compact@0.1.1 version dist.integrity
+opencode plugin add opencode-live-compact@0.1.1
 ```
 
-Restart OpenCode. The `plugin add` command installs into OpenCode's global configuration. After confirming publication, remove the pending-publication notice from both READMEs.
+Use the actual release version in these commands. Restart OpenCode and verify the installed plugin. The `plugin add` command installs into OpenCode's global configuration.
 
-For later releases, update `package.json` and `package-lock.json` together, repeat the checks, and publish the new version. npm does not let you overwrite an already published version.
-
-[npm publishing guide](https://docs.npmjs.com/creating-and-publishing-unscoped-public-packages/) · [OpenCode plugin installation](https://opencode.ai/docs/plugins#manage)
+[npm version command](https://docs.npmjs.com/cli/v11/commands/npm-version/) · [npm publishing guide](https://docs.npmjs.com/cli/v11/commands/npm-publish/) · [OpenCode plugin installation](https://opencode.ai/docs/plugins#manage)
