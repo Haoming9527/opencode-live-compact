@@ -1,0 +1,641 @@
+ok task-1: Check Hello World Existed
+ok task-1: Check Blog Existed
+ok task-1: Check Header is on the top of Main
+ok task-1: Check blog-title fit-content
+4 passed, 0 failed, 0 skipped (4 test cases)
+ok task-1: Check Hello World Existed
+ok task-1: Check Blog Existed
+ok task-1: Check Header is on the top of Main
+ok task-1: Check blog-title fit-content
+ok task-2: Check List Item
+ok task-2: Check Travel Item
+ok task-2: Check List Layout from Left to Right
+7 passed, 0 failed, 0 skipped (7 test cases)
+ok task-1: Check Hello World Existed
+ok task-1: Check Blog Existed
+ok task-1: Check Header is on the top of Main
+ok task-1: Check blog-title fit-content
+ok task-2: Check List Item
+ok task-2: Check Travel Item
+ok task-2: Check List Layout from Left to Right
+ok task-3: Check Select List Item
+8 passed, 0 failed, 0 skipped (8 test cases)
+ok task-1: Check Hello World Existed
+ok task-1: Check Blog Existed
+ok task-1: Check Header is on the top of Main
+ok task-1: Check blog-title fit-content
+ok task-2: Check List Item
+ok task-2: Check Travel Item
+ok task-2: Check List Layout from Left to Right
+ok task-3: Check Select List Item
+ok task-4: Check Close Button place in the right of modal
+ok task-4: Check Add Blog Modal, Open And Close
+10 passed, 0 failed, 0 skipped (10 test cases)
+ok task-1: Check Hello World Existed
+ok task-1: Check Blog Existed
+ok task-1: Check Header is on the top of Main
+ok task-1: Check blog-title fit-content
+ok task-2: Check List Item
+ok task-2: Check Travel Item
+ok task-2: Check List Layout from Left to Right
+ok task-3: Check Select List Item
+ok task-4: Check Close Button place in the right of modal
+ok task-4: Check Add Blog Modal, Open And Close
+ok task-5: Check Record open Modal times
+ok task-5: Check .visible-count in the top left of Modal
+12 passed, 0 failed, 0 skipped (12 test cases)
+ok task-1: Check Hello World Existed
+ok task-1: Check Blog Existed
+ok task-1: Check Header is on the top of Main
+ok task-1: Check blog-title fit-content
+ok task-2: Check List Item
+ok task-2: Check Travel Item
+ok task-2: Check List Layout from Left to Right
+ok task-3: Check Select List Item
+ok task-4: Check Close Button place in the right of modal
+ok task-4: Check Add Blog Modal, Open And Close
+ok task-5: Check Record open Modal times
+ok task-5: Check .visible-count in the top left of Modal
+ok task-6: Check Submit Work Blog
+ok task-6: Check Submit Family Blog
+ok task-6: Check Keep Mock Data
+15 passed, 0 failed, 0 skipped (15 test cases)
+ok task-1: Check Hello World Existed
+ok task-1: Check Blog Existed
+ok task-1: Check Header is on the top of Main
+ok task-1: Check blog-title fit-content
+ok task-2: Check List Item
+ok task-2: Check Travel Item
+ok task-2: Check List Layout from Left to Right
+ok task-3: Check Select List Item
+ok task-4: Check Close Button place in the right of modal
+ok task-4: Check Add Blog Modal, Open And Close
+ok task-5: Check Record open Modal times
+ok task-5: Check .visible-count in the top left of Modal
+ok task-6: Check Submit Work Blog
+ok task-6: Check Submit Family Blog
+ok task-6: Check Keep Mock Data
+ok task-7: Check Blog Length
+ok task-7: Check Submit Blog With Check Duplication
+17 passed, 0 failed, 0 skipped (17 test cases)
+ok task-1: Check Hello World Existed
+ok task-1: Check Blog Existed
+ok task-1: Check Header is on the top of Main
+ok task-1: Check blog-title fit-content
+ok task-2: Check List Item
+ok task-2: Check Travel Item
+ok task-2: Check List Layout from Left to Right
+ok task-3: Check Select List Item
+ok task-4: Check Close Button place in the right of modal
+ok task-4: Check Add Blog Modal, Open And Close
+ok task-5: Check Record open Modal times
+ok task-5: Check .visible-count in the top left of Modal
+ok task-6: Check Submit Work Blog
+ok task-6: Check Submit Family Blog
+ok task-6: Check Keep Mock Data
+ok task-7: Check Blog Length
+ok task-7: Check Submit Blog With Check Duplication
+ok task-8: Check Delete Directly
+ok task-8: Check Create And Delete it
+ok task-8: Test Delete Button in the top right of Main
+ok task-8: Test Delete all items
+21 passed, 0 failed, 0 skipped (21 test cases)
+ok task-1: Check Hello World Existed
+ok task-1: Check Blog Existed
+ok task-1: Check Header is on the top of Main
+ok task-1: Check blog-title fit-content
+ok task-2: Check List Item
+ok task-2: Check Travel Item
+ok task-2: Check List Layout from Left to Right
+ok task-3: Check Select List Item
+ok task-4: Check Close Button place in the right of modal
+ok task-4: Check Add Blog Modal, Open And Close
+ok task-5: Check Record open Modal times
+ok task-5: Check .visible-count in the top left of Modal
+ok task-6: Check Submit Work Blog
+ok task-6: Check Submit Family Blog
+ok task-6: Check Keep Mock Data
+ok task-7: Check Blog Length
+ok task-7: Check Submit Blog With Check Duplication
+ok task-8: Check Delete Directly
+ok task-8: Check Create And Delete it
+ok task-8: Test Delete Button in the top right of Main
+ok task-8: Test Delete all items
+ok task-9: Check Edit Form Title Change
+ok task-9: Check Edit Directly
+ok task-9: Check Edit Duplication Check
+ok task-9: Test Edit Button in the top right of Main
+25 passed, 0 failed, 0 skipped (25 test cases)
+ok task-1: Check Hello World Existed
+ok task-1: Check Blog Existed
+ok task-1: Check Header is on the top of Main
+ok task-1: Check blog-title fit-content
+ok task-10: Search Input is on the top of List
+ok task-10: Filter Blogs
+ok task-10: Add New Blog And Filter It
+ok task-10: Search Input width should be less than the size of component: 200px
+ok task-2: Check List Item
+ok task-2: Check Travel Item
+ok task-2: Check List Layout from Left to Right
+ok task-3: Check Select List Item
+ok task-4: Check Close Button place in the right of modal
+ok task-4: Check Add Blog Modal, Open And Close
+ok task-5: Check Record open Modal times
+ok task-5: Check .visible-count in the top left of Modal
+ok task-6: Check Submit Work Blog
+ok task-6: Check Submit Family Blog
+ok task-6: Check Keep Mock Data
+ok task-7: Check Blog Length
+ok task-7: Check Submit Blog With Check Duplication
+ok task-8: Check Delete Directly
+ok task-8: Check Create And Delete it
+ok task-8: Test Delete Button in the top right of Main
+ok task-8: Test Delete all items
+ok task-9: Check Edit Form Title Change
+ok task-9: Check Edit Directly
+ok task-9: Check Edit Duplication Check
+ok task-9: Test Edit Button in the top right of Main
+29 passed, 0 failed, 0 skipped (29 test cases)
+ok task-1: Check Hello World Existed
+ok task-1: Check Blog Existed
+ok task-1: Check Header is on the top of Main
+ok task-1: Check blog-title fit-content
+ok task-10: Search Input is on the top of List
+ok task-10: Filter Blogs
+ok task-10: Add New Blog And Filter It
+ok task-10: Search Input width should be less than the size of component: 200px
+ok task-11: Check Blog Length
+ok task-11: Check Random Blogs will not stuck pages
+ok task-11: Check Search will not stuck in large blog list
+ok task-2: Check List Item
+ok task-2: Check Travel Item
+ok task-2: Check List Layout from Left to Right
+ok task-3: Check Select List Item
+ok task-4: Check Close Button place in the right of modal
+ok task-4: Check Add Blog Modal, Open And Close
+ok task-5: Check Record open Modal times
+ok task-5: Check .visible-count in the top left of Modal
+ok task-6: Check Submit Work Blog
+ok task-6: Check Submit Family Blog
+ok task-6: Check Keep Mock Data
+ok task-7: Check Blog Length
+ok task-7: Check Submit Blog With Check Duplication
+ok task-8: Check Delete Directly
+ok task-8: Check Create And Delete it
+ok task-8: Test Delete Button in the top right of Main
+ok task-8: Test Delete all items
+ok task-9: Check Edit Form Title Change
+ok task-9: Check Edit Directly
+ok task-9: Check Edit Duplication Check
+ok task-9: Test Edit Button in the top right of Main
+32 passed, 0 failed, 0 skipped (32 test cases)
+ok task-1: Check Hello World Existed
+ok task-1: Check Blog Existed
+ok task-1: Check Header is on the top of Main
+ok task-1: Check blog-title fit-content
+ok task-10: Search Input is on the top of List
+ok task-10: Filter Blogs
+ok task-10: Add New Blog And Filter It
+ok task-10: Search Input width should be less than the size of component: 200px
+ok task-11: Check Blog Length
+ok task-11: Check Random Blogs will not stuck pages
+ok task-11: Check Search will not stuck in large blog list
+ok task-12: Check Comments Component Existed
+ok task-12: Check Submit Comments in Current Blog
+ok task-12: When Blog Edited, the comments still existed
+ok task-12: When Blog Deleted, the comments will be deleted
+ok task-2: Check List Item
+ok task-2: Check Travel Item
+ok task-2: Check List Layout from Left to Right
+ok task-3: Check Select List Item
+ok task-4: Check Close Button place in the right of modal
+ok task-4: Check Add Blog Modal, Open And Close
+ok task-5: Check Record open Modal times
+ok task-5: Check .visible-count in the top left of Modal
+ok task-6: Check Submit Work Blog
+ok task-6: Check Submit Family Blog
+ok task-6: Check Keep Mock Data
+ok task-7: Check Blog Length
+ok task-7: Check Submit Blog With Check Duplication
+ok task-8: Check Delete Directly
+ok task-8: Check Create And Delete it
+ok task-8: Test Delete Button in the top right of Main
+ok task-8: Test Delete all items
+ok task-9: Check Edit Form Title Change
+ok task-9: Check Edit Directly
+ok task-9: Check Edit Duplication Check
+ok task-9: Test Edit Button in the top right of Main
+36 passed, 0 failed, 0 skipped (36 test cases)
+ok task-1: Check Hello World Existed
+ok task-1: Check Blog Existed
+ok task-1: Check Header is on the top of Main
+ok task-1: Check blog-title fit-content
+ok task-10: Search Input is on the top of List
+ok task-10: Filter Blogs
+ok task-10: Add New Blog And Filter It
+ok task-10: Search Input width should be less than the size of component: 200px
+ok task-11: Check Blog Length
+ok task-11: Check Random Blogs will not stuck pages
+ok task-11: Check Search will not stuck in large blog list
+ok task-12: Check Comments Component Existed
+ok task-12: Check Submit Comments in Current Blog
+ok task-12: When Blog Edited, the comments still existed
+ok task-12: When Blog Deleted, the comments will be deleted
+ok task-13: Check Tooltip Default Hidden
+ok task-13: Check Tooltip Appear
+ok task-13: Check Tooltip Position
+ok task-13: Check Tooltip is the child of document.body
+ok task-13: Check Update Position When Browser Resize
+ok task-2: Check List Item
+ok task-2: Check Travel Item
+ok task-2: Check List Layout from Left to Right
+ok task-3: Check Select List Item
+ok task-4: Check Close Button place in the right of modal
+ok task-4: Check Add Blog Modal, Open And Close
+ok task-5: Check Record open Modal times
+ok task-5: Check .visible-count in the top left of Modal
+ok task-6: Check Submit Work Blog
+ok task-6: Check Submit Family Blog
+ok task-6: Check Keep Mock Data
+ok task-7: Check Blog Length
+ok task-7: Check Submit Blog With Check Duplication
+ok task-8: Check Delete Directly
+ok task-8: Check Create And Delete it
+ok task-8: Test Delete Button in the top right of Main
+ok task-8: Test Delete all items
+ok task-9: Check Edit Form Title Change
+ok task-9: Check Edit Directly
+ok task-9: Check Edit Duplication Check
+ok task-9: Test Edit Button in the top right of Main
+41 passed, 0 failed, 0 skipped (41 test cases)
+ok task-1: Check Hello World Existed
+ok task-1: Check Blog Existed
+ok task-1: Check Header is on the top of Main
+ok task-1: Check blog-title fit-content
+ok task-10: Search Input is on the top of List
+ok task-10: Filter Blogs
+ok task-10: Add New Blog And Filter It
+ok task-10: Search Input width should be less than the size of component: 200px
+ok task-11: Check Blog Length
+ok task-11: Check Random Blogs will not stuck pages
+ok task-11: Check Search will not stuck in large blog list
+ok task-12: Check Comments Component Existed
+ok task-12: Check Submit Comments in Current Blog
+ok task-12: When Blog Edited, the comments still existed
+ok task-12: When Blog Deleted, the comments will be deleted
+ok task-13: Check Tooltip Default Hidden
+ok task-13: Check Tooltip Appear
+ok task-13: Check Tooltip Position
+ok task-13: Check Tooltip is the child of document.body
+ok task-13: Check Update Position When Browser Resize
+ok task-14: Check Markdown grammar: "#" -> h1, "##" -> h2, "###" -> h3
+ok task-14: Check XSS protection
+ok task-2: Check List Item
+ok task-2: Check Travel Item
+ok task-2: Check List Layout from Left to Right
+ok task-3: Check Select List Item
+ok task-4: Check Close Button place in the right of modal
+ok task-4: Check Add Blog Modal, Open And Close
+ok task-5: Check Record open Modal times
+ok task-5: Check .visible-count in the top left of Modal
+ok task-6: Check Submit Work Blog
+ok task-6: Check Submit Family Blog
+ok task-6: Check Keep Mock Data
+ok task-7: Check Blog Length
+ok task-7: Check Submit Blog With Check Duplication
+ok task-8: Check Delete Directly
+ok task-8: Check Create And Delete it
+ok task-8: Test Delete Button in the top right of Main
+ok task-8: Test Delete all items
+ok task-9: Check Edit Form Title Change
+ok task-9: Check Edit Directly
+ok task-9: Check Edit Duplication Check
+ok task-9: Test Edit Button in the top right of Main
+43 passed, 0 failed, 0 skipped (43 test cases)
+ok task-1: Check Hello World Existed
+ok task-1: Check Blog Existed
+ok task-1: Check Header is on the top of Main
+ok task-1: Check blog-title fit-content
+ok task-10: Search Input is on the top of List
+ok task-10: Filter Blogs
+ok task-10: Add New Blog And Filter It
+ok task-10: Search Input width should be less than the size of component: 200px
+ok task-11: Check Blog Length
+ok task-11: Check Random Blogs will not stuck pages
+ok task-11: Check Search will not stuck in large blog list
+ok task-12: Check Comments Component Existed
+ok task-12: Check Submit Comments in Current Blog
+ok task-12: When Blog Edited, the comments still existed
+ok task-12: When Blog Deleted, the comments will be deleted
+ok task-13: Check Tooltip Default Hidden
+ok task-13: Check Tooltip Appear
+ok task-13: Check Tooltip Position
+ok task-13: Check Tooltip is the child of document.body
+ok task-13: Check Update Position When Browser Resize
+ok task-14: Check Markdown grammar: "#" -> h1, "##" -> h2, "###" -> h3
+ok task-14: Check XSS protection
+ok task-15: Toast When Submit Comment, Toast disappear after 3000ms
+ok task-15: New Toast Will replace Old Toast
+ok task-15: Toast is in the top of page
+ok task-15: Toast fontSize is 12px
+ok task-2: Check List Item
+ok task-2: Check Travel Item
+ok task-2: Check List Layout from Left to Right
+ok task-3: Check Select List Item
+ok task-4: Check Close Button place in the right of modal
+ok task-4: Check Add Blog Modal, Open And Close
+ok task-5: Check Record open Modal times
+ok task-5: Check .visible-count in the top left of Modal
+ok task-6: Check Submit Work Blog
+ok task-6: Check Submit Family Blog
+ok task-6: Check Keep Mock Data
+ok task-7: Check Blog Length
+ok task-7: Check Submit Blog With Check Duplication
+ok task-8: Check Delete Directly
+ok task-8: Check Create And Delete it
+ok task-8: Test Delete Button in the top right of Main
+ok task-8: Test Delete all items
+ok task-9: Check Edit Form Title Change
+ok task-9: Check Edit Directly
+ok task-9: Check Edit Duplication Check
+ok task-9: Test Edit Button in the top right of Main
+47 passed, 0 failed, 0 skipped (47 test cases)
+ok task-1: Check Hello World Existed
+ok task-1: Check Blog Existed
+ok task-1: Check Header is on the top of Main
+ok task-1: Check blog-title fit-content
+ok task-10: Search Input is on the top of List
+ok task-10: Filter Blogs
+ok task-10: Add New Blog And Filter It
+ok task-10: Search Input width should be less than the size of component: 200px
+ok task-11: Check Blog Length
+ok task-11: Check Random Blogs will not stuck pages
+ok task-11: Check Search will not stuck in large blog list
+ok task-12: Check Comments Component Existed
+ok task-12: Check Submit Comments in Current Blog
+ok task-12: When Blog Edited, the comments still existed
+ok task-12: When Blog Deleted, the comments will be deleted
+ok task-13: Check Tooltip Default Hidden
+ok task-13: Check Tooltip Appear
+ok task-13: Check Tooltip Position
+ok task-13: Check Tooltip is the child of document.body
+ok task-13: Check Update Position When Browser Resize
+ok task-14: Check Markdown grammar: "#" -> h1, "##" -> h2, "###" -> h3
+ok task-14: Check XSS protection
+ok task-15: Toast When Submit Comment, Toast disappear after 3000ms
+ok task-15: New Toast Will replace Old Toast
+ok task-15: Toast is in the top of page
+ok task-15: Toast fontSize is 12px
+ok task-16: Show Tooltip For Hover Long Title List Item
+ok task-16: Show Tooltip For Blog Title With List Item
+ok task-16: Show Tooltip For Normal Title
+ok task-2: Check List Item
+ok task-2: Check Travel Item
+ok task-2: Check List Layout from Left to Right
+ok task-3: Check Select List Item
+ok task-4: Check Close Button place in the right of modal
+ok task-4: Check Add Blog Modal, Open And Close
+ok task-5: Check Record open Modal times
+ok task-5: Check .visible-count in the top left of Modal
+ok task-6: Check Submit Work Blog
+ok task-6: Check Submit Family Blog
+ok task-6: Check Keep Mock Data
+ok task-7: Check Blog Length
+ok task-7: Check Submit Blog With Check Duplication
+ok task-8: Check Delete Directly
+ok task-8: Check Create And Delete it
+ok task-8: Test Delete Button in the top right of Main
+ok task-8: Test Delete all items
+ok task-9: Check Edit Form Title Change
+ok task-9: Check Edit Directly
+ok task-9: Check Edit Duplication Check
+ok task-9: Test Edit Button in the top right of Main
+50 passed, 0 failed, 0 skipped (50 test cases)
+ok task-1: Check Hello World Existed
+ok task-1: Check Blog Existed
+ok task-1: Check Header is on the top of Main
+ok task-1: Check blog-title fit-content
+ok task-10: Search Input is on the top of List
+ok task-10: Filter Blogs
+ok task-10: Add New Blog And Filter It
+ok task-10: Search Input width should be less than the size of component: 200px
+ok task-11: Check Blog Length
+ok task-11: Check Random Blogs will not stuck pages
+ok task-11: Check Search will not stuck in large blog list
+ok task-12: Check Comments Component Existed
+ok task-12: Check Submit Comments in Current Blog
+ok task-12: When Blog Edited, the comments still existed
+ok task-12: When Blog Deleted, the comments will be deleted
+ok task-13: Check Tooltip Default Hidden
+ok task-13: Check Tooltip Appear
+ok task-13: Check Tooltip Position
+ok task-13: Check Tooltip is the child of document.body
+ok task-13: Check Update Position When Browser Resize
+ok task-14: Check Markdown grammar: "#" -> h1, "##" -> h2, "###" -> h3
+ok task-14: Check XSS protection
+ok task-15: Toast When Submit Comment, Toast disappear after 3000ms
+ok task-15: New Toast Will replace Old Toast
+ok task-15: Toast is in the top of page
+ok task-15: Toast fontSize is 12px
+ok task-16: Show Tooltip For Hover Long Title List Item
+ok task-16: Show Tooltip For Blog Title With List Item
+ok task-16: Show Tooltip For Normal Title
+ok task-17: Test Focus in Comment TextArea with "Charming Blog!"
+ok task-17: Submit "Fast Comment"
+ok task-2: Check List Item
+ok task-2: Check Travel Item
+ok task-2: Check List Layout from Left to Right
+ok task-3: Check Select List Item
+ok task-4: Check Close Button place in the right of modal
+ok task-4: Check Add Blog Modal, Open And Close
+ok task-5: Check Record open Modal times
+ok task-5: Check .visible-count in the top left of Modal
+ok task-6: Check Submit Work Blog
+ok task-6: Check Submit Family Blog
+ok task-6: Check Keep Mock Data
+ok task-7: Check Blog Length
+ok task-7: Check Submit Blog With Check Duplication
+ok task-8: Check Delete Directly
+ok task-8: Check Create And Delete it
+ok task-8: Test Delete Button in the top right of Main
+ok task-8: Test Delete all items
+ok task-9: Check Edit Form Title Change
+ok task-9: Check Edit Directly
+ok task-9: Check Edit Duplication Check
+ok task-9: Test Edit Button in the top right of Main
+52 passed, 0 failed, 0 skipped (52 test cases)
+ok task-1: Check Hello World Existed
+ok task-1: Check Blog Existed
+ok task-1: Check Header is on the top of Main
+ok task-1: Check blog-title fit-content
+ok task-10: Search Input is on the top of List
+ok task-10: Filter Blogs
+ok task-10: Add New Blog And Filter It
+ok task-10: Search Input width should be less than the size of component: 200px
+ok task-11: Check Blog Length
+ok task-11: Check Random Blogs will not stuck pages
+ok task-11: Check Search will not stuck in large blog list
+ok task-12: Check Comments Component Existed
+ok task-12: Check Submit Comments in Current Blog
+ok task-12: When Blog Edited, the comments still existed
+ok task-12: When Blog Deleted, the comments will be deleted
+ok task-13: Check Tooltip Default Hidden
+ok task-13: Check Tooltip Appear
+ok task-13: Check Tooltip Position
+ok task-13: Check Tooltip is the child of document.body
+ok task-13: Check Update Position When Browser Resize
+ok task-14: Check Markdown grammar: "#" -> h1, "##" -> h2, "###" -> h3
+ok task-14: Check XSS protection
+ok task-15: Toast When Submit Comment, Toast disappear after 3000ms
+ok task-15: New Toast Will replace Old Toast
+ok task-15: Toast is in the top of page
+ok task-15: Toast fontSize is 12px
+ok task-16: Show Tooltip For Hover Long Title List Item
+ok task-16: Show Tooltip For Blog Title With List Item
+ok task-16: Show Tooltip For Normal Title
+ok task-17: Test Focus in Comment TextArea with "Charming Blog!"
+ok task-17: Submit "Fast Comment"
+ok task-18: Jump to game when click "🎮"
+ok task-18: Page switched when page goBack and goForward
+ok task-18: show Game Page when goto /game directly
+ok task-2: Check List Item
+ok task-2: Check Travel Item
+ok task-2: Check List Layout from Left to Right
+ok task-3: Check Select List Item
+ok task-4: Check Close Button place in the right of modal
+ok task-4: Check Add Blog Modal, Open And Close
+ok task-5: Check Record open Modal times
+ok task-5: Check .visible-count in the top left of Modal
+ok task-6: Check Submit Work Blog
+ok task-6: Check Submit Family Blog
+ok task-6: Check Keep Mock Data
+ok task-7: Check Blog Length
+ok task-7: Check Submit Blog With Check Duplication
+ok task-8: Check Delete Directly
+ok task-8: Check Create And Delete it
+ok task-8: Test Delete Button in the top right of Main
+ok task-8: Test Delete all items
+ok task-9: Check Edit Form Title Change
+ok task-9: Check Edit Directly
+ok task-9: Check Edit Duplication Check
+ok task-9: Test Edit Button in the top right of Main
+55 passed, 0 failed, 0 skipped (55 test cases)
+ok task-1: Check Hello World Existed
+ok task-1: Check Blog Existed
+ok task-1: Check Header is on the top of Main
+ok task-1: Check blog-title fit-content
+ok task-10: Search Input is on the top of List
+ok task-10: Filter Blogs
+ok task-10: Add New Blog And Filter It
+ok task-10: Search Input width should be less than the size of component: 200px
+ok task-11: Check Blog Length
+ok task-11: Check Random Blogs will not stuck pages
+ok task-11: Check Search will not stuck in large blog list
+ok task-12: Check Comments Component Existed
+ok task-12: Check Submit Comments in Current Blog
+ok task-12: When Blog Edited, the comments still existed
+ok task-12: When Blog Deleted, the comments will be deleted
+ok task-13: Check Tooltip Default Hidden
+ok task-13: Check Tooltip Appear
+ok task-13: Check Tooltip Position
+ok task-13: Check Tooltip is the child of document.body
+ok task-13: Check Update Position When Browser Resize
+ok task-14: Check Markdown grammar: "#" -> h1, "##" -> h2, "###" -> h3
+ok task-14: Check XSS protection
+ok task-15: Toast When Submit Comment, Toast disappear after 3000ms
+ok task-15: New Toast Will replace Old Toast
+ok task-15: Toast is in the top of page
+ok task-15: Toast fontSize is 12px
+ok task-16: Show Tooltip For Hover Long Title List Item
+ok task-16: Show Tooltip For Blog Title With List Item
+ok task-16: Show Tooltip For Normal Title
+ok task-17: Test Focus in Comment TextArea with "Charming Blog!"
+ok task-17: Submit "Fast Comment"
+ok task-18: Jump to game when click "🎮"
+ok task-18: Page switched when page goBack and goForward
+ok task-18: show Game Page when goto /game directly
+ok task-19: Show Big Toast After wins
+ok task-19: Turn Switched
+ok task-19: Play a complex game
+ok task-2: Check List Item
+ok task-2: Check Travel Item
+ok task-2: Check List Layout from Left to Right
+ok task-3: Check Select List Item
+ok task-4: Check Close Button place in the right of modal
+ok task-4: Check Add Blog Modal, Open And Close
+ok task-5: Check Record open Modal times
+ok task-5: Check .visible-count in the top left of Modal
+ok task-6: Check Submit Work Blog
+ok task-6: Check Submit Family Blog
+ok task-6: Check Keep Mock Data
+ok task-7: Check Blog Length
+ok task-7: Check Submit Blog With Check Duplication
+ok task-8: Check Delete Directly
+ok task-8: Check Create And Delete it
+ok task-8: Test Delete Button in the top right of Main
+ok task-8: Test Delete all items
+ok task-9: Check Edit Form Title Change
+ok task-9: Check Edit Directly
+ok task-9: Check Edit Duplication Check
+ok task-9: Test Edit Button in the top right of Main
+58 passed, 0 failed, 0 skipped (58 test cases)
+ok task-1: Check Hello World Existed
+ok task-1: Check Blog Existed
+ok task-1: Check Header is on the top of Main
+ok task-1: Check blog-title fit-content
+ok task-10: Search Input is on the top of List
+ok task-10: Filter Blogs
+ok task-10: Add New Blog And Filter It
+ok task-10: Search Input width should be less than the size of component: 200px
+ok task-11: Check Blog Length
+ok task-11: Check Random Blogs will not stuck pages
+ok task-11: Check Search will not stuck in large blog list
+ok task-12: Check Comments Component Existed
+ok task-12: Check Submit Comments in Current Blog
+ok task-12: When Blog Edited, the comments still existed
+ok task-12: When Blog Deleted, the comments will be deleted
+ok task-13: Check Tooltip Default Hidden
+ok task-13: Check Tooltip Appear
+ok task-13: Check Tooltip Position
+ok task-13: Check Tooltip is the child of document.body
+ok task-13: Check Update Position When Browser Resize
+ok task-14: Check Markdown grammar: "#" -> h1, "##" -> h2, "###" -> h3
+ok task-14: Check XSS protection
+ok task-15: Toast When Submit Comment, Toast disappear after 3000ms
+ok task-15: New Toast Will replace Old Toast
+ok task-15: Toast is in the top of page
+ok task-15: Toast fontSize is 12px
+ok task-16: Show Tooltip For Hover Long Title List Item
+ok task-16: Show Tooltip For Blog Title With List Item
+ok task-16: Show Tooltip For Normal Title
+ok task-17: Test Focus in Comment TextArea with "Charming Blog!"
+ok task-17: Submit "Fast Comment"
+ok task-18: Jump to game when click "🎮"
+ok task-18: Page switched when page goBack and goForward
+ok task-18: show Game Page when goto /game directly
+ok task-19: Show Big Toast After wins
+ok task-19: Turn Switched
+ok task-19: Play a complex game
+ok task-2: Check List Item
+ok task-2: Check Travel Item
+ok task-2: Check List Layout from Left to Right
+ok task-20: Save Chess Record
+ok task-3: Check Select List Item
+ok task-4: Check Close Button place in the right of modal
+ok task-4: Check Add Blog Modal, Open And Close
+ok task-5: Check Record open Modal times
+ok task-5: Check .visible-count in the top left of Modal
+ok task-6: Check Submit Work Blog
+ok task-6: Check Submit Family Blog
+ok task-6: Check Keep Mock Data
+ok task-7: Check Blog Length
+ok task-7: Check Submit Blog With Check Duplication
+ok task-8: Check Delete Directly
+ok task-8: Check Create And Delete it
+ok task-8: Test Delete Button in the top right of Main
+ok task-8: Test Delete all items
+ok task-9: Check Edit Form Title Change
+ok task-9: Check Edit Directly
+ok task-9: Check Edit Duplication Check
+ok task-9: Test Edit Button in the top right of Main
+59 passed, 0 failed, 0 skipped (59 test cases)

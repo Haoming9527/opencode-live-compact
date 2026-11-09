@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "suite": "Web-Bench React 20",
+  "fixtureCommit": "7b31ca2b786eef120dd49ce63dd03d0c0006046d",
+  "opencodeVersion": "2.2.6",
+  "model": "openai/gpt-6-luna",
+  "runID": "live-Tt3DyL",
+  "launcherID": "run-6HCM1r",
+  "testedBuildSha256": "ffa372a43832ae3a01226a13135de645e07d32f014271ed8abae958d14cbac81",
+  "completedAt": "2026-11-09T05:44:32.204Z",
+  "downloadedAt": "2026-11-09T06:08:29.800Z",
+  "rawFilesUnmodified": true,
+  "files": [
+    {
+      "path": "comparison.json",
+      "remotePath": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Tt3DyL/comparison.json",
+      "bytes": 41406,
+      "sha256": "830cb50c8f0fe8dc5f5e9d603d7968fd98b65bdfd4c0f88626df8c3ed37078cd"
+    },
+    {
+      "path": "comparison-runner.md",
+      "remotePath": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Tt3DyL/comparison-1.md",
+      "bytes": 1742,
+      "sha256": "ba3e6304d7f677e05898aa7b4883dce89fa0b38e21ba2b6173b7c57ef41a8a80"
+    },
+    {
+      "path": "progress.jsonl",
+      "remotePath": "/home/daytona/benchmark-progress/run-6HCM1r/progress.jsonl",
+      "bytes": 9994,
+      "sha256": "cf767b99fe6019dbadbbacf54d32868ddc8290a3d1672df9be8a8dd829e64228"
+    },
+    {
+      "path": "benchmark.log",
+      "remotePath": "/home/daytona/benchmark-progress/run-6HCM1r/benchmark.log",
+      "bytes": 3208,
+      "sha256": "b66c6a507b83ddce2cabe354d164657d93d87eda48b669bc393234fa89159c8f"
+    },
+    {
+      "path": "plugin-build.json",
+      "remotePath": "/home/daytona/benchmark-progress/run-6HCM1r/plugin-build.json",
+      "bytes": 13972,
+      "sha256": "56f7416b47846aac6656526dc3ecc08931d11697fe95bff5aa912c052e07cae2"
+    },
+    {
+      "path": "preflight.json",
+      "remotePath": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Tt3DyL/webbench/preflight.json",
+      "bytes": 25666,
+      "sha256": "4dc4e696c2b1bbaf350f3b8e22fcd4a3493b63fd21a7cd62bfedefcdba856aa4"
+    },
+    {
+      "path": "prompts.json",
+      "remotePath": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Tt3DyL/webbench/prompts.json",
+      "bytes": 18060,
+      "sha256": "a6d2e83018b24ab8e39391b2ab6aa521d011fd294d56533ca33a739471711e19"
+    },
+    {
+      "path": "original-opencode/result.json",
+      "remotePath": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Tt3DyL/webbench/trial-1/control/result.json",
+      "bytes": 15644,
+      "sha256": "0351edfd20ec5f89efe897c29c7c54b2a77898a7e27dfd201926d9166103e9c4"
+    },
+    {
+      "path": "original-opencode/grade.tap",
+      "remotePath": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Tt3DyL/webbench/trial-1/control/grade.tap",
+      "bytes": 27516,
+      "sha256": "82fb4a2c22ca19ec50d0fa0f6c3a0dc36a9ce97371832146150d22d5dfee5111"
+    },
+    {
+      "path": "live-compact/result.json",
+      "remotePath": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Tt3DyL/webbench/trial-1/plugin/result.json",
+      "bytes": 17296,
+      "sha256": "3e6f9e5b5d99494ded1ced2e6620b73c4e8ed172a4d1d3571885b8f4bdb14ecf"
+    },
+    {
+      "path": "live-compact/grade.tap",
+      "remotePath": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Tt3DyL/webbench/trial-1/plugin/grade.tap",
+      "bytes": 27516,
+      "sha256": "82fb4a2c22ca19ec50d0fa0f6c3a0dc36a9ce97371832146150d22d5dfee5111"
+    },
+    {
+      "path": "live-compact/plugin.jsonl",
+      "remotePath": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Tt3DyL/webbench/trial-1/plugin/plugin.jsonl",
+      "bytes": 26179,
+      "sha256": "f1b2a975fb1bac3917034ce8066d89745ce280f994150b01df7e475654aed0fe"
+    }
+  ]
+}

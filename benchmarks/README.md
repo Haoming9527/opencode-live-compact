@@ -1,6 +1,6 @@
 # Run the four benchmarks
 
-Looking for measured results? [Completed Aider 150 comparison, logs, and source data](results/2026-11-09-aider-150/README.md).
+Completed comparisons: [Aider · 150 exercises](results/2026-11-09-aider-150/README.md) · [Web-Bench React · 20 tasks](results/2026-11-09-webbench-react-20/README.md). Both include logs, source data, and offline verification.
 
 Every live command compares **Original OpenCode** with **Live Compact**, using the same model and ordered prompts, separate workspaces, and one continuous session per version. Both keep stock OpenCode **2.2.6** compaction and output defaults.
 

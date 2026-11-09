@@ -81,4 +81,4 @@ From the repository root:
 node benchmarks/results/2026-11-09-aider-150/verify.mjs
 ```
 
-This checks every downloaded file's hash, validates the result/progress/cut totals, and prints the same eight-row table used in the main README. To run a new paid comparison, use the [benchmark instructions](../../README.md); the current source uses the newer policy described above.
+This checks every downloaded file's hash, validates the result/progress/cut totals, and prints the eight-row evidence table above. To run a new paid comparison, use the [benchmark instructions](../../README.md); the current source uses the newer policy described above.

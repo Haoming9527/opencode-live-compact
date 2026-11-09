@@ -70,7 +70,7 @@ const labels = ["Passed", "Overall cache hit rate", "Cached input tokens", "Non-
   "Estimated API cost", "Peak context", "Compaction", "Wall-clock time"];
 const table = ["| Metric | Original OpenCode | Live Compact |", "| --- | ---: | ---: |",
   ...labels.map((label, index) => `| ${label} | ${a[index]} | ${b[index]} |`)].join("\n");
-for (const document of ["README.md", "../../../README.md"]) {
+for (const document of ["README.md"]) {
   assert.ok(read(document).toString("utf8").replaceAll("\r\n", "\n").includes(table), `${document}: table agrees with source data`);
 }
-console.log(`Verified ${manifest.files.length} source files, both 150/150 results, 93 cuts, and both README tables.\n\n${table}`);
+console.log(`Verified ${manifest.files.length} source files, both 150/150 results, 93 cuts, and the evidence table.\n\n${table}`);

@@ -1,0 +1,615 @@
+{
+  "suite": "webbench",
+  "arm": "control",
+  "sessionID": "ses_e413e4c4cffesrIteOesp2w7dU",
+  "modelConfiguration": {
+    "cost": [
+      {
+        "input": 0.1,
+        "output": 0.5,
+        "cache": {
+          "read": 0.01,
+          "write": 0.125
+        }
+      },
+      {
+        "tier": {
+          "type": "context",
+          "size": 272000
+        },
+        "input": 0.2,
+        "output": 0.75,
+        "cache": {
+          "read": 0.02,
+          "write": 0.25
+        }
+      }
+    ],
+    "limit": {
+      "context": 1050000,
+      "input": 922000,
+      "output": 128000
+    },
+    "modelID": "gpt-6-luna"
+  },
+  "stagesCompleted": 20,
+  "stagesExpected": 20,
+  "wallSeconds": 1346.0864497220002,
+  "retentionCorrect": null,
+  "grade": {
+    "total": 20,
+    "passed": 20,
+    "failed": 0,
+    "success": true,
+    "outcomes": [
+      {
+        "id": "task-1",
+        "passed": true
+      },
+      {
+        "id": "task-2",
+        "passed": true
+      },
+      {
+        "id": "task-3",
+        "passed": true
+      },
+      {
+        "id": "task-4",
+        "passed": true
+      },
+      {
+        "id": "task-5",
+        "passed": true
+      },
+      {
+        "id": "task-6",
+        "passed": true
+      },
+      {
+        "id": "task-7",
+        "passed": true
+      },
+      {
+        "id": "task-8",
+        "passed": true
+      },
+      {
+        "id": "task-9",
+        "passed": true
+      },
+      {
+        "id": "task-10",
+        "passed": true
+      },
+      {
+        "id": "task-11",
+        "passed": true
+      },
+      {
+        "id": "task-12",
+        "passed": true
+      },
+      {
+        "id": "task-13",
+        "passed": true
+      },
+      {
+        "id": "task-14",
+        "passed": true
+      },
+      {
+        "id": "task-15",
+        "passed": true
+      },
+      {
+        "id": "task-16",
+        "passed": true
+      },
+      {
+        "id": "task-17",
+        "passed": true
+      },
+      {
+        "id": "task-18",
+        "passed": true
+      },
+      {
+        "id": "task-19",
+        "passed": true
+      },
+      {
+        "id": "task-20",
+        "passed": true
+      }
+    ]
+  },
+  "attemptPolicy": {
+    "maxAttempts": 3
+  },
+  "attempts": [
+    {
+      "id": "task-1",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.002450075,
+          "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Tt3DyL/webbench/trial-1/control/attempts/task-1/attempt-1",
+          "testCases": {
+            "total": 4,
+            "passed": 4,
+            "failed": 0,
+            "skipped": 0,
+            "success": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "task-2",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.004024165,
+          "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Tt3DyL/webbench/trial-1/control/attempts/task-2/attempt-1",
+          "testCases": {
+            "total": 7,
+            "passed": 7,
+            "failed": 0,
+            "skipped": 0,
+            "success": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "task-3",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.005655165,
+          "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Tt3DyL/webbench/trial-1/control/attempts/task-3/attempt-1",
+          "testCases": {
+            "total": 8,
+            "passed": 8,
+            "failed": 0,
+            "skipped": 0,
+            "success": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "task-4",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.0087044,
+          "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Tt3DyL/webbench/trial-1/control/attempts/task-4/attempt-1",
+          "testCases": {
+            "total": 10,
+            "passed": 10,
+            "failed": 0,
+            "skipped": 0,
+            "success": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "task-5",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.01089195,
+          "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Tt3DyL/webbench/trial-1/control/attempts/task-5/attempt-1",
+          "testCases": {
+            "total": 12,
+            "passed": 12,
+            "failed": 0,
+            "skipped": 0,
+            "success": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "task-6",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.016129075,
+          "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Tt3DyL/webbench/trial-1/control/attempts/task-6/attempt-1",
+          "testCases": {
+            "total": 15,
+            "passed": 15,
+            "failed": 0,
+            "skipped": 0,
+            "success": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "task-7",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.022150819999999998,
+          "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Tt3DyL/webbench/trial-1/control/attempts/task-7/attempt-1",
+          "testCases": {
+            "total": 17,
+            "passed": 17,
+            "failed": 0,
+            "skipped": 0,
+            "success": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "task-8",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.027243244999999996,
+          "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Tt3DyL/webbench/trial-1/control/attempts/task-8/attempt-1",
+          "testCases": {
+            "total": 21,
+            "passed": 21,
+            "failed": 0,
+            "skipped": 0,
+            "success": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "task-9",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.034299909999999996,
+          "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Tt3DyL/webbench/trial-1/control/attempts/task-9/attempt-1",
+          "testCases": {
+            "total": 25,
+            "passed": 25,
+            "failed": 0,
+            "skipped": 0,
+            "success": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "task-10",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.038838914999999995,
+          "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Tt3DyL/webbench/trial-1/control/attempts/task-10/attempt-1",
+          "testCases": {
+            "total": 29,
+            "passed": 29,
+            "failed": 0,
+            "skipped": 0,
+            "success": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "task-11",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.04894432999999998,
+          "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Tt3DyL/webbench/trial-1/control/attempts/task-11/attempt-1",
+          "testCases": {
+            "total": 32,
+            "passed": 32,
+            "failed": 0,
+            "skipped": 0,
+            "success": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "task-12",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.060852484999999984,
+          "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Tt3DyL/webbench/trial-1/control/attempts/task-12/attempt-1",
+          "testCases": {
+            "total": 36,
+            "passed": 36,
+            "failed": 0,
+            "skipped": 0,
+            "success": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "task-13",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.06854392999999998,
+          "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Tt3DyL/webbench/trial-1/control/attempts/task-13/attempt-1",
+          "testCases": {
+            "total": 41,
+            "passed": 41,
+            "failed": 0,
+            "skipped": 0,
+            "success": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "task-14",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.07776392999999998,
+          "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Tt3DyL/webbench/trial-1/control/attempts/task-14/attempt-1",
+          "testCases": {
+            "total": 43,
+            "passed": 43,
+            "failed": 0,
+            "skipped": 0,
+            "success": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "task-15",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.08608669499999998,
+          "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Tt3DyL/webbench/trial-1/control/attempts/task-15/attempt-1",
+          "testCases": {
+            "total": 47,
+            "passed": 47,
+            "failed": 0,
+            "skipped": 0,
+            "success": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "task-16",
+      "attempts": 2,
+      "startedAttempts": 2,
+      "firstAttemptPassed": false,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": false,
+          "estimatedUsd": 0.09392091499999998,
+          "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Tt3DyL/webbench/trial-1/control/attempts/task-16/attempt-1",
+          "testCases": {
+            "total": 50,
+            "passed": 47,
+            "failed": 3,
+            "skipped": 0,
+            "success": false
+          }
+        },
+        {
+          "attempt": 2,
+          "passed": true,
+          "estimatedUsd": 0.10325383999999999,
+          "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Tt3DyL/webbench/trial-1/control/attempts/task-16/attempt-2",
+          "testCases": {
+            "total": 50,
+            "passed": 50,
+            "failed": 0,
+            "skipped": 0,
+            "success": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "task-17",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.11603093499999999,
+          "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Tt3DyL/webbench/trial-1/control/attempts/task-17/attempt-1",
+          "testCases": {
+            "total": 52,
+            "passed": 52,
+            "failed": 0,
+            "skipped": 0,
+            "success": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "task-18",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.12687411999999998,
+          "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Tt3DyL/webbench/trial-1/control/attempts/task-18/attempt-1",
+          "testCases": {
+            "total": 55,
+            "passed": 55,
+            "failed": 0,
+            "skipped": 0,
+            "success": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "task-19",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.14249778500000002,
+          "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Tt3DyL/webbench/trial-1/control/attempts/task-19/attempt-1",
+          "testCases": {
+            "total": 58,
+            "passed": 58,
+            "failed": 0,
+            "skipped": 0,
+            "success": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "task-20",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.15488866499999998,
+          "gradeDirectory": "/home/daytona/benchmark-progress/webbench/repo/.runs/live-Tt3DyL/webbench/trial-1/control/attempts/task-20/attempt-1",
+          "testCases": {
+            "total": 59,
+            "passed": 59,
+            "failed": 0,
+            "skipped": 0,
+            "success": true
+          }
+        }
+      ]
+    }
+  ],
+  "testCases": {
+    "total": 59,
+    "passed": 59,
+    "failed": 0,
+    "skipped": 0,
+    "success": true,
+    "throughStage": "task-20"
+  },
+  "usage": {
+    "costEstimateUsd": 0.15488866499999998,
+    "uncachedInputTokens": 342,
+    "cachedReadTokens": 9177484,
+    "cacheWriteTokens": 191025,
+    "totalInputTokens": 9368851,
+    "outputTokens": 39149,
+    "reasoningTokens": 39254,
+    "primaryRequests": 114,
+    "retrySchedules": 0,
+    "auxiliaryUsageRecords": 0,
+    "knownModelRequests": 114,
+    "failedStepsWithoutUsage": 0,
+    "primaryInputSamples": 114,
+    "peakActiveContextTokens": 191028,
+    "meanActiveContextTokens": 82182.90350877192,
+    "nativeCompactionPauses": 0,
+    "automaticNativeCompactionPauses": 0,
+    "nativeCompactionWaitMs": 0,
+    "nativeCompactionTimingComplete": true,
+    "firstNativeCompactionStage": null,
+    "nativeCompactionEvents": [],
+    "replacementWindows": 0,
+    "replacementHostWaitMs": 0,
+    "replacementWindowEvents": [],
+    "replacementWindowsWithUsage": 0,
+    "replacementWindowsAfterNativeCompaction": null,
+    "replacementCuts": 0,
+    "replacementOverheadMs": 0,
+    "replacementPlanningMs": 0,
+    "replacementApplicationMs": 0,
+    "planningReasons": {},
+    "hostCompactionWaitMs": 0,
+    "cuts": 0,
+    "cutsAfterNativeCompaction": null,
+    "cutOverheadMs": 0,
+    "contextHookOverheadMs": 0,
+    "estimatedSavedTokens": 0,
+    "estimatedCacheSuffixTokens": 0,
+    "recalls": 0,
+    "successfulRecalls": 0
+  }
+}

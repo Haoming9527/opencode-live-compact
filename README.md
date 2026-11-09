@@ -2,42 +2,19 @@
 
 **Keep context under control while the agent works.**
 
+**English** · [简体中文](README.zh-CN.md)
+
 [![OpenCode 2.2.6](https://img.shields.io/badge/OpenCode-2.2.6-111827)](https://github.com/anomalyco/opencode/releases/tag/v2.2.6)
 [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)](package.json)
 [![Node.js 22.18+](https://img.shields.io/badge/Node.js-%E2%89%A522.18-417E38?logo=nodedotjs&logoColor=white)](package.json)
 [![MIT license](https://img.shields.io/badge/License-MIT-22C55E)](LICENSE)
-[![Experimental](https://img.shields.io/badge/Status-experimental-F59E0B)](#status)
+[![Version 0.1.0](https://img.shields.io/badge/version-0.1.0-8cdb9f)](package.json)
 
 [Results](#benchmark-results) · [Quick start](#quick-start) · [How it works](#how-it-works) · [Configuration](docs/architecture.md#configuration) · [Run benchmarks](benchmarks/README.md)
 
 Long coding sessions accumulate file reads, command output, and intermediate explanations. **Live Compact** is a native OpenCode plugin that checks after successful turns and shortens eligible completed history locally. It makes no extra model calls for these reductions, preserves the prefix before each cut, and saves the original text for exact recall.
 
-It starts checking at **20,000 tokens** by default, rather than waiting until the context window is almost full. OpenCode's native compaction remains available as a fallback.
-
-## Benchmark results
-
-**150 short programming exercises · Aider Polyglot `7e0611e`**
-
-One continuous session per version, stock OpenCode **2.2.6**, **GPT-6 Luna**, identical ordered exercises, and stock compaction/output defaults. Both versions ran in parallel in Daytona on November 9, 2026.
-
-| Metric | Original OpenCode | Live Compact |
-| --- | ---: | ---: |
-| Passed | **150/150** | **150/150** |
-| Overall cache hit rate | 99.49% | 99.34% |
-| Cached input tokens | 296.35M | **266.75M** |
-| Non-cached input tokens | 1.519M | 1.759M |
-| Estimated API cost | $6.048 | **$5.302 · 12.3% lower** |
-| Peak context | 783K | **591K** |
-| Compaction | 1 pause · 16.30 s | **93 cuts · 5.93 s** |
-| Wall-clock time | 5,106 s | **4,633 s** |
-
-Both passed all 150 exercises on their first graded attempt: **zero failures and zero repair attempts**. Live Compact made 21 span cuts and 72 individual cuts across 81 local replacements, with no native compaction pause.
-
-*Non-cached input includes cache writes. Cache hit rate is cached reads divided by total input. Compaction time includes native and local replacement host wait; local planning outside those events is excluded. The 93 cuts are grouped into 81 host events. Costs are OpenCode usage-based estimates, not billing receipts.*
-
-> This is one paired run, not a guarantee of savings on every workload. It tested the frozen build requiring **1,000 tokens saved per cut**, before the current **1,000-source-token** rule and per-session recovery storage. The table does not measure those later changes. Cache writes increased despite the lower total estimated cost.
-
-[Browse the logs and methodology](benchmarks/results/2026-11-09-aider-150/README.md) · [Raw comparison data](benchmarks/results/2026-11-09-aider-150/comparison.json) · [Per-exercise progress](benchmarks/results/2026-11-09-aider-150/progress.jsonl)
+**The problem: waiting until the context window is nearly full lets unnecessary history pile up, then interrupts work with a large compaction.** Live Compact aims to keep that growth under control throughout the conversation, making small, safe reductions after completed turns. Don't wait until the window is full to start compacting.
 
 ## How it works
 
@@ -49,6 +26,9 @@ flowchart LR
     D --> E[OpenCode saves the smaller window]
     E --> A
     C -. Backup fails .-> F[Keep the full context]
+    style C fill:#064e3b,stroke:#34d399,color:#ecfdf5
+    style D fill:#064e3b,stroke:#34d399,color:#ecfdf5
+    style E fill:#064e3b,stroke:#34d399,color:#ecfdf5
 ```
 
 1. **Check completed work.** Once context reaches 20,000 tokens, inspect older completed history. Active work and the latest three tool rounds stay intact.
@@ -71,9 +51,19 @@ OpenCode's automatic compaction stays enabled. The plugin can resume after nativ
 
 ## Quick start
 
-### Use the local checkout
-
 Requires **Node.js 22.18+** and stock **OpenCode 2.2.6**.
+
+### Install from npm (after publication)
+
+The npm package is prepared but not published yet. For now, use the local checkout below. After publication:
+
+```sh
+opencode plugin add opencode-live-compact
+```
+
+Version **0.1.0** targets stock OpenCode 2.2.6. Restart OpenCode after installing the plugin.
+
+### Use the local checkout
 
 ```sh
 git clone https://github.com/Haoming9527/opencode-live-compact.git
@@ -132,22 +122,18 @@ The benchmark runner supports four suites:
 | Aider Polyglot | 150 programming exercises across five languages |
 | Web-Bench React | 20 dependent tasks building one application |
 
-[Run any of the four locally or in Daytona →](benchmarks/README.md)
+[Run any of the four locally or in Daytona →](benchmarks/README.md) · [Publish to npm](docs/publishing.md)
 
-## Status
+## Benchmark results
 
-**Experimental; npm publication is planned after further validation.** The local checkout is the installation method available here. The intended future command is:
+**150 programming exercises + 20 dependent React tasks.** Each suite used one continuous session per version, stock OpenCode **2.2.6**, **GPT-6 Luna**, and identical tasks and defaults. Run in Daytona on November 9, 2026.
 
-```sh
-opencode plugin add opencode-live-compact
-```
+![Side-by-side results: both versions passed Aider 150/150 and Web-Bench 20/20. Live Compact estimated API cost was 12.3% and 3.1% lower respectively.](docs/assets/benchmarks-en.svg)
 
-The completed Aider comparison is included above. The separate Web-Bench comparison is not included in those results. Further repeated runs are needed to assess long-task reliability and how consistently cost and pause reductions hold.
+[Aider: logs and source data](benchmarks/results/2026-11-09-aider-150/README.md) · [Web-Bench: logs and source data](benchmarks/results/2026-11-09-webbench-react-20/README.md)
 
-Bug reports and reproducible examples are welcome. Include your OpenCode version, provider/model, plugin options, and relevant diagnostics with private content removed.
+## License
 
-## Inspiration and license
-
-Inspired by the high-level ideas behind [DSH Live Compact](https://github.com/Tranquillitatis-Lab/dsh-live-compact): incremental local reductions, preserving the prefix before a cut, and recoverable originals. This TypeScript implementation was independently designed for OpenCode; it does not copy or port DSH's implementation.
+Inspired by the ideas behind [DSH Live Compact](https://github.com/Tranquillitatis-Lab/dsh-live-compact).
 
 [MIT licensed](LICENSE).

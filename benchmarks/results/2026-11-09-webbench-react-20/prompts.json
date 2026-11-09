@@ -1,0 +1,105 @@
+{
+  "promptsSha256": "ecc6daf537e65ce55695205339e19c9b6f3fe51b3d2f0122ab2cd805803172b2",
+  "prompts": [
+    {
+      "id": "task-1",
+      "number": 1,
+      "prompt": "1) Create components/Header.tsx that displays 'Hello Blog' at the top of the page with appealing background color. 2) Create components/Main.tsx where content is aligned at the top left and fills the remaining space. 3) Develop components/Blog.tsx that accepts 'title' and 'detail' as props. Display mock blog data in Main.tsx using this Blog component with the mock data: { title: 'Morning', detail: 'Morning My Friends' }. 4) Render Header.tsx And Main.tsx in App.tsx 4) The classname of title in Blog.tsx is 'blog-title', the width of blog-title is 'fit-content', fontSize is 24px\n\nImplement Web-Bench React task-1 in src/. Keep all previous features working.\n\nOnly edit src/ files and assets; leave src/index.html, tests, configuration and dependencies intact.\n\nRun node .benchmark-test.mjs task-1 from the project root and fix any failing cumulative tests before finishing.\n\nUse ordinary local tools. Do not access the network, reference implementations, files outside this workspace, or subagents. Stop after this stage."
+    },
+    {
+      "id": "task-2",
+      "number": 2,
+      "prompt": "1) Create a appealing BlogList component that accepts an array of blogs as props and displays the titles in div elements with the className 'list-item'. 2) In Main.tsx, mock the blog data and display it using BlogList with this data: [{title: 'Morning', detail: 'Morning My Friends'}, {title: 'Travel', detail: 'I love traveling!'}]. 3) Position BlogList on the left side of Main.tsx with a width of 300px; each blog item should have a height of 40px and a border-box layout. 4) Only One Blog.tsx occupies the remaining space of Main.tsx. The content of Blog.tsx should be from first item of the mock data.\n\nImplement Web-Bench React task-2 in src/. Keep all previous features working.\n\nOnly edit src/ files and assets; leave src/index.html, tests, configuration and dependencies intact.\n\nRun node .benchmark-test.mjs task-2 from the project root and fix any failing cumulative tests before finishing.\n\nUse ordinary local tools. Do not access the network, reference implementations, files outside this workspace, or subagents. Stop after this stage."
+    },
+    {
+      "id": "task-3",
+      "number": 3,
+      "prompt": "1) Make blog items in BlogList selectable. When an item in BlogList is selected, highlight it with appealing style and display its content in the Blog Component. 2) Set 'Morning' as the default selected blog. 3) Beautify the List without changing the size of List Item\n\nImplement Web-Bench React task-3 in src/. Keep all previous features working.\n\nOnly edit src/ files and assets; leave src/index.html, tests, configuration and dependencies intact.\n\nRun node .benchmark-test.mjs task-3 from the project root and fix any failing cumulative tests before finishing.\n\nUse ordinary local tools. Do not access the network, reference implementations, files outside this workspace, or subagents. Stop after this stage."
+    },
+    {
+      "id": "task-4",
+      "number": 4,
+      "prompt": "1) Create a BlogForm component as a appealing Modal with the title 'Create Blog'. 2) Add an 'Add Blog' appealing blue button in the right of Header.tsx to toggle the BlogForm's visibility. 3) Place a close button (.close-btn) with 'x' in the top right of BlogForm to hide it. 4) Place the BlogForm component in App.tsx.\n\nImplement Web-Bench React task-4 in src/. Keep all previous features working.\n\nOnly edit src/ files and assets; leave src/index.html, tests, configuration and dependencies intact.\n\nRun node .benchmark-test.mjs task-4 from the project root and fix any failing cumulative tests before finishing.\n\nUse ordinary local tools. Do not access the network, reference implementations, files outside this workspace, or subagents. Stop after this stage."
+    },
+    {
+      "id": "task-5",
+      "number": 5,
+      "prompt": "1) Add .visible-count in the top-left of BlogForm showing '0' initially. 2) Increment .visible-count by 1 each time BlogForm becomes visible.\n\nImplement Web-Bench React task-5 in src/. Keep all previous features working.\n\nOnly edit src/ files and assets; leave src/index.html, tests, configuration and dependencies intact.\n\nRun node .benchmark-test.mjs task-5 from the project root and fix any failing cumulative tests before finishing.\n\nUse ordinary local tools. Do not access the network, reference implementations, files outside this workspace, or subagents. Stop after this stage."
+    },
+    {
+      "id": "task-6",
+      "number": 6,
+      "prompt": "1) Add appealing Form with label in BlogForm to input title and detail; BlogForm can be submitted by button (.submit-btn); 2) When submitted, append this Blog to BlogList, and set this Blog as selected. Keep Previous MockData.\n\nImplement Web-Bench React task-6 in src/. Keep all previous features working.\n\nOnly edit src/ files and assets; leave src/index.html, tests, configuration and dependencies intact.\n\nRun node .benchmark-test.mjs task-6 from the project root and fix any failing cumulative tests before finishing.\n\nUse ordinary local tools. Do not access the network, reference implementations, files outside this workspace, or subagents. Stop after this stage."
+    },
+    {
+      "id": "task-7",
+      "number": 7,
+      "prompt": " 1) Create context/BlogContext.tsx with React Context API to manage related context (blog list and selected blog) in App.tsx 2) When submit a new BlogForm, check title duplication. Constraint: The duplication check code should be written in BlogForm; 3) Add a span(.blog-list-len) near 'Hello Blog' in Header.tsx to show the length of blogs\n\nImplement Web-Bench React task-7 in src/. Keep all previous features working.\n\nOnly edit src/ files and assets; leave src/index.html, tests, configuration and dependencies intact.\n\nRun node .benchmark-test.mjs task-7 from the project root and fix any failing cumulative tests before finishing.\n\nUse ordinary local tools. Do not access the network, reference implementations, files outside this workspace, or subagents. Stop after this stage."
+    },
+    {
+      "id": "task-8",
+      "number": 8,
+      "prompt": "1) Add 'Delete' appealing red button (.delete-btn) in top&right of Blog.tsx. When clicked, delete selected Blog and select the first blog. 2) The logic of Delete is encapsulated in a custom hook hooks/useDelete.tsx.\n\nImplement Web-Bench React task-8 in src/. Keep all previous features working.\n\nOnly edit src/ files and assets; leave src/index.html, tests, configuration and dependencies intact.\n\nRun node .benchmark-test.mjs task-8 from the project root and fix any failing cumulative tests before finishing.\n\nUse ordinary local tools. Do not access the network, reference implementations, files outside this workspace, or subagents. Stop after this stage."
+    },
+    {
+      "id": "task-9",
+      "number": 9,
+      "prompt": "1) Add 'Edit' appealing blue button (.edit-btn) in top&right of Blog.tsx. When clicked, toggle BlogForm to edit the content of selected Blog. The Title of BlogForm is 'Edit Form' in this case. When submitted, update selected Blog. 2) The logic of Edit is encapsulated in a custom hook hooks/useEdit.tsx;\n\nImplement Web-Bench React task-9 in src/. Keep all previous features working.\n\nOnly edit src/ files and assets; leave src/index.html, tests, configuration and dependencies intact.\n\nRun node .benchmark-test.mjs task-9 from the project root and fix any failing cumulative tests before finishing.\n\nUse ordinary local tools. Do not access the network, reference implementations, files outside this workspace, or subagents. Stop after this stage."
+    },
+    {
+      "id": "task-10",
+      "number": 10,
+      "prompt": "1) Add a Search.tsx(width: 200px, border-box) component above BlogList.tsx in Main.tsx. 2) Include an input field with the placeholder 'Search Blogs'. The keywords in the input field are used to filter blogs.\n\nImplement Web-Bench React task-10 in src/. Keep all previous features working.\n\nOnly edit src/ files and assets; leave src/index.html, tests, configuration and dependencies intact.\n\nRun node .benchmark-test.mjs task-10 from the project root and fix any failing cumulative tests before finishing.\n\nUse ordinary local tools. Do not access the network, reference implementations, files outside this workspace, or subagents. Stop after this stage."
+    },
+    {
+      "id": "task-11",
+      "number": 11,
+      "prompt": "1) Add a button with the text 'Random Blogs' in Header to append 100,000 blogs to BlogList at one time. Each blog should have a title formatted in regex 'RandomBlog-[\\d]{12}', digits in title is random. 2) Ensure the page will not be stuck when 100000 blogs are appended. 3) Constraint: DO NOT USE any third-party packages, ONLY React APIs can be used to optimize performance.\n\nImplement Web-Bench React task-11 in src/. Keep all previous features working.\n\nOnly edit src/ files and assets; leave src/index.html, tests, configuration and dependencies intact.\n\nRun node .benchmark-test.mjs task-11 from the project root and fix any failing cumulative tests before finishing.\n\nUse ordinary local tools. Do not access the network, reference implementations, files outside this workspace, or subagents. Stop after this stage."
+    },
+    {
+      "id": "task-12",
+      "number": 12,
+      "prompt": "1) Add appealing Comments.tsx with the title 'Comments' at the bottom of Blog.tsx. 2) Include a TextArea with the placeholder 'Enter Your Comment' and a submit button (.comment-btn) to submit the comment. 3) Only display comments related to the selected blog, showing them in cards with the className '.comment-item', placed above the TextArea. 4) Create store/Comment.tsx to implement CommentStore without ReactContext API、Redux、mobx etc., and connect CommentStore to UI.  5) Preserve comments when a blog is edited, and clear them when a blog is deleted. 6) Constraint: DO NOT USE any third-party packages; ONLY utilize React APIs.\n\nImplement Web-Bench React task-12 in src/. Keep all previous features working.\n\nOnly edit src/ files and assets; leave src/index.html, tests, configuration and dependencies intact.\n\nRun node .benchmark-test.mjs task-12 from the project root and fix any failing cumulative tests before finishing.\n\nUse ordinary local tools. Do not access the network, reference implementations, files outside this workspace, or subagents. Stop after this stage."
+    },
+    {
+      "id": "task-13",
+      "number": 13,
+      "prompt": "1) Create components/Tooltip.tsx that displays a tooltip (.tooltip) at the bottom of the child component when hovered over. 2) Implement this tooltip on the 'Add Blog' button to show 'Write a New Blog For everyone' when hovered. 3) The Tooltip should be appended to document.body. 4) Constraint: DO NOT use any third-party packages; ONLY React APIs are allowed.\n\nImplement Web-Bench React task-13 in src/. Keep all previous features working.\n\nOnly edit src/ files and assets; leave src/index.html, tests, configuration and dependencies intact.\n\nRun node .benchmark-test.mjs task-13 from the project root and fix any failing cumulative tests before finishing.\n\nUse ordinary local tools. Do not access the network, reference implementations, files outside this workspace, or subagents. Stop after this stage."
+    },
+    {
+      "id": "task-14",
+      "number": 14,
+      "prompt": "1) Enable Markdown text input for blog details. Preview the Markdown in Blog.tsx. 2) Develop a hook or utility to reuse Markdown-related logic. 3) Prevent XSS attacks. 4) Constraint: DO NOT use any third-party packages; ONLY React APIs are permitted.\n\nImplement Web-Bench React task-14 in src/. Keep all previous features working.\n\nOnly edit src/ files and assets; leave src/index.html, tests, configuration and dependencies intact.\n\nRun node .benchmark-test.mjs task-14 from the project root and fix any failing cumulative tests before finishing.\n\nUse ordinary local tools. Do not access the network, reference implementations, files outside this workspace, or subagents. Stop after this stage."
+    },
+    {
+      "id": "task-15",
+      "number": 15,
+      "prompt": "1) Create utils/toast.tsx to display a one-line message (fontSize: 12px) in a appealing green box at the top of the page for 2000ms. 2) Display a toast with 'New Comment Created Successfully!' when a new comment is submitted, and 'New Blog Created Successfully!' when a new blog is submitted. 3) If a toast is already visible when another is triggered, remove the old toast before showing the new one. 4) Constraint: DO NOT use any third-party packages; ONLY React APIs are permitted.\n\nImplement Web-Bench React task-15 in src/. Keep all previous features working.\n\nOnly edit src/ files and assets; leave src/index.html, tests, configuration and dependencies intact.\n\nRun node .benchmark-test.mjs task-15 from the project root and fix any failing cumulative tests before finishing.\n\nUse ordinary local tools. Do not access the network, reference implementations, files outside this workspace, or subagents. Stop after this stage."
+    },
+    {
+      "id": "task-16",
+      "number": 16,
+      "prompt": "1) When the title of Blog is longer than 300px, show '...' to hide longer text. 2) Title can be hovered to show full content in Tooltip when Title is longer than 300px. DO NOT show tooltip when Title is less than 300px 3) Make sure EVERY title displayed in the page follow the rules, create reusable component. 4) Constraint: DO NOT use any third-party packages; ONLY React APIs are permitted.\n\nImplement Web-Bench React task-16 in src/. Keep all previous features working.\n\nOnly edit src/ files and assets; leave src/index.html, tests, configuration and dependencies intact.\n\nRun node .benchmark-test.mjs task-16 from the project root and fix any failing cumulative tests before finishing.\n\nUse ordinary local tools. Do not access the network, reference implementations, files outside this workspace, or subagents. Stop after this stage."
+    },
+    {
+      "id": "task-17",
+      "number": 17,
+      "prompt": "1) Add appealing button in Header with text 'Fast Comment'. 2) When clicked, focus Textarea in Comments.tsx and type 'Charming Blog!' DO NOT submit this comment. 3) Constraint: DO NOT use any third-party packages; ONLY React APIs are permitted. DO NOT use BOM API. DO NOT use DOM query API.\n\nImplement Web-Bench React task-17 in src/. Keep all previous features working.\n\nOnly edit src/ files and assets; leave src/index.html, tests, configuration and dependencies intact.\n\nRun node .benchmark-test.mjs task-17 from the project root and fix any failing cumulative tests before finishing.\n\nUse ordinary local tools. Do not access the network, reference implementations, files outside this workspace, or subagents. Stop after this stage."
+    },
+    {
+      "id": "task-18",
+      "number": 18,
+      "prompt": "1) Add pages/Game.tsx with text 'Hello Game'. 2) Add router.tsx in to control the Route Logic: When browser location is '/', routed to App. When browser location is '/game', routed to Game. 3) Add a appealing button with text '🎮' in App's Header.tsx to jump to Game page, and user can go back to App when browser page go Back. 4) Constraint: DO NOT use any third-party packages; ONLY React APIs are permitted.\n\nImplement Web-Bench React task-18 in src/. Keep all previous features working.\n\nOnly edit src/ files and assets; leave src/index.html, tests, configuration and dependencies intact.\n\nRun node .benchmark-test.mjs task-18 from the project root and fix any failing cumulative tests before finishing.\n\nUse ordinary local tools. Do not access the network, reference implementations, files outside this workspace, or subagents. Stop after this stage."
+    },
+    {
+      "id": "task-19",
+      "number": 19,
+      "prompt": "1) Write a Gomoku chess game 2) chess board is 15*15, there is black chess and white chess, black chess first 3) Add the className for important element: white chess(.chess-white), black chess(.chess-black), position chess can be clicked to drop follow regex: .chess-pos-\\d{1,2}-d\\{1,2}. 4) show 'White's Turn' and 'Black'Turn' to shw current player 5) show 'White Wins!' and 'Black Wins!' when player wins, reuse utils/toast.tsx to toast BIG 'Congratulations!' with style: 50px fontSize 6) keep 'Hello Game' 7) Beautify this game 8) Constraint: DO NOT use any third-party packages; ONLY React APIs are permitted.\n\nImplement Web-Bench React task-19 in src/. Keep all previous features working.\n\nOnly edit src/ files and assets; leave src/index.html, tests, configuration and dependencies intact.\n\nRun node .benchmark-test.mjs task-19 from the project root and fix any failing cumulative tests before finishing.\n\nUse ordinary local tools. Do not access the network, reference implementations, files outside this workspace, or subagents. Stop after this stage."
+    },
+    {
+      "id": "task-20",
+      "number": 20,
+      "prompt": "1) When gamer wins, add a button with Text 'Post Game Records', when clicked, post a new blog to record the history of this game. Return to blog page and show this blog 2) The Blog Content Example: '# White is Winner!\n```game\nWhite(1,5);\nBlack(14,11);\nWhite(11,4);\n```' 3) Title of Blog follow Game-[Date]-[Time] 4) Constraint: DO NOT use any third-party packages; ONLY React APIs are permitted.\n\nImplement Web-Bench React task-20 in src/. Keep all previous features working.\n\nOnly edit src/ files and assets; leave src/index.html, tests, configuration and dependencies intact.\n\nRun node .benchmark-test.mjs task-20 from the project root and fix any failing cumulative tests before finishing.\n\nUse ordinary local tools. Do not access the network, reference implementations, files outside this workspace, or subagents. Stop after this stage."
+    }
+  ]
+}

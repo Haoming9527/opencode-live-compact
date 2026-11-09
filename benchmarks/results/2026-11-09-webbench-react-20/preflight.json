@@ -1,0 +1,319 @@
+{
+  "success": true,
+  "baseline": {
+    "total": 4,
+    "passed": 0,
+    "failed": 4,
+    "skipped": 0,
+    "success": false,
+    "assertionFailures": 3,
+    "outcomes": [
+      {
+        "id": "task-1",
+        "passed": false
+      }
+    ],
+    "log": "not ok task-1: Check Hello World Existed\nError: expect(locator).toBeVisible() failed\n\nLocator: getByText('Hello Blog')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 5000ms\n  - waiting for getByText('Hello Blog')\n\n\n  21 |\n  22 | test('Check Hello World Existed', async ({ page }) => {\n> 23 |   await expect(page.getByText('Hello Blog')).toBeVisible()\n     |                                              ^\n  24 | })\n  25 |\n  26 | test('Check Blog Existed', async ({ page }) => {\n    at /home/daytona/benchmark-progress/webbench/repo/.runs/live-Tt3DyL/webbench/preflight/baseline/test/task-1.spec.js:23:46\nError: expect(locator).toBeVisible() failed\n\nLocator: getByText('Hello Blog')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 5000ms\n  - waiting for getByText('Hello Blog')\n\nnot ok task-1: Check Blog Existed\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('.blog-title:has-text(\"Morning\")')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 5000ms\n  - waiting for locator('.blog-title:has-text(\"Morning\")')\n\n\n  25 |\n  26 | test('Check Blog Existed', async ({ page }) => {\n> 27 |   await expect(page.locator('.blog-title:has-text(\"Morning\")')).toBeVisible()\n     |                                                                 ^\n  28 |   await expect(page.getByText('Morning My Friends')).toBeVisible()\n  29 | })\n  30 |\n    at /home/daytona/benchmark-progress/webbench/repo/.runs/live-Tt3DyL/webbench/preflight/baseline/test/task-1.spec.js:27:65\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('.blog-title:has-text(\"Morning\")')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 5000ms\n  - waiting for locator('.blog-title:has-text(\"Morning\")')\n\nnot ok task-1: Check Header is on the top of Main\nTest timeout of 30000ms exceeded.\nError: locator.evaluate: Test timeout of 30000ms exceeded.\nCall log:\n  - waiting for locator(':text(\"Hello Blog\")').first()\n\n\n   at ../../../../../../../fixture/libraries/test-util/src/index.js:105\n\n  103 |  */\n  104 | async function getOffsetByLocator(locator) {\n> 105 |   return locator.evaluate((el) => {\n      |                  ^\n  106 |     /**\n  107 |      * @param {HTMLElement | SVGElement} el\n  108 |      * @see https://stackoverflow.com/a/28222246/1835843\n    at getOffsetByLocator (/home/daytona/benchmark-progress/webbench/fixture/libraries/test-util/src/index.js:105:18)\n    at getOffset (/home/daytona/benchmark-progress/webbench/fixture/libraries/test-util/src/index.js:98:10)\n    at /home/daytona/benchmark-progress/webbench/repo/.runs/live-Tt3DyL/webbench/preflight/baseline/test/task-1.spec.js:32:20\nnot ok task-1: Check blog-title fit-content\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('.blog-title')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 5000ms\n  - waiting for locator('.blog-title')\n\n\n  39 |   const blogTitle = page.locator('.blog-title')\n  40 |\n> 41 |   await expect(blogTitle).toBeVisible()\n     |                           ^\n  42 |\n  43 |   const titleBox = await getOffset(page, '.blog-title')\n  44 |   expect(titleBox.width).toBeLessThanOrEqual(200)\n    at /home/daytona/benchmark-progress/webbench/repo/.runs/live-Tt3DyL/webbench/preflight/baseline/test/task-1.spec.js:41:27\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('.blog-title')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 5000ms\n  - waiting for locator('.blog-title')\n\n0 passed, 4 failed, 0 skipped (4 test cases)"
+  },
+  "reference": [
+    {
+      "total": 59,
+      "passed": 59,
+      "failed": 0,
+      "skipped": 0,
+      "success": true,
+      "assertionFailures": 0,
+      "outcomes": [
+        {
+          "id": "task-1",
+          "passed": true
+        },
+        {
+          "id": "task-2",
+          "passed": true
+        },
+        {
+          "id": "task-3",
+          "passed": true
+        },
+        {
+          "id": "task-4",
+          "passed": true
+        },
+        {
+          "id": "task-5",
+          "passed": true
+        },
+        {
+          "id": "task-6",
+          "passed": true
+        },
+        {
+          "id": "task-7",
+          "passed": true
+        },
+        {
+          "id": "task-8",
+          "passed": true
+        },
+        {
+          "id": "task-9",
+          "passed": true
+        },
+        {
+          "id": "task-10",
+          "passed": true
+        },
+        {
+          "id": "task-11",
+          "passed": true
+        },
+        {
+          "id": "task-12",
+          "passed": true
+        },
+        {
+          "id": "task-13",
+          "passed": true
+        },
+        {
+          "id": "task-14",
+          "passed": true
+        },
+        {
+          "id": "task-15",
+          "passed": true
+        },
+        {
+          "id": "task-16",
+          "passed": true
+        },
+        {
+          "id": "task-17",
+          "passed": true
+        },
+        {
+          "id": "task-18",
+          "passed": true
+        },
+        {
+          "id": "task-19",
+          "passed": true
+        },
+        {
+          "id": "task-20",
+          "passed": true
+        }
+      ],
+      "log": "ok task-1: Check Hello World Existed\nok task-1: Check Blog Existed\nok task-1: Check Header is on the top of Main\nok task-1: Check blog-title fit-content\nok task-10: Search Input is on the top of List\nok task-10: Filter Blogs\nok task-10: Add New Blog And Filter It\nok task-10: Search Input width should be less than the size of component: 200px\nok task-11: Check Blog Length\nok task-11: Check Random Blogs will not stuck pages\nok task-11: Check Search will not stuck in large blog list\nok task-12: Check Comments Component Existed\nok task-12: Check Submit Comments in Current Blog\nok task-12: When Blog Edited, the comments still existed\nok task-12: When Blog Deleted, the comments will be deleted\nok task-13: Check Tooltip Default Hidden\nok task-13: Check Tooltip Appear\nok task-13: Check Tooltip Position\nok task-13: Check Tooltip is the child of document.body\nok task-13: Check Update Position When Browser Resize\nok task-14: Check Markdown grammar: \"#\" -> h1, \"##\" -> h2, \"###\" -> h3\nok task-14: Check XSS protection\nok task-15: Toast When Submit Comment, Toast disappear after 3000ms\nok task-15: New Toast Will replace Old Toast\nok task-15: Toast is in the top of page\nok task-15: Toast fontSize is 12px\nok task-16: Show Tooltip For Hover Long Title List Item\nok task-16: Show Tooltip For Blog Title With List Item\nok task-16: Show Tooltip For Normal Title\nok task-17: Test Focus in Comment TextArea with \"Charming Blog!\"\nok task-17: Submit \"Fast Comment\"\nok task-18: Jump to game when click \"🎮\"\nok task-18: Page switched when page goBack and goForward\nok task-18: show Game Page when goto /game directly\nok task-19: Show Big Toast After wins\nok task-19: Turn Switched\nok task-19: Play a complex game\nok task-2: Check List Item\nok task-2: Check Travel Item\nok task-2: Check List Layout from Left to Right\nok task-20: Save Chess Record\nok task-3: Check Select List Item\nok task-4: Check Close Button place in the right of modal\nok task-4: Check Add Blog Modal, Open And Close\nok task-5: Check Record open Modal times\nok task-5: Check .visible-count in the top left of Modal\nok task-6: Check Submit Work Blog\nok task-6: Check Submit Family Blog\nok task-6: Check Keep Mock Data\nok task-7: Check Blog Length\nok task-7: Check Submit Blog With Check Duplication\nok task-8: Check Delete Directly\nok task-8: Check Create And Delete it\nok task-8: Test Delete Button in the top right of Main\nok task-8: Test Delete all items\nok task-9: Check Edit Form Title Change\nok task-9: Check Edit Directly\nok task-9: Check Edit Duplication Check\nok task-9: Test Edit Button in the top right of Main\n59 passed, 0 failed, 0 skipped (59 test cases)"
+    },
+    {
+      "total": 59,
+      "passed": 59,
+      "failed": 0,
+      "skipped": 0,
+      "success": true,
+      "assertionFailures": 0,
+      "outcomes": [
+        {
+          "id": "task-1",
+          "passed": true
+        },
+        {
+          "id": "task-2",
+          "passed": true
+        },
+        {
+          "id": "task-3",
+          "passed": true
+        },
+        {
+          "id": "task-4",
+          "passed": true
+        },
+        {
+          "id": "task-5",
+          "passed": true
+        },
+        {
+          "id": "task-6",
+          "passed": true
+        },
+        {
+          "id": "task-7",
+          "passed": true
+        },
+        {
+          "id": "task-8",
+          "passed": true
+        },
+        {
+          "id": "task-9",
+          "passed": true
+        },
+        {
+          "id": "task-10",
+          "passed": true
+        },
+        {
+          "id": "task-11",
+          "passed": true
+        },
+        {
+          "id": "task-12",
+          "passed": true
+        },
+        {
+          "id": "task-13",
+          "passed": true
+        },
+        {
+          "id": "task-14",
+          "passed": true
+        },
+        {
+          "id": "task-15",
+          "passed": true
+        },
+        {
+          "id": "task-16",
+          "passed": true
+        },
+        {
+          "id": "task-17",
+          "passed": true
+        },
+        {
+          "id": "task-18",
+          "passed": true
+        },
+        {
+          "id": "task-19",
+          "passed": true
+        },
+        {
+          "id": "task-20",
+          "passed": true
+        }
+      ],
+      "log": "ok task-1: Check Hello World Existed\nok task-1: Check Blog Existed\nok task-1: Check Header is on the top of Main\nok task-1: Check blog-title fit-content\nok task-10: Search Input is on the top of List\nok task-10: Filter Blogs\nok task-10: Add New Blog And Filter It\nok task-10: Search Input width should be less than the size of component: 200px\nok task-11: Check Blog Length\nok task-11: Check Random Blogs will not stuck pages\nok task-11: Check Search will not stuck in large blog list\nok task-12: Check Comments Component Existed\nok task-12: Check Submit Comments in Current Blog\nok task-12: When Blog Edited, the comments still existed\nok task-12: When Blog Deleted, the comments will be deleted\nok task-13: Check Tooltip Default Hidden\nok task-13: Check Tooltip Appear\nok task-13: Check Tooltip Position\nok task-13: Check Tooltip is the child of document.body\nok task-13: Check Update Position When Browser Resize\nok task-14: Check Markdown grammar: \"#\" -> h1, \"##\" -> h2, \"###\" -> h3\nok task-14: Check XSS protection\nok task-15: Toast When Submit Comment, Toast disappear after 3000ms\nok task-15: New Toast Will replace Old Toast\nok task-15: Toast is in the top of page\nok task-15: Toast fontSize is 12px\nok task-16: Show Tooltip For Hover Long Title List Item\nok task-16: Show Tooltip For Blog Title With List Item\nok task-16: Show Tooltip For Normal Title\nok task-17: Test Focus in Comment TextArea with \"Charming Blog!\"\nok task-17: Submit \"Fast Comment\"\nok task-18: Jump to game when click \"🎮\"\nok task-18: Page switched when page goBack and goForward\nok task-18: show Game Page when goto /game directly\nok task-19: Show Big Toast After wins\nok task-19: Turn Switched\nok task-19: Play a complex game\nok task-2: Check List Item\nok task-2: Check Travel Item\nok task-2: Check List Layout from Left to Right\nok task-20: Save Chess Record\nok task-3: Check Select List Item\nok task-4: Check Close Button place in the right of modal\nok task-4: Check Add Blog Modal, Open And Close\nok task-5: Check Record open Modal times\nok task-5: Check .visible-count in the top left of Modal\nok task-6: Check Submit Work Blog\nok task-6: Check Submit Family Blog\nok task-6: Check Keep Mock Data\nok task-7: Check Blog Length\nok task-7: Check Submit Blog With Check Duplication\nok task-8: Check Delete Directly\nok task-8: Check Create And Delete it\nok task-8: Test Delete Button in the top right of Main\nok task-8: Test Delete all items\nok task-9: Check Edit Form Title Change\nok task-9: Check Edit Directly\nok task-9: Check Edit Duplication Check\nok task-9: Test Edit Button in the top right of Main\n59 passed, 0 failed, 0 skipped (59 test cases)"
+    }
+  ],
+  "mutation": {
+    "total": 4,
+    "passed": 0,
+    "failed": 4,
+    "skipped": 0,
+    "success": false,
+    "assertionFailures": 3,
+    "outcomes": [
+      {
+        "id": "task-1",
+        "passed": false
+      }
+    ],
+    "log": "not ok task-1: Check Hello World Existed\nError: expect(locator).toBeVisible() failed\n\nLocator: getByText('Hello Blog')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 5000ms\n  - waiting for getByText('Hello Blog')\n\n\n  21 |\n  22 | test('Check Hello World Existed', async ({ page }) => {\n> 23 |   await expect(page.getByText('Hello Blog')).toBeVisible()\n     |                                              ^\n  24 | })\n  25 |\n  26 | test('Check Blog Existed', async ({ page }) => {\n    at /home/daytona/benchmark-progress/webbench/repo/.runs/live-Tt3DyL/webbench/preflight/mutation/test/task-1.spec.js:23:46\nError: expect(locator).toBeVisible() failed\n\nLocator: getByText('Hello Blog')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 5000ms\n  - waiting for getByText('Hello Blog')\n\nnot ok task-1: Check Blog Existed\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('.blog-title:has-text(\"Morning\")')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 5000ms\n  - waiting for locator('.blog-title:has-text(\"Morning\")')\n\n\n  25 |\n  26 | test('Check Blog Existed', async ({ page }) => {\n> 27 |   await expect(page.locator('.blog-title:has-text(\"Morning\")')).toBeVisible()\n     |                                                                 ^\n  28 |   await expect(page.getByText('Morning My Friends')).toBeVisible()\n  29 | })\n  30 |\n    at /home/daytona/benchmark-progress/webbench/repo/.runs/live-Tt3DyL/webbench/preflight/mutation/test/task-1.spec.js:27:65\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('.blog-title:has-text(\"Morning\")')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 5000ms\n  - waiting for locator('.blog-title:has-text(\"Morning\")')\n\nnot ok task-1: Check Header is on the top of Main\nTest timeout of 30000ms exceeded.\nError: locator.evaluate: Test timeout of 30000ms exceeded.\nCall log:\n  - waiting for locator(':text(\"Hello Blog\")').first()\n\n\n   at ../../../../../../../fixture/libraries/test-util/src/index.js:105\n\n  103 |  */\n  104 | async function getOffsetByLocator(locator) {\n> 105 |   return locator.evaluate((el) => {\n      |                  ^\n  106 |     /**\n  107 |      * @param {HTMLElement | SVGElement} el\n  108 |      * @see https://stackoverflow.com/a/28222246/1835843\n    at getOffsetByLocator (/home/daytona/benchmark-progress/webbench/fixture/libraries/test-util/src/index.js:105:18)\n    at getOffset (/home/daytona/benchmark-progress/webbench/fixture/libraries/test-util/src/index.js:98:10)\n    at /home/daytona/benchmark-progress/webbench/repo/.runs/live-Tt3DyL/webbench/preflight/mutation/test/task-1.spec.js:32:20\nnot ok task-1: Check blog-title fit-content\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('.blog-title')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 5000ms\n  - waiting for locator('.blog-title')\n\n\n  39 |   const blogTitle = page.locator('.blog-title')\n  40 |\n> 41 |   await expect(blogTitle).toBeVisible()\n     |                           ^\n  42 |\n  43 |   const titleBox = await getOffset(page, '.blog-title')\n  44 |   expect(titleBox.width).toBeLessThanOrEqual(200)\n    at /home/daytona/benchmark-progress/webbench/repo/.runs/live-Tt3DyL/webbench/preflight/mutation/test/task-1.spec.js:41:27\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('.blog-title')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 5000ms\n  - waiting for locator('.blog-title')\n\n0 passed, 4 failed, 0 skipped (4 test cases)"
+  },
+  "referenceConsistent": true,
+  "environment": {
+    "node": "v24.22.1",
+    "platform": "linux",
+    "architecture": "x64",
+    "dependencies": {
+      "react": {
+        "version": "18.3.1",
+        "sha256": "d4e68a5c96babb20cad1daafea8b78822eae45b341552cf5418d06a5304fa64c"
+      },
+      "react-dom": {
+        "version": "18.3.1",
+        "sha256": "d2f29e31bd48b833e48cd7bbf41f192e8ee4ff8da249fdbe10d4ac4114b8b12e"
+      },
+      "vite": {
+        "version": "7.1.5",
+        "sha256": "4eed5ff6d1479f3d5e01594ebf3b36b537b728a4ca0ad00c7aab9f0771be9587"
+      },
+      "@vitejs/plugin-react": {
+        "version": "5.0.2",
+        "sha256": "ae9d9574e75c4ba77f45e553f6fc8be9cf6d51cb7edda5c21564e944624929a9"
+      },
+      "typescript": {
+        "version": "5.6.3",
+        "sha256": "16af7ea27880259b39ff8f123566aaec815cdca1c3ab8d28330c8b652055ccf0"
+      },
+      "@playwright/test": {
+        "version": "1.57.0",
+        "sha256": "13949086a7d9fcb44b8eaa0c9df3dc50e6a4a2cc9a7cf57bb4e6146b0e2276fe"
+      }
+    },
+    "sourceHashes": {
+      "common/config/rush/pnpm-lock.yaml": "d645baf30d659e11c7da91eb5264723d5d16b704f240e8568d5953dd1e908b80",
+      "libraries/test-util/package.json": "0ae07b8f8a807057b34d5daa7b6f4d1249c3b73e1aa2e6ece338f1367f8e66fc",
+      "libraries/test-util/src/css.js": "f59d504d2b141c48b40e9907d03dae670efc23de7c1ebf800f72e7642c598fb7",
+      "libraries/test-util/src/index.js": "7319676beceb1478e73f9c5a9f1571618bc39e94084017b14ae44807e81b06e7",
+      "libraries/test-util/test.sh": "029db7a0a8c9a1fa90636739adbbea4985ca64765c4985e0d1a7e3b91f0d24f0",
+      "projects/react/.evalignore": "0eb547304658805aad788d320f10bf1f292797b5e6d745a3bf617584da017051",
+      "projects/react/package.json": "971a69ee1846e7e9e017e6adb80c2ccf1c1ac079a4fc177b9c6da1531c4ac8c1",
+      "projects/react/playwright.config.js": "c7f2dbdb80a744f256839a085e67bf07e54535e61cfe9befe6c20b4863666173",
+      "projects/react/readme.md": "47468d1525a8dbff15bfcec0f6c654aacd5cbe2a7f6b36d306153bf79607c866",
+      "projects/react/src-init/App.css": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "projects/react/src-init/App.tsx": "1d5559f4c7ad706d5488417659ecf18565cca2e1c0d117efe3b28d401670a5c5",
+      "projects/react/src-init/index.html": "ce2862dbce45f4828f956b4e5d20519c77a036b7f4df1a7d2c492ee0b3364096",
+      "projects/react/src-init/index.tsx": "b1d72050003f59d6cd9f5180df35e1022b1691b5a292394ba46f0a2d0ed66ed7",
+      "projects/react/src/App.css": "d7c1f644d40b203510ff7a776b480b00a1565ec6ab44e15f48251503385b744d",
+      "projects/react/src/App.tsx": "6efa2324b6b7e9032d01d28091f6128f1575ebbf335bc86f5dfdcdcedfc2ccae",
+      "projects/react/src/components/Blog.tsx": "b776b0799ae4d72e67ab24cc65d5cb2b1427aaf888a232b19b3988b1159758e6",
+      "projects/react/src/components/BlogForm.tsx": "448e1cf1435587c90cf71a4436565a17c3c8fd3d18d37fa878dc82c318308d03",
+      "projects/react/src/components/BlogList.tsx": "3e531ff2f91c764d0cfedd44f8c6665890697fd127e59abfd421b0f19ce1ff46",
+      "projects/react/src/components/Comments.tsx": "d8b71ef6656f20b6e5fe2956a1df5bde0046740207829df253176a7af5d846a9",
+      "projects/react/src/components/Header.tsx": "1479a9b363f2db9bc32444620d37a7df77d4d670ce520240ae15c356576b148e",
+      "projects/react/src/components/Main.tsx": "ba4a58532a8efc529eb0c9e3b249b9826e0318c62d25b8d663e92743ba2ba8b4",
+      "projects/react/src/components/Search.tsx": "ec1775b5d26336d14b32af6c70f39decdfbe25d5f12e3ecb984f33424f9efe2c",
+      "projects/react/src/components/Tooltip.tsx": "80c1122555048f34d1efe3947dc1c38f877ad64a821d8024f0d179076cf4a4a8",
+      "projects/react/src/components/TruncatedTitle.tsx": "28e45bbe211655157dee32663256529f122685117886509b0bb69f6f88f5b4e7",
+      "projects/react/src/context/BlogContext.tsx": "227446396545e29affc541a92784f4fb773ea71a7a362f0f60e9b3a4cf3a31a1",
+      "projects/react/src/hooks/useDelete.tsx": "fd67c01c28e40ec98ee118e612b871af1a496aacfc4549085eb8819b65102bb4",
+      "projects/react/src/hooks/useEdit.tsx": "cbe68963f10bf9731b81cb325bd64adae4af507ae02dcef6f14741d763ae50c4",
+      "projects/react/src/index.html": "ce2862dbce45f4828f956b4e5d20519c77a036b7f4df1a7d2c492ee0b3364096",
+      "projects/react/src/index.tsx": "ed13c13ddb6585ce504d44f1c8569d8923ec261d039e039a3acad3cec6f005bc",
+      "projects/react/src/pages/Game.tsx": "e6ffdb1a7b74ab9b3de968a02b303073725b4bbd8937fcd4718383985ac1af18",
+      "projects/react/src/router.tsx": "5d136618cc052445bf7c5511cc970a83fdd84dd5802e6afdcfcf7975b7c58679",
+      "projects/react/src/store/Comment.tsx": "0dd800319707be9cd627e15ce8bbdeaaf09c814a5525ff7180b03175f6eea537",
+      "projects/react/src/utils/markdown.tsx": "d90768dedd6843b375a03cfa82fe2ca4d249b0fef8418853876b81d468ea013d",
+      "projects/react/src/utils/toast.tsx": "4d87a950e3f3bbd1e62041a0d0585f182f34a7bfab683c4d5a83c919b82be218",
+      "projects/react/tasks.jsonl": "3d7ba49a0ef42bc136973005b6c93c324e94894d32d929ceb8c331818bada27a",
+      "projects/react/test/task-1.spec.js": "5fa32845d65393f80654489898f6adb1edb0a32399f721f07d23f89e01aa9a10",
+      "projects/react/test/task-10.spec.js": "5868aeccaf26c46c9117fa7f46cbdaa3df211f5da40623d003c271625bfed435",
+      "projects/react/test/task-11.spec.js": "cdf8d7928e680a9a00c01752ccf16562da7d3e47431e409969164bc41e6aee58",
+      "projects/react/test/task-12.spec.js": "9e6b6b41e39718234905b98828664f28ccbb5604b5bd41b6d3671e94aecec8e4",
+      "projects/react/test/task-13.spec.js": "6074ba31e52b546bcab069e5a45618db004ac1a799b76e35f40a413039d62541",
+      "projects/react/test/task-14.spec.js": "43c46a38ef7a70d04c69754fd6f7809b03bbde645058d9163968b03b26205c06",
+      "projects/react/test/task-15.spec.js": "df0d91a24aec2cb6db7ca2f0ccf5d1ef05b75000ae370f6b6681cfa9cdfc8d2a",
+      "projects/react/test/task-16.spec.js": "54617f63e9742226530150b72c4c15cbb503c36ae02e7dd0a077757d65bf9335",
+      "projects/react/test/task-17.spec.js": "5a11f974e6b504fb8e191422bf2b3ee25ac8ae34aa33a110e216fe6859885c3f",
+      "projects/react/test/task-18.spec.js": "b476f225cc032618418fb60a4cfd7821052eefef073bdb0be1ae92b5c0bb2193",
+      "projects/react/test/task-19.spec.js": "10cd180c5474ecfc4511063db688a75a3641d4a48c707e46455079ba34d9706b",
+      "projects/react/test/task-2.spec.js": "a8e16c7589e31015cf6a54ada4b0edbd2fff65075e80ae39f88000dbd921137f",
+      "projects/react/test/task-20.spec.js": "4860f62b8e222eb3c2b642f57e366877c1eb0d14d36fd20f05ef9c40a60cc9fa",
+      "projects/react/test/task-3.spec.js": "929a7a6fd1f55dbc6f9a40efee69394f6b19e552e61c0d1b9963be84ec689168",
+      "projects/react/test/task-4.spec.js": "cd6fc77fe6be9853574dc4fbe04eb55c85c4b3a17dd71081f973eaf7a605f103",
+      "projects/react/test/task-5.spec.js": "b22943e19407ad6e04504fe259f2db30f9ff1291cf5413fe3ec5d4ec145f7e04",
+      "projects/react/test/task-6.spec.js": "13eb6c0a3dd1331ac474dba90ddfee376a77de506b48a3372ffe8d20b8225d66",
+      "projects/react/test/task-7.spec.js": "6a40516be2babf22219a6547f881129fd57148ff6471e991a3afa315809d0989",
+      "projects/react/test/task-8.spec.js": "9bdf21e89cbe3ea7462fa90f91975b47a9d503d130a4fad0690cdd315fc59781",
+      "projects/react/test/task-9.spec.js": "07315dfbfddfe923cd8fc52b6f2736e6449b195f7568a2ffa050f114b8db6b02",
+      "projects/react/tsconfig.json": "cb9cee8200f8070c9e36ee74299938966d5a10718171bb671a95829b8a6b06a5",
+      "projects/react/typings.d.ts": "f622a6e7eb358119a62c488221e65405b638a69f4214144737dbded54aa972bf",
+      "projects/react/vite.config.ts": "08e3a3795e1aa84b3273e38a65726f38842afdfa846c674eeb15e725a7b46b53"
+    },
+    "runtimeHashes": {
+      "/home/daytona/benchmark-progress/webbench/fixture/common/temp/node_modules/.pnpm/@playwright+test@1.57.0/node_modules/@playwright/test/package.json": "13949086a7d9fcb44b8eaa0c9df3dc50e6a4a2cc9a7cf57bb4e6146b0e2276fe",
+      "/home/daytona/benchmark-progress/webbench/fixture/common/temp/node_modules/.pnpm/@playwright+test@1.57.0/node_modules/@playwright/test/cli.js": "79e23e6a249176295b8490567daa7717448a75866d6ea6f6b296ff3d23305c69",
+      "/home/daytona/benchmark-progress/webbench/fixture/libraries/test-util/package.json": "0ae07b8f8a807057b34d5daa7b6f4d1249c3b73e1aa2e6ece338f1367f8e66fc",
+      "/home/daytona/benchmark-progress/webbench/fixture/libraries/test-util/src/index.js": "7319676beceb1478e73f9c5a9f1571618bc39e94084017b14ae44807e81b06e7",
+      "/home/daytona/benchmark-progress/webbench/fixture/libraries/test-util/src/css.js": "f59d504d2b141c48b40e9907d03dae670efc23de7c1ebf800f72e7642c598fb7"
+    },
+    "browserPath": "/home/daytona/benchmark-progress/webbench/browsers",
+    "workers": 1,
+    "retries": 0
+  }
+}
