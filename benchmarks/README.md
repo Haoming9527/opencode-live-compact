@@ -1,5 +1,7 @@
 # Run the four benchmarks
 
+Looking for measured results? [Completed Aider 150 comparison, logs, and source data](results/2026-11-09-aider-150/README.md).
+
 Every live command compares **Original OpenCode** with **Live Compact**, using the same model and ordered prompts, separate workspaces, and one continuous session per version. Both keep stock OpenCode **2.2.6** compaction and output defaults.
 
 | Suite | What it runs | Acceptance checks |
@@ -110,7 +112,7 @@ node --env-file=.env benchmarks/run.ts --live --suite webbench --parallel --tria
 
 Preflight also requires the starter and a deliberately broken reference to fail real assertions. Each live stage runs tests for tasks 1 through the current task, with one browser worker, no test retries, and separate ports. Each version gets up to three model attempts per stage. Candidate `src/` files are graded in fresh copies with pristine tests and configuration.
 
-Reports distinguish stages passed within the attempt limit from the final application's cumulative test results. This is an adapted Web-Bench protocol, not an official leaderboard score. See [the workload and validation details](long-tasks.md).
+Reports distinguish stages passed within the attempt limit from the final application's cumulative test results. This is an adapted Web-Bench protocol, not an official leaderboard score.
 
 ## Run any suite in Daytona
 

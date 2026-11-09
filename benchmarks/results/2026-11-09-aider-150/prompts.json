@@ -1,0 +1,605 @@
+{
+  "promptsSha256": "74d0d4aade7314b992422bd84b02b288d7cf114f5c37e4755d118567b9862acf",
+  "prompts": [
+    {
+      "id": "python-affine-cipher",
+      "prompt": "Solve the python-affine-cipher exercise in python-affine-cipher/. Read python-affine-cipher/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: affine_cipher.py. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs python-affine-cipher before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "go-alphametics",
+      "prompt": "Solve the go-alphametics exercise in go-alphametics/. Read go-alphametics/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: alphametics.go. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs go-alphametics before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "javascript-affine-cipher",
+      "prompt": "Solve the javascript-affine-cipher exercise in javascript-affine-cipher/. Read javascript-affine-cipher/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: affine-cipher.js. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs javascript-affine-cipher before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "rust-accumulate",
+      "prompt": "Solve the rust-accumulate exercise in rust-accumulate/. Read rust-accumulate/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/lib.rs, Cargo.toml. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs rust-accumulate before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "java-affine-cipher",
+      "prompt": "Solve the java-affine-cipher exercise in java-affine-cipher/. Read java-affine-cipher/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/main/java/AffineCipher.java. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs java-affine-cipher before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "python-beer-song",
+      "prompt": "Solve the python-beer-song exercise in python-beer-song/. Read python-beer-song/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: beer_song.py. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs python-beer-song before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "go-beer-song",
+      "prompt": "Solve the go-beer-song exercise in go-beer-song/. Read go-beer-song/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: beer_song.go. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs go-beer-song before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "javascript-alphametics",
+      "prompt": "Solve the javascript-alphametics exercise in javascript-alphametics/. Read javascript-alphametics/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: alphametics.js. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs javascript-alphametics before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "rust-acronym",
+      "prompt": "Solve the rust-acronym exercise in rust-acronym/. Read rust-acronym/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/lib.rs, Cargo.toml. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs rust-acronym before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "java-all-your-base",
+      "prompt": "Solve the java-all-your-base exercise in java-all-your-base/. Read java-all-your-base/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/main/java/BaseConverter.java. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs java-all-your-base before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "python-book-store",
+      "prompt": "Solve the python-book-store exercise in python-book-store/. Read python-book-store/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: book_store.py. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs python-book-store before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "go-book-store",
+      "prompt": "Solve the go-book-store exercise in go-book-store/. Read go-book-store/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: book_store.go. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs go-book-store before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "javascript-beer-song",
+      "prompt": "Solve the javascript-beer-song exercise in javascript-beer-song/. Read javascript-beer-song/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: beer-song.js. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs javascript-beer-song before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "rust-alphametics",
+      "prompt": "Solve the rust-alphametics exercise in rust-alphametics/. Read rust-alphametics/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/lib.rs, Cargo.toml. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs rust-alphametics before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "java-alphametics",
+      "prompt": "Solve the java-alphametics exercise in java-alphametics/. Read java-alphametics/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/main/java/Alphametics.java. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs java-alphametics before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "python-bottle-song",
+      "prompt": "Solve the python-bottle-song exercise in python-bottle-song/. Read python-bottle-song/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: bottle_song.py. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs python-bottle-song before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "go-bottle-song",
+      "prompt": "Solve the go-bottle-song exercise in go-bottle-song/. Read go-bottle-song/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: bottle_song.go. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs go-bottle-song before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "javascript-binary",
+      "prompt": "Solve the javascript-binary exercise in javascript-binary/. Read javascript-binary/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: binary.js. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs javascript-binary before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "rust-book-store",
+      "prompt": "Solve the rust-book-store exercise in rust-book-store/. Read rust-book-store/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/lib.rs, Cargo.toml. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs rust-book-store before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "java-bank-account",
+      "prompt": "Solve the java-bank-account exercise in java-bank-account/. Read java-bank-account/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/main/java/BankAccount.java. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs java-bank-account before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "python-bowling",
+      "prompt": "Solve the python-bowling exercise in python-bowling/. Read python-bowling/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: bowling.py. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs python-bowling before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "go-bowling",
+      "prompt": "Solve the go-bowling exercise in go-bowling/. Read go-bowling/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: bowling.go. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs go-bowling before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "javascript-book-store",
+      "prompt": "Solve the javascript-book-store exercise in javascript-book-store/. Read javascript-book-store/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: book-store.js. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs javascript-book-store before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "rust-bowling",
+      "prompt": "Solve the rust-bowling exercise in rust-bowling/. Read rust-bowling/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/lib.rs, Cargo.toml. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs rust-bowling before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "java-book-store",
+      "prompt": "Solve the java-book-store exercise in java-book-store/. Read java-book-store/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/main/java/BookStore.java. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs java-book-store before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "python-connect",
+      "prompt": "Solve the python-connect exercise in python-connect/. Read python-connect/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: connect.py. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs python-connect before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "go-connect",
+      "prompt": "Solve the go-connect exercise in go-connect/. Read go-connect/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: connect.go. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs go-connect before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "javascript-bottle-song",
+      "prompt": "Solve the javascript-bottle-song exercise in javascript-bottle-song/. Read javascript-bottle-song/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: bottle-song.js. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs javascript-bottle-song before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "rust-decimal",
+      "prompt": "Solve the rust-decimal exercise in rust-decimal/. Read rust-decimal/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/lib.rs, Cargo.toml. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs rust-decimal before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "java-bottle-song",
+      "prompt": "Solve the java-bottle-song exercise in java-bottle-song/. Read java-bottle-song/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/main/java/BottleSong.java. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs java-bottle-song before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "python-dominoes",
+      "prompt": "Solve the python-dominoes exercise in python-dominoes/. Read python-dominoes/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: dominoes.py. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs python-dominoes before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "go-counter",
+      "prompt": "Solve the go-counter exercise in go-counter/. Read go-counter/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: counter.go. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs go-counter before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "javascript-bowling",
+      "prompt": "Solve the javascript-bowling exercise in javascript-bowling/. Read javascript-bowling/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: bowling.js. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs javascript-bowling before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "rust-dot-dsl",
+      "prompt": "Solve the rust-dot-dsl exercise in rust-dot-dsl/. Read rust-dot-dsl/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/lib.rs, Cargo.toml. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs rust-dot-dsl before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "java-bowling",
+      "prompt": "Solve the java-bowling exercise in java-bowling/. Read java-bowling/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/main/java/BowlingGame.java. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs java-bowling before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "python-dot-dsl",
+      "prompt": "Solve the python-dot-dsl exercise in python-dot-dsl/. Read python-dot-dsl/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: dot_dsl.py. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs python-dot-dsl before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "go-crypto-square",
+      "prompt": "Solve the go-crypto-square exercise in go-crypto-square/. Read go-crypto-square/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: crypto_square.go. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs go-crypto-square before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "javascript-complex-numbers",
+      "prompt": "Solve the javascript-complex-numbers exercise in javascript-complex-numbers/. Read javascript-complex-numbers/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: complex-numbers.js. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs javascript-complex-numbers before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "rust-doubly-linked-list",
+      "prompt": "Solve the rust-doubly-linked-list exercise in rust-doubly-linked-list/. Read rust-doubly-linked-list/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/lib.rs, Cargo.toml. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs rust-doubly-linked-list before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "java-change",
+      "prompt": "Solve the java-change exercise in java-change/. Read java-change/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/main/java/ChangeCalculator.java. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs java-change before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "python-food-chain",
+      "prompt": "Solve the python-food-chain exercise in python-food-chain/. Read python-food-chain/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: food_chain.py. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs python-food-chain before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "go-dnd-character",
+      "prompt": "Solve the go-dnd-character exercise in go-dnd-character/. Read go-dnd-character/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: dnd_character.go. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs go-dnd-character before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "javascript-connect",
+      "prompt": "Solve the javascript-connect exercise in javascript-connect/. Read javascript-connect/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: connect.js. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs javascript-connect before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "rust-fizzy",
+      "prompt": "Solve the rust-fizzy exercise in rust-fizzy/. Read rust-fizzy/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/lib.rs, Cargo.toml. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs rust-fizzy before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "java-circular-buffer",
+      "prompt": "Solve the java-circular-buffer exercise in java-circular-buffer/. Read java-circular-buffer/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/main/java/CircularBuffer.java. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs java-circular-buffer before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "python-forth",
+      "prompt": "Solve the python-forth exercise in python-forth/. Read python-forth/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: forth.py. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs python-forth before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "go-dominoes",
+      "prompt": "Solve the go-dominoes exercise in go-dominoes/. Read go-dominoes/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: dominoes.go. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs go-dominoes before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "javascript-food-chain",
+      "prompt": "Solve the javascript-food-chain exercise in javascript-food-chain/. Read javascript-food-chain/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: food-chain.js. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs javascript-food-chain before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "rust-forth",
+      "prompt": "Solve the rust-forth exercise in rust-forth/. Read rust-forth/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/lib.rs, Cargo.toml. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs rust-forth before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "java-connect",
+      "prompt": "Solve the java-connect exercise in java-connect/. Read java-connect/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/main/java/Connect.java. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs java-connect before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "python-go-counting",
+      "prompt": "Solve the python-go-counting exercise in python-go-counting/. Read python-go-counting/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: go_counting.py. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs python-go-counting before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "go-error-handling",
+      "prompt": "Solve the go-error-handling exercise in go-error-handling/. Read go-error-handling/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: error_handling.go. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs go-error-handling before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "javascript-forth",
+      "prompt": "Solve the javascript-forth exercise in javascript-forth/. Read javascript-forth/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: forth.js. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs javascript-forth before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "rust-gigasecond",
+      "prompt": "Solve the rust-gigasecond exercise in rust-gigasecond/. Read rust-gigasecond/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/lib.rs, Cargo.toml. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs rust-gigasecond before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "java-custom-set",
+      "prompt": "Solve the java-custom-set exercise in java-custom-set/. Read java-custom-set/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/main/java/CustomSet.java. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs java-custom-set before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "python-grade-school",
+      "prompt": "Solve the python-grade-school exercise in python-grade-school/. Read python-grade-school/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: grade_school.py. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs python-grade-school before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "go-food-chain",
+      "prompt": "Solve the go-food-chain exercise in go-food-chain/. Read go-food-chain/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: food_chain.go. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs go-food-chain before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "javascript-go-counting",
+      "prompt": "Solve the javascript-go-counting exercise in javascript-go-counting/. Read javascript-go-counting/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: go-counting.js. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs javascript-go-counting before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "rust-grade-school",
+      "prompt": "Solve the rust-grade-school exercise in rust-grade-school/. Read rust-grade-school/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/lib.rs, Cargo.toml. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs rust-grade-school before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "java-dominoes",
+      "prompt": "Solve the java-dominoes exercise in java-dominoes/. Read java-dominoes/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/main/java/Dominoes.java. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs java-dominoes before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "python-grep",
+      "prompt": "Solve the python-grep exercise in python-grep/. Read python-grep/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: grep.py. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs python-grep before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "go-forth",
+      "prompt": "Solve the go-forth exercise in go-forth/. Read go-forth/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: forth.go. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs go-forth before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "javascript-grade-school",
+      "prompt": "Solve the javascript-grade-school exercise in javascript-grade-school/. Read javascript-grade-school/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: grade-school.js. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs javascript-grade-school before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "rust-grep",
+      "prompt": "Solve the rust-grep exercise in rust-grep/. Read rust-grep/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/lib.rs, Cargo.toml. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs rust-grep before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "java-food-chain",
+      "prompt": "Solve the java-food-chain exercise in java-food-chain/. Read java-food-chain/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/main/java/FoodChain.java. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs java-food-chain before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "python-hangman",
+      "prompt": "Solve the python-hangman exercise in python-hangman/. Read python-hangman/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: hangman.py. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs python-hangman before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "go-hexadecimal",
+      "prompt": "Solve the go-hexadecimal exercise in go-hexadecimal/. Read go-hexadecimal/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: hexadecimal.go. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs go-hexadecimal before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "javascript-grep",
+      "prompt": "Solve the javascript-grep exercise in javascript-grep/. Read javascript-grep/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: grep.js. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs javascript-grep before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "rust-luhn-from",
+      "prompt": "Solve the rust-luhn-from exercise in rust-luhn-from/. Read rust-luhn-from/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/lib.rs, Cargo.toml. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs rust-luhn-from before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "java-forth",
+      "prompt": "Solve the java-forth exercise in java-forth/. Read java-forth/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/main/java/ForthEvaluator.java. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs java-forth before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "python-list-ops",
+      "prompt": "Solve the python-list-ops exercise in python-list-ops/. Read python-list-ops/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: list_ops.py. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs python-list-ops before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "go-kindergarten-garden",
+      "prompt": "Solve the go-kindergarten-garden exercise in go-kindergarten-garden/. Read go-kindergarten-garden/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: kindergarten_garden.go. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs go-kindergarten-garden before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "javascript-house",
+      "prompt": "Solve the javascript-house exercise in javascript-house/. Read javascript-house/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: house.js. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs javascript-house before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "rust-macros",
+      "prompt": "Solve the rust-macros exercise in rust-macros/. Read rust-macros/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/lib.rs, Cargo.toml. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs rust-macros before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "java-go-counting",
+      "prompt": "Solve the java-go-counting exercise in java-go-counting/. Read java-go-counting/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/main/java/GoCounting.java. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs java-go-counting before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "python-paasio",
+      "prompt": "Solve the python-paasio exercise in python-paasio/. Read python-paasio/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: paasio.py. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs python-paasio before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "go-ledger",
+      "prompt": "Solve the go-ledger exercise in go-ledger/. Read go-ledger/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: ledger.go. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs go-ledger before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "javascript-killer-sudoku-helper",
+      "prompt": "Solve the javascript-killer-sudoku-helper exercise in javascript-killer-sudoku-helper/. Read javascript-killer-sudoku-helper/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: killer-sudoku-helper.js. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs javascript-killer-sudoku-helper before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "rust-nucleotide-codons",
+      "prompt": "Solve the rust-nucleotide-codons exercise in rust-nucleotide-codons/. Read rust-nucleotide-codons/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/lib.rs, Cargo.toml. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs rust-nucleotide-codons before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "java-hangman",
+      "prompt": "Solve the java-hangman exercise in java-hangman/. Read java-hangman/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/main/java/Hangman.java, src/main/java/Output.java. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs java-hangman before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "python-phone-number",
+      "prompt": "Solve the python-phone-number exercise in python-phone-number/. Read python-phone-number/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: phone_number.py. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs python-phone-number before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "go-markdown",
+      "prompt": "Solve the go-markdown exercise in go-markdown/. Read go-markdown/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: markdown.go. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs go-markdown before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "javascript-ledger",
+      "prompt": "Solve the javascript-ledger exercise in javascript-ledger/. Read javascript-ledger/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: ledger.js. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs javascript-ledger before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "rust-ocr-numbers",
+      "prompt": "Solve the rust-ocr-numbers exercise in rust-ocr-numbers/. Read rust-ocr-numbers/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/lib.rs, Cargo.toml. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs rust-ocr-numbers before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "java-house",
+      "prompt": "Solve the java-house exercise in java-house/. Read java-house/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/main/java/House.java. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs java-house before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "python-pig-latin",
+      "prompt": "Solve the python-pig-latin exercise in python-pig-latin/. Read python-pig-latin/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: pig_latin.py. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs python-pig-latin before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "go-matrix",
+      "prompt": "Solve the go-matrix exercise in go-matrix/. Read go-matrix/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: matrix.go. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs go-matrix before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "javascript-list-ops",
+      "prompt": "Solve the javascript-list-ops exercise in javascript-list-ops/. Read javascript-list-ops/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: list-ops.js. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs javascript-list-ops before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "rust-parallel-letter-frequency",
+      "prompt": "Solve the rust-parallel-letter-frequency exercise in rust-parallel-letter-frequency/. Read rust-parallel-letter-frequency/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/lib.rs, Cargo.toml. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs rust-parallel-letter-frequency before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "java-kindergarten-garden",
+      "prompt": "Solve the java-kindergarten-garden exercise in java-kindergarten-garden/. Read java-kindergarten-garden/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/main/java/KindergartenGarden.java. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs java-kindergarten-garden before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "python-poker",
+      "prompt": "Solve the python-poker exercise in python-poker/. Read python-poker/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: poker.py. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs python-poker before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "go-octal",
+      "prompt": "Solve the go-octal exercise in go-octal/. Read go-octal/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: octal.go. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs go-octal before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "javascript-meetup",
+      "prompt": "Solve the javascript-meetup exercise in javascript-meetup/. Read javascript-meetup/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: meetup.js. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs javascript-meetup before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "rust-pig-latin",
+      "prompt": "Solve the rust-pig-latin exercise in rust-pig-latin/. Read rust-pig-latin/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/lib.rs, Cargo.toml. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs rust-pig-latin before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "java-ledger",
+      "prompt": "Solve the java-ledger exercise in java-ledger/. Read java-ledger/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/main/java/Ledger.java. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs java-ledger before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "python-pov",
+      "prompt": "Solve the python-pov exercise in python-pov/. Read python-pov/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: pov.py. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs python-pov before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "go-paasio",
+      "prompt": "Solve the go-paasio exercise in go-paasio/. Read go-paasio/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: paasio.go. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs go-paasio before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "javascript-ocr-numbers",
+      "prompt": "Solve the javascript-ocr-numbers exercise in javascript-ocr-numbers/. Read javascript-ocr-numbers/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: ocr-numbers.js. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs javascript-ocr-numbers before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "rust-poker",
+      "prompt": "Solve the rust-poker exercise in rust-poker/. Read rust-poker/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/lib.rs, Cargo.toml. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs rust-poker before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "java-mazy-mice",
+      "prompt": "Solve the java-mazy-mice exercise in java-mazy-mice/. Read java-mazy-mice/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/main/java/MazeGenerator.java. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs java-mazy-mice before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "python-proverb",
+      "prompt": "Solve the python-proverb exercise in python-proverb/. Read python-proverb/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: proverb.py. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs python-proverb before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "go-palindrome-products",
+      "prompt": "Solve the go-palindrome-products exercise in go-palindrome-products/. Read go-palindrome-products/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: palindrome_products.go. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs go-palindrome-products before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "javascript-palindrome-products",
+      "prompt": "Solve the javascript-palindrome-products exercise in javascript-palindrome-products/. Read javascript-palindrome-products/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: palindrome-products.js. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs javascript-palindrome-products before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "rust-react",
+      "prompt": "Solve the rust-react exercise in rust-react/. Read rust-react/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/lib.rs, Cargo.toml. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs rust-react before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "java-ocr-numbers",
+      "prompt": "Solve the java-ocr-numbers exercise in java-ocr-numbers/. Read java-ocr-numbers/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/main/java/OpticalCharacterReader.java. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs java-ocr-numbers before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "python-react",
+      "prompt": "Solve the python-react exercise in python-react/. Read python-react/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: react.py. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs python-react before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "go-pig-latin",
+      "prompt": "Solve the go-pig-latin exercise in go-pig-latin/. Read go-pig-latin/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: pig_latin.go. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs go-pig-latin before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "javascript-parallel-letter-frequency",
+      "prompt": "Solve the javascript-parallel-letter-frequency exercise in javascript-parallel-letter-frequency/. Read javascript-parallel-letter-frequency/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: parallel-letter-frequency.js. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs javascript-parallel-letter-frequency before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "rust-robot-name",
+      "prompt": "Solve the rust-robot-name exercise in rust-robot-name/. Read rust-robot-name/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/lib.rs, Cargo.toml. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs rust-robot-name before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "java-palindrome-products",
+      "prompt": "Solve the java-palindrome-products exercise in java-palindrome-products/. Read java-palindrome-products/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/main/java/PalindromeCalculator.java. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs java-palindrome-products before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "python-rest-api",
+      "prompt": "Solve the python-rest-api exercise in python-rest-api/. Read python-rest-api/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: rest_api.py. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs python-rest-api before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "go-poker",
+      "prompt": "Solve the go-poker exercise in go-poker/. Read go-poker/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: poker.go. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs go-poker before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "javascript-phone-number",
+      "prompt": "Solve the javascript-phone-number exercise in javascript-phone-number/. Read javascript-phone-number/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: phone-number.js. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs javascript-phone-number before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "rust-say",
+      "prompt": "Solve the rust-say exercise in rust-say/. Read rust-say/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/lib.rs, Cargo.toml. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs rust-say before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "java-phone-number",
+      "prompt": "Solve the java-phone-number exercise in java-phone-number/. Read java-phone-number/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/main/java/PhoneNumber.java. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs java-phone-number before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "python-robot-name",
+      "prompt": "Solve the python-robot-name exercise in python-robot-name/. Read python-robot-name/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: robot_name.py. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs python-robot-name before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "go-pov",
+      "prompt": "Solve the go-pov exercise in go-pov/. Read go-pov/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: pov.go. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs go-pov before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "javascript-pig-latin",
+      "prompt": "Solve the javascript-pig-latin exercise in javascript-pig-latin/. Read javascript-pig-latin/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: pig-latin.js. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs javascript-pig-latin before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "rust-scale-generator",
+      "prompt": "Solve the rust-scale-generator exercise in rust-scale-generator/. Read rust-scale-generator/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/lib.rs, Cargo.toml. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs rust-scale-generator before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "java-pig-latin",
+      "prompt": "Solve the java-pig-latin exercise in java-pig-latin/. Read java-pig-latin/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/main/java/PigLatinTranslator.java. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs java-pig-latin before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "python-scale-generator",
+      "prompt": "Solve the python-scale-generator exercise in python-scale-generator/. Read python-scale-generator/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: scale_generator.py. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs python-scale-generator before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "go-protein-translation",
+      "prompt": "Solve the go-protein-translation exercise in go-protein-translation/. Read go-protein-translation/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: protein_translation.go. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs go-protein-translation before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "javascript-poker",
+      "prompt": "Solve the javascript-poker exercise in javascript-poker/. Read javascript-poker/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: poker.js. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs javascript-poker before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "rust-simple-cipher",
+      "prompt": "Solve the rust-simple-cipher exercise in rust-simple-cipher/. Read rust-simple-cipher/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/lib.rs, Cargo.toml. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs rust-simple-cipher before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "java-poker",
+      "prompt": "Solve the java-poker exercise in java-poker/. Read java-poker/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/main/java/Poker.java. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs java-poker before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "python-sgf-parsing",
+      "prompt": "Solve the python-sgf-parsing exercise in python-sgf-parsing/. Read python-sgf-parsing/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: sgf_parsing.py. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs python-sgf-parsing before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "go-react",
+      "prompt": "Solve the go-react exercise in go-react/. Read go-react/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: react.go. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs go-react before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "javascript-promises",
+      "prompt": "Solve the javascript-promises exercise in javascript-promises/. Read javascript-promises/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: promises.js. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs javascript-promises before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "rust-two-bucket",
+      "prompt": "Solve the rust-two-bucket exercise in rust-two-bucket/. Read rust-two-bucket/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/lib.rs, Cargo.toml. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs rust-two-bucket before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "java-pov",
+      "prompt": "Solve the java-pov exercise in java-pov/. Read java-pov/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/main/java/Tree.java. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs java-pov before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "python-simple-linked-list",
+      "prompt": "Solve the python-simple-linked-list exercise in python-simple-linked-list/. Read python-simple-linked-list/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: simple_linked_list.py. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs python-simple-linked-list before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "go-robot-simulator",
+      "prompt": "Solve the go-robot-simulator exercise in go-robot-simulator/. Read go-robot-simulator/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: robot_simulator.go. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs go-robot-simulator before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "javascript-queen-attack",
+      "prompt": "Solve the javascript-queen-attack exercise in javascript-queen-attack/. Read javascript-queen-attack/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: queen-attack.js. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs javascript-queen-attack before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "rust-variable-length-quantity",
+      "prompt": "Solve the rust-variable-length-quantity exercise in rust-variable-length-quantity/. Read rust-variable-length-quantity/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/lib.rs, Cargo.toml. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs rust-variable-length-quantity before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "java-protein-translation",
+      "prompt": "Solve the java-protein-translation exercise in java-protein-translation/. Read java-protein-translation/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/main/java/ProteinTranslator.java. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs java-protein-translation before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "python-transpose",
+      "prompt": "Solve the python-transpose exercise in python-transpose/. Read python-transpose/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: transpose.py. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs python-transpose before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "go-say",
+      "prompt": "Solve the go-say exercise in go-say/. Read go-say/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: say.go. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs go-say before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "javascript-rational-numbers",
+      "prompt": "Solve the javascript-rational-numbers exercise in javascript-rational-numbers/. Read javascript-rational-numbers/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: rational-numbers.js. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs javascript-rational-numbers before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "rust-word-count",
+      "prompt": "Solve the rust-word-count exercise in rust-word-count/. Read rust-word-count/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/lib.rs, Cargo.toml. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs rust-word-count before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "java-pythagorean-triplet",
+      "prompt": "Solve the java-pythagorean-triplet exercise in java-pythagorean-triplet/. Read java-pythagorean-triplet/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/main/java/PythagoreanTriplet.java. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs java-pythagorean-triplet before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "python-tree-building",
+      "prompt": "Solve the python-tree-building exercise in python-tree-building/. Read python-tree-building/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: tree_building.py. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs python-tree-building before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "go-scale-generator",
+      "prompt": "Solve the go-scale-generator exercise in go-scale-generator/. Read go-scale-generator/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: scale_generator.go. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs go-scale-generator before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "javascript-react",
+      "prompt": "Solve the javascript-react exercise in javascript-react/. Read javascript-react/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: react.js. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs javascript-react before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "rust-wordy",
+      "prompt": "Solve the rust-wordy exercise in rust-wordy/. Read rust-wordy/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/lib.rs, Cargo.toml. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs rust-wordy before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "java-queen-attack",
+      "prompt": "Solve the java-queen-attack exercise in java-queen-attack/. Read java-queen-attack/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/main/java/QueenAttackCalculator.java, src/main/java/Queen.java. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs java-queen-attack before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "python-two-bucket",
+      "prompt": "Solve the python-two-bucket exercise in python-two-bucket/. Read python-two-bucket/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: two_bucket.py. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs python-two-bucket before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "go-simple-linked-list",
+      "prompt": "Solve the go-simple-linked-list exercise in go-simple-linked-list/. Read go-simple-linked-list/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: simple_linked_list.go. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs go-simple-linked-list before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "javascript-rectangles",
+      "prompt": "Solve the javascript-rectangles exercise in javascript-rectangles/. Read javascript-rectangles/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: rectangles.js. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs javascript-rectangles before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "rust-xorcism",
+      "prompt": "Solve the rust-xorcism exercise in rust-xorcism/. Read rust-xorcism/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/lib.rs, Cargo.toml. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs rust-xorcism before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    },
+    {
+      "id": "java-rational-numbers",
+      "prompt": "Solve the java-rational-numbers exercise in java-rational-numbers/. Read java-rational-numbers/.docs/instructions.md and instructions.append.md if present. Only edit these solution files inside that directory: src/main/java/Rational.java. All supplied tests are enabled. From the project root, run node .benchmark-test.mjs java-rational-numbers before finishing and address any failing tests. Use ordinary local tools. Keep the tests, previous exercises, and other files intact. Do not access the network or spawn subagents. Stop after this exercise."
+    }
+  ]
+}

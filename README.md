@@ -1,94 +1,153 @@
 # OpenCode Live Compact
 
-Live Compact saves a smaller OpenCode context window after a successful turn. It shortens eligible tool results, protects recent tool rounds, and preserves the prefix before each cut. The source results remain in OpenCode history and can be recovered by reference.
+**Keep context under control while the agent works.**
 
-The plugin uses the [OpenCode V2 server SDK](https://opencode.ai/docs/build/plugins/server) and targets stock OpenCode 2.2.6. Local reductions use deterministic rules and make no summarization requests.
+[![OpenCode 2.2.6](https://img.shields.io/badge/OpenCode-2.2.6-111827)](https://github.com/anomalyco/opencode/releases/tag/v2.2.6)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)](package.json)
+[![Node.js 22.18+](https://img.shields.io/badge/Node.js-%E2%89%A522.18-417E38?logo=nodedotjs&logoColor=white)](package.json)
+[![MIT license](https://img.shields.io/badge/License-MIT-22C55E)](LICENSE)
+[![Experimental](https://img.shields.io/badge/Status-experimental-F59E0B)](#status)
 
-The plugin checks after successful turns, starting at an absolute **20,000 tokens** by default. It does not wait for 80–90% context usage. A check can skip a cut when the remaining history is protected, the eligible source is too small, the replacement would not reduce context, or the original cannot be archived. There is no profitability gate or assumed number of future requests.
+[Results](#benchmark-results) · [Quick start](#quick-start) · [How it works](#how-it-works) · [Configuration](docs/architecture.md#configuration) · [Run benchmarks](benchmarks/README.md)
 
-## Installation
+Long coding sessions accumulate file reads, command output, and intermediate explanations. **Live Compact** is a native OpenCode plugin that checks after successful turns and shortens eligible completed history locally. It makes no extra model calls for these reductions, preserves the prefix before each cut, and saves the original text for exact recall.
 
-The intended npm installation command once the package is released is:
+It starts checking at **20,000 tokens** by default, rather than waiting until the context window is almost full. OpenCode's native compaction remains available as a fallback.
 
-```sh
-opencode plugin add opencode-live-compact
+## Benchmark results
+
+**150 short programming exercises · Aider Polyglot `7e0611e`**
+
+One continuous session per version, stock OpenCode **2.2.6**, **GPT-6 Luna**, identical ordered exercises, and stock compaction/output defaults. Both versions ran in parallel in Daytona on November 9, 2026.
+
+| Metric | Original OpenCode | Live Compact |
+| --- | ---: | ---: |
+| Passed | **150/150** | **150/150** |
+| Overall cache hit rate | 99.49% | 99.34% |
+| Cached input tokens | 296.35M | **266.75M** |
+| Non-cached input tokens | 1.519M | 1.759M |
+| Estimated API cost | $6.048 | **$5.302 · 12.3% lower** |
+| Peak context | 783K | **591K** |
+| Compaction | 1 pause · 16.30 s | **93 cuts · 5.93 s** |
+| Wall-clock time | 5,106 s | **4,633 s** |
+
+Both passed all 150 exercises on their first graded attempt: **zero failures and zero repair attempts**. Live Compact made 21 span cuts and 72 individual cuts across 81 local replacements, with no native compaction pause.
+
+*Non-cached input includes cache writes. Cache hit rate is cached reads divided by total input. Compaction time includes native and local replacement host wait; local planning outside those events is excluded. The 93 cuts are grouped into 81 host events. Costs are OpenCode usage-based estimates, not billing receipts.*
+
+> This is one paired run, not a guarantee of savings on every workload. It tested the frozen build requiring **1,000 tokens saved per cut**, before the current **1,000-source-token** rule and per-session recovery storage. The table does not measure those later changes. Cache writes increased despite the lower total estimated cost.
+
+[Browse the logs and methodology](benchmarks/results/2026-11-09-aider-150/README.md) · [Raw comparison data](benchmarks/results/2026-11-09-aider-150/comparison.json) · [Per-exercise progress](benchmarks/results/2026-11-09-aider-150/progress.jsonl)
+
+## How it works
+
+```mermaid
+flowchart LR
+    A[Successful turn ends] --> B[Check context and eligible history]
+    B --> C[Save exact originals locally]
+    C --> D[Shorten selected text]
+    D --> E[OpenCode saves the smaller window]
+    E --> A
+    C -. Backup fails .-> F[Keep the full context]
 ```
 
-For local development, run `npm ci` and `npm run build` in the plugin checkout. Add the absolute path to that directory under `plugins` in the project's `opencode.jsonc`.
+1. **Check completed work.** Once context reaches 20,000 tokens, inspect older completed history. Active work and the latest three tool rounds stay intact.
+2. **Choose small cuts.** Combine eligible adjacent results into a completed span, or shorten an individual result. The current minimum is 1,000 source tokens; each replacement must reduce both estimated tokens and serialized size.
+3. **Back up before changing anything.** Store exact originals in private session directories. If preservation fails, keep the original context.
+4. **Save a stable replacement.** Preserve reasoning, tool calls, call/result pairs, message order, and the prefix before the cut. OpenCode persists and reuses the smaller window.
+5. **Recall details when needed.** Checkpoints include a reference for `live_compact_recall`. Recall returns exact archived text without a summarization call.
+
+The goal is **lower context growth with useful prompt-cache reuse**. Editing a suffix can still cause cache misses, so fewer prompt tokens alone do not establish lower cost.
+
+### What stays protected
+
+- User requirements, system instructions, active or interrupted work, and recent tool rounds.
+- Reasoning, tool-call arguments, identifiers, and valid call/result relationships.
+- Unsupported or ambiguous output, diagnostics, existing checkpoints, and their active recovery references.
+
+OpenCode's automatic compaction stays enabled. The plugin can resume after native compaction. Switching provider or model uses OpenCode's fallback to original history.
+
+[Read the architecture, safety rules, and limitations →](docs/architecture.md)
+
+## Quick start
+
+### Use the local checkout
+
+Requires **Node.js 22.18+** and stock **OpenCode 2.2.6**.
+
+```sh
+git clone https://github.com/Haoming9527/opencode-live-compact.git
+cd opencode-live-compact
+npm ci
+npm run build
+```
+
+In the project where you use OpenCode, add this to `opencode.jsonc`:
 
 ```jsonc
 {
   "plugins": [
     {
-      "package": "/path/to/opencode-live-compact",
-      "options": {
-        "minimumContextTokens": 20000,
-        "minimumSourceTokens": 1000,
-        "protectedToolRounds": 3,
-        "maxCutsPerCycle": 3
-      }
+      "package": "/absolute/path/to/opencode-live-compact"
     }
   ]
 }
 ```
 
-## How it works
+Replace the path with your checkout. On Windows, use a path such as `E:/projects/opencode-live-compact`. Start OpenCode in that project and work normally.
 
-1. OpenCode's idle hook signals successful completion with no pending inputs. The plugin checks the completed tool states and skips work when background jobs are still running. The active turn and the latest three completed tool rounds stay intact by default.
-2. The planner considers completed history after the last visible checkpoint. Eligible content includes older assistant prose, stock reads, file listings, searches, and verified successful foreground shell output. Each cut must contain at least 1,000 estimated tokens of source text selected for shortening by default; a span can combine several smaller entries. Preserved reasoning, tool-call arguments, and unchanged results do not count toward that minimum. Ordinary cuts contain at most 32,000 estimated source tokens. Every changed entry must reduce both estimated tokens and serialized size, including its checkpoint and recall reference; saving fewer than 1,000 tokens is allowed. It compares batches of up to three completed spans or individual results. Each span stays within completed work and user/checkpoint boundaries. Shortened entries share an archive reference, with their replacement text bounded by an 8,000-code-point budget per span.
-3. The planner ranks useful batches by estimated tokens saved, discounted by the retained suffix after the earliest cut: `saved / (1 + suffix / saved)`. This favors larger reductions and shorter suffixes without rejecting a useful cut because of cache prices. It is a selection heuristic, not a cost estimate. Originals are preserved together in one durable transaction before queuing a local compaction. The compaction hook rechecks the queued item, original contents, and prefix, then constructs the replacement window by copying only changed messages. The host persists it and uses it to size later requests. [OpenCode compaction hook](https://opencode.ai/docs/build/plugins/server#hooks)
-4. OpenCode replays the saved window on the same provider and model. On a model switch, the host falls back to the original history. Stock compaction stays enabled, and later successful turns can create new replacement windows.
+### Defaults
 
-Use `live_compact_recall` in the source session with the reference and an optional Unicode code point offset. Each page contains up to 2,048 code points and a continuation offset. A span reference returns the exact serialized OpenCode messages, including the original call IDs and results. A fork can inherit a checkpoint, but its reference remains scoped to the source session.
+| Setting | Default |
+| --- | --- |
+| Start checking context | 20,000 tokens |
+| Minimum eligible source per cut | 1,000 tokens |
+| Ordinary span size limit | 32,000 tokens |
+| Retained checkpoint text | Up to 8,000 Unicode code points per span |
+| Recent tool rounds preserved | 3 |
+| Maximum cuts per completed-turn cycle | 3 |
+| Recovery budget across sessions | 256 MiB |
+| Extra model calls for local reductions | 0 |
 
-Span cuts preserve OpenCode's mixed messages in place. Reasoning, tool calls, their arguments, result IDs, and message order remain unchanged; only eligible result text or eligible older assistant text is shortened. Unsupported results in a parallel tool round stay intact. The archive stores the exact original span and a validated replacement recipe, so replay after a restart applies the same edits. Preserved reasoning and tool-call tokens are excluded from estimated savings.
+Set overrides in the plugin entry's `options` object. [All configuration options →](docs/architecture.md#configuration)
 
-OpenCode records each local replacement as a compaction event and stores the full active window for that event. The benchmark separates these events from stock compaction and counts their wait time too. Compatibility was verified with stock compaction defaults.
+Recovery files live in private per-session directories. Before a backup would exceed the shared budget, cleanup removes the oldest retired backups toward 80% usage. Active checkpoints stay protected; if they leave insufficient room, the plugin keeps the full context.
 
-User messages, system instructions, provider-bound reasoning, recent assistant responses, diagnostics, and active or interrupted work stay intact. Cuts use a local byte-based token estimate. Actual prompt-cache reuse and billing depend on the provider and workload.
-
-An otherwise eligible tool result above 32,000 estimated tokens can use a small recovery pointer instead of an excerpt. Its exact header, truncation notice, and observed status remain. This exception never applies to assistant prose. The full original must fit the archive's 512 KiB per-record limit and be stored successfully; otherwise it stays visible.
-
-## Configuration
-
-| Option | Default | Effect |
-| --- | ---: | --- |
-| `minimumContextTokens` | 20,000 | Start evaluating cuts at this completed-turn token usage. Use a local estimate when provider usage is unavailable. |
-| `minimumSourceTokens` | 1,000 | Minimum estimated source tokens selected for shortening in one result or completed span. Every replacement must still be strictly smaller. |
-| `protectedToolRounds` | 3 | Number of most recent completed tool rounds to keep. |
-| `maxCutsPerCycle` | 3 | Maximum completed spans or individual results replaced in one successful-turn maintenance cycle. |
-| `archiveDirectory` | OS-local state directory | Optional absolute directory for the private archive. |
-| `archiveMaxBytes` | 256 MiB | Combined limit across all session archives, excluding SQLite overhead. Before a write would exceed it, remove the oldest retired records toward 80% usage. |
-| `archiveMaxRecords` | 4,096 | Maximum number of archive records. |
-| `archiveRetentionMs` | 7 days | Normal grace period for retired records. Capacity pressure can remove them sooner; active checkpoints stay protected. |
-| `compactSpans` | `true` | Group adjacent eligible completed results or prose into a checkpoint without crossing a user message, protected content, or an existing checkpoint. |
-| `dryRun` | `false` | Evaluate cuts without changing requests or saving new cuts. |
-| `diagnostics` | `false` | Emit planning reasons, candidate counts, selected span or individual strategy, separate planning/application durations, cuts, and recall measurements without transcript content. |
-| `metricsFile` | stderr | Optional absolute JSON Lines destination for diagnostics. |
-
-The archive holds local copies of eligible output and uses owner-only permissions. It uses `$XDG_STATE_HOME/opencode-live-compact` when set. Otherwise it uses `%LOCALAPPDATA%/opencode-live-compact` on Windows and `~/.local/state/opencode-live-compact` elsewhere. Recovery files live under `recovery-v1/sessions/session-<session-hash>/<reference>.json`; the session hash prevents unsafe paths and name collisions. A shared SQLite catalog tracks integrity, references, and the total budget. Existing inline backups migrate without changing recall references.
-
-Before a write would exceed the global 256 MiB cap, cleanup removes the oldest retired records first and aims to leave usage at or below 80%, including the incoming batch. Normal cleanup also removes retired records after their retention period. Active checkpoints and references being preserved in the current batch are never evicted. A stopped process alone does not make an OpenCode session's backups disposable. If protected records leave insufficient room, or preservation fails, the plugin keeps the full original context.
-
-When handling a queued replacement, the plugin retries a failed pending-plan or history read once. If both attempts fail, OpenCode 2.2.6's compaction hook does not provide enough identity information to safely distinguish plugin maintenance from native compaction. The plugin reports `compaction-ownership-unavailable` and leaves the host in control; a model summary remains possible on this error path. Once ownership is confirmed, an unavailable archive produces a full local replay without a summary request.
-
-The plugin measures the request once at idle instead of scanning its complete text for every context-hook diagnostic. It still rereads authoritative history when applying a queued replacement so concurrent work, a native compaction, or a changed source cannot invalidate its safety checks. Planning needs no model-price lookup.
-
-The span planner evaluates smaller contiguous alternatives as well as larger spans, then selects nonoverlapping cuts under the same safety and size limits. Replacement windows retain the evidence for all unchanged eligible tool rounds after the last cut, so later turns can still reduce them while preserving recent-round protection.
-
-Planning diagnostics include the context size, eligible candidate counts, and the number of size-valid candidates and batches evaluated. `insufficient-savings` means neither planning route found a useful cut. Estimated savings and retained suffix size are reported for applied replacements; actual API savings still require a paired benchmark.
-
-## Verification
+## Development and benchmarks
 
 ```sh
 npm run typecheck
 npm test
 npm run test:integration
-npm pack --dry-run
 ```
 
-The stock integration test needs OpenCode 2.2.6 on PATH and uses a local scripted provider. See the [benchmark quick start](benchmarks/README.md) for preflight and paired-run commands for Short, SemVer, Aider 150, and Web-Bench React 20, locally or in Daytona. A smaller request is evidence of reduced context pressure. Cost, cache reuse, native compaction wait, and task correctness are measured separately.
+Integration tests launch stock OpenCode 2.2.6 with a local scripted provider. They verify completed-turn timing, prefix preservation, exact recall, restart, backup failure, and continued operation after native compaction without paid model calls.
 
-Inspired by the design of [DSH Live Compact](https://github.com/Tranquillitatis-Lab/dsh-live-compact#readme). 
+The benchmark runner supports four suites:
 
-Licensed under the [MIT License](LICENSE).
+| Suite | Workload |
+| --- | --- |
+| Short | 6 small JavaScript tasks |
+| SemVer | 10 sequential feature-development stages |
+| Aider Polyglot | 150 programming exercises across five languages |
+| Web-Bench React | 20 dependent tasks building one application |
+
+[Run any of the four locally or in Daytona →](benchmarks/README.md)
+
+## Status
+
+**Experimental; npm publication is planned after further validation.** The local checkout is the installation method available here. The intended future command is:
+
+```sh
+opencode plugin add opencode-live-compact
+```
+
+The completed Aider comparison is included above. The separate Web-Bench comparison is not included in those results. Further repeated runs are needed to assess long-task reliability and how consistently cost and pause reductions hold.
+
+Bug reports and reproducible examples are welcome. Include your OpenCode version, provider/model, plugin options, and relevant diagnostics with private content removed.
+
+## Inspiration and license
+
+Inspired by the high-level ideas behind [DSH Live Compact](https://github.com/Tranquillitatis-Lab/dsh-live-compact): incremental local reductions, preserving the prefix before a cut, and recoverable originals. This TypeScript implementation was independently designed for OpenCode; it does not copy or port DSH's implementation.
+
+[MIT licensed](LICENSE).

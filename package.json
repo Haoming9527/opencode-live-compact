@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "Deterministic incremental context compaction for OpenCode V2",
   "license": "MIT",
+  "keywords": ["opencode", "opencode-plugin", "live-compact", "context-compaction", "context-management", "prompt-caching", "coding-agent", "typescript"],
+  "repository": { "type": "git", "url": "git+https://github.com/Haoming9527/opencode-live-compact.git" },
+  "homepage": "https://github.com/Haoming9527/opencode-live-compact#readme",
+  "bugs": { "url": "https://github.com/Haoming9527/opencode-live-compact/issues" },
   "type": "module",
   "exports": {
     ".": {

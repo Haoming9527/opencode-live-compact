@@ -1,0 +1,2802 @@
+{
+  "suite": "aider",
+  "arm": "control",
+  "sessionID": "ses_e418e533effeLepcgkeo5GKX0g",
+  "modelConfiguration": {
+    "cost": [
+      {
+        "input": 0.1,
+        "output": 0.5,
+        "cache": {
+          "read": 0.01,
+          "write": 0.125
+        }
+      },
+      {
+        "tier": {
+          "type": "context",
+          "size": 272000
+        },
+        "input": 0.2,
+        "output": 0.75,
+        "cache": {
+          "read": 0.02,
+          "write": 0.25
+        }
+      }
+    ],
+    "limit": {
+      "context": 1050000,
+      "input": 922000,
+      "output": 128000
+    },
+    "modelID": "gpt-6-luna"
+  },
+  "stagesCompleted": 150,
+  "stagesExpected": 150,
+  "wallSeconds": 5106.258178419001,
+  "retentionCorrect": null,
+  "grade": {
+    "total": 150,
+    "passed": 150,
+    "failed": 0,
+    "success": true,
+    "outcomes": [
+      {
+        "id": "python-affine-cipher",
+        "passed": true
+      },
+      {
+        "id": "go-alphametics",
+        "passed": true
+      },
+      {
+        "id": "javascript-affine-cipher",
+        "passed": true
+      },
+      {
+        "id": "rust-accumulate",
+        "passed": true
+      },
+      {
+        "id": "java-affine-cipher",
+        "passed": true
+      },
+      {
+        "id": "python-beer-song",
+        "passed": true
+      },
+      {
+        "id": "go-beer-song",
+        "passed": true
+      },
+      {
+        "id": "javascript-alphametics",
+        "passed": true
+      },
+      {
+        "id": "rust-acronym",
+        "passed": true
+      },
+      {
+        "id": "java-all-your-base",
+        "passed": true
+      },
+      {
+        "id": "python-book-store",
+        "passed": true
+      },
+      {
+        "id": "go-book-store",
+        "passed": true
+      },
+      {
+        "id": "javascript-beer-song",
+        "passed": true
+      },
+      {
+        "id": "rust-alphametics",
+        "passed": true
+      },
+      {
+        "id": "java-alphametics",
+        "passed": true
+      },
+      {
+        "id": "python-bottle-song",
+        "passed": true
+      },
+      {
+        "id": "go-bottle-song",
+        "passed": true
+      },
+      {
+        "id": "javascript-binary",
+        "passed": true
+      },
+      {
+        "id": "rust-book-store",
+        "passed": true
+      },
+      {
+        "id": "java-bank-account",
+        "passed": true
+      },
+      {
+        "id": "python-bowling",
+        "passed": true
+      },
+      {
+        "id": "go-bowling",
+        "passed": true
+      },
+      {
+        "id": "javascript-book-store",
+        "passed": true
+      },
+      {
+        "id": "rust-bowling",
+        "passed": true
+      },
+      {
+        "id": "java-book-store",
+        "passed": true
+      },
+      {
+        "id": "python-connect",
+        "passed": true
+      },
+      {
+        "id": "go-connect",
+        "passed": true
+      },
+      {
+        "id": "javascript-bottle-song",
+        "passed": true
+      },
+      {
+        "id": "rust-decimal",
+        "passed": true
+      },
+      {
+        "id": "java-bottle-song",
+        "passed": true
+      },
+      {
+        "id": "python-dominoes",
+        "passed": true
+      },
+      {
+        "id": "go-counter",
+        "passed": true
+      },
+      {
+        "id": "javascript-bowling",
+        "passed": true
+      },
+      {
+        "id": "rust-dot-dsl",
+        "passed": true
+      },
+      {
+        "id": "java-bowling",
+        "passed": true
+      },
+      {
+        "id": "python-dot-dsl",
+        "passed": true
+      },
+      {
+        "id": "go-crypto-square",
+        "passed": true
+      },
+      {
+        "id": "javascript-complex-numbers",
+        "passed": true
+      },
+      {
+        "id": "rust-doubly-linked-list",
+        "passed": true
+      },
+      {
+        "id": "java-change",
+        "passed": true
+      },
+      {
+        "id": "python-food-chain",
+        "passed": true
+      },
+      {
+        "id": "go-dnd-character",
+        "passed": true
+      },
+      {
+        "id": "javascript-connect",
+        "passed": true
+      },
+      {
+        "id": "rust-fizzy",
+        "passed": true
+      },
+      {
+        "id": "java-circular-buffer",
+        "passed": true
+      },
+      {
+        "id": "python-forth",
+        "passed": true
+      },
+      {
+        "id": "go-dominoes",
+        "passed": true
+      },
+      {
+        "id": "javascript-food-chain",
+        "passed": true
+      },
+      {
+        "id": "rust-forth",
+        "passed": true
+      },
+      {
+        "id": "java-connect",
+        "passed": true
+      },
+      {
+        "id": "python-go-counting",
+        "passed": true
+      },
+      {
+        "id": "go-error-handling",
+        "passed": true
+      },
+      {
+        "id": "javascript-forth",
+        "passed": true
+      },
+      {
+        "id": "rust-gigasecond",
+        "passed": true
+      },
+      {
+        "id": "java-custom-set",
+        "passed": true
+      },
+      {
+        "id": "python-grade-school",
+        "passed": true
+      },
+      {
+        "id": "go-food-chain",
+        "passed": true
+      },
+      {
+        "id": "javascript-go-counting",
+        "passed": true
+      },
+      {
+        "id": "rust-grade-school",
+        "passed": true
+      },
+      {
+        "id": "java-dominoes",
+        "passed": true
+      },
+      {
+        "id": "python-grep",
+        "passed": true
+      },
+      {
+        "id": "go-forth",
+        "passed": true
+      },
+      {
+        "id": "javascript-grade-school",
+        "passed": true
+      },
+      {
+        "id": "rust-grep",
+        "passed": true
+      },
+      {
+        "id": "java-food-chain",
+        "passed": true
+      },
+      {
+        "id": "python-hangman",
+        "passed": true
+      },
+      {
+        "id": "go-hexadecimal",
+        "passed": true
+      },
+      {
+        "id": "javascript-grep",
+        "passed": true
+      },
+      {
+        "id": "rust-luhn-from",
+        "passed": true
+      },
+      {
+        "id": "java-forth",
+        "passed": true
+      },
+      {
+        "id": "python-list-ops",
+        "passed": true
+      },
+      {
+        "id": "go-kindergarten-garden",
+        "passed": true
+      },
+      {
+        "id": "javascript-house",
+        "passed": true
+      },
+      {
+        "id": "rust-macros",
+        "passed": true
+      },
+      {
+        "id": "java-go-counting",
+        "passed": true
+      },
+      {
+        "id": "python-paasio",
+        "passed": true
+      },
+      {
+        "id": "go-ledger",
+        "passed": true
+      },
+      {
+        "id": "javascript-killer-sudoku-helper",
+        "passed": true
+      },
+      {
+        "id": "rust-nucleotide-codons",
+        "passed": true
+      },
+      {
+        "id": "java-hangman",
+        "passed": true
+      },
+      {
+        "id": "python-phone-number",
+        "passed": true
+      },
+      {
+        "id": "go-markdown",
+        "passed": true
+      },
+      {
+        "id": "javascript-ledger",
+        "passed": true
+      },
+      {
+        "id": "rust-ocr-numbers",
+        "passed": true
+      },
+      {
+        "id": "java-house",
+        "passed": true
+      },
+      {
+        "id": "python-pig-latin",
+        "passed": true
+      },
+      {
+        "id": "go-matrix",
+        "passed": true
+      },
+      {
+        "id": "javascript-list-ops",
+        "passed": true
+      },
+      {
+        "id": "rust-parallel-letter-frequency",
+        "passed": true
+      },
+      {
+        "id": "java-kindergarten-garden",
+        "passed": true
+      },
+      {
+        "id": "python-poker",
+        "passed": true
+      },
+      {
+        "id": "go-octal",
+        "passed": true
+      },
+      {
+        "id": "javascript-meetup",
+        "passed": true
+      },
+      {
+        "id": "rust-pig-latin",
+        "passed": true
+      },
+      {
+        "id": "java-ledger",
+        "passed": true
+      },
+      {
+        "id": "python-pov",
+        "passed": true
+      },
+      {
+        "id": "go-paasio",
+        "passed": true
+      },
+      {
+        "id": "javascript-ocr-numbers",
+        "passed": true
+      },
+      {
+        "id": "rust-poker",
+        "passed": true
+      },
+      {
+        "id": "java-mazy-mice",
+        "passed": true
+      },
+      {
+        "id": "python-proverb",
+        "passed": true
+      },
+      {
+        "id": "go-palindrome-products",
+        "passed": true
+      },
+      {
+        "id": "javascript-palindrome-products",
+        "passed": true
+      },
+      {
+        "id": "rust-react",
+        "passed": true
+      },
+      {
+        "id": "java-ocr-numbers",
+        "passed": true
+      },
+      {
+        "id": "python-react",
+        "passed": true
+      },
+      {
+        "id": "go-pig-latin",
+        "passed": true
+      },
+      {
+        "id": "javascript-parallel-letter-frequency",
+        "passed": true
+      },
+      {
+        "id": "rust-robot-name",
+        "passed": true
+      },
+      {
+        "id": "java-palindrome-products",
+        "passed": true
+      },
+      {
+        "id": "python-rest-api",
+        "passed": true
+      },
+      {
+        "id": "go-poker",
+        "passed": true
+      },
+      {
+        "id": "javascript-phone-number",
+        "passed": true
+      },
+      {
+        "id": "rust-say",
+        "passed": true
+      },
+      {
+        "id": "java-phone-number",
+        "passed": true
+      },
+      {
+        "id": "python-robot-name",
+        "passed": true
+      },
+      {
+        "id": "go-pov",
+        "passed": true
+      },
+      {
+        "id": "javascript-pig-latin",
+        "passed": true
+      },
+      {
+        "id": "rust-scale-generator",
+        "passed": true
+      },
+      {
+        "id": "java-pig-latin",
+        "passed": true
+      },
+      {
+        "id": "python-scale-generator",
+        "passed": true
+      },
+      {
+        "id": "go-protein-translation",
+        "passed": true
+      },
+      {
+        "id": "javascript-poker",
+        "passed": true
+      },
+      {
+        "id": "rust-simple-cipher",
+        "passed": true
+      },
+      {
+        "id": "java-poker",
+        "passed": true
+      },
+      {
+        "id": "python-sgf-parsing",
+        "passed": true
+      },
+      {
+        "id": "go-react",
+        "passed": true
+      },
+      {
+        "id": "javascript-promises",
+        "passed": true
+      },
+      {
+        "id": "rust-two-bucket",
+        "passed": true
+      },
+      {
+        "id": "java-pov",
+        "passed": true
+      },
+      {
+        "id": "python-simple-linked-list",
+        "passed": true
+      },
+      {
+        "id": "go-robot-simulator",
+        "passed": true
+      },
+      {
+        "id": "javascript-queen-attack",
+        "passed": true
+      },
+      {
+        "id": "rust-variable-length-quantity",
+        "passed": true
+      },
+      {
+        "id": "java-protein-translation",
+        "passed": true
+      },
+      {
+        "id": "python-transpose",
+        "passed": true
+      },
+      {
+        "id": "go-say",
+        "passed": true
+      },
+      {
+        "id": "javascript-rational-numbers",
+        "passed": true
+      },
+      {
+        "id": "rust-word-count",
+        "passed": true
+      },
+      {
+        "id": "java-pythagorean-triplet",
+        "passed": true
+      },
+      {
+        "id": "python-tree-building",
+        "passed": true
+      },
+      {
+        "id": "go-scale-generator",
+        "passed": true
+      },
+      {
+        "id": "javascript-react",
+        "passed": true
+      },
+      {
+        "id": "rust-wordy",
+        "passed": true
+      },
+      {
+        "id": "java-queen-attack",
+        "passed": true
+      },
+      {
+        "id": "python-two-bucket",
+        "passed": true
+      },
+      {
+        "id": "go-simple-linked-list",
+        "passed": true
+      },
+      {
+        "id": "javascript-rectangles",
+        "passed": true
+      },
+      {
+        "id": "rust-xorcism",
+        "passed": true
+      },
+      {
+        "id": "java-rational-numbers",
+        "passed": true
+      }
+    ]
+  },
+  "attemptPolicy": {
+    "maxAttempts": 3
+  },
+  "attempts": [
+    {
+      "id": "python-affine-cipher",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.0016741899999999999,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/python-affine-cipher/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "go-alphametics",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.005201975,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/go-alphametics/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "javascript-affine-cipher",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.007844344999999999,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/javascript-affine-cipher/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "rust-accumulate",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.009552755,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/rust-accumulate/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "java-affine-cipher",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.012321715,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/java-affine-cipher/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "python-beer-song",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.01589259,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/python-beer-song/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "go-beer-song",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.020927895000000005,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/go-beer-song/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "javascript-alphametics",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.024834585000000003,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/javascript-alphametics/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "rust-acronym",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.028003675000000006,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/rust-acronym/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "java-all-your-base",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.03170088000000001,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/java-all-your-base/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "python-book-store",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.035719900000000006,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/python-book-store/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "go-book-store",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.041445520000000007,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/go-book-store/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "javascript-beer-song",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.046167570000000005,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/javascript-beer-song/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "rust-alphametics",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.053701265000000005,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/rust-alphametics/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "java-alphametics",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.06131837000000001,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/java-alphametics/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "python-bottle-song",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.06605656000000001,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/python-bottle-song/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "go-bottle-song",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.07521271500000001,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/go-bottle-song/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "javascript-binary",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.08089197000000002,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/javascript-binary/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "rust-book-store",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.08818264500000003,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/rust-book-store/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "java-bank-account",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.09465038500000005,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/java-bank-account/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "python-bowling",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.10174010500000004,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/python-bowling/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "go-bowling",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.11249587500000004,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/go-bowling/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "javascript-book-store",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.11843150500000003,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/javascript-book-store/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "rust-bowling",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.12554747000000002,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/rust-bowling/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "java-book-store",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.13229575000000002,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/java-book-store/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "python-connect",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.13927281500000002,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/python-connect/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "go-connect",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.150932205,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/go-connect/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "javascript-bottle-song",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.15781359500000003,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/javascript-bottle-song/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "rust-decimal",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.17340491000000002,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/rust-decimal/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "java-bottle-song",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.18105213000000003,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/java-bottle-song/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "python-dominoes",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.18907282500000003,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/python-dominoes/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "go-counter",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.20150836500000002,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/go-counter/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "javascript-bowling",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.21055181,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/javascript-bowling/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "rust-dot-dsl",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.22553842500000001,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/rust-dot-dsl/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "java-bowling",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.23518707000000003,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/java-bowling/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "python-dot-dsl",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.24704742500000001,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/python-dot-dsl/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "go-crypto-square",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.258348105,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/go-crypto-square/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "javascript-complex-numbers",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.272588805,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/javascript-complex-numbers/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "rust-doubly-linked-list",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.2954135999999999,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/rust-doubly-linked-list/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "java-change",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.30594361999999986,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/java-change/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "python-food-chain",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.31642361999999985,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/python-food-chain/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "go-dnd-character",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.3365669599999998,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/go-dnd-character/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "javascript-connect",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.34710240999999986,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/javascript-connect/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "rust-fizzy",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.3612593699999998,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/rust-fizzy/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "java-circular-buffer",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.3774573249999998,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/java-circular-buffer/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "python-forth",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.39284541499999975,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/python-forth/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "go-dominoes",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.41281964999999976,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/go-dominoes/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "javascript-food-chain",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.4247694999999997,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/javascript-food-chain/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "rust-forth",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.4676270649999997,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/rust-forth/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "java-connect",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.5038046849999996,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/java-connect/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "python-go-counting",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.5286641249999996,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/python-go-counting/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "go-error-handling",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.5674298749999995,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/go-error-handling/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "javascript-forth",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.5946855849999995,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/javascript-forth/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "rust-gigasecond",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.6197825149999995,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/rust-gigasecond/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "java-custom-set",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.6477490049999994,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/java-custom-set/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "python-grade-school",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.6741383249999994,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/python-grade-school/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "go-food-chain",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.7076305249999995,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/go-food-chain/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "javascript-go-counting",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.7373868849999994,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/javascript-go-counting/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "rust-grade-school",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.7779612149999993,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/rust-grade-school/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "java-dominoes",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.8290097049999993,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/java-dominoes/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "python-grep",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.8581760549999994,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/python-grep/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "go-forth",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.9104188549999994,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/go-forth/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "javascript-grade-school",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.9402212949999994,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/javascript-grade-school/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "rust-grep",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 0.9790418749999994,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/rust-grep/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "java-food-chain",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 1.0101819249999995,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/java-food-chain/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "python-hangman",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 1.0562817249999994,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/python-hangman/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "go-hexadecimal",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 1.1026041949999996,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/go-hexadecimal/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "javascript-grep",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 1.1518532749999997,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/javascript-grep/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "rust-luhn-from",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 1.1920094749999997,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/rust-luhn-from/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "java-forth",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 1.2457661449999997,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/java-forth/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "python-list-ops",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 1.2795562049999998,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/python-list-ops/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "go-kindergarten-garden",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 1.322741945,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/go-kindergarten-garden/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "javascript-house",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 1.366795905,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/javascript-house/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "rust-macros",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 1.4267117850000002,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/rust-macros/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "java-go-counting",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 1.506945095,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/java-go-counting/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "python-paasio",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 1.554392245,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/python-paasio/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "go-ledger",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 1.6117581050000003,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/go-ledger/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "javascript-killer-sudoku-helper",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 1.6580364150000002,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/javascript-killer-sudoku-helper/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "rust-nucleotide-codons",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 1.7072981750000003,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/rust-nucleotide-codons/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "java-hangman",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 1.7595164950000002,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/java-hangman/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "python-phone-number",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 1.807855795,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/python-phone-number/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "go-markdown",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 1.8866547350000002,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/go-markdown/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "javascript-ledger",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 1.9468975650000004,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/javascript-ledger/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "rust-ocr-numbers",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 1.9982697350000005,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/rust-ocr-numbers/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "java-house",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 2.0398498650000003,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/java-house/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "python-pig-latin",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 2.0806488150000004,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/python-pig-latin/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "go-matrix",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 2.1326446650000004,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/go-matrix/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "javascript-list-ops",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 2.1748108550000005,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/javascript-list-ops/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "rust-parallel-letter-frequency",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 2.237085565000001,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/rust-parallel-letter-frequency/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "java-kindergarten-garden",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 2.2999660150000008,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/java-kindergarten-garden/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "python-poker",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 2.3432630150000002,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/python-poker/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "go-octal",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 2.385655855,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/go-octal/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "javascript-meetup",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 2.4301226849999997,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/javascript-meetup/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "rust-pig-latin",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 2.474113385,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/rust-pig-latin/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "java-ledger",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 2.5311495150000005,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/java-ledger/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "python-pov",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 2.5767399550000007,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/python-pov/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "go-paasio",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 2.644430545000001,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/go-paasio/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "javascript-ocr-numbers",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 2.690400975000001,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/javascript-ocr-numbers/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "rust-poker",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 2.7493120250000014,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/rust-poker/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "java-mazy-mice",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 2.8012998350000013,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/java-mazy-mice/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "python-proverb",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 2.8478637850000017,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/python-proverb/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "go-palindrome-products",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 2.9312909850000017,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/go-palindrome-products/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "javascript-palindrome-products",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 2.982051925000002,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/javascript-palindrome-products/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "rust-react",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 3.059579065000002,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/rust-react/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "java-ocr-numbers",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 3.109671055000002,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/java-ocr-numbers/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "python-react",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 3.1606835850000023,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/python-react/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "go-pig-latin",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 3.374079685000002,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/go-pig-latin/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "javascript-parallel-letter-frequency",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 3.4252242850000023,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/javascript-parallel-letter-frequency/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "rust-robot-name",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 3.4894470850000023,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/rust-robot-name/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "java-palindrome-products",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 3.5409908650000026,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/java-palindrome-products/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "python-rest-api",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 3.5941966450000025,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/python-rest-api/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "go-poker",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 3.686106815000003,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/go-poker/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "javascript-phone-number",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 3.7384600450000036,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/javascript-phone-number/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "rust-say",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 3.8041201350000033,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/rust-say/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "java-phone-number",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 3.857285165000003,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/java-phone-number/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "python-robot-name",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 3.909964455000003,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/python-robot-name/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "go-pov",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 3.9788434650000033,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/go-pov/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "javascript-pig-latin",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 4.073396875000003,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/javascript-pig-latin/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "rust-scale-generator",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 4.170717705000003,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/rust-scale-generator/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "java-pig-latin",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 4.226038535000002,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/java-pig-latin/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "python-scale-generator",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 4.296467495000001,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/python-scale-generator/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "go-protein-translation",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 4.366230075000001,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/go-protein-translation/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "javascript-poker",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 4.423130235,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/javascript-poker/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "rust-simple-cipher",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 4.494293515,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/rust-simple-cipher/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "java-poker",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 4.596620195,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/java-poker/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "python-sgf-parsing",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 4.656069534999999,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/python-sgf-parsing/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "go-react",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 4.791307404999999,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/go-react/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "javascript-promises",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 4.895961944999999,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/javascript-promises/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "rust-two-bucket",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 5.016255264999998,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/rust-two-bucket/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "java-pov",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 5.107048444999998,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/java-pov/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "python-simple-linked-list",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 5.182370744999998,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/python-simple-linked-list/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "go-robot-simulator",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 5.401216574999998,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/go-robot-simulator/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "javascript-queen-attack",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 5.494207424999998,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/javascript-queen-attack/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "rust-variable-length-quantity",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 5.5723629149999985,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/rust-variable-length-quantity/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "java-protein-translation",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 5.635461334999999,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/java-protein-translation/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "python-transpose",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 5.729640424999999,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/python-transpose/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "go-say",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 5.839505834999999,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/go-say/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "javascript-rational-numbers",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 5.957785754999999,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/javascript-rational-numbers/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "rust-word-count",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 5.96034613,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/rust-word-count/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "java-pythagorean-triplet",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 5.963801225000001,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/java-pythagorean-triplet/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "python-tree-building",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 5.967175035000001,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/python-tree-building/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "go-scale-generator",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 5.973815835000002,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/go-scale-generator/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "javascript-react",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 5.978051580000002,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/javascript-react/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "rust-wordy",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 5.983754615000001,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/rust-wordy/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "java-queen-attack",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 5.987655330000001,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/java-queen-attack/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "python-two-bucket",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 5.993175935000001,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/python-two-bucket/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "go-simple-linked-list",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 5.9984711299999995,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/go-simple-linked-list/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "javascript-rectangles",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 6.002442895,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/javascript-rectangles/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "rust-xorcism",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 6.026405014999999,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/rust-xorcism/attempt-1"
+        }
+      ]
+    },
+    {
+      "id": "java-rational-numbers",
+      "attempts": 1,
+      "startedAttempts": 1,
+      "firstAttemptPassed": true,
+      "outcomes": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "estimatedUsd": 6.04797302,
+          "gradeDirectory": "/home/daytona/benchmark-progress/cloud/repo/.runs/live-ytHY9q/aider/trial-1/control/attempts/java-rational-numbers/attempt-1"
+        }
+      ]
+    }
+  ],
+  "usage": {
+    "costEstimateUsd": 6.04797302,
+    "uncachedInputTokens": 2484,
+    "cachedReadTokens": 296348172,
+    "cacheWriteTokens": 1516440,
+    "totalInputTokens": 297867096,
+    "outputTokens": 169591,
+    "reasoningTokens": 138978,
+    "primaryRequests": 827,
+    "retrySchedules": 0,
+    "auxiliaryUsageRecords": 1,
+    "knownModelRequests": 828,
+    "failedStepsWithoutUsage": 0,
+    "primaryInputSamples": 827,
+    "peakActiveContextTokens": 782861,
+    "meanActiveContextTokens": 359228.9359129383,
+    "nativeCompactionPauses": 1,
+    "automaticNativeCompactionPauses": 1,
+    "nativeCompactionWaitMs": 16301,
+    "nativeCompactionTimingComplete": true,
+    "firstNativeCompactionStage": "javascript-rational-numbers",
+    "nativeCompactionEvents": [
+      {
+        "stage": "javascript-rational-numbers",
+        "reason": "auto",
+        "durationMs": 16301,
+        "endTime": 1794201157614,
+        "outcome": "ended"
+      }
+    ],
+    "replacementWindows": 0,
+    "replacementHostWaitMs": 0,
+    "replacementWindowEvents": [],
+    "replacementWindowsWithUsage": 0,
+    "replacementWindowsAfterNativeCompaction": 0,
+    "replacementCuts": 0,
+    "replacementOverheadMs": 0,
+    "replacementPlanningMs": 0,
+    "replacementApplicationMs": 0,
+    "planningReasons": {},
+    "hostCompactionWaitMs": 16301,
+    "cuts": 0,
+    "cutsAfterNativeCompaction": 0,
+    "cutOverheadMs": 0,
+    "contextHookOverheadMs": 0,
+    "estimatedSavedTokens": 0,
+    "estimatedCacheSuffixTokens": 0,
+    "recalls": 0,
+    "successfulRecalls": 0
+  }
+}
